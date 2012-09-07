@@ -4,7 +4,7 @@
 %\usepackage{natbib}
 %\usepackage{multicol}
 \RequirePackage{natbib}
-\usepackage{amsmath, amssymb, fullpage, amsthm, array,,graphicx,asa}
+\usepackage{amsmath, amssymb, fullpage, amsthm, array,,graphicx,asa, url}
 %\usepackage[dvips]{graphics}
 
 %\usepackage{hyperref} % for hyper reference
@@ -14,7 +14,7 @@
 % \usepackage{pifont} % this package is used to print check mark \checkmark
 % \linespread{1.6} % factor 1.6 = double space
 
-%\usepackage{setspace, url}
+%\usepackage{setspace}
 %\doublespacing
 
 
@@ -67,7 +67,7 @@ The fundamental concept of visual statistical inference is introduced by \citet{
 
 \section{Factors Affecting the Power of Visual Inference} A brief description of the factors that may affect the power of visual inference.
 
-\subsection{Choice of Visual Test Statistic} Discuss the effective feature of visual test statistics \citep{heike:2012}. May present some results from \textit{Distance measure} of visual test statistics \citep{niladri:2012}.
+\subsection{Choice of Visual Test Statistic} Discuss the effective feature of visual test statistics \citep{heike:2012}. Present some related results from \textit{Distance measure} of visual test statistics \citep{niladri:2012}.
 \subsection{Question that Human Observer Faces} Discuss the importance of the question the observer needs to answer while evaluating the lineup.
 \subsection{Observer Personality}
 \subsection{Visual Perception of Human Eye} Discuss the results we have on eye tracking experiment \citep{zhao:2012}.
@@ -76,8 +76,8 @@ The fundamental concept of visual statistical inference is introduced by \citet{
 
 \section{Simulation Experiment}
 
-\subsection{Experiment Setup}
-\subsection{Diversity of the Experimental Subjects}
+\subsection{Experiment Setup} Description of the simulation experiment giving focus on demographics and skills of experimental subjects.
+\subsection{Diversity of the Experimental Subjects} Discuss why it would be important and how we accomplish this using Amazon Mechanical Turk \cite{turk} web site.
 
 \section{Results}
 \subsection{Overview of the Data}
@@ -108,7 +108,7 @@ The fundamental concept of visual statistical inference is introduced by \citet{
 
 
 % latex table generated in R 2.15.0 by xtable 1.7-0 package% Fri Sep  7 10:28:47 2012\begin{table}[hbtp]
-\caption{Fixed effect parameter estimates of mixed model. Note that attempt is not significant for experiment 2. The continuous covariate lineup difficulty was measured by the $p$-value of the actual plot in the lineup.}\begin{center}\begin{tabular}{llrrrrl}  \hline& Parameters & Estimate & Std..Error & z.value & P-value  & \\   \hline
+\caption{Fixed effect parameter estimates of generalized mixed model. Note that attempt is not significant for experiment 2. The continuous covariate, lineup difficulty, was measured by the $p$-value of the actual plot in the lineup.}\begin{center}\begin{tabular}{llrrrrl}  \hline& Parameters & Estimate & Std..Error & z.value & P-value  & \\   \hline
 \multicolumn{2}{l}{\bf{Experiment 1} } &&&& &\\&(Intercept) & -0.30 & 0.10 & -2.89 & 0.00 & ***\\  & attempt & 0.08 & 0.02 & 4.21 & 0.00 & ***\\  & lineup difficulty & -11.32 & 1.01 & -11.19 & 0.00 & ***\\ 
 \multicolumn{2}{l}{\bf{Experiment 2} } &&&&& \\ & (Intercept) & 2.36 & 0.15 & 16.09 & 0.00 & ***\\  & attempt & 0.01 & 0.03 & 0.35 & 0.72 \\  & lineup difficulty & -55.03 & 2.20 & -25.00 & 0.00 & ***\\ 
 \multicolumn{2}{l}{\bf{Experiment 3} } &&&& \\ & (Intercept) & 0.25 & 0.16 & 1.58 & 0.11 & .\\  & attempt & 0.10 & 0.03 & 3.34 & 0.00 & ***\\  & lineup difficulty & 3.00 & 0.56 & 5.36 & 0.00 & ***\\    \hline\end{tabular}\end{center}

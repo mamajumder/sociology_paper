@@ -81,13 +81,46 @@ The fundamental concept of visual statistical inference is introduced by \citet{
 
 \section{Results}
 \subsection{Overview of the Data}
-\subsection{Learning Trend of the Observer}
+\subsection{Learning Trend of the Observer} Since each subject is shown multiple lineups, they have a chance for self learning and do better on lineups shown later in the sequence. We examine this by fitting generalized mixed effect model presented in \cite{majumder:2012} with covariates attempt number and $p$-value of the lineup. The $p$-value of the lineup measures some sort of difficulty and including this should adjust for the difficulty level of the lineup while estimating the probability of correct responses in each attempt. Figure \ref{fig:learning_trend} shows the fitted subject wise learning pattern as well as overall learning pattern for each of the experiments. The parameter estimates od the model are shown in Table \ref{tbl:model_par}.
+
+
+%\begin{table}[hbtp]
+%\caption{Parameter estimates of mixed model. Estimates are highly significant with $p$-value $<$  0.0001 for all three experiment data.}
+%\begin{center}
+%\begin{tabular}{cr@{.}lcc}
+%  \hline \hline
+% &  \multicolumn{3}{c} {Fixed effect}  & Random effect\\
+% \cline{2-4}
+% Experiment & \multicolumn{2}{l}{Estimate}  &Std. error & Variance\\
+%  \hline
+%  1 & 0&39 & 0.0094 & 0.0080 \\ 
+%  2 & 1&21 &  0.0197 &  0.0443 \\ 
+%  3 & 0&59 (Intercept)  &   0.1668 & 1.9917\\ 
+%     & 0&21 (Slope)    &  0.0511     &  0.0245\\ 
+%     &-0&78 (correlation) & & \\
+%   \hline
+%\end{tabular}
+%\end{center}
+%\label{tbl:model_par}
+%\end{table}
+
+
+
+
+% latex table generated in R 2.15.0 by xtable 1.7-0 package% Fri Sep  7 10:28:47 2012\begin{table}[hbtp]
+\caption{Fixed effect parameter estimates of mixed model. Note that attempt is not significant for experiment 2. The continuous covariate lineup difficulty was measured by the $p$-value of the actual plot in the lineup.}\begin{center}\begin{tabular}{llrrrrl}  \hline& Parameters & Estimate & Std..Error & z.value & P-value  & \\   \hline
+\multicolumn{2}{l}{\bf{Experiment 1} } &&&& &\\&(Intercept) & -0.30 & 0.10 & -2.89 & 0.00 & ***\\  & attempt & 0.08 & 0.02 & 4.21 & 0.00 & ***\\  & lineup difficulty & -11.32 & 1.01 & -11.19 & 0.00 & ***\\ 
+\multicolumn{2}{l}{\bf{Experiment 2} } &&&&& \\ & (Intercept) & 2.36 & 0.15 & 16.09 & 0.00 & ***\\  & attempt & 0.01 & 0.03 & 0.35 & 0.72 \\  & lineup difficulty & -55.03 & 2.20 & -25.00 & 0.00 & ***\\ 
+\multicolumn{2}{l}{\bf{Experiment 3} } &&&& \\ & (Intercept) & 0.25 & 0.16 & 1.58 & 0.11 & .\\  & attempt & 0.10 & 0.03 & 3.34 & 0.00 & ***\\  & lineup difficulty & 3.00 & 0.56 & 5.36 & 0.00 & ***\\    \hline\end{tabular}\end{center}
+\label{tbl:model_par}\end{table}
+
+% \footnote{Signif. codes: 0 Ô***Õ 0.001 Ô**Õ 0.01 Ô*Õ 0.05 Ô.Õ 0.1}
 
 
 \begin{figure}[htbp] %  figure placement: here, top, bottom, or page
    \centering
    \includegraphics[width=6in]{learning_trend.pdf} 
-   \caption{Probability of correct response for different attempts by each subjects for a plot with $p$-value=0.05 . The overall probability increases with attempts indicating a learning trend of the observers.}
+   \caption{Probability of correct response for different attempts by each subjects for a plot with $p$-value=0.05 . The overall probability increases with attempts indicating a learning trend of the observers for experiments 1 and 3. For experiment 2 the overall trend trend is not statistically significant. Subject to subject variability is seen in learning pattern.}
    \label{fig:learning_trend}
 \end{figure}
 

@@ -4,6 +4,7 @@ library(ggplot2)
 library(plyr)
 library(reshape)
 library(lme4)
+library(xtable)
 #library(lubridate)
 
 
@@ -144,10 +145,15 @@ fit_model <- function(dat){
   return(summary(fit))
 }
 
-fit_model(subset(dtrend, Experiment =="1"))
-fit_model(subset(dtrend, Experiment =="2"))
-fit_model(subset(dtrend, Experiment =="3"))
+f1 <- fit_model(dtrend1)
+f2 <- fit_model(dtrend2)
+f3 <- fit_model(dtrend3)
 
+model.out <- rbind(round(f1@coefs,2), round(f2@coefs,2), round(f3@coefs,2))
+parameters <- rownames(model.out)
+print(xtable(data.frame(parameters,model.out)), include.rownames=FALSE)
+
+print(xtable(pval_sm), include.rownames=FALSE)
 
 pred.mixed <- function(X, subject=0,fit) {
   eta <- fixef(fit)[1] + X * fixef(fit)[2] + 0.05 * fixef(fit)[3] + subject*X

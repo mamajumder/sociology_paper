@@ -43,24 +43,71 @@ dat2 <- clean_data(raw.dat2)
 dat3 <- clean_data(raw.dat3)
 
 
+# Examining performance based on plot location in lineup
+
+dat <- dat2
+
+loc.performance <- ddply(dat, .(plot_location),summarize,
+                         per_correct=mean(response)*100,
+                         n=length(response),
+                         p_value = mean(p_value))
+
+model <- as.formula(response ~ factor(plot_location) + (plot_location|id) + (1|pic_id))
+model <- as.formula(response ~ p_value + factor(plot_location) + (plot_location|id) )
+fit <- lmer(model,family="binomial",data=dat)
+summary(fit)
+
+X <- diag(rep(1,(length(unique(dat$plot_location))-1)))
+eta0 <- fixef(fit)[1]+ 0.01* fixef(fit)[2]
+eta <- c(eta0, eta0 + X %*% fixef(fit)[-(1:2)]) 
+loc.performance$prob_correct <- round(exp(eta)/(1+exp(eta)), 5)
+
+no_loc <- (1:20) [!(1:20 %in% loc.performance$plot_location)]
+loc.dat <- rbind(loc.performance, 
+                 cbind(plot_location=no_loc,per_correct=0,
+                       n=0,p_value=0,prob_correct=0))
+
+ggplot(loc.dat, aes(1,prob_correct))+
+  geom_bar(stat="identity", fill="darkgreen")+
+  facet_wrap(~plot_location, ncol=5) + 
+  ylab("Probability of correct evaluation") +
+  xlab("True plot location in the lineup") +
+  theme(axis.text.x = element_blank())
+
+ggsave("../images/location_effect2.pdf")
+
+
+qplot(p_value, per_correct, data = loc.performance, geom="point")
+
+qplot(plot_location,per_correct, geom="point", data = loc.performance)+
+  facet_wrap(~plot_location, ncol=5)
+
+qplot(x=1,y=per_correct, geom="bar", binwidth=1, data = loc.performance)+
+  facet_wrap(~plot_location, ncol=5)
+
+qplot(1,1, geom="bar", binwidth=1,data = loc.performance, fill=per_correct)+
+  facet_wrap(~plot_location, ncol=5)+ scale_x_continuous()+ scale_y_continuous()
+  + opts(axis.ticks=theme_blank())
+
+
+
+
 # Examining learning trend while giving feedback
 
 get_trend <- function(dat){
   return(
     ddply(dat,.(id), summarize,
-          attempt = 1:length(start_time),
-          pic_id = pic_id[order(start_time)],
-          start_time=start_time[order(start_time)],
-          response=as.numeric(response[order(start_time)]),
-          p_value=p_value[order(start_time)])
+          attempt = rank(start_time),
+          pic_id = pic_id,
+          start_time=start_time,
+          response=as.numeric(response),
+          p_value=p_value)
   )
 }
 
-
-dtrend1 <- subset(get_trend(dat1), attempt<10)
-dtrend2 <- subset(get_trend(dat2), attempt<10)
-dtrend3 <- subset(get_trend(dat3), attempt<10)
-
+dtrend1 <- subset(get_trend(dat1), attempt <= 10)
+dtrend2 <- subset(get_trend(dat2), attempt <= 10)
+dtrend3 <- subset(get_trend(dat3), attempt <= 10)
 
 dtrend <- rbind(data.frame(dtrend1, Experiment = "1"),
                 data.frame(dtrend2, Experiment = "2"),
@@ -73,8 +120,8 @@ unique(dtrend$id[dtrend$attempt>45])
 
 subset(dtrend, id==278)
 
-dtrend1 <- get_trend(dat1)
-qplot(data=dtrend1, attempt, response, geom="point", group=id) +
+# dtrend1 <- get_trend(dat1)
+qplot(data=dtrend1, attempt, response, geom="point", colour=id) +
   stat_smooth(method="loess")
 
 get_smooth_loess <- function(dtrend){
@@ -140,7 +187,8 @@ qplot(attempt,percent_correct, data=tr) +
 
 
 fit_model <- function(dat){
-  model <- as.formula(response ~ attempt + p_value + (attempt -1|id))
+  #model <- as.formula(response ~ attempt + p_value + (attempt -1|id))
+  model <- as.formula(response ~ attempt + (attempt|id) + (1|pic_id))
   fit <- lmer(model,family="binomial",data=dat)
   return(summary(fit))
 }
@@ -156,7 +204,7 @@ print(xtable(data.frame(parameters,model.out)), include.rownames=FALSE)
 print(xtable(pval_sm), include.rownames=FALSE)
 
 pred.mixed <- function(X, subject=0,fit) {
-  eta <- fixef(fit)[1] + X * fixef(fit)[2] + 0.05 * fixef(fit)[3] + subject*X
+  eta <- fixef(fit)[1] + X * fixef(fit)[2] + subject*X
   g.eta <- exp(eta)/(1+exp(eta))
   return(g.eta)
 }
@@ -165,7 +213,8 @@ get_predict_mixed <- function(dat, newdat, intercept=F){
   fit.mixed <- fit_model(dat)
   X <- newdat$attempt
   if(intercept){
-    subject <- ranef(fit.mixed)[[1]][,1]
+    #subject <- ranef(fit.mixed)[[1]][,1]
+    subject <- ranef(fit.mixed)[[1]]
     d <- data.frame(expand.grid(attempt=X, subject=subject))
     pred <- pred.mixed(X=d$attempt, subject=d$subject, fit=fit.mixed)
     res <- data.frame(attempt=d$attempt, subject=d$subject, pred)
@@ -193,6 +242,27 @@ ggplot() + ylab("Probability of correct response") + xlab("Attempt") +
   geom_line(aes(attempt,pred), data=pi_attempt, color="hotpink", size=1.5)
 
 ggsave("../images/learning_trend.pdf", width=10, height = 4)
+
+dt <- dtrend1
+fit0 <- lmer(response ~ attempt + p_value + (attempt -1|id), family="binomial", data=dt)
+
+fit1 <- lmer(response ~ attempt + (attempt|id) , family="binomial", data=dt)
+fit2 <- lmer(response ~ attempt + (attempt|id) + (1|pic_id), family="binomial", data=dt)
+anova(fit2, fit1)
+fit3 <- lmer(response ~ factor(attempt) + (attempt|id) + (1|pic_id), family="binomial", data=dt)
+anova(fit3,fit2)
+
+
+
+# Some exploratory study with the data
+
+# investigating picture with beta=1, sigma=12, replica=2, sample_size=300
+# It is interesting since most people picked a plot with high p_value
+# Most people pick 14 since the difference in spread is clearly visible
+
+pic_dat <- subset(dat1, beta==1 & sigma== 12 & replica==2 & sample_size == 300)
+pic_dat[1,c("pic_id","pic_name","plot_location","p_value")]
+xtabs(data=pic_dat, ~choice_reason+response_no)
 
 
 

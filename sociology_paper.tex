@@ -75,13 +75,35 @@ Some of the effective features of visual test statistics are discussed in \citep
 
 Plots to do: for the same signal strength show the proportion correct for scatterplot and boxplot. eg., qplot(effect, ump-visual power, color= plot-type)
 
-\subsection{Question that Human Observer Faces} Discuss the importance of the question the observer needs to answer while evaluating the lineup.
+\subsection{Question that Human Observer Faces} When a observer is prepared to evaluate a lineup, there needs to be a guideline what exactly should be looked for in a lineup. The researcher knows about the hypothesis but the observer does not know the underlying details of the lineup. Thus the researcher needs to ask a question observer needs to answer while evaluating the lineup. This question should provide the observer a little clue so that the answer reflects the hypothesized patterns in the actual plot. For example Table \ref{tbl:visual_stat} shows the questions asked for the simulation experiments done by  \citet{majumder:2012}. Notice that for case 1 if the observer can identify the actual plot in the lineup that should indicate that the plot chosen has the most vertical difference between groups A and B which is exactly what the researchers intend to examine. Similarly for case 2, a correct evaluation would indicate that the slope is different than the slope that may show up just from randomness.
+
+
+\begin{table*}[hbtp] 
+\caption{Visual test statistics and question asked to the observers to answer while evaluating a lineup } 
+\centering 
+\begin{tabular}{m{0.5cm}m{2cm}m{3cm}m{7.5cm}} 
+\hline\hline 
+Case & Statistic & Test Statistic & Lineup question \\ [0.5ex] % inserts table %heading 
+\hline 
+1  & Box plot & \begin{minipage}[t]{3cm} 	\scalebox{0.45}{\includegraphics{stat_category.pdf}} \end{minipage} & Which set of box plots shows biggest vertical difference 
+between group A and B? \\
+2 &  Scatter plot & \begin{minipage}[t]{3cm}   \scalebox{0.45}{\includegraphics{stat_beta_k.pdf}}\end{minipage} & Of the scatter plots below which one shows data that has steepest slope? \\ 
+
+\hline 
+\end{tabular} 
+\label{tbl:visual_stat} 
+\end{table*} 
+
+These questions are very crucial for the power of visual test. They help observer think in a controlled direction. Notice that there may be unnecessary patterns in the actual data plot which may not necessarily indicate the existence of the significant signal in the plot. These question help observer not to be misguided by those patterns. To review further on this \citet{majumder:2012} have also asked why the observers choose a specific plot. 
+
+
+
 \subsection{Observer Personality}
 \subsection{Visual Perception of Human Eye} Discuss the results we have on eye tracking experiment \citep{zhao:2012}.
 \subsection{Demographics of Observer}  Age, gender and location of the observer.
 \subsection{Skills of Observer} Knowledge about statistical plot as well as education level.
 
-\section{Simulation Experiment}
+\section{Simulation Experiment for Learning Effect}
 
 \subsection{Experiment Setup} Description of the simulation experiment giving focus on demographics and skills of experimental subjects.
 \subsection{Estimation of sample size}  How the sample size is estimated

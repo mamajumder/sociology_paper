@@ -43,6 +43,12 @@ dat2 <- clean_data(raw.dat2)
 dat3 <- clean_data(raw.dat3)
 
 
+# Summary statistics of the data
+
+with(dat3, table(age))
+
+
+
 # Examining performance based on plot location in lineup
 
 dat <- dat2
@@ -265,5 +271,30 @@ pic_dat[1,c("pic_id","pic_name","plot_location","p_value")]
 xtabs(data=pic_dat, ~choice_reason+response_no)
 
 
+# ---------------------  description of coded variables -----------
+
+## gender 1 = male 
+#         2 = female
+## age 1 = below 18 
+#      2 = 18-25 
+#      3 = 26-30 
+#      4 = 31-35 
+#      5 = 36-40
+#      6 = 41-45
+#      7 = 46-50
+#      8 = 51-55
+#      9 = 56-60
+#     10 = above 60
+## academic_study 1 = High school or less
+#                 2 = Some under graduate courses 
+#                 3 = Under graduate degree
+#                 4 = Some graduate courses
+#                 5 = Graduate degree
+## conf_level 1 = most, 5 = least
+## choice_reason 1 = Big vertical difference 
+#                2 = Medians are different
+#                3 = Outliers
+#                4 = others
+## unit(time_taken) = second 
 
 

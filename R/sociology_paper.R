@@ -21,7 +21,7 @@ source("calculate_ump_power.R") # functions to compute power
 clean_data <- function(raw_dat){
   easy_dat <- subset(raw_dat, p_value < 0.0002)
   if (raw_dat$experiment[1]=='turk3') easy_dat <- subset(raw_dat, difficulty==0)
-  d <- ddply(subset(easy_dat),.(id),summarise,
+  d <- ddply(easy_dat,.(id),summarise,
              easy_cnt = length(response),
              percent_correct = mean(response)*100,
              include_id = response[1],
@@ -41,6 +41,11 @@ clean_data <- function(raw_dat){
 dat1 <- clean_data(raw.dat1)
 dat2 <- clean_data(raw.dat2)
 dat3 <- clean_data(raw.dat3)
+dat4 <- read.csv("../data/raw_data_turk4.csv")
+dat4$p_value=0
+dat5 <- read.csv("../data/raw_data_turk5.csv")
+dat6 <- read.csv("../data/raw_data_turk6.csv")
+dat7 <- read.csv("../data/raw_data_turk7.csv")
 
 
 # Summary statistics of the data
@@ -95,8 +100,42 @@ qplot(1,1, geom="bar", binwidth=1,data = loc.performance, fill=per_correct)+
   facet_wrap(~plot_location, ncol=5)+ scale_x_continuous()+ scale_y_continuous()
   + opts(axis.ticks=theme_blank())
 
+# difference with minimum p-value and location of actual plot
 
+pval1 <- read.csv("../data/pvalue_turk1.csv")
+pval2 <- read.csv("../data/pvalue_turk2.csv")
 
+get_pval_success <- function (dat){
+  dat <- subset(dat, abs(beta)>0)
+  res <- ddply(dat, .(pic_name), summarize,      
+               prop_correct=mean(response),
+               p_value=p_value[1],
+               actual_plot = plot_location[1])
+  res$experiment=paste("Experiment", substr(dat$experiment,5,5)[1])
+  return(res)
+}
+pval.success <- rbind(get_pval_success(dat1),get_pval_success(dat2))
+pval.dat <- merge(pval.success,rbind(pval1,pval2), by="pic_name")
+pval.dat.m <- melt(pval.dat, id=c("pic_name","prop_correct",
+                                  "p_value","actual_plot","experiment"))
+pval.diff <- ddply(pval.dat.m, .(pic_name), summarise,
+                   actual_plot = actual_plot[1],
+                   experiment=experiment[1],
+                   prop_correct=prop_correct[1],
+                   pval_diff = p_value[1]- min(value[-actual_plot[1]]))
+pval.diff$plot_region <- "Outer"
+pval.diff$plot_region[pval.diff$actual_plot %in% c(7:9,12:14)] <- "Centre"
+
+ggplot(pval.diff) +
+  geom_point(aes(pval_diff, prop_correct, colour=plot_region)) +
+  facet_grid(.~experiment) +
+  xlab("Difference between p-value of actual data and minimum p-value of null data") +
+  ylab("Proportion correct") +xlim(-.15,.15)
+
+ggsave(file="../images/pval_difference_plot_region.pdf", height=4, width=8)
+
+# getting those three unusual lineups for experiment 1
+subset(pval.diff, prop_correct <.25 & plot_region == "Centre" & pval_diff <0)
 
 # Examining learning trend while giving feedback
 
@@ -107,6 +146,7 @@ get_trend <- function(dat){
           pic_id = pic_id,
           start_time=start_time,
           response=as.numeric(response),
+          pic_name=pic_name,
           p_value=p_value)
   )
 }
@@ -114,10 +154,18 @@ get_trend <- function(dat){
 dtrend1 <- subset(get_trend(dat1), attempt <= 10)
 dtrend2 <- subset(get_trend(dat2), attempt <= 10)
 dtrend3 <- subset(get_trend(dat3), attempt <= 10)
+dtrend4 <- subset(get_trend(dat4), attempt <= 10)
+dtrend5 <- subset(get_trend(dat5), attempt <= 10)
+dtrend6 <- subset(get_trend(dat6), attempt <= 10)
+dtrend7 <- subset(get_trend(dat7), attempt <= 10)
 
 dtrend <- rbind(data.frame(dtrend1, Experiment = "1"),
                 data.frame(dtrend2, Experiment = "2"),
-                data.frame(dtrend3, Experiment = "3"))
+                data.frame(dtrend3, Experiment = "3"),
+                data.frame(dtrend4, Experiment = "4"),
+                data.frame(dtrend5, Experiment = "5"),
+                data.frame(dtrend6, Experiment = "6"),
+                data.frame(dtrend7, Experiment = "7"))
 
 qplot(data=dtrend, attempt, response, geom="point", colour=Experiment) +
   stat_smooth(method="loess")
@@ -194,7 +242,8 @@ qplot(attempt,percent_correct, data=tr) +
 
 fit_model <- function(dat){
   #model <- as.formula(response ~ attempt + p_value + (attempt -1|id))
-  model <- as.formula(response ~ attempt + (attempt|id) + (1|pic_id))
+  # model <- as.formula(response ~ attempt + (attempt|id) + (1|pic_id))
+  model <- as.formula(response ~ (1|pic_name) + (1|id))
   fit <- lmer(model,family="binomial",data=dat)
   return(summary(fit))
 }
@@ -202,6 +251,23 @@ fit_model <- function(dat){
 f1 <- fit_model(dtrend1)
 f2 <- fit_model(dtrend2)
 f3 <- fit_model(dtrend3)
+f4 <- fit_model(dtrend4)
+f5 <- fit_model(dtrend5)
+f6 <- fit_model(dtrend6)
+f7 <- fit_model(dtrend7)
+
+dd <- subset(dtrend4, id %in% id[attempt > 9])
+model <- as.formula(response ~ (1|pic_name) + (1|id))
+fit <- lmer(model,family="binomial",data=dd)
+
+dd$resid <- abs(dd$response - fitted(fit))
+qplot(attempt, resid, colour=id, data=subset(dd, id %in% sample(1:125,12)), geom="line", facets=~id)
+qplot(attempt, resid, colour=id, data=dd, geom="line")
+
+
+
+predict(fit)
+
 
 model.out <- rbind(round(f1@coefs,2), round(f2@coefs,2), round(f3@coefs,2))
 parameters <- rownames(model.out)

@@ -113,12 +113,76 @@ Given this pattern of human eye tracks, it may effect the performance of an obse
 \subsection{Experiment Setup} Description of the simulation experiment giving focus on demographics and skills of experimental subjects.
 \subsection{Estimation of sample size}  How the sample size is estimated
 \subsection{Data collection methods}  Description of the simulation experiment giving focus on demographics and skills of experimental subjects.
+\subsection{Amazon Mechanical Turk}
+
+Amazon Mechanical Turk \cite{turk} is an online work place where people from around the world can perform simple task to get paid. Usually tasks are very simple and no specialized training is required. Being a human is the main requirement. The tasks are designed such that it does not take much time to complete. Humans are still better than computers in performing these types of tasks. The the amount of money paid for each task is very small as well. Figure \ref{fig:amazon_task} displays an example of such a task.
+
+\begin{figure}[htbp] 
+   \centering
+   \includegraphics[width=5in]{amazon_task.pdf} 
+   \caption{An example of amazon mechanical turk task. Tasks are usually very simple and human are still better than computer in performing these types of tasks. With each task, simple instructions are given for workers to follow. The workers first accept the task before submitting their response.}
+   \label{fig:amazon_task}
+\end{figure}
 
 \section{Results}
 \subsection{Overview of the Data}
 \subsection{Diversity of the Experimental Subjects} Amazon Mechanical Turk \cite{turk} web site is a good source for recruiting people to evaluation lineups. It is a source of diverse workers who can give us feedback on visual inspection. This is the kind of task where human are better than computers.  Figure \ref{} shows the location from where we received data. Notice that we received data from around the world and we observed diversity of location in the collected data. We notice diversity in not only location of the observers but also their gender, age groups and education levels. Table \ref{} shows that we have data from almost similar size of male and female population. 
 
-\subsection{Learning Trend of the Observer} Since each subject is shown multiple lineups, they have a chance for self learning and do better on lineups shown later in the sequence. We examine this by fitting generalized mixed effect model presented in \cite{majumder:2012} with covariates attempt number and $p$-value of the lineup. The $p$-value of the lineup measures some sort of difficulty and including this should adjust for the difficulty level of the lineup while estimating the probability of correct responses in each attempt. Figure \ref{fig:learning_trend} shows the fitted subject wise learning pattern as well as overall learning pattern for each of the experiments. The parameter estimates od the model are shown in Table \ref{tbl:model_par}.
+\subsection{Learning Trend of the Observer} Since each subject is shown multiple lineups, they have a chance for self learning and do better on lineups shown later in the sequence. We examine this by fitting generalized mixed effect model presented in \cite{majumder:2012} with covariates attempt number and $p$-value of the lineup. The $p$-value of the lineup measures some sort of difficulty and including this should adjust for the difficulty level of the lineup while estimating the probability of correct responses in each attempt. Figure \ref{fig:learning_trend} shows the fitted subject wise learning pattern as well as overall learning pattern for each of the experiments. The parameter estimates of the model are shown in Table \ref{tbl:model_par}.
+
+\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+   \centering
+   \includegraphics[width=4in]{learning_trend.pdf} 
+   \caption{Mean absolute residuals vs attempt obtained by adjusting for lineup and subject specific variation. The trend over attempt does not show any learning trend since the slopes are not statistically significant.}
+   \label{fig:learning_trend}
+\end{figure}
+
+\subsection{Location Effect of Data Plot in the Lineup}
+
+We set up a Turk experiment to examine whether there is any difference of performance based on the location of actual data plot in the lineup. For this five locations of a lineup were randomly chosen to put the same actual data plot. The locations are 2,9,12,16,20 for Interaction effect and 1,8,12,17,20 for Genotype effect. For a lineup with specific data plot location, five sets of null plots are used giving 5 lineups for each location. In total we have 25 lineups for Interaction effect and 25 lineups for Genotype effect. These 50 lineups are then evaluated by 100 people recruited from Amazon Mechanical Turk. Each person evaluated 3 lineups one from Interaction, one from Genotype and the third one was a test lineup. The test lineup is used to process the payment and examine the quality of the data and the responses of the test plot is not added to our analysis. 
+
+The proportion of correct responses by the turk observers are shown in Figure \ref{fig:location_effect}. Notice that the data plot is same for each location but we see some variability of performance based on different null plots. This may happen if some null plots appear to be more similar to the actual plot while the others are not making some lineups harder than others even though the actual data plot is same. This pattern is evident in the Figure \ref{fig:location_effect} as we see proportion correct for null plot 5 is consistently above the null plot 1 for each of the locations. But this variability could be controlled at some extent by collecting more data for each location. Since the variability is larger when we have small number of responses as we see in the figure. For example, we have only one response for null plot 3 and 5 for Interaction effect which should lead to the extreme proportion of correct since one response would either be correct or wrong. 
+
+\begin{figure}[htbp] 
+   \centering
+    \includegraphics[width=6.5in]{proportion_nulls_guide.pdf} 
+   \caption{Location of data plot in the lineup and proportion correct for both Interaction and Genotype effect. Each colored line represents a null set and the size of the dots represents number of responses. The overall average proportions are shown by dashed line. The actual data plot locations are shaded grey on the top panels to demonstrate their relative positions on a lineup.}
+   \label{fig:location_effect}
+\end{figure}
+
+It is also interesting to check whether the proportion correct differs if the actual plot is on the outer boundary of the lineup or inside the outer boundary. As we see in Figure \ref{fig:location_effect}, location 9, 12 are inside for Interaction effect and location 8, 12 are inside for Genotype. It does not appear to have any difference whether the actual plot is inside or outer border of the lineup.
+
+The overall proportion of correct response does not seem to vary much for different location indicating the non-existence of location effect. Since the actual data plot is same for each of the null sets of plot, the response data constitutes a multivariate response. Thus, to examine if the difference in proportion correct among the locations is statistically significant we fit a one way multi variate analysis of variance (MANOVA) model to the data.
+
+ Suppose $Y=(Y_1,Y_2, ... , Y_p)$ is a vector of random variable with dimension $p=5$ representing the response for five null sets. let $Y_{ij}$ represents $jth$ vector response for $ith$ location with $i=1,2, ..., 5$. We fit the following MANOVA model 
+\begin{equation}\label{manova}
+Y_{ij} = \mu_{i} + \epsilon_{ij}
+\end{equation}
+where $\mu_{i}= (\mu_{1i},\mu_{2i}, ..., \mu_{pi})$ is the mean vector for location $i$ and $Var(\epsilon_{ij})=\Sigma$. 
+
+Model \eqref{manova} enables to test if the mean vectors are similar for different locations. To fit the model we use anova function of stats package of \cite{R:2012}. The results are shown in Table \ref{tbl:manova}. The $p$-values for both Interaction and Genotype effect are much bigger than the conventional threshold of 0.05 and we failed to reject the hypothesis that there is no difference in location. 
+
+\begin{table}[hbtp]
+\caption{The results obtained by fitting MANOVA Model \eqref{manova}.}
+\begin{center}
+\begin{tabular}{ccccccccc}
+  \hline \hline
+ Location & && & \multicolumn{3}{c} {Degrees of Freedom}  & F test \\
+ \cline{5-7}
+ Effect & DF & Pillai & Approx. F & Numerator& Denumerator &Residual & p value\\
+  \hline
+  Interaction& 3&1.4783 &0.7772&15&12 & 6 & 0.6821 \\ 
+  Genotype &4&1.7796 &1.1221&20&28 & 8 &  0.3824 \\ 
+   \hline
+\end{tabular}
+\end{center}
+\label{tbl:manova}
+\end{table}
+
+We also fit Model \eqref{manova} with only two locations based on outer or inner plot location. By outer location we mean the data plot location which is on the border area of the lineup. For example inner locations of a lineup would be 7,8,9,12,13,14. It turns out that inner and outer locations are also not significantly different.
+
+     
+
 
 
 %\begin{table}[hbtp]
@@ -174,12 +238,14 @@ Given this pattern of human eye tracks, it may effect the performance of an obse
 % \footnote{Signif. codes: 0 Ô***Õ 0.001 Ô**Õ 0.01 Ô*Õ 0.05 Ô.Õ 0.1}
 
 
-\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
-   \centering
-   \includegraphics[width=6in]{learning_trend.pdf} 
-   \caption{Probability of correct response for different attempts by each subjects for a plot with lineup difficulty ($p$-value of actual plot) = 0.05 . The overall probability increases with attempts indicating a learning trend of the observers for experiments 1 and 3. For experiment 2 the overall trend trend is not statistically significant. Subject to subject variability is seen in learning pattern.}
-   \label{fig:learning_trend}
-\end{figure}
+
+
+%\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+%   \centering
+%   \includegraphics[width=4in]{learning_trend.pdf} 
+%   \caption{Probability of correct response for different attempts by each subjects for a plot with lineup difficulty ($p$-value of actual plot) = 0.05 . The overall probability increases with attempts indicating a learning trend of the observers for experiments 1 and 3. For experiment 2 the overall trend is not statistically significant. Subject to subject variability is seen in learning pattern.}
+%   \label{fig:learning_trend}
+%\end{figure}
 
 \section{Conclusion}
 

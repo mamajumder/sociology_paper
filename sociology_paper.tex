@@ -75,7 +75,7 @@ Some of the effective features of visual test statistics are discussed in \citep
 
 Plots to do: for the same signal strength show the proportion correct for scatterplot and boxplot. eg., qplot(effect, ump-visual power, color= plot-type)
 
-\subsection{Question that Human Observer Answers} When a observer is prepared to evaluate a lineup, there needs to be a guideline what exactly should be looked for in a lineup. The researcher knows about the hypothesis but the observer does not know the underlying details of the lineup. Thus the researcher needs to ask a question observer needs to answer while evaluating the lineup. This question should provide the observer a little clue so that the answer reflects the hypothesized patterns in the actual plot. For example Table \ref{tbl:visual_stat} shows the questions asked for the simulation experiments done by  \citet{majumder:2012}. Notice that for case 1 if the observer can identify the actual plot in the lineup that should indicate that the plot chosen has the most vertical difference between groups A and B which is exactly what the researchers intend to examine. Similarly for case 2, a correct evaluation would indicate that the slope is different than the slope that may show up just from randomness.
+\subsection{Question that Human Observer Answers} When a observer is prepared to evaluate a lineup, there needs to be a guideline what exactly should be looked for in a lineup. The researcher knows about the hypothesis but the observer does not know the underlying details of the lineup. Thus the researcher needs to ask a question observer is to answer while evaluating the lineup. This question should provide the observer a little clue so that the answer reflects the hypothesized patterns in the actual plot. For example Table \ref{tbl:visual_stat} shows the questions asked for the simulation experiments done by  \citet{majumder:2012}. Notice that for case 1 if the observer can identify the actual plot in the lineup that should indicate that the plot chosen has the most vertical difference between groups A and B which is exactly what the researchers intend to examine. Similarly for case 2, a correct evaluation would indicate that the slope is different than the slope that may show up just from randomness.
 
 
 \begin{table*}[hbtp] 
@@ -115,24 +115,28 @@ Given this pattern of human eye tracks, it may effect the performance of an obse
 \subsection{Data collection methods}  Description of the simulation experiment giving focus on demographics and skills of experimental subjects.
 \subsection{Amazon Mechanical Turk}
 
-Amazon Mechanical Turk \cite{turk} is an online work place where people from around the world can perform simple task to get paid. Usually tasks are very simple and no specialized training is required. Being a human is the main requirement. The tasks are designed such that it does not take much time to complete. Humans are still better than computers in performing these types of tasks. The the amount of money paid for each task is very small as well. Figure \ref{fig:amazon_task} displays an example of such a task.
+Amazon Mechanical Turk \cite{turk} or MTurk is an online work place where people from around the world can perform some tasks and get paid. Usually tasks are very simple and no specialized training is required. Being a human is the main requirement. Tasks are designed for anyone to do but some tasks may require that workers satisfy some skill level depending on the recruiters need. The tasks are designed such that it does not take much time to complete. Humans are still better than computers in performing these types of tasks. The the amount of money paid for each task is very small as well. Figure \ref{fig:amazon_task} displays an example of such a task taken from their web site. In this task a worker just has to select from a pool of options and submit the task. The instructions are usually accompany the task and they are very simple and easy to follow. 
 
 \begin{figure}[htbp] 
    \centering
    \includegraphics[width=5in]{amazon_task.pdf} 
-   \caption{An example of amazon mechanical turk task. Tasks are usually very simple and human are still better than computer in performing these types of tasks. With each task, simple instructions are given for workers to follow. The workers first accept the task before submitting their response.}
+   \caption{An example of amazon mechanical turk task. Tasks are usually very simple and designed for human evaluations. With each task, simple instructions are given for workers to follow. The workers first accept the task before submitting their response.}
    \label{fig:amazon_task}
 \end{figure}
 
+It is very fast, cheap and reliable to recruit people from MTurk. Thats why it is getting very popular among the researchers who perform human subject experiment. The another benefit is that a very diverse pool of subjects can be recruited which is otherwise very hard to obtain for a study. The researchers can easily filter the workers based on their experimental design, such as recruiting people only from a specific geographical location or a group of people who satisfy certain criteria etc. The recruiter can decide who they pay or not. Workers have to satisfy the task requirement to ensure payment. But at the end it is the recruiter who has the final say. Usually recruiters pay promptly after the task has been done properly and thats why MTurk is very popular among the online job seeker. At any point of time thousands of tasks are available for the thousands of workers around the world. 
+
+Because of its convenience it is getting popular for scientific research study. In comparison with a lab study \cite{suri:2010} perform the same study using MTurk and demonstrate that their study results are as good as the lab study results even though MTurk study required less time, cost and provided more convenience. \cite{majumder:2012} recruited people from MTurk for their simulation study in estimating the power of visual statistical inference. They have done numerous pilot studies in lab before doing actual MTurk study and found similar results. \cite{mason:2012} explains numerous features of MTurk and describes how it can be used as part of human behavioral study.
+
 \section{Results}
 \subsection{Overview of the Data}
-\subsection{Diversity of the Experimental Subjects} Amazon Mechanical Turk \cite{turk} web site is a good source for recruiting people to evaluation lineups. It is a source of diverse workers who can give us feedback on visual inspection. This is the kind of task where human are better than computers.  Figure \ref{fig:turker_location} shows the location from where we received data. Notice that we received data from around the world and we observed diversity of location in the collected data. We notice diversity in not only location of the observers but also their gender, age groups and education levels. Table \ref{} shows that we have data from almost similar size of male and female population. 
+\subsection{Diversity of the Experimental Subjects} Amazon Mechanical Turk \cite{turk} web site is a good source for recruiting people to evaluation lineups. It is a source of diverse workers who can give us feedback on visual inspection.  Figure \ref{fig:turker_location} shows the location from where we received data. Notice that we received data from around the world and we observed diversity of location in the collected data. We notice diversity in not only location of the observers but also their gender, age groups and education levels. Table \ref{} shows that we have data from almost similar size of male and female population. 
 
 \begin{figure}[htbp] 
    \centering
-   \includegraphics[width=4in]{turker_country.pdf} 
-   \includegraphics[width=4in]{turker_location.pdf}    
-   \caption{Words used to explain the reasons for selection of data plot in a lineup. Larger font indicate more people choosing that word. Different color is used just to separate the words.}
+   \includegraphics[width=4.5in]{turker_country.pdf} 
+   \includegraphics[width=4.5in]{turker_location.pdf}    
+   \caption{Location of the Amazon Mechanical Turk workers participating our study. Most of the people are coming from India and United States even though there are people from around the world.}
    \label{fig:turker_location}
 \end{figure}
 
@@ -141,18 +145,22 @@ Amazon Mechanical Turk \cite{turk} is an online work place where people from aro
 \begin{figure}[htbp] 
    \centering
    \includegraphics[width=3.5in]{reasoning_words.pdf} 
-   \caption{Words used to explain the reasons for selection of data plot in a lineup. Larger font indicate more people choosing that word. Different color is used just to separate the words.}
+   \caption{Words used to explain the reasons for selection of data plot in a lineup show what features of a lineup may influence a non-statistician to examine it. Larger font indicate more people choosing that word. Different color is used just to separate the words.}
    \label{fig:wordle}
 \end{figure}
 
-Figure \ref {fig:wordle} aslo shows some insight about peoples way of reading a plot. We notice that variability in the data, color and aesthetics used to generate plots and existence of any systematic pattern in the plot are some of the important features revealed from the figure. These features are commonly used by human brain to examine and compare plots. Notice that these features may be specific to this particular experiment. There could be different other features people would use to evaluate a lineup depending on the situation. But these words we have a general idea how people may think to evaluate a lineup.
+Figure \ref {fig:wordle} also shows some insight about peoples way of reading a plot. We notice that variability in the data, color and aesthetics used to generate plots and existence of any systematic pattern in the plot are some of the important features revealed from the figure. These features are commonly used by human brain to examine and compare plots. Notice that these features may be specific to this particular experiment. There could be different other features people would use to evaluate a lineup depending on the situation. But these words we have a general idea how people may think to evaluate a lineup.
 
-\subsection{Learning Trend of the Observer} Since each subject is shown multiple lineups, they have a chance for self learning and do better on lineups shown later in the sequence. We examine this by fitting generalized mixed effect model presented in \cite{majumder:2012} with covariates attempt number and $p$-value of the lineup. The $p$-value of the lineup measures some sort of difficulty and including this should adjust for the difficulty level of the lineup while estimating the probability of correct responses in each attempt. Figure \ref{fig:learning_trend} shows the fitted subject wise learning pattern as well as overall learning pattern for each of the experiments. The parameter estimates of the model are shown in Table \ref{tbl:model_par}.
+Turk workers are not necessarily trained on statistics or aware of specific terms used in statistics or statistical plots. Thus it is also interesting to note that how they explain things that have specific definitions and meaning. Notice in Figure \ref {fig:wordle} that some keywords like spread, apart should be analogous to larger variability while together,  close may be for indicating smaller variability.
+
+\subsection{Learning Trend of the Observer} Since each subject is shown multiple lineups, they have a chance for self learning and do better on lineups shown later in the sequence. They may learn from their previous mistake or they may learn about the features of the plots being evaluated as they progress. We examine this by fitting generalized mixed effect model presented in \cite{majumder:2012} with lineups and subjects as random effect and no fixed effect. This should give us the estimation of proportion correct responses adjusted for lineup difficulties and individual skills. The resulting residual should show some trend if plotted against attempt. Figure \ref{fig:learning_trend} shows such plots for three experiments naming experiment 5 through 6. For experiment 5 we see a downward trend in absolute residual as the attempt progress. This may indicate a learning trend but this trend is not statistically significant. We see upward trend for experiment 6 and 7 but again they are not statistically significant too.
+
+%covariates attempt number and $p$-value of the lineup. The $p$-value of the lineup measures some sort of difficulty and including this should adjust for the difficulty level of the lineup while estimating the probability of correct responses in each attempt. Figure \ref{fig:learning_trend} shows the fitted subject wise learning pattern as well as overall learning pattern for each of the experiments. The parameter estimates of the model are shown in Table \ref{tbl:model_par}.
 
 \begin{figure}[htbp] %  figure placement: here, top, bottom, or page
    \centering
-   \includegraphics[width=4in]{learning_trend.pdf} 
-   \caption{Mean absolute residuals vs attempt obtained by adjusting for lineup and subject specific variation. The trend over attempt does not show any learning trend since the slopes are not statistically significant.}
+   \includegraphics[width=6.5in]{learning_trend.pdf} 
+   \caption{Mean absolute residuals vs attempt obtained by adjusting for lineup and subject specific variation. For experiment 5, we see a downward trend which may indicate some learning as attempt progress, but none of the slopes in these three experiments are statistically significant.}
    \label{fig:learning_trend}
 \end{figure}
 
@@ -227,32 +235,32 @@ We also fit Model \eqref{manova} with only two locations based on outer or inner
 
 
 
-% latex table generated in R 2.15.0 by xtable 1.7-0 package
-% Fri Sep  7 10:28:47 2012
-\begin{table}[hbtp]
-\caption{Fixed effect parameter estimates of generalized mixed model. Note that attempt is not significant for experiment 2. The continuous covariate, lineup difficulty, was measured by the $p$-value of the actual plot in the lineup.}
-\begin{center}
-\begin{tabular}{llrrrrl}
-  \hline
-& Parameters & Estimate & Std..Error & z.value & P-value  & \\ 
-  \hline
-\multicolumn{2}{l}{\bf{Experiment 1} } &&&& &\\
-&(Intercept) & -0.30 & 0.10 & -2.89 & 0.00 & ***\\ 
- & attempt & 0.08 & 0.02 & 4.21 & 0.00 & ***\\ 
- & lineup difficulty & -11.32 & 1.01 & -11.19 & 0.00 & ***\\ 
-\multicolumn{2}{l}{\bf{Experiment 2} } &&&&& \\
- & (Intercept) & 2.36 & 0.15 & 16.09 & 0.00 & ***\\ 
- & attempt & 0.01 & 0.03 & 0.35 & 0.72 \\ 
- & lineup difficulty & -55.03 & 2.20 & -25.00 & 0.00 & ***\\ 
-\multicolumn{2}{l}{\bf{Experiment 3} } &&&& \\
- & (Intercept) & 0.25 & 0.16 & 1.58 & 0.11 & .\\ 
- & attempt & 0.10 & 0.03 & 3.34 & 0.00 & ***\\ 
- & lineup difficulty & 3.00 & 0.56 & 5.36 & 0.00 & ***\\ 
-   \hline
-\end{tabular}
-\end{center}
-\label{tbl:model_par}
-\end{table}
+%% latex table generated in R 2.15.0 by xtable 1.7-0 package
+%% Fri Sep  7 10:28:47 2012
+%\begin{table}[hbtp]
+%\caption{Fixed effect parameter estimates of generalized mixed model. Note that attempt is not significant for experiment 2. The continuous covariate, lineup difficulty, was measured by the $p$-value of the actual plot in the lineup.}
+%\begin{center}
+%\begin{tabular}{llrrrrl}
+%  \hline
+%& Parameters & Estimate & Std..Error & z.value & P-value  & \\ 
+%  \hline
+%\multicolumn{2}{l}{\bf{Experiment 1} } &&&& &\\
+%&(Intercept) & -0.30 & 0.10 & -2.89 & 0.00 & ***\\ 
+% & attempt & 0.08 & 0.02 & 4.21 & 0.00 & ***\\ 
+% & lineup difficulty & -11.32 & 1.01 & -11.19 & 0.00 & ***\\ 
+%\multicolumn{2}{l}{\bf{Experiment 2} } &&&&& \\
+% & (Intercept) & 2.36 & 0.15 & 16.09 & 0.00 & ***\\ 
+% & attempt & 0.01 & 0.03 & 0.35 & 0.72 \\ 
+% & lineup difficulty & -55.03 & 2.20 & -25.00 & 0.00 & ***\\ 
+%\multicolumn{2}{l}{\bf{Experiment 3} } &&&& \\
+% & (Intercept) & 0.25 & 0.16 & 1.58 & 0.11 & .\\ 
+% & attempt & 0.10 & 0.03 & 3.34 & 0.00 & ***\\ 
+% & lineup difficulty & 3.00 & 0.56 & 5.36 & 0.00 & ***\\ 
+%   \hline
+%\end{tabular}
+%\end{center}
+%\label{tbl:model_par}
+%\end{table}
 
 % \footnote{Signif. codes: 0 Ô***Õ 0.001 Ô**Õ 0.01 Ô*Õ 0.05 Ô.Õ 0.1}
 

@@ -148,6 +148,7 @@ ggsave(file="../images/pval_difference_plot_region.pdf", height=4, width=8)
 # getting those three unusual lineups for experiment 1
 subset(pval.diff, prop_correct <.25 & plot_region == "Centre" & pval_diff <0)
 
+# =====================================================
 # Examining learning trend while giving feedback
 
 get_trend <- function(dat){
@@ -283,11 +284,21 @@ ggplot(trend.dat, aes(attempt,resid, colour=experiment))+
 ddt <- ddply(trend.dat,.(attempt, experiment), summarise,
              mean_resid = mean(resid))
 
-qplot(attempt,mean_resid, data= ddt, colour=experiment) +
-  geom_smooth(method="lm") + ylab("Mean absolute residual") +
-  scale_x_continuous(breaks = seq(2,10,by=2))
+qplot(attempt,mean_resid, data= ddt) + geom_point(size=2.5) +
+  geom_smooth(method="lm", se=F) + ylab("Mean absolute residual") +
+  facet_wrap(~experiment, scales="free_y") +
+  scale_x_continuous(breaks = seq(2,10,by=2)) 
 
-ggsave("../images/learning_trend.pdf", width=6, height = 4)
+ggsave("../images/learning_trend.pdf", width=10.5, height = 3.5)
+
+
+# Checking if the trend shown in the plot is significant or not
+# For all experiments 5,6,7 slope is not statistically significant
+
+fit1 <- lm(resid ~ attempt, data=subset(trend.dat, experiment=="experiment 5"))
+fit2 <- lm(resid ~ attempt, data=subset(trend.dat, experiment=="experiment 6"))
+fit3 <- lm(resid ~ attempt, data=subset(trend.dat, experiment=="experiment 7"))
+
 
 dd <- subset(dtrend4, id %in% id[attempt > 9])
 fit <- lmer(model,family="binomial",data=dd)
@@ -355,7 +366,7 @@ anova(fit2, fit1)
 fit3 <- lmer(response ~ factor(attempt) + (attempt|id) + (1|pic_id), family="binomial", data=dt)
 anova(fit3,fit2)
 
-
+# =======================================================
 # some analysis of turk9 data and location effect of the plot
 
 # keep only three responses data. Any responses after the first three are ignored.

@@ -126,7 +126,26 @@ Amazon Mechanical Turk \cite{turk} is an online work place where people from aro
 
 \section{Results}
 \subsection{Overview of the Data}
-\subsection{Diversity of the Experimental Subjects} Amazon Mechanical Turk \cite{turk} web site is a good source for recruiting people to evaluation lineups. It is a source of diverse workers who can give us feedback on visual inspection. This is the kind of task where human are better than computers.  Figure \ref{} shows the location from where we received data. Notice that we received data from around the world and we observed diversity of location in the collected data. We notice diversity in not only location of the observers but also their gender, age groups and education levels. Table \ref{} shows that we have data from almost similar size of male and female population. 
+\subsection{Diversity of the Experimental Subjects} Amazon Mechanical Turk \cite{turk} web site is a good source for recruiting people to evaluation lineups. It is a source of diverse workers who can give us feedback on visual inspection. This is the kind of task where human are better than computers.  Figure \ref{fig:turker_location} shows the location from where we received data. Notice that we received data from around the world and we observed diversity of location in the collected data. We notice diversity in not only location of the observers but also their gender, age groups and education levels. Table \ref{} shows that we have data from almost similar size of male and female population. 
+
+\begin{figure}[htbp] 
+   \centering
+   \includegraphics[width=4in]{turker_country.pdf} 
+   \includegraphics[width=4in]{turker_location.pdf}    
+   \caption{Words used to explain the reasons for selection of data plot in a lineup. Larger font indicate more people choosing that word. Different color is used just to separate the words.}
+   \label{fig:turker_location}
+\end{figure}
+
+\subsection{How people pick the data plot} In the experiment setup we have a question for the turk observers to choose the reason for their selection of a particular data plot. It is shown by \cite{majumder:2012} that these choice reasons reveal the way people picks the data plot in the lineup. To investigate this further we added free text input option for their choice reason instead of some fixed reasons to select from. In this experiment people could write whatever they think their reasons for choice are. Figure \ref{fig:wordle} shows the words used to explain their reasons for choice. The most common words used to explain their choice are points and green which indicates two important feature of a plot. One is the indicator of plot aesthetics and the other is the color. Spread, steepest, line and apart are some other important words used frequently. Spread and apart are indicative of variability in the data. Steepest and line indicates some sort of systematic pattern in the data.
+
+\begin{figure}[htbp] 
+   \centering
+   \includegraphics[width=3.5in]{reasoning_words.pdf} 
+   \caption{Words used to explain the reasons for selection of data plot in a lineup. Larger font indicate more people choosing that word. Different color is used just to separate the words.}
+   \label{fig:wordle}
+\end{figure}
+
+Figure \ref {fig:wordle} aslo shows some insight about peoples way of reading a plot. We notice that variability in the data, color and aesthetics used to generate plots and existence of any systematic pattern in the plot are some of the important features revealed from the figure. These features are commonly used by human brain to examine and compare plots. Notice that these features may be specific to this particular experiment. There could be different other features people would use to evaluate a lineup depending on the situation. But these words we have a general idea how people may think to evaluate a lineup.
 
 \subsection{Learning Trend of the Observer} Since each subject is shown multiple lineups, they have a chance for self learning and do better on lineups shown later in the sequence. We examine this by fitting generalized mixed effect model presented in \cite{majumder:2012} with covariates attempt number and $p$-value of the lineup. The $p$-value of the lineup measures some sort of difficulty and including this should adjust for the difficulty level of the lineup while estimating the probability of correct responses in each attempt. Figure \ref{fig:learning_trend} shows the fitted subject wise learning pattern as well as overall learning pattern for each of the experiments. The parameter estimates of the model are shown in Table \ref{tbl:model_par}.
 

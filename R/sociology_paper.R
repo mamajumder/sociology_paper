@@ -2,7 +2,7 @@
 
 library(ggplot2)
 library(plyr)
-library(reshape)
+library(reshape2)
 library(lme4)
 library(xtable)
 library(grid)
@@ -104,12 +104,12 @@ qplot(p_value, per_correct, data = loc.performance, geom="point")
 qplot(plot_location,per_correct, geom="point", data = loc.performance)+
   facet_wrap(~plot_location, ncol=5)
 
-qplot(x=1,y=per_correct, geom="bar", binwidth=1, data = loc.performance)+
+qplot(x=1,y=per_correct, geom="bar", binwidth=1, data = loc.performance, stat="identity")+
   facet_wrap(~plot_location, ncol=5)
 
-qplot(1,1, geom="bar", binwidth=1,data = loc.performance, fill=per_correct)+
-  facet_wrap(~plot_location, ncol=5)+ scale_x_continuous()+ scale_y_continuous()
-  + opts(axis.ticks=theme_blank())
+qplot(1,1, geom="bar", binwidth=1,data = loc.performance, fill=per_correct, stat="identity")+
+  facet_wrap(~plot_location, ncol=5)+ scale_x_continuous()+ scale_y_continuous() + 
+  theme(axis.ticks=element_blank())
 
 # difference with minimum p-value and location of actual plot
 
@@ -192,15 +192,17 @@ qplot(data=dtrend1, attempt, response, geom="point", colour=id) +
 
 get_smooth_loess <- function(dtrend){
   smooth_fitted =NULL
-  for (i in unique(dtrend1$id)){
+  for (i in unique(dtrend$id)){
     #i=221
-    dat <- subset(dtrend1, id==i)
-    max_attempt <- max(dat$attempt)
-    attempt  <- seq(1,max_attempt, by=.1) 
-    fit <- loess(response~attempt, data=dat)
-    fitted <- predict(fit, attempt)
-    fdat <- data.frame(id=i, attempt, fitted)
-    smooth_fitted <- rbind(smooth_fitted, fdat)
+    dat <- subset(dtrend, id==i)
+    if(nrow(dat)>9){
+      max_attempt <- max(dat$attempt)
+      attempt  <- seq(1,max_attempt, by=.1) 
+      fit <- loess(response~attempt, data=dat)
+      fitted <- predict(fit, attempt)
+      fdat <- data.frame(id=i, attempt, fitted)
+      smooth_fitted <- rbind(smooth_fitted, fdat)
+    }
   }
   return(smooth_fitted)
   }
@@ -208,35 +210,10 @@ get_smooth_loess <- function(dtrend){
 dt1 <- get_smooth_loess(dtrend1)
 
   
-qplot(data=smooth_fitted, attempt, fitted, group=id, geom="line")
+qplot(data=dt1, attempt, fitted, group=id, geom="line")
 
-qplot(data=subset(dt1, id==4), attempt, fitted, group=id, geom="line")
-
-
-dt1 <- ddply(dtrend1,.(id), summarize,  
-      lineups = seq(0.1,max(attempt), by=.1),
-      fitted = predict(loess(response~attempt), 
-                       attempt=seq(0.1,max(attempt), by=.1))
-     )
-
-
-dt2 <- ddply(dtrend1,.(id), summarize,      
-             attempt=seq(0.1,max(attempt), by=.1)  )
-
-dt <- merge(dt1,dt2, by="id")
-
-qplot(data=dt, attempt, fitted, geom="line", group=id)
-
+qplot(data=subset(dt1, id==11), attempt, fitted, group=id, geom="line")
   
-ddply(dtrend1,.(id), summarize,
-      attempt=attempt,
-      fitted = predict(loess(response~attempt)))
-  
-  
-
-tr <- ddply(subset(dtrend, attempt < 12),.(attempt), summarize,
-            percent_correct=mean(response)*100,
-            mean_pval=mean(p_value)*100)
 
 tr <- ddply(dtrend,.(attempt), summarize,
             percent_correct=mean(response)*100,
@@ -304,18 +281,13 @@ dd <- subset(dtrend4, id %in% id[attempt > 9])
 fit <- lmer(model,family="binomial",data=dd)
 dd$resid <- abs(dd$response - fitted(fit))
 qplot(attempt, resid, colour=id, data=subset(dd, id %in% sample(1:125,12)), geom="line", facets=~id)
-qplot(attempt, resid, colour=id, data=dd, geom="line")
-qplot(attempt, resid, colour=id, data=dd) + geom_smooth()
-
-
-predict(fit)
+qplot(attempt, resid, colour=id, data=dd) + geom_smooth(method=loess)
 
 
 model.out <- rbind(round(f1@coefs,2), round(f2@coefs,2), round(f3@coefs,2))
 parameters <- rownames(model.out)
 print(xtable(data.frame(parameters,model.out)), include.rownames=FALSE)
 
-print(xtable(pval_sm), include.rownames=FALSE)
 
 pred.mixed <- function(X, subject=0,fit) {
   eta <- fixef(fit)[1] + X * fixef(fit)[2] + subject*X
@@ -324,11 +296,11 @@ pred.mixed <- function(X, subject=0,fit) {
 }
 
 get_predict_mixed <- function(dat, newdat, intercept=F){
-  fit.mixed <- fit_model(dat)
+  fit.mixed <- lmer(response ~ attempt + (attempt|id) + (1|pic_id),family="binomial",data=dat)
   X <- newdat$attempt
   if(intercept){
-    #subject <- ranef(fit.mixed)[[1]][,1]
-    subject <- ranef(fit.mixed)[[1]]
+    subject <- ranef(fit.mixed)[[1]][,1]
+    #subject <- ranef(fit.mixed)[[1]]
     d <- data.frame(expand.grid(attempt=X, subject=subject))
     pred <- pred.mixed(X=d$attempt, subject=d$subject, fit=fit.mixed)
     res <- data.frame(attempt=d$attempt, subject=d$subject, pred)
@@ -355,7 +327,7 @@ ggplot() + ylab("Probability of correct response") + xlab("Attempt") +
   geom_line(aes(attempt, pred, group=subject), data=pi_subject, alpha=I(.1)) +
   geom_line(aes(attempt,pred), data=pi_attempt, color="hotpink", size=1.5)
 
-ggsave("../images/learning_trend.pdf", width=10, height = 4)
+ggsave("../images/learning_trend_mixed.pdf", width=10, height = 4)
 
 dt <- dtrend1
 fit0 <- lmer(response ~ attempt + p_value + (attempt -1|id), family="binomial", data=dt)
@@ -470,15 +442,10 @@ p_gen <- qplot(1,0, data=l.dat, geom="blank")+ facet_wrap(~plot_location)+
   geom_bar(aes(1,plot_gen), stat="identity", alpha=.6) +
   theme(axis.text = element_blank(), axis.title = element_blank(), plot.margin=unit(c(0,0,-1,-1), "cm")) 
 
-pushViewport(viewport(layout = grid.layout(2, 2)))  
-print(p_int, vp = viewport(layout.pos.row = 1, layout.pos.col = 1))     
-print(p_gen, vp = viewport(layout.pos.row = 1, layout.pos.col = 2))  
-print(p_prop,vp = viewport(layout.pos.row = 2, layout.pos.col = 1:2))
-
 vp1 <- viewport(x=0.46, y=0.7, height=unit(4.5, "cm"), width=unit(4.5, "cm"), just=c( "right", "bottom"))
 vp2 <- viewport(x=0.86, y=0.7, height=unit(4.5, "cm"), width=unit(4.5, "cm"), just=c( "right", "bottom"))
 
-pdf( "../images/proportion_nulls_guide.pdf", width=11, height=5.9)
+pdf( "../images/proportion_nulls_guide.pdf", width=10.8, height=5.9)
 p_prop
 print(p_int,vp = vp1)
 print(p_gen,vp = vp2)
@@ -494,7 +461,7 @@ df <- ddply(subset(dat9, plot_type != "Filter"),
 
 # dd <- subset(dat9, plot_type=="Interaction", select=c(response,plot_location, nulls, pic_name))
 
-model.dat <- cast(df,plot_type+plot_location+replicates~nulls, value="response", fun=mean)
+model.dat <- dcast(df,plot_type+plot_location+replicates~nulls, value.var="response", fun=mean)
 
 model <- as.formula(cbind(null_1,null_2,null_3,null_4,null_5)~factor(plot_location))
 int.dat <- subset(model.dat, plot_type=="Interaction")
@@ -509,10 +476,8 @@ int.dat$locs <- "out"
 int.dat$locs[int.dat$plot_location %in% c(9,12)] <- "in"
 summary(manova(cbind(null_1,null_2,null_3,null_4,null_5)~factor(locs), data=int.dat))
 
-# push view port
 # test for equivalency
-
-
+library(equivalence)
 
 # Getting visual p-values for turk9 experiment with gene expression data
 
@@ -565,6 +530,18 @@ pic_dat <- subset(dat1, beta==1 & sigma== 12 & replica==2 & sample_size == 300)
 pic_dat[1,c("pic_id","pic_name","plot_location","p_value")]
 xtabs(data=pic_dat, ~choice_reason+response_no)
 
+
+# ================== Effect og age and education =================
+
+dat.age <- ddply(dat2, .(age), summarise,
+                 percent_correct = mean(response))
+
+qplot(age, percent_correct, data=dat.age)
+
+dat.study <- ddply(dat2, .(academic_study), summarise,
+                 percent_correct = mean(response))
+
+qplot(academic_study, percent_correct, data=dat.study)
 
 # ---------------------  description of coded variables -----------
 

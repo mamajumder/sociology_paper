@@ -8,8 +8,9 @@ library(xtable)
 library(grid)
 #library(lubridate)
 
-
-# getting the data and some common functions
+# ===================================================
+# getting all the data and some common functions
+# ---------------------------------------------------
 
 raw.dat1 <- read.csv("../data/raw_data_turk1.csv")
 raw.dat2 <- read.csv("../data/raw_data_turk2.csv")
@@ -18,11 +19,18 @@ raw.dat4 <- read.csv("../data/raw_data_turk4.csv")
 raw.dat5 <- read.csv("../data/raw_data_turk5.csv")
 raw.dat6 <- read.csv("../data/raw_data_turk6.csv")
 raw.dat7 <- read.csv("../data/raw_data_turk7.csv")
+raw.dat8 <- read.csv("../data/raw_data_turk8.csv")
+raw.dat9 <- read.csv("../data/raw_data_turk9.csv")
+raw.dat10 <- read.csv("../data/raw_data_turk10.csv")
+
+ip.details <- read.csv("../data/ip_details.csv")
 
 source("calculate_ump_power.R") # functions to compute power
 
+# ========================================================================
 # cleaning the data based on criteria 6 and removing the duplicated data
 # (id,pic_id) should be unique since no person gets a lineup more than once.
+# --------------------------------------------------------------------------
 clean_data <- function(raw_dat){
   easy_dat <- subset(raw_dat, p_value < 0.0002)
   if (raw_dat$experiment[1]=='turk3') easy_dat <- subset(raw_dat, difficulty==0)
@@ -57,11 +65,99 @@ dat4$p_value=0
 dat5 <- remove_duplicated(raw.dat5)
 dat6 <- remove_duplicated(raw.dat6)
 dat7 <- remove_duplicated(raw.dat7)
+dat8 <- remove_duplicated(raw.dat8)
+dat10 <- remove_duplicated(raw.dat10)
+
+# Cleaning up experiment 9 data
+# keep only three responses data. Any responses after the first three are ignored.
+# Also data with less than three responses are discarded considering incomplete.
+
+indx_unique <- with(raw.dat9, !duplicated(data.frame(id,pic_id))) #unique data index
+uniq.dat9 <- raw.dat9[indx_unique,] # removing duplicated data from raw.dat if any
+uniq.dat9 <- ddply(uniq.dat9,.(id), transform,
+                   response_order = rank(start_time), 
+                   tot_response=length(response) )
+dat9 <- subset(uniq.dat9, response_order < 4 & tot_response > 2) # filering applied
+dat9$plot_type <- factor(dat9$difficulty, labels=c("Interaction", "Genotype", "Filter"))
+dat9$response_all <- apply(subset(dat9, select=c(plot_location,response_no)), 1,
+                  function(x){
+                    plot <- as.numeric(x[1])
+                    res_no <- as.numeric(unlist(strsplit(x[2],split=",")))
+                    return(plot %in% res_no)
+                  })
+
+# write.csv(dat9$choice_reason[dat9$response_all==T], file="../data/dat9_reasoning_correct.csv")
+# write.csv(dat9$choice_reason[dat9$response_all==F], file="../data/dat9_reasoning_wrong.csv")
 
 
-# Summary statistics of the data
+# ==============================================================
+# Summary statistics of demographic data
+# --------------------------------------------------------------
 
-with(dat3, table(age))
+# Function to obtain real ip from proxy and local
+get_real_ip <- function(ip) {
+  ip_vector <- strsplit(as.character(ip),split=',')
+  return(ip_vector[[1]][1])
+}
+
+# merging demographic data from all the experiment together
+# and geogrphical location using ip address
+demographics <- NULL
+for (i in 1:10){
+  di <- subset(get(paste("dat",i, sep="")), age > 1,
+                 select = c(id, response, start_time, time_taken, 
+                            ip_address, gender, academic_study, age))
+  di$age[di$age==0] <- NA # for experiment 1, age=0 means NA
+  di$academic_study[di$academic_study==0] <- NA
+  di$experiment = paste("experiment_",i, sep="")
+  di$id = paste("exp",i,"_",di$id, sep="")
+  di$degree <- factor( c("High school or less", "Some under graduate courses",
+                  "Under graduate degree","Some graduate courses",
+                  "Graduate degree")[di$academic_study])
+  di$age_level <- factor(c("below 18","18-25","26-30","31-35","36-40",
+                  "41-45","46-50","51-55","56-60","above 60")[di$age])
+  di$gender_level <- factor(c("Male","Female")[di$gender])
+  di$ip_address <- sapply(di$ip_address, get_real_ip)
+  demographics <- rbind(demographics, di[complete.cases(di),])
+}
+demographics <- merge(demographics,ip.details,all.x=TRUE, by="ip_address")
+
+
+
+# getting unique participants for plotting purpose only
+# Since each participant has multiple response in demographics data
+turker <- demographics[!duplicated(demographics$id),]
+turker$country <- as.character(turker$country_name)
+turker$country[(turker$country_code != "IN") & (turker$country_code != "US")] <- "Rest of the world"
+turker$country[turker$country=="Namibia"] <- "Rest of the world"
+
+levels(turker$age_level)[7:9] <- 7
+levels(turker$age_level)[1:7] <- c("18-25","26-30","31-35","36-40",
+                                "41-45", "46-50", "above 50")
+
+p1 <- qplot(degree, facets=age_level~gender_level, data=turker) +
+  coord_flip() + xlab("Academic Study") + labs(title="Gender")
+
+ggsave("../images/age_study_gender_bar.pdf", width=6, height=7)
+
+p2 <- qplot(degree, facets=age_level~country, data=turker[complete.cases(turker),]) +
+  coord_flip() + xlab("Academic Study") + 
+  theme(axis.title.y = element_blank(), axis.text.y = element_blank()) +
+  labs(title="Geographical location")
+
+ggsave("../images/age_study_country_bar.pdf", width=7.5, height=7)
+
+
+pdf( "../images/demographic_info.pdf", width=12, height=10)
+pushViewport(viewport(layout = grid.layout(1, 2)))  
+print(p1, vp = viewport(layout.pos.row = 1, layout.pos.col = 1))     
+print(p2 ,vp = viewport(layout.pos.row = 1, layout.pos.col = 2)) 
+dev.off()
+
+
+# ==============================================================
+# Playing with wordle plot with experiment 9 data
+# --------------------------------------------------------------
 
 
 
@@ -341,17 +437,7 @@ anova(fit3,fit2)
 # =======================================================
 # some analysis of turk9 data and location effect of the plot
 
-# keep only three responses data. Any responses after the first three are ignored.
-# Also data with less than three responses are discarded considering incomplete.
 
-raw.dat9 <- read.csv("../data/raw_data_turk9.csv", header=T)
-indx_dup <- with(raw.dat9, !duplicated(data.frame(id,pic_id))) #duplication index
-uniq.dat9 <- raw.dat9[indx_dup,] # removing duplicated data if any
-uniq.dat9 <- ddply(uniq.dat9,.(id), transform,
-                  response_order = rank(start_time), 
-                  tot_response=length(response) )
-dat9 <- subset(uniq.dat9, response_order < 4 & tot_response > 2) # filering applied
-dat9$plot_type <- factor(dat9$difficulty, labels=c("Interaction", "Genotype", "Filter"))
 
 qplot(response, geom="bar", data=subset(dat9, plot_type=="Genotype"))
 qplot(response, geom="bar", data=subset(dat9, plot_type=="Filter"))

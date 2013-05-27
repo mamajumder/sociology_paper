@@ -6,7 +6,7 @@ library(reshape2)
 library(lme4)
 library(xtable)
 library(grid)
-#library(lubridate)
+library(lubridate)
 
 # ===================================================
 # Loading the data and some common functions
@@ -169,6 +169,15 @@ print(p2 ,vp = viewport(layout.pos.row = 1, layout.pos.col = 2))
 dev.off()
 
 
+# Time of the work
+turker$hours <- as.factor(hour(as.POSIXlt(turker$start_time)))
+turker$exp <- factor(turker$experiment, levels=names(table(turker$experiment))[order(c(1,10,2:9))])
+qplot(hours, data=turker) +
+  facet_grid(exp~.,scales="free_y") +
+  xlab("Hour of the day") + ylab("Number of subjects")
+ggsave("../images/participation_time.pdf", width=8, height=10)
+
+
 # getting demographic summary table
 get_summary <- function(dat, var){
   res <- ddply(dat,c(var), summarize,
@@ -188,6 +197,7 @@ xtable(sdat[,-1])
 
 qplot(lbls, avg_time, geom="bar", stat="identity", data=sdat) + coord_flip()
   facet_wrap(var~.)
+
 
 
 # ==============================================================

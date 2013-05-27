@@ -52,7 +52,7 @@
 \maketitle
 
 \begin {abstract}  
-Visual Inference is dependent on the careful evaluation of the lineups by individual observers. Each individual is different in their cognitive phycology and judiciousness which can affect the power of visual inference. To estimate the power of visual inference this can be controlled by getting evaluations from multiple people from a diverse population. But the other factor that may affect the power of visual inference is the demographics and skills of the observer. In this paper we examine this in details. The simulation experiments suggest that individual skill as well as demographics are very significant for the power of visual inference. We examine the evidence of learning or getting skilled while sequentially evaluating multiple lineups. The experimental data suggest that there is no learning effect. The location of actual plot in the lineups does not have any significant effect as well.
+Visual Inference is dependent on the careful evaluation of the lineups by individual observers. Each individual is different in their cognitive phycology and judiciousness which can affect the power of visual inference. To estimate the power of visual inference this can be controlled by getting evaluations from multiple people from a diverse population. But the other factor that may affect the power of visual inference is the demographics and skills of the observer. In this paper we examine this in details. The simulation experiments suggest that individual skill as well as demographics are very significant for the power of visual inference. We examine the evidence of learning or getting skilled while sequentially evaluating multiple lineups which enables them evaluate a lineup faster in the later ateempts. The experimental data suggest that there is no learning effect in terms of correct response. The location of actual plot in the lineups does not have any significant effect as well.
 
 {\bf Keywords: \sf statistical graphics, lineup, non-parametric test, cognitive phycology, visualization, exploratory data analysis} 
 \end {abstract}
@@ -133,7 +133,7 @@ Because of its convenience it is getting popular for scientific research study. 
 
 \section{Results}
 \subsection{Overview of the Data}
-\subsection{Diversity of the Experimental Subjects} Amazon Mechanical Turk \cite{turk} web site is a good source for recruiting people to evaluation lineups. It is a source of diverse workers who can give us feedback on visual inspection.  Figure \ref{fig:turker_location} shows the location from where we received data. Notice that we received data from around the world and we observed diversity of location in the collected data. We notice diversity in not only location of the observers but also their gender, age groups and education levels. Table \ref{} shows that we have data from almost similar size of male and female population. 
+\subsection{Diversity of the Experimental Subjects} Amazon Mechanical Turk \cite{turk} web site is a good source for recruiting people to evaluation lineups. It is a source of diverse workers who can give us feedback on visual inspection.  Figure \ref{fig:turker_location} shows the location from where we received data. Notice that we received data from around the world and we observed diversity of location in the collected data. We notice diversity in not only location of the observers but also their gender, age groups and education levels. Table \ref{tbl:demographics} shows that number of male and female participants are almost same.
 
 \begin{figure}[htbp] 
    \centering
@@ -143,19 +143,14 @@ Because of its convenience it is getting popular for scientific research study. 
    \label{fig:turker_location}
 \end{figure}
 
+The large number of participants are from age group 18 to 35. Interestingly we see many participants from older age groups as well. Specially for united states almost all the age groups show uniform participations after age 30 as in Figure \ref{fig:demographic_info}. Notice that fewer people participated from India beyond age 40 compared to united states. Even thoug total participations from india is larger compared to United States, they are mostly young people who are capable of using internet and computer. 
 
-%\begin{figure}[htbp] 
-%   \centering
-%   \includegraphics[width=3.5in]{age_study_country_bar.pdf} 
-%   \caption{Countrywise distribution of education level of the MTurk workers participating the experiments. The spike in graduate degree in India may be due to their consideration of undergraduate degree to be graduate degree as well.}
-%   \label{fig:country_study}
-%\end{figure}
 
 \begin{figure}[htbp] 
    \centering
    \includegraphics[width=6in]{demographic_info.pdf} 
    \caption{Countrywise distribution of age and academic levels of the MTurk workers participating the experiments shows the diversity of the subjects in all the demographic aspect. Almost equal number of male and female subjects participated the online experiments.}
-   \label{fig:age_study}
+   \label{fig:demographic_info}
 \end{figure}
 
 
@@ -172,29 +167,40 @@ Figure \ref {fig:wordle} also shows some insight about peoples way of reading a 
 
 Turk workers are not necessarily trained on statistics or aware of specific terms used in statistics or statistical plots. Thus it is also interesting to note that how they explain things that have specific definitions and meaning. Notice in Figure \ref {fig:wordle} that some keywords like spread, apart should be analogous to larger variability while together,  close may be for indicating smaller variability.
 
-\subsection{Learning Trend of the Observer} Each subject participating the experiment has seen multiple number of lineups for evaluations. Suppose $K$ be the number of lineups evaluated by a subject and $A_k$ be the $kth$ attempt, $k=1,2, ..., K$. Since each subject is shown multiple lineups, they have a chance for self learning and do better on lineups shown later in the sequence. They may learn from their previous mistake or they may learn about the features of the plots being evaluated as they progress. Thus if there is any learning trend that should be apparent in proportion correct over $A_k$. But to obtain this we have to adjust for lineup difficulty and individual performances.
 
-To accomplish this we fit generalized mixed effect model presented in \cite{majumder:2012} with lineups and subjects as random effect and no fixed effect. This gives the estimation of proportion correct responses  and we obtain residuals of the fitted model. The residuals give variations in proportion correct adjusted for lineup difficulties and individual skills. If there is any learning trend over different attempt $A_k$, the residuals should have that information since $A_k$ was not included as a covariate in the model. At this point we focus on absolute residuals over different attempts to study the deviations due to attempts. An smaller absolute residual at attempt $A_k$ should indicate learning from all other attempts less than $k$. 
+\begin{figure}[htbp] 
+   \centering
+   \includegraphics[width=4.5in]{participation_time.pdf} 
+   \caption{Time of the day when the participants work. Experiment 1 shows MTurk workers participated the experiments around the clock. Other experiments did not take a whole day to finish.}
+   \label{fig:participation_time}
+\end{figure}
 
-A plot of absolute residuals against the attempts $A_k$ should reveal the trend if there is any. Figure \ref{fig:learning_trend} shows such plots for three experiments naming experiment 5 through 6. For experiment 5 we see a downward trend in absolute residual as the attempt progress. This may indicate a learning trend but this trend is not statistically significant. We see upward trend for experiment 6 and 7. This could be attributed to the exhaustion of subjects' attempt after some earlier evaluations are made. But again these upward trends are not statistically significant as well.
+
+\subsection{Learning Trend of the Observer} Each subject participating the experiment has seen multiple number of lineups for evaluations. Suppose $K$ be the number of lineups evaluated by a subject and $A_k$ be the $kth$ attempt, $k=1,2, ..., K$. Subjects may have a chance for self learning and do better on lineups shown later in the sequence. They may learn from their previous mistake or they may learn about the features of the plots being evaluated as they progress. Thus if there is any learning trend that should be apparent in proportion correct over $A_k$. But to obtain this we have to adjust for lineup difficulty and individual performances.
+
+To accomplish this we fit generalized mixed effect model presented in \cite{majumder:2012} with lineups and subjects as random effect and no fixed effect. This gives the estimation of proportion correct responses  and we obtain residuals of the fitted model. The residuals give variations in proportion correct adjusted for lineup difficulties and individual skills. If there is any learning trend over different attempt $A_k$, the residuals should have that information since $A_k$ was not included as a covariate in the model. %At this point we focus on absolute residuals over different attempts to study the deviations due to attempts. An smaller absolute residual at attempt $A_k$ should indicate learning from all other attempts less than $k$. 
+
+A plot of residuals against the attempts $A_k$ should reveal the trend if there is any. Figure \ref{fig:learning_trend} shows such plots for three experiments naming experiment 5, 6 and 7. For all the experiments we see some increasing trend of the residuals. This could be attributed to the exhaustion of subjects' attempt after some earlier evaluations are made.  But none of apparent trend are statistically significant. 
 
 %covariates attempt number and $p$-value of the lineup. The $p$-value of the lineup measures some sort of difficulty and including this should adjust for the difficulty level of the lineup while estimating the probability of correct responses in each attempt. Figure \ref{fig:learning_trend} shows the fitted subject wise learning pattern as well as overall learning pattern for each of the experiments. The parameter estimates of the model are shown in Table \ref{tbl:model_par}.
 
-\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+
+\begin{figure}[htbp] 
+   \centering
+   \includegraphics[width=6.5in]{learning_trend.pdf} 
+   \caption{ Mean residuals of proportion correct vs attempt obtained by adjusting for lineup and subject specific variation. For experiment 5, we see a downward trend which may indicate some learning as attempt progress, but none of the slopes in these three experiments are statistically significant.}
+   \label{fig:learning_trend}
+\end{figure}
+
+Learning trend is not only related to the proportion correct responses. It may be possible that people learn to answer fast. We examine this by the time taken for each evaluation. We fit a mixed effect linear model with time taken considering lineup and subjects as random effect. The resulting residuals are plotted in Figure \ref{fig:learning_trend_time}. It appears that in the later attempts observers take less time to evaluate a lineup. Even though it does not tell much about improving their performance over attempts, but it does indicate the improvement of their evaluation skill. Adding this information with what we observe in Figure \ref{fig:learning_trend}, we can say that the observers' improved skills could not contribute to their performance. It only help them finish the task faster in later attempts.
+
+\begin{figure}[htbp] 
    \centering
    \includegraphics[width=6.5in]{learning_trend_time.pdf} 
    \caption{Mean residuals of time taken vs attempt obtained by adjusting for lineup and subject specific variation. For all the experiment the downward slopes indicate that MTurk workers take less time as they progress through their attempts.}
    \label{fig:learning_trend_time}
 \end{figure}
 
-
-
-\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
-   \centering
-   \includegraphics[width=6.5in]{learning_trend.pdf} 
-   \caption{ Mean residuals of proportion correct vs attempt obtained by adjusting for lineup and subject specific variation. For experiment 5, we see a downward trend which may indicate some learning as attempt progress, but none of the slopes in these three experiments are statistically significant.}
-   \label{fig:learning_trend}
-\end{figure}
 
 \subsection{Location Effect of Data Plot in the Lineup}
 
@@ -240,32 +246,6 @@ Model \eqref{manova} enables to test if the mean vectors are similar for differe
 
 We also fit Model \eqref{manova} with only two locations based on outer or inner plot location. By outer location we mean the data plot location which is on the border area of the lineup. For example inner locations of a lineup would be 7,8,9,12,13,14. It turns out that inner and outer locations are also not significantly different.
 
-\begin{table}[hbtp]
-\caption{Demographic information of the subjects participated the MTurk experiments.}\centering\begin{tabular}{rlrrr}  \hline & levels & subsjects & avg\_time & response \\   \hlineGender & Male & 1348 & 48.51 & 13493 \\    & Female & 991 & 43.75 & 10564 \\ 
-\hline  Education & High school or less & 193 & 37.21 & 2241 \\    & Some under graduate courses & 418 & 42.84 & 4070 \\    & Under graduate degree & 584 & 44.29 & 5775 \\    & Some graduate courses & 245 & 43.43 & 2460 \\    & Graduate degree & 902 & 52.18 & 9511 \\ 
-\hline  Age & 18-25 & 740 & 42.97 & 7311 \\    & 26-30 & 547 & 46.27 & 5585 \\    & 31-35 & 376 & 44.27 & 3923 \\    & 36-40 & 257 & 55.03 & 2714 \\    & 41-45 & 141 & 43.90 & 1519 \\    & 46-50 &  95 & 49.29 & 1003 \\    & 51-55 &  83 & 48.67 & 867 \\    & 56-60 &  64 & 59.73 & 678 \\    & above 60 &  38 & 48.67 & 457 \\    \hline\end{tabular}\label{tbl:demographics}\end{table}
-
-
-
-%\begin{table}[hbtp]
-%\caption{Parameter estimates of mixed model. Estimates are highly significant with $p$-value $<$  0.0001 for all three experiment data.}
-%\begin{center}
-%\begin{tabular}{cr@{.}lcc}
-%  \hline \hline
-% &  \multicolumn{3}{c} {Fixed effect}  & Random effect\\
-% \cline{2-4}
-% Experiment & \multicolumn{2}{l}{Estimate}  &Std. error & Variance\\
-%  \hline
-%  1 & 0&39 & 0.0094 & 0.0080 \\ 
-%  2 & 1&21 &  0.0197 &  0.0443 \\ 
-%  3 & 0&59 (Intercept)  &   0.1668 & 1.9917\\ 
-%     & 0&21 (Slope)    &  0.0511     &  0.0245\\ 
-%     &-0&78 (correlation) & & \\
-%   \hline
-%\end{tabular}
-%\end{center}
-%\label{tbl:model_par}
-%\end{table}
 
 
 
@@ -301,15 +281,14 @@ We also fit Model \eqref{manova} with only two locations based on outer or inner
 
 
 
-
-%\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
-%   \centering
-%   \includegraphics[width=4in]{learning_trend.pdf} 
-%   \caption{Probability of correct response for different attempts by each subjects for a plot with lineup difficulty ($p$-value of actual plot) = 0.05 . The overall probability increases with attempts indicating a learning trend of the observers for experiments 1 and 3. For experiment 2 the overall trend is not statistically significant. Subject to subject variability is seen in learning pattern.}
-%   \label{fig:learning_trend}
-%\end{figure}
-
 \section{Conclusion}
+
+\appendix
+
+\begin{table}[hbtp]
+\caption{Demographic information of the subjects participated the MTurk experiments.}\centering\begin{tabular}{rlrrr}  \hline & levels & subsjects & avg\_time & response \\   \hlineGender & Male & 1348 & 48.51 & 13493 \\    & Female & 991 & 43.75 & 10564 \\ 
+\hline  Education & High school or less & 193 & 37.21 & 2241 \\    & Some under graduate courses & 418 & 42.84 & 4070 \\    & Under graduate degree & 584 & 44.29 & 5775 \\    & Some graduate courses & 245 & 43.43 & 2460 \\    & Graduate degree & 902 & 52.18 & 9511 \\ 
+\hline  Age & 18-25 & 740 & 42.97 & 7311 \\    & 26-30 & 547 & 46.27 & 5585 \\    & 31-35 & 376 & 44.27 & 3923 \\    & 36-40 & 257 & 55.03 & 2714 \\    & 41-45 & 141 & 43.90 & 1519 \\    & 46-50 &  95 & 49.29 & 1003 \\    & 51-55 &  83 & 48.67 & 867 \\    & 56-60 &  64 & 59.73 & 678 \\    & above 60 &  38 & 48.67 & 457 \\    \hline\end{tabular}\label{tbl:demographics}\end{table}
 
 
 \bibliographystyle{asa}

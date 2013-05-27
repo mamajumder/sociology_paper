@@ -60,9 +60,12 @@ Visual Inference is dependent on the careful evaluation of the lineups by indivi
 %\begin{multicols}{2}
 %\twocolumn
 
-\section{Introduction} 
+\section{Introduction}  
 
 The fundamental concept of visual statistical inference is introduced by \citet{buja:2009} and later these concepts are validated by \citet{majumder:2012}.
+
+
+%\section{Kodu} Tui ekta chor. Tore kilai.
 
 \subsection{Visual Inference} A short introduction of visual inferential procedure.
 \subsection{Estimation of Power of Visual Inference} Discussion of the methods for estimating the power of visual inference \citep{majumder:2012}. 
@@ -126,7 +129,7 @@ Amazon Mechanical Turk \cite{turk} or MTurk is an online work place where people
 
 It is very fast, cheap and reliable to recruit people from MTurk. Thats why it is getting very popular among the researchers who perform human subject experiment. The another benefit is that a very diverse pool of subjects can be recruited which is otherwise very hard to obtain for a study. The researchers can easily filter the workers based on their experimental design, such as recruiting people only from a specific geographical location or a group of people who satisfy certain criteria etc. The recruiter can decide who they pay or not. Workers have to satisfy the task requirement to ensure payment. But at the end it is the recruiter who has the final say. Usually recruiters pay promptly after the task has been done properly and thats why MTurk is very popular among the online job seeker. At any point of time thousands of tasks are available for the thousands of workers around the world. 
 
-Because of its convenience it is getting popular for scientific research study. In comparison with a lab study \cite{suri:2010} perform the same study using MTurk and demonstrate that their study results are as good as the lab study results even though MTurk study required less time, cost and provided more convenience. \cite{majumder:2012} recruited people from MTurk for their simulation study in estimating the power of visual statistical inference. They have done numerous pilot studies in lab before doing actual MTurk study and found similar results. \cite{mason:2012} explains various features of MTurk and describes how it can be used as part of human behavioral study.
+Because of its convenience it is getting popular for scientific research study. In comparison with a lab study \cite{suri:2010} perform the same study using MTurk and demonstrate that their study results are as good as the lab study results even though MTurk study required less time and cost while provided more convenience. \cite{majumder:2012} recruited people from MTurk for their simulation study in estimating the power of visual statistical inference. They have done numerous pilot studies in lab before doing actual MTurk study and found similar results. \cite{mason:2012} explains various features of MTurk and describes how it can be used as part of human behavioral study.
 
 \section{Results}
 \subsection{Overview of the Data}
@@ -150,8 +153,8 @@ Because of its convenience it is getting popular for scientific research study. 
 
 \begin{figure}[htbp] 
    \centering
-   \includegraphics[width=6.5in]{demographic_info.pdf} 
-   \caption{Countrywise distribution of age levels of the MTurk workers participating the experiments.}
+   \includegraphics[width=6in]{demographic_info.pdf} 
+   \caption{Countrywise distribution of age and academic levels of the MTurk workers participating the experiments shows the diversity of the subjects in all the demographic aspect. Almost equal number of male and female subjects participated the online experiments.}
    \label{fig:age_study}
 \end{figure}
 
@@ -179,8 +182,17 @@ A plot of absolute residuals against the attempts $A_k$ should reveal the trend 
 
 \begin{figure}[htbp] %  figure placement: here, top, bottom, or page
    \centering
+   \includegraphics[width=6.5in]{learning_trend_time.pdf} 
+   \caption{Mean residuals of time taken vs attempt obtained by adjusting for lineup and subject specific variation. For all the experiment the downward slopes indicate that MTurk workers take less time as they progress through their attempts.}
+   \label{fig:learning_trend_time}
+\end{figure}
+
+
+
+\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+   \centering
    \includegraphics[width=6.5in]{learning_trend.pdf} 
-   \caption{Mean absolute residuals vs attempt obtained by adjusting for lineup and subject specific variation. For experiment 5, we see a downward trend which may indicate some learning as attempt progress, but none of the slopes in these three experiments are statistically significant.}
+   \caption{ Mean residuals of proportion correct vs attempt obtained by adjusting for lineup and subject specific variation. For experiment 5, we see a downward trend which may indicate some learning as attempt progress, but none of the slopes in these three experiments are statistically significant.}
    \label{fig:learning_trend}
 \end{figure}
 
@@ -228,7 +240,10 @@ Model \eqref{manova} enables to test if the mean vectors are similar for differe
 
 We also fit Model \eqref{manova} with only two locations based on outer or inner plot location. By outer location we mean the data plot location which is on the border area of the lineup. For example inner locations of a lineup would be 7,8,9,12,13,14. It turns out that inner and outer locations are also not significantly different.
 
-     
+\begin{table}[hbtp]
+\caption{Demographic information of the subjects participated the MTurk experiments.}\centering\begin{tabular}{rlrrr}  \hline & levels & subsjects & avg\_time & response \\   \hlineGender & Male & 1348 & 48.51 & 13493 \\    & Female & 991 & 43.75 & 10564 \\ 
+\hline  Education & High school or less & 193 & 37.21 & 2241 \\    & Some under graduate courses & 418 & 42.84 & 4070 \\    & Under graduate degree & 584 & 44.29 & 5775 \\    & Some graduate courses & 245 & 43.43 & 2460 \\    & Graduate degree & 902 & 52.18 & 9511 \\ 
+\hline  Age & 18-25 & 740 & 42.97 & 7311 \\    & 26-30 & 547 & 46.27 & 5585 \\    & 31-35 & 376 & 44.27 & 3923 \\    & 36-40 & 257 & 55.03 & 2714 \\    & 41-45 & 141 & 43.90 & 1519 \\    & 46-50 &  95 & 49.29 & 1003 \\    & 51-55 &  83 & 48.67 & 867 \\    & 56-60 &  64 & 59.73 & 678 \\    & above 60 &  38 & 48.67 & 457 \\    \hline\end{tabular}\label{tbl:demographics}\end{table}
 
 
 

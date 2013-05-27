@@ -9,7 +9,7 @@ library(grid)
 #library(lubridate)
 
 # ===================================================
-# getting all the data and some common functions
+# Loading the data and some common functions
 # ---------------------------------------------------
 
 raw.dat1 <- read.csv("../data/raw_data_turk1.csv")
@@ -79,6 +79,8 @@ uniq.dat9 <- ddply(uniq.dat9,.(id), transform,
                    tot_response=length(response) )
 dat9 <- subset(uniq.dat9, response_order < 4 & tot_response > 2) # filering applied
 dat9$plot_type <- factor(dat9$difficulty, labels=c("Interaction", "Genotype", "Filter"))
+
+# dat9 response_all is true if at least one of the multiple selection is correct
 dat9$response_all <- apply(subset(dat9, select=c(plot_location,response_no)), 1,
                   function(x){
                     plot <- as.numeric(x[1])
@@ -86,22 +88,20 @@ dat9$response_all <- apply(subset(dat9, select=c(plot_location,response_no)), 1,
                     return(plot %in% res_no)
                   })
 
-# write.csv(dat9$choice_reason[dat9$response_all==T], file="../data/dat9_reasoning_correct.csv")
-# write.csv(dat9$choice_reason[dat9$response_all==F], file="../data/dat9_reasoning_wrong.csv")
-
 
 # ==============================================================
 # Summary statistics of demographic data
 # --------------------------------------------------------------
 
-# Function to obtain real ip from proxy and local
+# Function to obtain real ip from proxy and local part of ip
+# First ip of two ip's is the real ip, 2nd one is local
+# in case where no proxy is used, the ip is real ip
 get_real_ip <- function(ip) {
   ip_vector <- strsplit(as.character(ip),split=',')
   return(ip_vector[[1]][1])
 }
 
 # merging demographic data from all the experiment together
-# and geogrphical location using ip address
 demographics <- NULL
 for (i in 1:10){
   di <- subset(get(paste("dat",i, sep="")), age > 1,
@@ -111,29 +111,43 @@ for (i in 1:10){
   di$academic_study[di$academic_study==0] <- NA
   di$experiment = paste("experiment_",i, sep="")
   di$id = paste("exp",i,"_",di$id, sep="")
-  di$degree <- factor( c("High school or less", "Some under graduate courses",
+  degree <- factor(c("High school or less", "Some under graduate courses",
                   "Under graduate degree","Some graduate courses",
                   "Graduate degree")[di$academic_study])
+  di$degree <- factor(degree, levels=levels(degree)[order(c(5,1,4,2,3))], ordered=T)
   di$age_level <- factor(c("below 18","18-25","26-30","31-35","36-40",
                   "41-45","46-50","51-55","56-60","above 60")[di$age])
   di$gender_level <- factor(c("Male","Female")[di$gender])
   di$ip_address <- sapply(di$ip_address, get_real_ip)
   demographics <- rbind(demographics, di[complete.cases(di),])
 }
+
+# merging geogrphical location information
+# obtained from www.ipaddressapi.com using real ip address
+# based on ip, it gets longitude, latitude, country, city etc.
 demographics <- merge(demographics,ip.details,all.x=TRUE, by="ip_address")
 
-
-
 # getting unique participants for plotting purpose only
-# Since each participant has multiple response in demographics data
+# Since each participant has multiple responses in demographics data
 turker <- demographics[!duplicated(demographics$id),]
 turker$country <- as.character(turker$country_name)
 turker$country[(turker$country_code != "IN") & (turker$country_code != "US")] <- "Rest of the world"
 turker$country[turker$country=="Namibia"] <- "Rest of the world"
+turker$study <- turker$academic_study
+turker$study[turker$age_level=="36-40"] <- c("High school or less (1)","Some under grad course (2)",
+                                             "Under graduate degree (3)", "Some graduate courses (4)",
+                                             "Graduate degree (5)")[turker$study[turker$age_level=="36-40"]]
+
+
 
 levels(turker$age_level)[7:9] <- 7
 levels(turker$age_level)[1:7] <- c("18-25","26-30","31-35","36-40",
                                 "41-45", "46-50", "above 50")
+
+# qplot(factor(academic_study), facets=age_level~gender_level, data=turker) +
+#   coord_flip() + xlab("Academic Study") + labs(title="Gender") +
+#   scale_x_discrete( aes(breaks=academic_study,labels=as.charater(study)))
+
 
 p1 <- qplot(degree, facets=age_level~gender_level, data=turker) +
   coord_flip() + xlab("Academic Study") + labs(title="Gender")
@@ -147,106 +161,46 @@ p2 <- qplot(degree, facets=age_level~country, data=turker[complete.cases(turker)
 
 ggsave("../images/age_study_country_bar.pdf", width=7.5, height=7)
 
-
-pdf( "../images/demographic_info.pdf", width=12, height=10)
+# Saving gender and countriwise plots after merging them together
+pdf( "../images/demographic_info.pdf", width=10, height=8)
 pushViewport(viewport(layout = grid.layout(1, 2)))  
 print(p1, vp = viewport(layout.pos.row = 1, layout.pos.col = 1))     
 print(p2 ,vp = viewport(layout.pos.row = 1, layout.pos.col = 2)) 
 dev.off()
 
 
+# getting demographic summary table
+get_summary <- function(dat, var){
+  res <- ddply(dat,c(var), summarize,
+               subsjects = length(unique(id)),
+               avg_time = round(mean(time_taken),2),
+               response = length(response)             
+  )
+  return(data.frame(var=var,lbls=res[,1], res[,-1]))
+}
+
+sg <- get_summary(demographics, "gender")
+se <- get_summary(demographics, "degree")
+sa <- get_summary(demographics, "age_level")
+
+sdat <- rbind(sg,se,sa)
+xtable(sdat[,-1])
+
+qplot(lbls, avg_time, geom="bar", stat="identity", data=sdat) + coord_flip()
+  facet_wrap(var~.)
+
+
 # ==============================================================
 # Playing with wordle plot with experiment 9 data
 # --------------------------------------------------------------
 
-
-
-# Examining performance based on plot location effect in lineup
-
-dat <- dat2
-
-loc.performance <- ddply(dat, .(plot_location),summarize,
-                         per_correct=mean(response)*100,
-                         n=length(response),
-                         p_value = mean(p_value))
-
-model <- as.formula(response ~ factor(plot_location) + (plot_location|id) + (1|pic_id))
-model <- as.formula(response ~ p_value + factor(plot_location) + (plot_location|id) )
-fit <- lmer(model,family="binomial",data=dat)
-summary(fit)
-
-X <- diag(rep(1,(length(unique(dat$plot_location))-1)))
-eta0 <- fixef(fit)[1]+ 0.01* fixef(fit)[2]
-eta <- c(eta0, eta0 + X %*% fixef(fit)[-(1:2)]) 
-loc.performance$prob_correct <- round(exp(eta)/(1+exp(eta)), 5)
-
-no_loc <- (1:20) [!(1:20 %in% loc.performance$plot_location)]
-loc.dat <- rbind(loc.performance, 
-                 cbind(plot_location=no_loc,per_correct=0,
-                       n=0,p_value=0,prob_correct=0))
-
-ggplot(loc.dat, aes(1,prob_correct))+
-  geom_bar(stat="identity", fill="darkgreen")+
-  facet_wrap(~plot_location, ncol=5) + 
-  ylab("Probability of correct evaluation") +
-  xlab("True plot location in the lineup") +
-  theme(axis.text.x = element_blank())
-
-ggsave("../images/location_effect2.pdf")
-
-
-qplot(p_value, per_correct, data = loc.performance, geom="point")
-
-qplot(plot_location,per_correct, geom="point", data = loc.performance)+
-  facet_wrap(~plot_location, ncol=5)
-
-qplot(x=1,y=per_correct, geom="bar", binwidth=1, data = loc.performance, stat="identity")+
-  facet_wrap(~plot_location, ncol=5)
-
-qplot(1,1, geom="bar", binwidth=1,data = loc.performance, fill=per_correct, stat="identity")+
-  facet_wrap(~plot_location, ncol=5)+ scale_x_continuous()+ scale_y_continuous() + 
-  theme(axis.ticks=element_blank())
-
-# difference with minimum p-value and location of actual plot
-
-pval1 <- read.csv("../data/pvalue_turk1.csv")
-pval2 <- read.csv("../data/pvalue_turk2.csv")
-
-get_pval_success <- function (dat){
-  dat <- subset(dat, abs(beta)>0)
-  res <- ddply(dat, .(pic_name), summarize,      
-               prop_correct=mean(response),
-               p_value=p_value[1],
-               actual_plot = plot_location[1])
-  res$experiment=paste("Experiment", substr(dat$experiment,5,5)[1])
-  return(res)
-}
-pval.success <- rbind(get_pval_success(dat1),get_pval_success(dat2))
-pval.dat <- merge(pval.success,rbind(pval1,pval2), by="pic_name")
-pval.dat.m <- melt(pval.dat, id=c("pic_name","prop_correct",
-                                  "p_value","actual_plot","experiment"))
-pval.diff <- ddply(pval.dat.m, .(pic_name), summarise,
-                   actual_plot = actual_plot[1],
-                   experiment=experiment[1],
-                   prop_correct=prop_correct[1],
-                   pval_diff = p_value[1]- min(value[-actual_plot[1]]))
-pval.diff$plot_region <- "Outer"
-pval.diff$plot_region[pval.diff$actual_plot %in% c(7:9,12:14)] <- "Centre"
-
-ggplot(pval.diff) +
-  geom_point(aes(pval_diff, prop_correct, colour=plot_region)) +
-  facet_grid(.~experiment) +
-  xlab("Difference between p-value of actual data and minimum p-value of null data") +
-  ylab("Proportion correct") +xlim(-.15,.15)
-
-ggsave(file="../images/pval_difference_plot_region.pdf", height=4, width=8)
-
-# getting those three unusual lineups for experiment 1
-subset(pval.diff, prop_correct <.25 & plot_region == "Centre" & pval_diff <0)
+# write.csv(dat9$choice_reason[dat9$response_all==T], file="../data/dat9_reasoning_correct.csv")
+# write.csv(dat9$choice_reason[dat9$response_all==F], file="../data/dat9_reasoning_wrong.csv")
 
 # =====================================================
 # Examining learning trend while giving feedback
 
+# function two obtain sequential attempt information from start_time
 get_trend <- function(dat){
   return(
     ddply(dat,.(id), summarize,
@@ -255,110 +209,72 @@ get_trend <- function(dat){
           start_time=start_time,
           response=as.numeric(response),
           pic_name=pic_name,
-          p_value=p_value)
-  )
+          p_value=p_value,
+          time_taken = time_taken,
+          uid = paste(experiment,"_",id, sep="")
+    ))
 }
 
-dtrend1 <- subset(get_trend(dat1), attempt <= 10)
-dtrend2 <- subset(get_trend(dat2), attempt <= 10)
-dtrend3 <- subset(get_trend(dat3), attempt <= 10)
-dtrend4 <- subset(get_trend(dat4), attempt <= 10)
-dtrend5 <- subset(get_trend(dat5), attempt <= 10)
-dtrend6 <- subset(get_trend(dat6), attempt <= 10)
-dtrend7 <- subset(get_trend(dat7), attempt <= 10)
-
-dtrend <- rbind(data.frame(dtrend1, Experiment = "1"),
-                data.frame(dtrend2, Experiment = "2"),
-                data.frame(dtrend3, Experiment = "3"),
-                data.frame(dtrend4, Experiment = "4"),
-                data.frame(dtrend5, Experiment = "5"),
-                data.frame(dtrend6, Experiment = "6"),
-                data.frame(dtrend7, Experiment = "7"))
-
-qplot(data=dtrend, attempt, response, geom="point", colour=Experiment) +
-  stat_smooth(method="loess")
-
-#unique(dtrend$id[dtrend$attempt>45])
-
-#subset(dtrend, id==278)
-
-# dtrend1 <- get_trend(dat1)
-qplot(data=dtrend1, attempt, response, geom="point", colour=id) +
-  stat_smooth(method="loess")
-
-get_smooth_loess <- function(dtrend){
-  smooth_fitted =NULL
-  for (i in unique(dtrend$id)){
-    #i=221
-    dat <- subset(dtrend, id==i)
-    if(nrow(dat)>9){
-      max_attempt <- max(dat$attempt)
-      attempt  <- seq(1,max_attempt, by=.1) 
-      fit <- loess(response~attempt, data=dat)
-      fitted <- predict(fit, attempt)
-      fdat <- data.frame(id=i, attempt, fitted)
-      smooth_fitted <- rbind(smooth_fitted, fdat)
-    }
-  }
-  return(smooth_fitted)
-  }
-  
-dt1 <- get_smooth_loess(dtrend1)
-
-  
-qplot(data=dt1, attempt, fitted, group=id, geom="line")
-
-qplot(data=subset(dt1, id==11), attempt, fitted, group=id, geom="line")
-  
-
-tr <- ddply(dtrend,.(attempt), summarize,
-            percent_correct=mean(response)*100,
-            mean_pval=mean(p_value)*100)
-
-qplot(attempt,percent_correct, data=tr) +
-  geom_line(aes(attempt,mean_pval))
-
-
-# fiting model with attempt and p-value as covariate
-# library(lme4)
-
-
-fit_model <- function(dat){
-  #model <- as.formula(response ~ attempt + p_value + (attempt -1|id))
-  # model <- as.formula(response ~ attempt + (attempt|id) + (1|pic_id))
-  model <- as.formula(response ~ (1|pic_name) + (1|id))
-  fit <- lmer(model,family="binomial",data=dat)
-  return(summary(fit))
+# merging all data for trend analysis
+dtrend <-NULL
+for (i in 1:7){
+  di <- get(paste("dat",i, sep=""))
+  dti <- subset(get_trend(di), attempt <= 10) 
+  dtrend <- rbind(dtrend, data.frame(dti, experiment = i))
 }
 
-f1 <- fit_model(dtrend1)
-f2 <- fit_model(dtrend2)
-f3 <- fit_model(dtrend3)
-f4 <- fit_model(dtrend4)
-f5 <- fit_model(dtrend5)
-f6 <- fit_model(dtrend6)
-f7 <- fit_model(dtrend7)
+
+# Attempt vs mean time taken for each lineup
+
+qplot(attempt, time_taken, data=subset(dtrend, time_taken< 200),colour=factor(experiment)) +
+  stat_smooth(method="loess")
+
+# fitting linear random effect model to check 
+# if time_taken has any trend over sequential attempts
+
+dpt <- NULL
+for (i in 5:7){
+  d <- subset(dtrend, experiment==i)
+  dd <- subset(d, id %in% id[attempt > 9])
+  model <- as.formula(time_taken ~ (1|pic_name) + (1|id))
+  fit <- lmer(model,data=dd)
+  dd$resid <- (dd$time_taken - fitted(fit))
+  dpt <- rbind(dpt ,dd)
+}
+
+dmt <- ddply(subset(dpt, resid<500), .(experiment,attempt), summarise,
+             mean_resid = mean(resid))
+
+qplot(attempt,mean_resid, data= dmt) + geom_point(size=2.5) +
+  geom_smooth(method="lm", se=F) + ylab("Mean residual time taken") +
+  facet_wrap(~experiment, scales="free_y") +
+  scale_x_continuous(breaks = seq(2,10,by=2)) 
+
+ggsave("../images/learning_trend_time.pdf", width=10.5, height = 3.5)
+
+
+# Checking if the performance increases with attempts
+# Fiting generalized mixed effect model with prportion correct
 
 trend.dat <- NULL
 for (i in 5:7){
-  d <- get(paste("dtrend",i,sep=""))
+  d <- subset(dtrend, experiment==i)
   dd <- subset(d, id %in% id[attempt > 9])
   model <- as.formula(response ~ (1|pic_name) + (1|id))
   fit <- lmer(model,family="binomial",data=dd)
-  dd$resid <- abs(dd$response - fitted(fit))
-  dd$experiment = paste("experiment",i)
+  dd$resid <- (dd$response - fitted(fit))
   trend.dat <- rbind(trend.dat ,dd)
 }
 
-ggplot(trend.dat, aes(attempt,resid, colour=experiment))+
+ggplot(trend.dat, aes(attempt,resid, colour=factor(experiment)))+
   geom_smooth(method = "loess", size = 1.5) +
   ylab("Residuals")
 
-ddt <- ddply(trend.dat,.(attempt, experiment), summarise,
+ddt <- ddply(trend.dat,.(experiment, attempt), summarise,
              mean_resid = mean(resid))
 
 qplot(attempt,mean_resid, data= ddt) + geom_point(size=2.5) +
-  geom_smooth(method="lm", se=F) + ylab("Mean absolute residual") +
+  geom_smooth(method="lm", se=F) + ylab("Mean residual proportion correct") +
   facet_wrap(~experiment, scales="free_y") +
   scale_x_continuous(breaks = seq(2,10,by=2)) 
 
@@ -368,64 +284,12 @@ ggsave("../images/learning_trend.pdf", width=10.5, height = 3.5)
 # Checking if the trend shown in the plot is significant or not
 # For all experiments 5,6,7 slope is not statistically significant
 
-fit1 <- lm(resid ~ attempt, data=subset(trend.dat, experiment=="experiment 5"))
-fit2 <- lm(resid ~ attempt, data=subset(trend.dat, experiment=="experiment 6"))
-fit3 <- lm(resid ~ attempt, data=subset(trend.dat, experiment=="experiment 7"))
+fit1 <- lm(resid ~ attempt, data=subset(trend.dat, experiment==5))
+fit2 <- lm(resid ~ attempt, data=subset(trend.dat, experiment==6))
+fit3 <- lm(resid ~ attempt, data=subset(trend.dat, experiment==7))
 
 
-dd <- subset(dtrend4, id %in% id[attempt > 9])
-fit <- lmer(model,family="binomial",data=dd)
-dd$resid <- abs(dd$response - fitted(fit))
-qplot(attempt, resid, colour=id, data=subset(dd, id %in% sample(1:125,12)), geom="line", facets=~id)
-qplot(attempt, resid, colour=id, data=dd) + geom_smooth(method=loess)
-
-
-model.out <- rbind(round(f1@coefs,2), round(f2@coefs,2), round(f3@coefs,2))
-parameters <- rownames(model.out)
-print(xtable(data.frame(parameters,model.out)), include.rownames=FALSE)
-
-
-pred.mixed <- function(X, subject=0,fit) {
-  eta <- fixef(fit)[1] + X * fixef(fit)[2] + subject*X
-  g.eta <- exp(eta)/(1+exp(eta))
-  return(g.eta)
-}
-
-get_predict_mixed <- function(dat, newdat, intercept=F){
-  fit.mixed <- lmer(response ~ attempt + (attempt|id) + (1|pic_id),family="binomial",data=dat)
-  X <- newdat$attempt
-  if(intercept){
-    subject <- ranef(fit.mixed)[[1]][,1]
-    #subject <- ranef(fit.mixed)[[1]]
-    d <- data.frame(expand.grid(attempt=X, subject=subject))
-    pred <- pred.mixed(X=d$attempt, subject=d$subject, fit=fit.mixed)
-    res <- data.frame(attempt=d$attempt, subject=d$subject, pred)
-  } else res <- data.frame(attempt=X,pred=pred.mixed(X, fit=fit.mixed))
-  return(res)
-}
-attempt <- 1:9
-get_predict_mixed(dtrend1, newdat=data.frame(attempt))
-#get_predict_mixed(dat1, newdat=data.frame(effect), intercept=T)
-
-pi_attempt <- rbind(data.frame(Experiment="Experiment 1",get_predict_mixed(dtrend1, newdat=data.frame(attempt))),
-                   data.frame(Experiment="Experiment 2",get_predict_mixed(dtrend2, newdat=data.frame(attempt))),
-                   data.frame(Experiment="Experiment 3",get_predict_mixed(dtrend3, newdat=data.frame(attempt))))
-
-qplot(attempt, pred, data=pi_attempt, geom="line", colour=Experiment) +
-  ylab("Probability of correct response")
-
-pi_subject <- rbind(data.frame(Experiment="Experiment 1",get_predict_mixed(dtrend1, newdat=data.frame(attempt), intercept=T)),
-                    data.frame(Experiment="Experiment 2",get_predict_mixed(dtrend2, newdat=data.frame(attempt), intercept=T)),
-                    data.frame(Experiment="Experiment 3",get_predict_mixed(dtrend3, newdat=data.frame(attempt), intercept=T)))
-
-ggplot() + ylab("Probability of correct response") + xlab("Attempt") + 
-  facet_grid(.~Experiment) +
-  geom_line(aes(attempt, pred, group=subject), data=pi_subject, alpha=I(.1)) +
-  geom_line(aes(attempt,pred), data=pi_attempt, color="hotpink", size=1.5)
-
-ggsave("../images/learning_trend_mixed.pdf", width=10, height = 4)
-
-dt <- dtrend1
+dt <- subset(dtrend, experiment==5)
 fit0 <- lmer(response ~ attempt + p_value + (attempt -1|id), family="binomial", data=dt)
 
 fit1 <- lmer(response ~ attempt + (attempt|id) , family="binomial", data=dt)
@@ -434,10 +298,9 @@ anova(fit2, fit1)
 fit3 <- lmer(response ~ factor(attempt) + (attempt|id) + (1|pic_id), family="binomial", data=dt)
 anova(fit3,fit2)
 
-# =======================================================
-# some analysis of turk9 data and location effect of the plot
-
-
+# ==============================================================
+# Analysis of location effect of the plot using turk 9 data
+# Data has 5 locatios each having 5 null sets 
 
 qplot(response, geom="bar", data=subset(dat9, plot_type=="Genotype"))
 qplot(response, geom="bar", data=subset(dat9, plot_type=="Filter"))
@@ -628,6 +491,97 @@ dat.study <- ddply(dat2, .(academic_study), summarise,
                  percent_correct = mean(response))
 
 qplot(academic_study, percent_correct, data=dat.study)
+
+
+
+
+# Examining performance based on plot location effect in lineup
+
+dat <- dat2
+
+loc.performance <- ddply(dat, .(plot_location),summarize,
+                         per_correct=mean(response)*100,
+                         n=length(response),
+                         p_value = mean(p_value))
+
+model <- as.formula(response ~ factor(plot_location) + (plot_location|id) + (1|pic_id))
+model <- as.formula(response ~ p_value + factor(plot_location) + (plot_location|id) )
+fit <- lmer(model,family="binomial",data=dat)
+summary(fit)
+
+X <- diag(rep(1,(length(unique(dat$plot_location))-1)))
+eta0 <- fixef(fit)[1]+ 0.01* fixef(fit)[2]
+eta <- c(eta0, eta0 + X %*% fixef(fit)[-(1:2)]) 
+loc.performance$prob_correct <- round(exp(eta)/(1+exp(eta)), 5)
+
+no_loc <- (1:20) [!(1:20 %in% loc.performance$plot_location)]
+loc.dat <- rbind(loc.performance, 
+                 cbind(plot_location=no_loc,per_correct=0,
+                       n=0,p_value=0,prob_correct=0))
+
+ggplot(loc.dat, aes(1,prob_correct))+
+  geom_bar(stat="identity", fill="darkgreen")+
+  facet_wrap(~plot_location, ncol=5) + 
+  ylab("Probability of correct evaluation") +
+  xlab("True plot location in the lineup") +
+  theme(axis.text.x = element_blank())
+
+ggsave("../images/location_effect2.pdf")
+
+
+qplot(p_value, per_correct, data = loc.performance, geom="point")
+
+qplot(plot_location,per_correct, geom="point", data = loc.performance)+
+  facet_wrap(~plot_location, ncol=5)
+
+qplot(x=1,y=per_correct, geom="bar", binwidth=1, data = loc.performance, stat="identity")+
+  facet_wrap(~plot_location, ncol=5)
+
+qplot(1,1, geom="bar", binwidth=1,data = loc.performance, fill=per_correct, stat="identity")+
+  facet_wrap(~plot_location, ncol=5)+ scale_x_continuous()+ scale_y_continuous() + 
+  theme(axis.ticks=element_blank())
+
+# difference with minimum p-value and location of actual plot
+
+pval1 <- read.csv("../data/pvalue_turk1.csv")
+pval2 <- read.csv("../data/pvalue_turk2.csv")
+
+get_pval_success <- function (dat){
+  dat <- subset(dat, abs(beta)>0)
+  res <- ddply(dat, .(pic_name), summarize,      
+               prop_correct=mean(response),
+               p_value=p_value[1],
+               actual_plot = plot_location[1])
+  res$experiment=paste("Experiment", substr(dat$experiment,5,5)[1])
+  return(res)
+}
+pval.success <- rbind(get_pval_success(dat1),get_pval_success(dat2))
+pval.dat <- merge(pval.success,rbind(pval1,pval2), by="pic_name")
+pval.dat.m <- melt(pval.dat, id=c("pic_name","prop_correct",
+                                  "p_value","actual_plot","experiment"))
+pval.diff <- ddply(pval.dat.m, .(pic_name), summarise,
+                   actual_plot = actual_plot[1],
+                   experiment=experiment[1],
+                   prop_correct=prop_correct[1],
+                   pval_diff = p_value[1]- min(value[-actual_plot[1]]))
+pval.diff$plot_region <- "Outer"
+pval.diff$plot_region[pval.diff$actual_plot %in% c(7:9,12:14)] <- "Centre"
+
+ggplot(pval.diff) +
+  geom_point(aes(pval_diff, prop_correct, colour=plot_region)) +
+  facet_grid(.~experiment) +
+  xlab("Difference between p-value of actual data and minimum p-value of null data") +
+  ylab("Proportion correct") +xlim(-.15,.15)
+
+ggsave(file="../images/pval_difference_plot_region.pdf", height=4, width=8)
+
+# getting those three unusual lineups for experiment 1
+subset(pval.diff, prop_correct <.25 & plot_region == "Centre" & pval_diff <0)
+
+
+
+
+
 
 # ---------------------  description of coded variables -----------
 

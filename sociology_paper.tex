@@ -114,18 +114,29 @@ Given this pattern of human eye tracks, it may effect the performance of an obse
 \section{Simulation Experiment for Learning Effect}
 
 \subsection{Experiment Setup} Description of the simulation experiment giving focus on demographics and skills of experimental subjects.
+
+\begin{table}[hbtp]
+\caption{Amazon mechanical turk experiments and their properties. Duration in hours per 100 tasks show the popularity of some tasks compared to others.}\centering\begin{tabular}{rlrrrrrrr}  \hline
+& Experiment& \multicolumn{2}{c}{ Total Task}& Average & \multicolumn{2}{c}{Duration (hour)} & Payment & Pay rate\\
+\cline{3-4} \cline{6-7}
+Serial & description & submitted & rejected & time(min) & Actual & 100 task& \$/task & \$/hour\\   \hline1 & Boxplot & 406 & 106 & 10.68 & 146.48 & 36.08 & 0.50 & 2.81 \\   2 & Scatterplot & 359 &   9 & 10.80 & 42.68 & 11.89 & 1.00 & 5.58 \\   3 & Contaminated plot & 219 &  19 & 13.53 & 126.17 & 57.61 & 1.00 & 2.22 \\   4 & Polar vs Cartesian & 110 &  10 & 20.65 & 11.65 & 10.59 & 1.00 & 2.91 \\   5 & Hist vs density & 234 &  37 & 17.85 & 41.57 & 17.76 & 1.00 & 3.36 \\   6 & Violine vs boxplot & 417 &  17 & 17.95 & 105.87 & 25.39 & 1.00 & 3.34 \\   7 & Group separation & 106 &   6 & 16.13 & 5.15 & 4.86 & 1.00 & 3.72 \\   8 & Sine Illusion & 101 &   1 & 16.52 & 78.38 & 77.60 & 1.00 & 3.63 \\   9 & Gene expression & 103 &   3 & 12.47 & 11.27 & 10.94 & 0.50 & 2.41 \\   10 & Test normality & 406 &   6 & 22.70 & 74.35 & 18.31 & 1.00 & 2.64 \\    \hline\end{tabular}
+\label{tbl:mturk}\end{table}
+
+
+\begin{figure}[htbp] 
+   \centering
+   \includegraphics[width=3in]{rejected_task.pdf}
+      \includegraphics[width=3in]{task_duration.pdf} 
+   \caption{Percentage of rejected tasks and duration in hour per 100 tasks for each of the 10 experiments. Most of the tasks got rejected for box plot experiment.  Even though the sine illusion experiment took longest to finish the rejection rate is lowest for this experiment.}
+   \label{fig:task_duration}
+\end{figure}
+
+
 \subsection{Estimation of sample size}  How the sample size is estimated
 \subsection{Data collection methods}  Description of the simulation experiment giving focus on demographics and skills of experimental subjects.
 \subsection{Amazon Mechanical Turk}
 
-Amazon Mechanical Turk \cite{turk} or MTurk is an online work place where people from around the world can perform some tasks and get paid. Usually tasks are very simple and no specialized training is required. Being a human is the main requirement. Tasks are designed for anyone to do but some tasks may require that workers satisfy some skill level depending on the recruiters need. The tasks are designed such that it does not take much time to complete. Humans are still better than computers in performing these types of tasks. The the amount of money paid for each task is very small as well. Figure \ref{fig:amazon_task} displays an example of such a task taken from their web site. In this task a worker just has to select from a pool of options and submit the task. The instructions are usually accompany the task and they are very simple and easy to follow. 
-
-\begin{figure}[htbp] 
-   \centering
-   \includegraphics[width=5in]{amazon_task.pdf} 
-   \caption{An example of amazon mechanical turk task. Tasks are usually very simple and designed for human evaluations. With each task, simple instructions are given for workers to follow. The workers first accept the task before submitting their response.}
-   \label{fig:amazon_task}
-\end{figure}
+Amazon Mechanical Turk \cite{turk} or MTurk is an online work place where people from around the world can perform some tasks and get paid. Usually tasks are very simple and no specialized training is required. Being a human is the main requirement. Tasks are designed for anyone to do but some tasks may require that workers satisfy some skill level depending on the recruiters need. The tasks are designed such that it does not take much time to complete. Humans are still better than computers in performing these types of tasks. The the amount of money paid for each task is very small as well. 
 
 It is very fast, cheap and reliable to recruit people from MTurk. Thats why it is getting very popular among the researchers who perform human subject experiment. The another benefit is that a very diverse pool of subjects can be recruited which is otherwise very hard to obtain for a study. The researchers can easily filter the workers based on their experimental design, such as recruiting people only from a specific geographical location or a group of people who satisfy certain criteria etc. The recruiter can decide who they pay or not. Workers have to satisfy the task requirement to ensure payment. But at the end it is the recruiter who has the final say. Usually recruiters pay promptly after the task has been done properly and thats why MTurk is very popular among the online job seeker. At any point of time thousands of tasks are available for the thousands of workers around the world. 
 

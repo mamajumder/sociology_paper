@@ -24,6 +24,7 @@ raw.dat9 <- read.csv("../data/raw_data_turk9.csv")
 raw.dat10 <- read.csv("../data/raw_data_turk10.csv")
 
 ip.details <- read.csv("../data/ip_details.csv")
+turk.summary <- read.csv("../data/turk_summary.csv")
 
 source("calculate_ump_power.R") # functions to compute power
 
@@ -197,6 +198,32 @@ xtable(sdat[,-1])
 
 qplot(lbls, avg_time, geom="bar", stat="identity", data=sdat) + coord_flip()
   facet_wrap(var~.)
+
+# Turk experiment summary including payments and duration
+turk.summary$duration_hour <- round(turk.summary$duration/3600,2)
+turk.summary$avg_minute <- round(turk.summary$time_per_task/60,2)
+turk.summary$duration_rate <- with(turk.summary, round(duration_hour*100/submitted,2))
+turk.summary$percent_rejected <- with(turk.summary, round(rejected*100/submitted,2))
+xtable(subset(turk.summary,
+              select=c(plot,submitted, rejected,avg_minute,
+                       duration_hour,duration_rate,pay_per_task,pay_rate)))
+
+  
+
+ggplot(turk.summary, aes(x = factor(plot, levels=plot[order(duration_rate)]), y=duration_rate))+
+  geom_bar(stat="identity") + ylab("Duration in hour per 100 task") + 
+  xlab("Experiment") + coord_flip() 
+ggsave("../images/task_duration.pdf", width=6, height=4)
+
+
+ggplot(turk.summary, aes(x = factor(plot, levels=plot[order(percent_rejected)]), y=percent_rejected))+
+  geom_bar(stat="identity") + xlab("Experiment") +
+  coord_flip() + ylab("Percentage of rejected task")
+ggsave("../images/rejected_task.pdf", width=6, height=4)
+
+
+
+
 
 
 

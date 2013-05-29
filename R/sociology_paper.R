@@ -234,6 +234,10 @@ ggsave("../images/rejected_task.pdf", width=6, height=4)
 # write.csv(dat9$choice_reason[dat9$response_all==T], file="../data/dat9_reasoning_correct.csv")
 # write.csv(dat9$choice_reason[dat9$response_all==F], file="../data/dat9_reasoning_wrong.csv")
 
+reason.correct <- tolower(as.character(dat9$choice_reason[dat9$response_all==T]))
+gregexpr("\\W+", reason.correct)
+
+
 # =====================================================
 # Examining learning trend while giving feedback
 

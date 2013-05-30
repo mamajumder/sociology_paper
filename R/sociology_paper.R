@@ -244,7 +244,7 @@ p<- ggplot() +
   geom_point(aes(longitude,latitude, colour=factor("A")), data=turker, alpha=.6) +
   facet_wrap(~exp, ncol=2)+ theme_bw()+
   theme(legend.position="none", axis.text = element_blank(), axis.title=element_blank()) 
-ggsave(p,"../images/turker_location_experiment.pdf", width=8, height=10)
+ggsave("../images/turker_location_experiment.pdf", width=8, height=10)
 
 # country-wise participants counts
 qplot(factor(country, levels=names(table(country))[order(table(country))]), 
@@ -319,6 +319,14 @@ qplot(attempt,mean_resid, data= dmt) + geom_point(size=2.5) +
   scale_x_continuous(breaks = seq(2,10,by=2)) 
 
 ggsave("../images/learning_trend_time.pdf", width=10.5, height = 3.5)
+
+
+# Fitting generalized mixed effect model with time taken
+# Link function is inverse link (1/mu) since response is gamma
+
+qplot(time_taken, geom="histogram", data=subset(dd, time_taken<500), binwidth=10)
+
+qplot(time_taken, geom="density", data=subset(dpt, time_taken<300), color=factor(experiment))
 
 
 # Checking if the performance increases with attempts

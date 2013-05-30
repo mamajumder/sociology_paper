@@ -167,10 +167,7 @@ The inverse link function, $g^{-1}(.)$, from  Equation \ref{eqn:trend} leads to 
 \hat p_{\ell i} =  g^{-1}(W_{\ell i} \hat {\delta} +  Z_{\ell i}  \hat {\tau}_{\ell i}).
 \end{equation}
 
-For $Y_{l,i}$ being binary response we use {\it logit} link function $g(\pi)=\log(\pi) - \log(1-\pi); 0 \le \pi \le 1$ and $\hat p_{\ell i}$ gives the estimate of proportion correct by subject $i$ with lineup $\ell$. For continuous response  $Y_{l,i}$ we use gamma link function and $\hat p_{\ell i}$ gives the estimate of mean time taken by subject $i$ for lineup $\ell$.
-
-
-
+For $Y_{l,i}$ being binary response we use {\it logit} link function $g(\mu)=g_1(\mu)=\log(\mu) - \log(1-\mu); 0 \le \mu \le 1$ and $\hat p_{\ell i}$ gives the estimate of proportion correct by subject $i$ with lineup $\ell$.  The response time taken is a positive random variable with a right skewed distribution. For this the usual convention is to model a gamma distribution with time. Thus we used inverse link function $g(\mu)=g_2(\mu)=1/\mu;  \mu >0$ for gamma response $Y_{l,i}$ and $\hat p_{\ell i}$ gives the estimate of mean time taken by subject $i$ for lineup $\ell$.
 
 
 

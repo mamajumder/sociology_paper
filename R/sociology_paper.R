@@ -127,20 +127,21 @@ for (i in 1:10){
 # obtained from www.ipaddressapi.com using real ip address
 # based on ip, it gets longitude, latitude, country, city etc.
 demographics <- merge(demographics,ip.details,all.x=TRUE, by="ip_address")
+demographics$country <- as.character(demographics$country_name)
+demographics$country[(demographics$country_code != "IN") & (demographics$country_code != "US")] <- "Rest of the world"
+demographics$country[demographics$country=="Namibia"] <- "Rest of the world"
+
+
+
 
 # getting unique participants for plotting purpose only
 # Since each participant has multiple responses in demographics data
 turker <- demographics[!duplicated(demographics$id),]
-turker$country <- as.character(turker$country_name)
-turker$country[(turker$country_code != "IN") & (turker$country_code != "US")] <- "Rest of the world"
-turker$country[turker$country=="Namibia"] <- "Rest of the world"
 turker$study <- turker$academic_study
 turker$study[turker$age_level=="36-40"] <- c("High school or less (1)","Some under grad course (2)",
                                              "Under graduate degree (3)", "Some graduate courses (4)",
                                              "Graduate degree (5)")[turker$study[turker$age_level=="36-40"]]
-
-
-
+turker$exp <- factor(turker$experiment, levels=names(table(turker$experiment))[order(c(1,10,2:9))])
 levels(turker$age_level)[7:9] <- 7
 levels(turker$age_level)[1:7] <- c("18-25","26-30","31-35","36-40",
                                 "41-45", "46-50", "above 50")
@@ -172,7 +173,6 @@ dev.off()
 
 # Time of the work
 turker$hours <- as.factor(hour(as.POSIXlt(turker$start_time)))
-turker$exp <- factor(turker$experiment, levels=names(table(turker$experiment))[order(c(1,10,2:9))])
 qplot(hours, data=turker) +
   facet_grid(exp~.,scales="free_y") +
   xlab("Hour of the day") + ylab("Number of subjects")
@@ -192,8 +192,9 @@ get_summary <- function(dat, var){
 sg <- get_summary(demographics, "gender")
 se <- get_summary(demographics, "degree")
 sa <- get_summary(demographics, "age_level")
+sl <- get_summary(demographics, "country")
 
-sdat <- rbind(sg,se,sa)
+sdat <- rbind(sg,se,sa,sl)
 xtable(sdat[,-1])
 
 qplot(lbls, avg_time, geom="bar", stat="identity", data=sdat) + coord_flip()
@@ -223,8 +224,34 @@ ggsave("../images/rejected_task.pdf", width=6, height=4)
 
 
 
+# Drawing the map of turk participants
+
+library(maps)
+map.dat <- as.data.frame(map("world",ylim=c(-45,70), plot=FALSE)[c("x","y")])
+map.dat <- map_data("world")
+
+ggplot() +
+  geom_polygon(aes(long,lat, group=group), fill="grey65", data=map.dat) +
+  geom_point(aes(longitude,latitude, colour=factor("A")), data=ip.details, alpha=.6) +
+  theme_bw()+
+  theme(legend.position="none", axis.text = element_blank(), axis.title=element_blank()) 
+ggsave("../images/turker_location.pdf", width=8, height=4)
 
 
+# Drawing map by experiment
+p<- ggplot() +
+  geom_polygon(aes(long,lat, group=group), fill="grey65", data=map.dat) +
+  geom_point(aes(longitude,latitude, colour=factor("A")), data=turker, alpha=.6) +
+  facet_wrap(~exp, ncol=2)+ theme_bw()+
+  theme(legend.position="none", axis.text = element_blank(), axis.title=element_blank()) 
+ggsave(p,"../images/turker_location_experiment.pdf", width=8, height=10)
+
+# country-wise participants counts
+qplot(factor(country, levels=names(table(country))[order(table(country))]), 
+      geom="bar", fill="A", data=subset(turker,complete.cases(turker)))+ 
+  coord_flip() +ylab("Number of turk worker") + xlab("Country") +
+  theme(legend.position="none")
+ggsave("../images/turker_country.pdf", width=7, height=2) 
 
 
 # ==============================================================

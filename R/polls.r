@@ -4,7 +4,7 @@
 # polls <- tabs[[3]]
 # 
 # write.csv(polls, "polls.csv", row.names=F)
-polls <- read.csv("data/polls.csv")
+polls <- read.csv("../data/polls.csv")
 names(polls) <- c("State", "Electoral.Votes", "Results2008", "Poll2012", "Results2012")
 
 library(plyr)
@@ -72,7 +72,7 @@ location <- p3$sample[nrow(p3)]
 p2 <- p3
 p2 <- p2[order(p2$Sim.Margin, decreasing=TRUE),]
 p2 <- ddply(p2, .(.n, Sim.Democrat), transform, tower=cumsum(Electoral.Votes[order(Sim.Margin, decreasing=TRUE)]))
-p2$diff <- with(p2, Sim.Margin*c(-1,1)[as.numeric(Sim.Democrat)+1])
+p2$diff <- with(p2, Sim.Margin*c(1,-1)[as.numeric(Sim.Democrat)+1])
 
 write.csv(p2, file=sprintf("electoral/electoral-%s-%s.csv", null, location))
 }
@@ -139,16 +139,16 @@ for (fname in files) {
 
 
 
-ggplot(aes(x=diff, y=tower, colour = factor(Sim.Democrat)), data=p2) + 
+ggplot(aes(x=diff, y=tower, colour = factor(Sim.Democrat)), data=dframe) + 
 #  geom_point() +
-  geom_segment(aes(x=diff, xend=diff, y=0, yend=tower, colour=Sim.Democrat), size=1) +
+  geom_segment(aes(x=diff, xend=diff, y=0, yend=tower, colour=Sim.Democrat), size=0) +
   scale_colour_manual(values=c("red", "blue"), guide="none") + 
   scale_fill_manual(values=c("red", "blue"), guide="none") + 
   geom_hline(yintercept=270, colour="grey70") + 
-  ylab("Electoral Votes")+xlab("Republican       ---          Democrat") + 
+  ylab("Electoral Votes")+xlab("Democrat      ---          Republican") + 
   scale_x_continuous(breaks=c(-50,0,50), labels=c("50", "0", "50"), limits=c(-90,90)) + 
   geom_rect(aes(xmin=0, xmax=diff, ymin=0, ymax=tower, fill=Sim.Democrat), size=0) +
-  geom_segment(aes(x=0,xend=diff, y=tower,yend=tower), colour="grey80", size=0.5) + 
+  geom_segment(aes(x=0,xend=diff, y=tower,yend=tower), colour="grey80", size=0.25) + 
   geom_vline(xintercept=0, colour="white") + facet_wrap(~sample)
 ggsave("tower.pdf", height=12, width=12)
 

@@ -26,7 +26,7 @@ names(r2012) <- paste(c("Candidate","Result","Major", "Diss", "Minor"), "2012", 
 r2012$Result2012 <- as.numeric(gsub("+","", as.character(r2012$Result2012)))
 r2012$Democrat <- r2012$Candidate=="Obama"
 
-simulatePoll <- function(x, sd=3, backup) {
+simulatePoll <- function(x, sd=2.5, backup) {
   suppressWarnings(res <- rnorm(length(x), mean=x, sd=sd))
   idx <- which(is.na(res))
   res[idx] <- rnorm(length(idx), mean=backup[idx], sd=sd)
@@ -138,7 +138,8 @@ for (fname in files) {
 
 
 
-
+fname <- "electoral-4-2.csv"
+  dframe <- read.csv(sprintf("../electoral/%s", fname))
 ggplot(aes(x=diff, y=tower, colour = factor(Sim.Democrat)), data=dframe) + 
 #  geom_point() +
   geom_segment(aes(x=diff, xend=diff, y=0, yend=tower, colour=Sim.Democrat), size=0) +

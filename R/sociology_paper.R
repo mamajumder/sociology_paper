@@ -184,10 +184,13 @@ get_summary <- function(dat, var){
   res <- ddply(dat,c(var), summarize,
                subsjects = length(unique(id)),
                avg_time = round(mean(time_taken),2),
-               response = length(response)             
+               response = length(response),
+               prop_correct = mean(response)
   )
   return(data.frame(var=var,lbls=res[,1], res[,-1]))
 }
+
+
 
 sg <- get_summary(demographics, "gender")
 se <- get_summary(demographics, "degree")
@@ -324,9 +327,8 @@ ggsave("../images/learning_trend_time.pdf", width=10.5, height = 3.5)
 # Fitting generalized mixed effect model with time taken
 # Link function is inverse link (1/mu) since response is gamma
 
-qplot(time_taken, geom="histogram", data=subset(dd, time_taken<500), binwidth=10)
-
-qplot(time_taken, geom="density", data=subset(dpt, time_taken<300), color=factor(experiment))
+qplot(time_taken, geom="density", data=subset(dpt, time_taken<300), color=factor(experiment)) +
+  scale_colour_hue(name="Experiment")
 
 
 # Checking if the performance increases with attempts

@@ -141,7 +141,9 @@ These questions are very crucial for the power of visual test. They help observe
 %
 %Given this pattern of human eye tracks, it may effect the performance of an observer depending on where the actual plot is placed in the lineup. If the actual plot is on the top left corner and the observer starts from that point it may be easier to detect the actual plot earlier in the exercise and the observer could get plenty of time to make comparison. Thus the position of the actual plot in a lineup may have some impact.
 
-\subsection{Demographics of Observer}  Age, gender and geographical location of the observer.
+\subsection{Demographics of Observer}  Some of the demographics of the observer such as age, gender, education level and geographical location may have effect on how an observer would examine the lineup. This may produce some variability in the performance of the observer. For example, a high school student may not respond same as a well educated person while evaluating a lineup. Also, to meet the Institutional Regulatory Board (IRB) requirement is is necessary to exclude any subject less than 18 years of old to participate human subject experiment. Thus we intend to only focus on the performance of observer with age 18 years or older. But still there may be variation in different age groups. Recruiting subjects with a well variety of age groups may be necessary to have control over this variability. 
+
+Education level has some relation with age. Younger observer may not have higher degree. Thus some of the variability in performance for different education level may be confounded with age. On the other hand, it could be possible to have undergrad degree with higher age. Specially for any geographical location where not many certain gender group have higher education, this may occur. Thus the effect of all these demographical factors may be confounded at certain level. 
 
 \subsection{Learning Trend of the Observer} When an observer evaluates a lineup he or she may learn something from the experience. If the same observer is shown another lineup the learning from previous evaluation may help. The more evaluations an observer makes the more skillful the observer may become. This learning trend may or may not be significant overall but it could influence the performance of the observer in some way. This paper investigates the learning trend with multiple simulation experiments.
 
@@ -151,7 +153,7 @@ Given a specific pattern of eye movement of the observer in examining the lineup
 
 It may be possible that some part of the lineup is little explored or not scanned by the observer if he or she feels that the actual plot is found before even seriously scanning the whole lineup. In those scenarios the location where the observer first start scanning is important. Placing the actual data plot in that location may yield different results.
 
-\subsection{Selection of Null Plots} A lineup becomes difficult to evaluate if one of the null plots appears to be very similar to the actual plot. When null hypothesis is true it is a common scenario. With alternative hypothesis being true,  it may happen if  we compare actual plot with many null plots. But we have only specific number of null plots in a lineup. So, a different set of null plots may yield some variation in the difficulty of the lineup with the same actual plot. 
+\subsection{Selection of Null Plots} A lineup becomes difficult to evaluate if one of the null plots appears to be very similar to the actual plot. When null hypothesis is true it is a common scenario. With alternative hypothesis being true,  it may happen if  we compare actual plot with many null plots. But we have only specific number of null plots in a lineup. So, a different set of null plots may yield some variation in the difficulty of the lineup with the same actual plot. This may affect the performance of the observer while evaluating a lineup.
 
 \subsection{Individual Performance of the Observer} Each person is different from others in some way. For example, in a controlled experimental study \citet{zhao:2012}  notice that some people spend a lot of time to decide no matter whether the lineup is difficult or easy while some simply glance at lineups to make a decision. This influences the response of the observer. Also subject specific variation in the power of visual test is observed in \citep{majumder:2013}. 
 
@@ -211,7 +213,7 @@ where $\mu_{i}= (\mu_{1i},\mu_{2i}, ..., \mu_{pi})$ is the mean vector for locat
 \subsection{Overview of the Data} Figure \ref{fig:turker_location} shows the location from where we received data. Notice that we received data from around the world and we observed diversity of location in the collected data. We notice diversity in not only location of the observers but also their gender, age groups and education levels. Table \ref{tbl:demographics} shows that number of male and female participants are almost same.
 
 \begin{table}[hbtp]
-\caption{Demographic information of the subjects participated the MTurk experiments.}
+\caption{Demographic information of the subjects participated the MTurk experiments. Average time taken for evaluating a lineup is shown in seconds.}
 \centering
 \begin{tabular}{rlrrr}
   \hline
@@ -425,6 +427,17 @@ Serial & description & submitted & rejected & time(min) & Actual & 100 task& \$/
    \caption{Countrywise distribution of age and academic levels of the MTurk workers participating the experiments shows the diversity of the subjects in all the demographic aspect. Almost equal number of male and female subjects participated the online experiments.}
    \label{fig:demographic_info}
 \end{figure}
+
+
+\begin{figure}[htbp] 
+   \centering
+   \includegraphics[width=6.5in]{age_gender_within_country_bar.pdf} 
+   \caption{Countrywise distribution of age and academic levels of the MTurk workers participating the experiments shows the diversity of the subjects in all the demographic aspect. Male and female participants differ in India specially for agelevel 18-25. For United States number of participants are similar beyond age 40 while few number of participants coming from India beyond that age.}
+   \label{fig:gender_country}
+\end{figure}
+
+
+
 
 
 \begin{figure}[htbp] 

@@ -151,6 +151,7 @@ levels(turker$age_level)[1:7] <- c("18-25","26-30","31-35","36-40",
 #   scale_x_discrete( aes(breaks=academic_study,labels=as.charater(study)))
 
 
+# Plotting age, gender and country together
 p1 <- qplot(degree, facets=age_level~gender_level, data=turker) +
   coord_flip() + xlab("Academic Study") + labs(title="Gender")
 
@@ -169,6 +170,12 @@ pushViewport(viewport(layout = grid.layout(1, 2)))
 print(p1, vp = viewport(layout.pos.row = 1, layout.pos.col = 1))     
 print(p2 ,vp = viewport(layout.pos.row = 1, layout.pos.col = 2)) 
 dev.off()
+
+# Potting Education and Gender within country by age
+qplot(degree, data=turker[complete.cases(turker),]) +
+  facet_grid(age_level~country+gender_level) + coord_flip() + xlab("Academic Study") 
+
+ggsave("../images/age_gender_within_country_bar.pdf", width=10, height=8)
 
 
 # Time of the work

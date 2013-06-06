@@ -180,10 +180,10 @@ ggsave("../images/age_gender_within_country_bar.pdf", width=10, height=8)
 
 # Time of the work
 turker$hours <- as.factor(hour(as.POSIXlt(turker$start_time)))
-qplot(hours, data=turker) +
-  facet_grid(exp~.,scales="free_y") +
+qplot(hours, data=subset(turker, complete.cases(turker))) +
+  facet_grid(exp~country,scales="free_y") +
   xlab("Hour of the day") + ylab("Number of subjects")
-ggsave("../images/participation_time.pdf", width=8, height=10)
+ggsave("../images/participation_time.pdf", width=10, height=12)
 
 
 # getting demographic summary table

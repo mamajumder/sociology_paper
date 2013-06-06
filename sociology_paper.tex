@@ -18,6 +18,8 @@
 %\doublespacing
 
 
+\usepackage{color}
+\newcommand{\hh}[1]{{\color{magenta} #1}}
 
 \setlength{\oddsidemargin}{0in}
 \setlength{\evensidemargin}{0in}
@@ -66,8 +68,8 @@ Statistical graphics can be used to test the significance of findings during the
 
 \subsection{Visual Statistical Inference} The fundamental concept of visual statistical inference is introduced by \citet{buja:2009}. In their paper, they proposed lineup protocol to discover significant pattern in the data. Later these concepts are further developed by defining necessary terminologies and validating using a head to head comparison with conventional inference by \citet{majumder:2013}. The power of the visual test is obtained and it is observed that the power is as good as that of conventional test while in some scenarios, visual power exceeds that of conventional tests.
 
-The test statistic used in visual inference is a plot of the observed data. This plot, called actual data plot, is then placed on a layout of plot called lineup. The rest of the plots in a lineup are generated from the model specified by the null hypothesis. An observer is then asked to evaluate the lineup. If the observer can detect the actual data plot in the lineup, the hypothesis is rejected. Figure~\ref{fig:tower} displays a lineup of 20 plots where one of the plots is observed data, while the remaining 19 plots are rendered from data generated under a null model. Which of these towers is the most extreme? Which side is higher? In an experiment XXX of XXX observers picked plot \# $3^2+4$ as the most extreme plot from the lineup, and all agreed that the blue side was higher. 
-This gives us a visual $p$-value of XXX, indicating that we have enough evidence to reject the null hypothesis. 
+The test statistic used in visual inference is a plot of the observed data. This plot, called actual data plot, is then placed on a layout of plot called lineup. The rest of the plots in a lineup are generated from the model specified by the null hypothesis. An observer is then asked to evaluate the lineup. If the observer can detect the actual data plot in the lineup, the hypothesis is rejected. Figure~\ref{fig:tower} displays a lineup of 20 plots where one of the plots is observed data, while the remaining 19 plots are rendered from data generated under a null model. Which of these towers is the most extreme? Which side is higher? In an experiment 12 of 72 observers picked plot \# $3^2+4$ as the most extreme plot from the lineup, based on the highest amount of asymmetry (36\%), a trend (26\%) or `outliers' (16\%). 
+This gives us a visual $p$-value of 0.00023, indicating that we have enough evidence to reject the null hypothesis (in another four repetitions we found similar results, giving an overall $p$-value of less that $10^{-17}$ based on 62 data picks out of 341 evaluation). 
 What does this mean, though? For that, we need to know the context of the data and we need to have more information about the generation of the null plots: in this example, we are investigating, whether the results from the 2012 US presidential election is consistent with polling results. As a null hypothesis we  assume that  the election results are consistent with polling results. The polling results give us a null model to generate data. Each poll gives us a margin between candidates. This is what we use as the mean of a normal distribution. In the absence of information of error for a poll, we will assume a standard deviation of 2.5 percentage points for all of the polls. While this is a severe simplification, the resulting margin of error of $\pm 5$ percentage points is realistic, and could be easily replaced if additional information on a poll became available. A null data set is then generate as a set of draws from normal distributions based on the latest poll results. Each panel in figure~\ref{fig:tower} shows an `electoral building' \citet{nytimes}: each state is represented by a rectangle. The width of a rectangle is determined by the difference between (polling) results, its height is given by the number of electoral votes, and fill color shows party affiliation (blue for Democrat, and red for Republican). Rectangles are placed on top of each other, separated by affiliation and sorted by margin between polls. A party needs 270 electoral votes or more to win the presidential election. 
 
 %The rest of the 19 plots are generated from the assumption that there is no difference between two groups of data. For this, the group structure of the data is broken by random permutation of the groups. 
@@ -178,13 +180,24 @@ We design and develop a web site which enables to display the lineups to the obs
 
 \subsection{Model to Estimate Learning Trend}
 
-As per the design of the experiment for learning trend we have two different response variables. One is observer feedback on a lineup which is a binary variable.  The other variable is the time taken for each evaluation which is a continuous variable. Suppose random variable $Y_{\ell, i}$ denotes the response from subject $ i=1,2, ..., K$ on lineup $\ell=1,2, ..., L$. We model the mean $\mu_{\ell, i} = E(Y_{\ell, i})$ with a generalized liner mixed effect model
+As per the design of the experiment for learning trend we have two different response variables. One is observer feedback on a lineup which is a binary variable.  The other variable is the time taken for each evaluation which is a continuous variable. Suppose random variable $Y_{\ell, i}$ denotes the response from subject $ i=1,2, ..., I$ on lineup $\ell=1,2, ..., L$. We model the mean $\mu_{\ell, i} = E(Y_{\ell, i})$ with a generalized liner mixed effect model
 
 \begin{equation} \label{eqn:trend}
 g( \mu_{\ell, i} )= W_{\ell i} \delta +  Z_{\ell i}  \tau_{\ell i},  
 \end{equation}
 
-\noindent where $g(.)$ denotes the link function. $W$ is a design matrix of covariates corresponding to specifics of lineup $\ell$ and subject $i$, and $\delta$ is the vector of corresponding parameters. Covariates could include  demographic information of individuals, such as age, gender, education level etc.,  as well as the attempt made by the observer. $Z_{\ell i}$,  $1 \le i \le K$, $1 \le \ell \le L$,  is a design matrix corresponding to random effects specific to individual $i$ and lineup $\ell$; and 
+\hh{
+Let $\pi_{ijk}$ be the probability that  observer $i$ picks the data panel from lineup $j$ in his/her $k$th attempt. We model this in a mixed effects model of the form
+\begin{equation} \label{eqn:trend}
+g( \pi_{ijk} )= \mu + \alpha_k + u_i +  a_{i} k + \ell_j,  
+\end{equation}
+where $\mu$ is an overall average probability for picking out the data plot from a lineup, $\alpha_k$ is the effect of the $k$th attempt on the probability, with $\alpha_1 = 0$ and $k = 1, ..., K$.
+$u_i$ and $a_i$ are observer specific random effects, $i = 1, ..., I$. $u_i$ is a random intercept, describing a basic subject-specific ability. We assume $u_i \sim N(0, \sigma_u^2)$. 
+$a_i$ is a random slope capturing an individuals' specific learning effect over the course of $K$ attempts. We assume $a_i \sim N(0, \sigma_a^2)$. 
+For $\ell_j$ we again assume a normal distribution, $N(0, \sigma_\ell^2)$. $\ell_j$ is a random intercept predicting lineup difficulty level.
+}
+
+\noindent  $g(.)$ denotes the link function. $W$ is a design matrix of covariates corresponding to specifics of lineup $\ell$ and subject $i$, and $\delta$ is the vector of corresponding parameters. Covariates could include  demographic information of individuals, such as age, gender, education level etc.,  as well as the attempt made by the observer. $Z_{\ell i}$,  $1 \le i \le K$, $1 \le \ell \le L$,  is a design matrix corresponding to random effects specific to individual $i$ and lineup $\ell$; and 
 $\tau$  is a vector of independent normally distributed random variables $\tau_{\ell i}$ with  variance matrix $\sigma_\tau I_{KL \times KL}$. $\tau$ will usually include a component incorporating an individual's ability or skill to evaluate lineups. 
 
 The inverse link function, $g^{-1}(.)$, from  Equation \ref{eqn:trend} leads to the estimate of the subject and the lineup specific probability of successful evaluation by a single observer as 
@@ -456,6 +469,50 @@ Serial & description & submitted & rejected & time(min) & Actual & 100 task& \$/
    \includegraphics[width=4.5in]{participation_time.pdf} 
    \caption{Time of the day when the participants work. Experiment 1 shows MTurk workers participated the experiments around the clock. Other experiments did not take a whole day to finish.}
    \label{fig:participation_time}
+\end{figure}
+
+\clearpage
+\section{Electoral Building Lineups and Results}
+Figures~\ref{fig:elect.1} through~\ref{fig:elect.5} show the five lineups shown to (different) Amazon Turk workers in an experiment. They all are created as described in the introduction of the paper. In order to not bias observers, no context information was given about how these plots were created or what data they were displaying. This also made it necessary to slightly more stylize the display. 
+
+% latex table generated in R 3.0.1 by xtable 1.7-1 package% Wed Jun  5 17:39:09 2013\begin{table}[ht]\centering\begin{tabular}{rrrrrr}  \hline lineup & \#1 & \#2 & \#3 & \#4 & \#5 \\   \hline  \# correct/ \#evaluation &  12/72 & 11/66 & 5/74 & 14/72 & 19/57 \\ 
+$p$-value & 0.00023 & 0.00041 & 0.31 & 1.2e-05 &  1.9e-11 \\ data panel & $3\cdot4+1$ & $2^4+1$ & $4^2+2 $ & $12+\sqrt{25}$ & $2^3-7$ \\    \hline\end{tabular}\end{table}
+
+% latex table generated in R 3.0.1 by xtable 1.7-1 package% Wed Jun  5 18:00:55 2013\begin{table}[ht]\centering\begin{tabular}{rrrrrrrrrrrrrrrrrrrrr}  \hline
+& \multicolumn{10}{l}{panel chosen}\\
+Lineup & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 & 20 \\   \hline\#  1 & 2 & 2 & 0 & 10 & 2 & 2 & 6 &  23 & 1 & 1 & 0 & 1 & \bf 12 & 3 & 3 & 1 & 0 & 1 & 1 & 1 \\ \#  2 & 0 & 16 & 1 & 1 & 5 & 1 & 0 & 8 & 0 & 2 & 0 & 0 & 0 & 4 & 2 & 1 & \bf 11 & 1 & 0 & 13 \\ \#  3 & 7 & 26 & 0 & 2 & 0 & 5 & 3 & 0 & 2 & 1 & 0 & 4 & 0 & 0 & 2 & 0 & 9 & \bf 5 & 0 & 6 \\ \#  4 & 0 & 0 & 0 & 2 & 0 & 0 & 0 & 3 & 1 & 10 & 2 & 18 & 1 & 0 & 4 & 2 &\bf 14 & 0 & 13 & 0 \\ \# 5 &\bf 19 & 1 & 4 & 1 & 0 & 1 & 0 & 12 & 0 & 0 & 0 & 4 & 1 & 0 & 0 & 12 & 1 & 1 & 0 & 0 \\    \hline\end{tabular}
+\caption{\label{tab:response}Overview of all choices by observers for each of the lineups. The correct choice is bolded. In most lineups there are null plots that were picked more often by observers, but the actual result is among the plots being picked most often, indicating that there is some indication that the election result is not completely consistent with the polls.}\end{table}
+
+\begin{figure}[htbp] 
+   \centering
+   \includegraphics[width=0.8\linewidth]{electoral-5-13.pdf} 
+   \caption{Lineup \#1 - electoral building. Which building looks the most different from the other buildings? }
+   \label{fig:elect.1}
+\end{figure}
+
+\begin{figure}[htbp] 
+   \centering
+   \includegraphics[width=0.8\linewidth]{electoral-2-17.pdf} 
+   \caption{Lineup \#2 - electoral building. Which building looks the most different from the other buildings? }
+   \label{fig:elect.2}
+\end{figure}
+\begin{figure}[htbp] 
+   \centering
+   \includegraphics[width=0.8\linewidth]{electoral-3-18.pdf} 
+   \caption{Lineup \#3 - electoral building. Which building looks the most different from the other buildings? }
+   \label{fig:elect.3}
+\end{figure}
+\begin{figure}[htbp] 
+   \centering
+   \includegraphics[width=0.8\linewidth]{electoral-4-17.pdf} 
+   \caption{Lineup \#4 - electoral building. Which building looks the most different from the other buildings? }
+   \label{fig:elect.4}
+\end{figure}
+\begin{figure}[htbp] 
+   \centering
+   \includegraphics[width=0.8\linewidth]{electoral-1-1.pdf} 
+   \caption{Lineup \#5 - electoral building. Which building looks the most different from the other buildings? }
+   \label{fig:elect.5}
 \end{figure}
 
 

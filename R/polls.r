@@ -154,3 +154,5 @@ ggplot(aes(x=diff, y=tower, colour = factor(Sim.Democrat)), data=dframe) +
 ggsave("tower.pdf", height=12, width=12)
 
 
+pics <- read.csv(file.choose())
+pics$difficulty <- as.numeric(factor(gsub("-[0-9]","", as.character(pics$param_value))))

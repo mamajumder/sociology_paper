@@ -177,6 +177,19 @@ qplot(degree, data=turker[complete.cases(turker),]) +
 
 ggsave("../images/age_gender_within_country_bar.pdf", width=10, height=8)
 
+# Potting average time taken by Education and Gender within country vs age
+pdat <- ddply(demographics, .(country,gender_level, age_level,degree), summarize,
+              per_correct = mean(response),
+              avg_time = mean(time_taken))
+qplot(degree, avg_time, geom="bar", stat="identity", data=pdat[complete.cases(pdat),]) +
+  facet_grid(age_level~country+gender_level) + coord_flip() + xlab("Academic Study") 
+
+ggsave("../images/age_gender_within_country_correct.pdf", width=10, height=8)
+
+qplot(degree, per_correct, geom="bar", stat="identity", data=pdat[complete.cases(pdat),]) +
+  facet_grid(age_level~country+gender_level) + coord_flip() + xlab("Academic Study") 
+
+ggsave("../images/age_gender_within_country_time.pdf", width=10, height=8)
 
 # Time of the work
 turker$hours <- as.factor(hour(as.POSIXlt(turker$start_time)))

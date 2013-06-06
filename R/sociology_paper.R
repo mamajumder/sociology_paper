@@ -306,7 +306,7 @@ get_trend <- function(dat){
     ))
 }
 
-# merging all data for trend analysis
+# merging all data for learning trend analysis
 dtrend <-NULL
 for (i in 1:7){
   di <- get(paste("dat",i, sep=""))
@@ -386,6 +386,7 @@ fit1 <- lm(resid ~ attempt, data=subset(trend.dat, experiment==5))
 fit2 <- lm(resid ~ attempt, data=subset(trend.dat, experiment==6))
 fit3 <- lm(resid ~ attempt, data=subset(trend.dat, experiment==7))
 
+# fitting models with response (percent correct)
 
 dt <- subset(dtrend, experiment==5)
 fit0 <- lmer(response ~ attempt + p_value + (attempt -1|id), family="binomial", data=dt)
@@ -394,7 +395,22 @@ fit1 <- lmer(response ~ attempt + (attempt|id) , family="binomial", data=dt)
 fit2 <- lmer(response ~ attempt + (attempt|id) + (1|pic_id), family="binomial", data=dt)
 anova(fit2, fit1)
 fit3 <- lmer(response ~ factor(attempt) + (attempt|id) + (1|pic_id), family="binomial", data=dt)
+
 anova(fit3,fit2)
+
+
+
+# Fitting gamma mixed effect models with time taken
+
+qplot(time_taken, data=dt, geom="histogram", binwidth=10)
+
+# f0 <- lmer(time_taken ~ factor(attempt) + (attempt|id) + (1|pic_id), family=Gamma(link="inverse"), data=dt)
+
+f0 <- lmer(time_taken ~ factor(attempt) + (attempt|id) + (1|pic_id), family=Gamma(link="log"), data=dt)
+
+
+
+
 
 # ==============================================================
 # Analysis of location effect of the plot using turk 9 data

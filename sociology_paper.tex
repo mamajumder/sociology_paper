@@ -75,6 +75,12 @@ Figure~\ref{fig:tower} displays a lineup of 20 plots where one of the plots is o
 This gives us a visual $p$-value of 0.00023, indicating that we have enough evidence to reject the null hypothesis (in another four repetitions we found similar results, giving an overall $p$-value of less that $10^{-17}$ based on 62 data picks out of 341 evaluation). 
 What does this mean, though? For that, we need to know the context of the data and we need to have more information about the generation of the null plots: in this example, we are investigating, whether the results from the 2012 US presidential election is consistent with polling results. As a null hypothesis we  assume that  the election results are consistent with polling results. The polling results give us a null model to generate data. Each poll gives us a margin between candidates. This is what we use as the mean of a normal distribution. In the absence of information of error for a poll, we will assume a standard deviation of 2.5 percentage points for all of the polls. While this is a severe simplification, the resulting margin of error of $\pm 5$ percentage points is realistic, and could be easily replaced if additional information on a poll became available. A null data set is then generate as a set of draws from normal distributions based on the latest poll results. Each panel in figure~\ref{fig:tower} shows an `electoral building' \citet{nytimes}: each state is represented by a rectangle. The width of a rectangle is determined by the difference between (polling) results, its height is given by the number of electoral votes, and fill color shows party affiliation (blue for Democrat, and red for Republican). Rectangles are placed on top of each other, separated by affiliation and sorted by margin between polls. A party needs 270 electoral votes or more to win the presidential election. 
 
+\begin{figure}[hbtp] 
+   \centering
+   \includegraphics[width=0.99\textwidth]{tower.pdf} 
+   \caption{ \label{fig:tower} Which of these towers is the most extreme? Which side is higher?}
+\end{figure}
+
 %The rest of the 19 plots are generated from the assumption that there is no difference between two groups of data. For this, the group structure of the data is broken by random permutation of the groups. 
 
 If the null hypothesis is true, the observed data should look similar to the rest of the plots in the lineup making it difficult to detect the observed plot. On the other hand, if the null hypothesis is not true, the observed data should be different from the rest of the plots in the lineup and observers should be able to pick the data plot out from the rest.
@@ -89,11 +95,7 @@ A lineup can be evaluated by a single person or multiple observers. Based on the
 %   \label{fig:lineup_geno}
 %\end{figure}
 
-\begin{figure}[htbp] 
-   \centering
-   \includegraphics[width=0.99\textwidth]{tower.pdf} 
-   \caption{ \label{fig:tower} Which of these towers is the most extreme? Which side is higher?}
-\end{figure}
+
 
 \subsection{Observer task} Observer who evaluates a lineup do not necessarily be aware of the data that constitue a lineup. In response to a specific question the observer is to make a choice based on what he or she sees in the lineup. The choice could be right or wrong depending on whether the data plot is selected or not. Under null hypothesis, all the null plots look similar to what the observed data plot appears to be. This would make it harder to detect the observed data plot in the lineup. It is not expected that an observer would be able to detect the data plot in this scenario. But since there are limited number of plots in a lineup which is 20 in this case, there is a 1/20 chance that the observer would pick the actual plot. This proportion is associated with the type-I error probability. On the other hand if null hypothesis is not true, the observed plot would be different than the null plots making it easier to be distinguished. When multiple observers evaluate a lineup, the proportion of correct response can be used to estimate the power of the visual test \citep{majumder:2013}. 
 

@@ -4,6 +4,7 @@
 %\usepackage{natbib}
 %\usepackage{multicol}
 \RequirePackage{natbib}
+\usepackage[colorlinks=true, citecolor=blue, linkcolor=blue]{hyperref}
 \usepackage{amsmath, amssymb, fullpage, amsthm, array,,graphicx,asa, url}
 %\usepackage[dvips]{graphics}
 
@@ -207,6 +208,13 @@ The inverse link function, $g^{-1}(.)$, from  Equation \ref{eqn:trend_response} 
 \end{equation}
 
 The learning of each observer over a course of $K$ evaluations may be observed as the improvement of the time taken to evaluate a lineup in the later attempts. Suppose $Z_{ijk}$ denotes the time taken for an observer $i$ to evaluate a  lineup $j$ in his/her $k$th attempt. Let $\mu_{ijk}=  E(Z_{ijk})$ be the average time taken by  observer $i$ to pick the data panel from lineup $j$ in his/her $k$th attempt. We model this in a generalized mixed effects model of the form
+\hh{
+\begin{equation} \label{eqn:trend_time}
+g( \mu_{ijk} )= \mu + \alpha_1 + \alpha k + u_i +  a_{i} k + \ell_j,  
+\end{equation}
+where $g$ is now the inverse link function $g(\mu) = 1/\mu$ for positive values of $\mu$. $\mu$ represents the inverse of the overall average time taken by an observer to evaluate a lineup. $\alpha$ is the average change in time taken for each additional attempt.  $\alpha_1$ is an offset in time taken for the first effect. All other effects are random effects: as before, $u_i$ is a subject-specific intercept representing  individual speed of an observer with $u_i \sim N(0, \sigma_u^2)$. $a_i$ is a subject-specific slope representing the deviation of the speed-up (or -down) by attempt $k$. We assume $a_i \sim N(0, \sigma_a^2)$.
+$\ell_j$ is a lineup-specific random effect for the time needed to evaluate a lineup; $\ell_j \sim N(0, \sigma_\ell^2)$.
+}
 \begin{equation} \label{eqn:trend_time}
 g_1( \mu_{ijk} )= \mu_1 + \alpha_k + u_i +  a_{i} k + \ell_j,  
 \end{equation}

@@ -18,6 +18,8 @@
 %\doublespacing
 
 
+\usepackage{color}
+\newcommand{\hh}[1]{{\color{magenta} #1}}
 
 \setlength{\oddsidemargin}{0in}
 \setlength{\evensidemargin}{0in}
@@ -178,13 +180,24 @@ We design and develop a web site which enables to display the lineups to the obs
 
 \subsection{Model to Estimate Learning Trend}
 
-As per the design of the experiment for learning trend we have two different response variables. One is observer feedback on a lineup which is a binary variable.  The other variable is the time taken for each evaluation which is a continuous variable. Suppose random variable $Y_{\ell, i}$ denotes the response from subject $ i=1,2, ..., K$ on lineup $\ell=1,2, ..., L$. We model the mean $\mu_{\ell, i} = E(Y_{\ell, i})$ with a generalized liner mixed effect model
+As per the design of the experiment for learning trend we have two different response variables. One is observer feedback on a lineup which is a binary variable.  The other variable is the time taken for each evaluation which is a continuous variable. Suppose random variable $Y_{\ell, i}$ denotes the response from subject $ i=1,2, ..., I$ on lineup $\ell=1,2, ..., L$. We model the mean $\mu_{\ell, i} = E(Y_{\ell, i})$ with a generalized liner mixed effect model
 
 \begin{equation} \label{eqn:trend}
 g( \mu_{\ell, i} )= W_{\ell i} \delta +  Z_{\ell i}  \tau_{\ell i},  
 \end{equation}
 
-\noindent where $g(.)$ denotes the link function. $W$ is a design matrix of covariates corresponding to specifics of lineup $\ell$ and subject $i$, and $\delta$ is the vector of corresponding parameters. Covariates could include  demographic information of individuals, such as age, gender, education level etc.,  as well as the attempt made by the observer. $Z_{\ell i}$,  $1 \le i \le K$, $1 \le \ell \le L$,  is a design matrix corresponding to random effects specific to individual $i$ and lineup $\ell$; and 
+\hh{
+Let $\pi_{ijk}$ be the probability that  observer $i$ picks the data panel from lineup $j$ in his/her $k$th attempt. We model this in a mixed effects model of the form
+\begin{equation} \label{eqn:trend}
+g( \pi_{ijk} )= \mu + \alpha_k + u_i +  a_{i} k + \ell_j,  
+\end{equation}
+where $\mu$ is an overall average probability for picking out the data plot from a lineup, $\alpha_k$ is the effect of the $k$th attempt on the probability, with $\alpha_1 = 0$ and $k = 1, ..., K$.
+$u_i$ and $a_i$ are observer specific random effects, $i = 1, ..., I$. $u_i$ is a random intercept, describing a basic subject-specific ability. We assume $u_i \sim N(0, \sigma_u^2)$. 
+$a_i$ is a random slope capturing an individuals' specific learning effect over the course of $K$ attempts. We assume $a_i \sim N(0, \sigma_a^2)$. 
+For $\ell_j$ we again assume a normal distribution, $N(0, \sigma_\ell^2)$. $\ell_j$ is a random intercept predicting lineup difficulty level.
+}
+
+\noindent  $g(.)$ denotes the link function. $W$ is a design matrix of covariates corresponding to specifics of lineup $\ell$ and subject $i$, and $\delta$ is the vector of corresponding parameters. Covariates could include  demographic information of individuals, such as age, gender, education level etc.,  as well as the attempt made by the observer. $Z_{\ell i}$,  $1 \le i \le K$, $1 \le \ell \le L$,  is a design matrix corresponding to random effects specific to individual $i$ and lineup $\ell$; and 
 $\tau$  is a vector of independent normally distributed random variables $\tau_{\ell i}$ with  variance matrix $\sigma_\tau I_{KL \times KL}$. $\tau$ will usually include a component incorporating an individual's ability or skill to evaluate lineups. 
 
 The inverse link function, $g^{-1}(.)$, from  Equation \ref{eqn:trend} leads to the estimate of the subject and the lineup specific probability of successful evaluation by a single observer as 

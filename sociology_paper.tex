@@ -372,7 +372,7 @@ A plot of residuals against the attempts $A_k$ should reveal the trend if there 
 \begin{figure}[htbp] 
    \centering
    \includegraphics[width=6.5in]{learning_trend.pdf} 
-   \caption{ Mean residuals of proportion correct obtained from the model \eqref{eqn:trend_response} fitted without attempt are plotted against attempt. A linear regression line through the points are shown. None of the slopes in these three experiments are statistically significant.}
+   \caption{ Mean residuals of proportion correct obtained from the model \eqref{eqn:trend_response} fitted without attempt are plotted against attempt. Linear regression lines fitted through the points are shown. None of the slopes in these three experiments are statistically significant.}
    \label{fig:learning_trend}
 \end{figure}
 
@@ -381,8 +381,8 @@ Learning trend is not only related to the proportion correct responses. It may b
 \begin{figure}[htbp] 
    \centering
    \includegraphics[width=6.5in]{learning_trend_time.pdf}    
-   \includegraphics[width=6.5in]{learning_trend_time_subject.pdf}    
-   \caption{ Mean residuals of log(time taken) obtained from model \eqref{eqn:trend_time} fitted without covariate attempt plotted against attempt (above).  Subject-wise residuals of log(time taken) vs attempt (below). Linear regression lines are fitted through the points. For all the experiments the significantly downward slopes indicate that MTurk workers take less time as they progress through their attempts.}
+%   \includegraphics[width=6.5in]{learning_trend_time_subject.pdf}    
+   \caption{ Mean residuals of log(time taken) obtained from model \eqref{eqn:trend_time} fitted without covariate attempt plotted against attempt. Linear regression lines are fitted through the points excluding the first attempt. For all the three experiments the downward slopes are statistically significant which indicates that MTurk workers take less time as they progress through their attempts.}
    \label{fig:learning_trend_time}
 \end{figure}
 

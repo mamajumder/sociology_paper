@@ -131,8 +131,8 @@ demographics$country <- as.character(demographics$country_name)
 demographics$country[(demographics$country_code != "IN") & (demographics$country_code != "US")] <- "Rest of the world"
 demographics$country[demographics$country=="Namibia"] <- "Rest of the world"
 demographics$country[demographics$country==NA] <- "Rest of the world"
-
-
+levels(demographics$age_level)[7:9] <- 7
+levels(demographics$age_level)[1:7] <- c(levels(turker$age_level)[1:6], "above 50")
 
 
 # getting unique participants for plotting purpose only
@@ -143,9 +143,8 @@ turker$study[turker$age_level=="36-40"] <- c("High school or less (1)","Some und
                                              "Under graduate degree (3)", "Some graduate courses (4)",
                                              "Graduate degree (5)")[turker$study[turker$age_level=="36-40"]]
 turker$exp <- factor(turker$experiment, levels=names(table(turker$experiment))[order(c(1,10,2:9))])
-levels(turker$age_level)[7:9] <- 7
-levels(turker$age_level)[1:7] <- c("18-25","26-30","31-35","36-40",
-                                "41-45", "46-50", "above 50")
+#levels(turker$age_level)[7:9] <- 7
+#levels(turker$age_level)[1:7] <- c(levels(turker$age_level)[1:6], "above 50")
 
 # qplot(factor(academic_study), facets=age_level~gender_level, data=turker) +
 #   coord_flip() + xlab("Academic Study") + labs(title="Gender") +
@@ -215,10 +214,19 @@ mdat <- melt(rbind(gdat,edat,cdat,adat), id=c("variable_level", "pic_name", "var
 qplot(variable_level, value, geom="boxplot", data=mdat[complete.cases(mdat),]) +
   facet_grid(variable~variable_name, scales="free") +
   theme(axis.text.x=element_text(angle=90, hjust=1))
-
 ggsave("../images/demographic_effect.pdf", width=8, height=8)
 
-# Time of the work
+# testing significance of demographic factor main effects
+
+ft <- lmer(log(time_taken)~age_level+country+degree+gender_level+ (1|id)+(1|pic_name), data=demographics)
+summary(ft)
+
+fp <- lmer(response~age_level+country+degree+gender_level+ (1|id)+(1|pic_name), 
+           family="binomial", data=demographics)
+summary(fp)
+
+
+# Time of the day when Mturk worker works
 turker$hours <- as.factor(hour(as.POSIXlt(turker$start_time)))
 qplot(hours, data=subset(turker, complete.cases(turker))) +
   facet_grid(exp~country,scales="free_y") +
@@ -354,14 +362,26 @@ dpt <- NULL
 for (i in 5:7){
   d <- subset(dtrend, experiment==i)
   dd <- subset(d, id %in% id[attempt > 9])
-  model <- as.formula(time_taken ~ (1|pic_name) + (1|id))
+  model <- as.formula(log(time_taken) ~ (1|pic_name) + (1|id))
   fit <- lmer(model,data=dd)
-  dd$resid <- (dd$time_taken - fitted(fit))
+  dd$resid <- (log(dd$time_taken) - fitted(fit))
   dpt <- rbind(dpt ,dd)
 }
 
-dmt <- ddply(subset(dpt, resid<500), .(experiment,attempt), summarise,
+qplot(attempt,resid, group=id, data= dpt, geom="line", alpha=I(0.1)) +
+  facet_wrap(~experiment, scales="free_y") +
+  scale_x_continuous(breaks = seq(2,10,by=2)) 
+
+dmt <- ddply(dpt, .(experiment,attempt), summarise,
              mean_resid = mean(resid))
+
+ggplot() + 
+  geom_line(aes(attempt,resid, group=id), data= dpt, alpha=I(0.1)) +
+  geom_smooth(aes(attempt,mean_resid), data= dmt, size=1.5, method="lm", se=F) +
+  facet_wrap(~experiment, scales="free_y") + ylab("Residual time taken") 
+  scale_x_continuous(breaks = seq(2,10,by=2)) 
+
+ggsave("../images/learning_trend_time_subject.pdf", width=10.5, height = 3.5)
 
 qplot(attempt,mean_resid, data= dmt) + geom_point(size=2.5) +
   geom_smooth(method="lm", se=F) + ylab("Mean residual time taken") +

@@ -225,22 +225,22 @@ The inverse link function, $g^{-1}(.)$, from  Equation \ref{eqn:trend_response} 
 \hat p_{ijk} =  g^{-1}(\hat{\mu} + \hat{\alpha}_k + \hat{u}_i +  \hat{a}_i k + \hat{\ell}_j).
 \end{equation}
 
-The learning of each observer over a course of $K$ evaluations may be observed as the improvement of the time taken to evaluate a lineup in the later attempts. Suppose $Z_{ijk}$ denotes the time taken for an observer $i$ to evaluate a  lineup $j$ in his/her $k$th attempt. Let $\mu_{ijk}=  E(Z_{ijk})$ be the average time taken by  observer $i$ to pick the data panel from lineup $j$ in his/her $k$th attempt. We model this in a generalized mixed effects model of the form
+The learning of each observer over a course of $K$ evaluations may be observed as the improvement of the time taken to evaluate a lineup in the later attempts. Suppose $Z_{ijk}$ denotes the logarithm of time taken for an observer $i$ to evaluate a  lineup $j$ in his/her $k$th attempt. Let $\mu_{ijk}=  E(Z_{ijk})$ be the average of log(time taken) by  observer $i$ to pick the data panel from lineup $j$ in his/her $k$th attempt. We model this in a mixed effects model of the form
 \hh{
 \begin{equation} \label{eqn:trend_time}
-g( \mu_{ijk} )= \mu + \alpha_1 + \alpha k + u_i +  a_{i} k + \ell_j,  
+Z_{ijk} = \mu + \alpha_1 + \alpha k + u_i +  a_{i} k + \ell_j + \epsilon_{ijk},  
 \end{equation}
-where $g$ is now the inverse link function $g(\mu) = 1/\mu$ for positive values of $\mu$. $\mu$ represents the inverse of the overall average time taken by an observer to evaluate a lineup. $\alpha$ is the average change in time taken for each additional attempt.  $\alpha_1$ is an offset in time taken for the first effect. All other effects are random effects: as before, $u_i$ is a subject-specific intercept representing  individual speed of an observer with $u_i \sim N(0, \sigma_u^2)$. $a_i$ is a subject-specific slope representing the deviation of the speed-up (or -down) by attempt $k$. We assume $a_i \sim N(0, \sigma_a^2)$.
-$\ell_j$ is a lineup-specific random effect for the time needed to evaluate a lineup; $\ell_j \sim N(0, \sigma_\ell^2)$.
+where $\mu$ represents overall average of log time taken by an observer to evaluate a lineup. $\alpha$ is the average change in log time taken for each additional attempt.  $\alpha_1$ is an offset in log time taken for the first attempt. All other effects are random effects: as before, $u_i$ is a subject-specific intercept representing  individual speed of an observer with $u_i \sim N(0, \sigma_u^2)$. $a_i$ is a subject-specific slope representing the deviation of the speed-up (or -down) by attempt $k$. We assume $a_i \sim N(0, \sigma_a^2)$. $\ell_j$ is a lineup-specific random effect for the time needed to evaluate a lineup; $\ell_j \sim N(0, \sigma_\ell^2)$ and the overall error $\epsilon_{ijk} \sim N(0, \sigma^2)$.
 }
-\begin{equation} \label{eqn:trend_time}
-g_1( \mu_{ijk} )= \mu_1 + \alpha_k + u_i +  a_{i} k + \ell_j,  
-\end{equation}
-where the link function $g_1(\mu)=1/\mu;  \mu >0$ and $\mu_1$ represents the inverse of overall average time taken to evaluate a lineup. 
 
-The inverse link function, $g_1^{-1}(.)$, from  Equation \ref{eqn:trend_time} leads to the estimate of the subject and the lineup specific time taken for an evaluation in $kth$ attempt by a single observer as 
+%\begin{equation} \label{eqn:trend_time}
+%Z_{ijk} = \mu_1 + \alpha_k + u_i +  a_{i} k + \ell_j + \epsilon_{ijk},  
+%\end{equation}
+%where the link function $g_1(\mu)=1/\mu;  \mu >0$ and $\mu_1$ represents the inverse of overall average time taken to evaluate a lineup. 
+
+Equation \ref{eqn:trend_time} leads to the estimate of the subject and the lineup specific time taken for an evaluation in $kth$ attempt by a single observer as 
 \begin{equation} \label{eqn:trend_power}
-\hat \mu_{ijk} =  g_1^{-1}(\hat{\mu_1} + \hat{\alpha}_k + \hat{u}_i +  \hat{a}_i k + \hat{\ell}_j).
+\hat \mu_{ijk} =  \hat{\mu} + \hat{\alpha_1}+ \hat{\alpha}k + \hat{u}_i +  \hat{a}_i k + \hat{\ell}_j).
 \end{equation}
 
 %For $Y_{l,i}$ being binary response we use {\it logit} link function $g(\mu)=g_1(\mu)=\log(\mu) - \log(1-\mu); 0 \le \mu \le 1$ and $\hat p_{\ell i}$ gives the estimate of proportion correct by subject $i$ with lineup $\ell$.  The response time taken is a positive random variable with a right skewed distribution. For this the usual convention is to model a gamma distribution with time. Thus we used inverse link function $g(\mu)=g_2(\mu)=1/\mu;  \mu >0$ for gamma response $Y_{l,i}$ and $\hat p_{\ell i}$ gives the estimate of mean time taken by subject $i$ for lineup $\ell$.

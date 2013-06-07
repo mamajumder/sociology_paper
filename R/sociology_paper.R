@@ -213,6 +213,7 @@ mdat <- melt(rbind(gdat,edat,cdat,adat), id=c("variable_level", "pic_name", "var
 
 qplot(variable_level, value, geom="boxplot", data=mdat[complete.cases(mdat),]) +
   facet_grid(variable~variable_name, scales="free") +
+  stat_summary(fun.y=mean, geom="point") + xlab("Levels of demographic factors")+
   theme(axis.text.x=element_text(angle=90, hjust=1))
 ggsave("../images/demographic_effect.pdf", width=8, height=8)
 

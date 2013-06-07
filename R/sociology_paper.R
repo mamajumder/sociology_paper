@@ -106,7 +106,7 @@ get_real_ip <- function(ip) {
 demographics <- NULL
 for (i in 1:10){
   di <- subset(get(paste("dat",i, sep="")), age > 1,
-                 select = c(id, response, start_time, time_taken, 
+                 select = c(id, response, start_time, time_taken, pic_name,
                             ip_address, gender, academic_study, age))
   di$age[di$age==0] <- NA # for experiment 1, age=0 means NA
   di$academic_study[di$academic_study==0] <- NA
@@ -130,6 +130,7 @@ demographics <- merge(demographics,ip.details,all.x=TRUE, by="ip_address")
 demographics$country <- as.character(demographics$country_name)
 demographics$country[(demographics$country_code != "IN") & (demographics$country_code != "US")] <- "Rest of the world"
 demographics$country[demographics$country=="Namibia"] <- "Rest of the world"
+demographics$country[demographics$country==NA] <- "Rest of the world"
 
 
 
@@ -184,12 +185,38 @@ pdat <- ddply(demographics, .(country,gender_level, age_level,degree), summarize
 qplot(degree, avg_time, geom="bar", stat="identity", data=pdat[complete.cases(pdat),]) +
   facet_grid(age_level~country+gender_level) + coord_flip() + xlab("Academic Study") 
 
-ggsave("../images/age_gender_within_country_correct.pdf", width=10, height=8)
+ggsave("../images/age_gender_within_country_time.pdf", width=10, height=8)
 
 qplot(degree, per_correct, geom="bar", stat="identity", data=pdat[complete.cases(pdat),]) +
   facet_grid(age_level~country+gender_level) + coord_flip() + xlab("Academic Study") 
 
-ggsave("../images/age_gender_within_country_time.pdf", width=10, height=8)
+ggsave("../images/age_gender_within_country_correct.pdf", width=10, height=8)
+
+# Demographic factor main effect for percent correct and average time aggregated by lineup
+gdat <- ddply(demographics, .(gender_level, pic_name), summarize,
+              prop_correct = mean(response),
+              avg_time = mean(time_taken))
+get_effect <- function(dat, var){
+  res <- ddply(dat,c(var), summarize,
+               log_avg_time = round(log(mean(time_taken)),2),
+               prop_correct = mean(response)
+  )
+  res$variable_name <- var[1]
+  colnames(res) <- c("variable_level", colnames(res)[-1])
+  return(res)
+}
+gdat <- get_effect(demographics, c("gender_level", "pic_name"))
+edat <- get_effect(demographics, c("degree", "pic_name"))
+cdat <- get_effect(demographics, c("country", "pic_name"))
+adat <- get_effect(demographics, c("age_level", "pic_name"))
+
+mdat <- melt(rbind(gdat,edat,cdat,adat), id=c("variable_level", "pic_name", "variable_name"))
+
+qplot(variable_level, value, geom="boxplot", data=mdat[complete.cases(mdat),]) +
+  facet_grid(variable~variable_name, scales="free") +
+  theme(axis.text.x=element_text(angle=90, hjust=1))
+
+ggsave("../images/demographic_effect.pdf", width=8, height=8)
 
 # Time of the work
 turker$hours <- as.factor(hour(as.POSIXlt(turker$start_time)))
@@ -210,7 +237,7 @@ get_summary <- function(dat, var){
   return(data.frame(var=var,lbls=res[,1], res[,-1]))
 }
 
-
+ttt <- get_summary(demographics, c("gender_level", "pic_name"))
 
 sg <- get_summary(demographics, "gender")
 se <- get_summary(demographics, "degree")
@@ -400,14 +427,13 @@ anova(fit3,fit2)
 
 
 
-# Fitting gamma mixed effect models with time taken
+# Fitting gamma mixed effect models with log(time_taken)
 
-qplot(time_taken, data=dt, geom="histogram", binwidth=10)
+qplot(log(time_taken), data=dt, geom="histogram", binwidth=.1)
 
 # f0 <- lmer(time_taken ~ factor(attempt) + (attempt|id) + (1|pic_id), family=Gamma(link="inverse"), data=dt)
-
-f0 <- lmer(time_taken ~ factor(attempt) + (attempt|id) + (1|pic_id), family=Gamma(link="log"), data=dt)
-
+# f0 <- lmer(time_taken ~ factor(attempt) + (attempt|id) + (1|pic_id), family=Gamma(link="log"), data=dt)
+f0 <- lmer(log(time_taken) ~I(attempt==1)+ attempt + (attempt|id) + (1|pic_id), data=dt)
 
 
 

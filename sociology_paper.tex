@@ -110,8 +110,8 @@ There have been \dc{ten} experiments conducted using Amazon's Mechanical Turk~\c
 
 
 \begin{table*}[hbtp] 
-\caption{Visual test statistics and question asked to the observers to answer while evaluating a lineup } 
 \centering 
+\caption{Visual test statistics used in 10 different simulation experiments. The observers are asked different questions to answer while evaluating a lineup} 
 \begin{tabular}{m{.5cm}m{3cm}m{3cm}m{6.5cm}} 
 \hline\hline 
 Serial & Experiment & Test Statistic & Lineup question \\ [0.5ex] % inserts table %heading 
@@ -121,8 +121,8 @@ between group A and B? \\
 2 &  Scatter plot & \begin{minipage}[t]{3cm}  \begin{center} \scalebox{0.45}{\includegraphics{stat_beta_k.pdf}} \end{center} \end{minipage} & Of the scatter plots below which one shows data that has steepest slope? \\ 
 
   3 & Contaminated plot &\begin{minipage}[t]{3cm} \begin{center} \scalebox{0.45}{\includegraphics{stat_contaminated.pdf}} \end{center} \end{minipage} & Of the scatter plots below which one shows data that has steepest slope? \\  \\ 
-  4 & Polar vs Cartesian & \begin{minipage}[t]{3cm} \begin{center}  \scalebox{0.35}{\includegraphics{stat_polar.pdf}} \end{center} \end{minipage} &Which plot is different? \\ 
-  5 & Hist vs density & \begin{minipage}[t]{3cm} \begin{center}  \scalebox{0.35}{\includegraphics{stat_density.pdf}} \end{center} \end{minipage} &In which plot is the blue group furthest to the right?\\ 
+  4 & Polar vs Cartesian & \begin{minipage}[t]{3cm} \begin{center}  \scalebox{0.32}{\includegraphics{stat_polar.pdf}} \end{center} \end{minipage} &Which plot is different? \\ 
+  5 & Hist vs density & \begin{minipage}[t]{3cm} \begin{center}  \scalebox{0.38}{\includegraphics{stat_density.pdf}} \end{center} \end{minipage} &In which plot is the blue group furthest to the right?\\ 
   6 & Violine vs boxplot & \begin{minipage}[t]{3cm} \begin{center}  \scalebox{0.35}{\includegraphics{stat_violin.pdf}} \end{center} \end{minipage}&  In which plot does the blue group look the most different from  the red group?\\ 
   7 & Group separation & \begin{minipage}[t]{3cm} \begin{center}  \scalebox{0.4}{\includegraphics{stat_separation.pdf}} \end{center} \end{minipage} &Which of these plots has the most separation between the coloured groups?\\ 
   8 & Sine Illusion & \begin{minipage}[t]{3cm} \begin{center}  \scalebox{0.28}{\includegraphics{stat_sine.pdf}} \end{center} \end{minipage} & In what picture is the size of the curve most consistent?\\ 
@@ -179,15 +179,28 @@ It may be possible that some part of the lineup is little explored or not scanne
 \subsection{Individual Performance of the Observer} Each person is different from others in some way. For example, in a controlled experimental study \citet{zhao:2012}  notice that some people spend a lot of time to decide no matter whether the lineup is difficult or easy while some simply glance at lineups to make a decision. This influences the response of the observer. Also subject specific variation in the power of visual test is observed in \citep{majumder:2013}. 
 
 \section{Simulation Experiment and Methods}\label{sec:exp_design}
-The performance of the observer while evaluating a lineup would depend on the factors described in Section \ref{sec:factor_performance}. In this section we present the experimental design to control some  of them so that learning effect of observer and location effect of a plot in the lineup can be estimated.
+The performance of the observer while evaluating a lineup would depend on the factors described in Section \ref{sec:factor_performance}. This section presents the experimental setup, data collection methods and data analysis plans with models to asses the influence of those demographic factors on visual statistical inference. 
 
-\subsection{Experiment Setup}  Multiple simulation experiments are designed to investigate the learning trend of the observer and the location effect of the actual data in the lineup. These are explained in tis section.
+\subsection{Experiment Setup}  In addition to the evaluation response of the lineup, all the 10 experiments shown in Table \ref{tbl:visual_stat} were designed to collect the following demographic information of the subjects participating the experiments:
 
-\paragraph{Design for Learning Trend:} Learning trend of an observer can be observed in terms of performance over successive feedback when multiple lineups are shown for evaluation. Each subject is shown a total of 10 lineups. The lineups are not necessarily with the same difficulty levels. But the order of lineups is randomized. The responses of the lineups are recorded by attempt 1 through 10. Attempt 1 means the response is for the first lineup and attempt 10 means the response is for the 10th lineup. The goal is to estimate whether performance of the observer improves from attempt 1 to attempt 10.
+\begin{enumerate} \itemsep 0in
+\item Age level
+\item Gender
+\item Academic education level
+\item Geographical location
+\end{enumerate}
 
-\paragraph{Design for Location effect:} The experiment is set up based on the gene expression data with two groups. The groups are defined based on the presence or absence of iron sufficiency. The null hypothesis is that there is no difference between this two groups. Null plots are obtained by randomizing the group structure of the data. The actual plot is then randomly placed in five different locations. For each location, five different sets of null plots are used to produce five different lineups. This produces 25 different lineups. One such lineup is shown in Figure \ref{fig:lineup_geno}. Similar procedure is applied to obtain 25 lineups to test the interaction between Genotype and Empty Vector (EV).
+Instead of collecting exact age, 9 levels of age were collected. They are 18-25, 26-30, 31-35, 36-40, 41-45, 46-50, 51-55, 56-60, above 60. There were five levels of academic information. They are (1) High school or less , (2) Some under grad course, (3) Under graduate degree, (4) Some graduate courses,  (5) Graduate degree.  Geographical locations were collected using the true public ip addresses of the participants' computer. This provides latitude and longitude of the ip address as well as the city and country information. 
 
-Each observer is shown three lineups. First lineups shown is a randomly selected Interaction lineup, then one from randomly selected Genotype lineup. Finally a test lineup is shown to screen out unusual evaluation. The subject is not aware which one is the test plot but it is informed in the starting of the task about having a test plot. The test plot is very easy and everyone should detect the data plot. The MTurk worker is paid based on whether he or she could correctly detect the data plot. But the data on test plot are excluded from the analysis.
+%Multiple simulation experiments are designed to investigate the learning trend of the observer and the location effect of the actual data in the lineup. These are explained in tis section.
+
+\paragraph{Learning Trend:} Learning trend of an observer can be observed in terms of performance over successive feedback when multiple lineups are shown for evaluation. Experiments 5, 6 and 7 were used for this. Each subject was shown a total of 10 lineups randomly selected from a pool of lineups. The lineups are not necessarily with the same difficulty levels. But the order of lineups is randomized. The responses of the lineups are recorded by attempt 1 through 10. Attempt 1 means the response is for the first lineup the observer evaluates and attempt 10 refers to the response for the 10th lineup. The goal is to estimate whether performance of the observer improves from attempt 1 to attempt 10.
+
+\paragraph{Design for Location effect:} The experiment was set up based on the gene expression data with two groups. The groups are defined based on the presence or absence of iron sufficiency. The null hypothesis is that there is no difference between this two groups. Null plots were obtained by randomizing the group structure of the data. The actual plot was randomly placed in five different locations. For each location, five different sets of null plots were used to produce five different lineups. This produced 25 different lineups. Similar procedure was applied to obtain 25 lineups to test the interaction between Genotype and Empty Vector (EV).
+
+%One such lineup is shown in Figure \ref{fig:lineup_geno}. 
+
+Each observer was shown three lineups. First lineups shown is a randomly selected Interaction lineup, one from randomly selected Genotype lineup. Finally a test lineup was shown to screen out unusual evaluation. The subjects were not aware which one is the test plot but it was informed in the starting of the task about having a test plot. The test plot was very easy and everyone should detect the data plot. The MTurk worker was paid based on whether he or she could correctly detect the data plot. But the data on test plot are excluded from the analysis.
 
 \subsection{Data collection methods}  The human observers who evaluate the experimental lineups are recruited through Amazon Mechanical Turk \cite{turk} or MTurk Web site.  It is an online work place where people from around the world can perform some tasks and get paid. Usually tasks are very simple and no specialized training is required. Being a human is the main requirement. Tasks are designed for anyone to do but some tasks may require that workers satisfy some skill level depending on the recruiters need. The tasks are designed such that it does not take much time to complete. Humans are still better than computers in performing these types of tasks. The the amount of money paid for each task is very small as well. 
 
@@ -308,6 +321,14 @@ Gender & Male & 1348 & 48.51 & 13493 \\
 
 The large number of participants are from age group 18 to 35. Interestingly we see many participants from older age groups as well. Specially for united states almost all the age groups show uniform participations after age 30 as in Figure \ref{fig:demographic_info}. Notice that fewer people participated from India beyond age 40 compared to united states. Even thoug total participations from india is larger compared to United States, they are mostly young people who are capable of using internet and computer. 
 
+\subsection{Demographic Factors}
+
+\begin{figure}[htbp] 
+   \centering
+   \includegraphics[width=6.5in]{demographic_effect.pdf} 
+   \caption{Boxplots of average time taken in log scale and proportion correct responses of all the lineups plotted for each demographic factor variables. None of the demographic factors appear to be statistically significant except India effect for proportion correct. Effect of graduate degree in proportion correct is also significant but is actually the India effect since, Most of the graduate degree holders are coming from India.}
+   \label{fig:gender_country}
+\end{figure}
 
 \subsection{Learning Trend} Each subject participating the experiment has seen multiple number of lineups for evaluations. Suppose $K$ be the number of lineups evaluated by a subject and $A_k$ be the $kth$ attempt, $k=1,2, ..., K$. Subjects may have a chance for self learning and do better on lineups shown later in the sequence. They may learn from their previous mistake or they may learn about the features of the plots being evaluated as they progress. Thus if there is any learning trend that should be apparent in proportion correct over $A_k$. But to obtain this we have to adjust for lineup difficulty and individual performances.
 
@@ -485,13 +506,6 @@ Serial & description & submitted & rejected & time(min) & Actual & 100 task& \$/
    \centering
    \includegraphics[width=6.5in]{age_gender_within_country_bar.pdf} 
    \caption{Countrywise distribution of age and academic levels of the MTurk workers participating the experiments shows the diversity of the subjects in all the demographic aspect. Male and female participants differ in India specially for agelevel 18-25. For United States number of participants are similar beyond age 40 while few number of participants coming from India beyond that age.}
-   \label{fig:gender_country}
-\end{figure}
-
-\begin{figure}[htbp] 
-   \centering
-   \includegraphics[width=6.5in]{demographic_effect.pdf} 
-   \caption{Boxplots of average time taken in log scale and proportion correct responses of all the lineups plotted for each demographic factor variables. None of the demographic factors appear to be statistically significant except India effect for proportion correct. Effect of graduate degree in proportion correct is also significant but is actually the India effect since, Most of the graduate degree holders are coming from India.}
    \label{fig:gender_country}
 \end{figure}
 

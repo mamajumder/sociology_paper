@@ -95,8 +95,16 @@ What does this mean, though? For that, we need to know the context of the data a
 
 \begin{figure}[hbtp] 
    \centering
-   \includegraphics[width=0.49\textwidth]{tower.pdf} \hfill
-   \includegraphics[width=0.50\textwidth]{freedom-sim.pdf} 
+   \begin{minipage}[c]{0.49\textwidth}
+   \includegraphics[width=\textwidth]{tower.pdf}
+   \end{minipage}
+    \hfill
+   \begin{minipage}[c]{0.45\textwidth}
+   Freedom's Lighthouse Averages \\
+      \includegraphics[width=\textwidth]{freedom-sim.pdf} 
+   RealClearPolitics Averages\\
+      \includegraphics[width=\textwidth]{rcp-sim.pdf} 
+   \end{minipage}
    \caption{ \label{fig:tower} Electoral building plot of the results of the 2012 U.S. Presidential Election (left). On the right a histogram of 10,000 simulations from the same model. The $p$-value of observing results as extreme as in the  2012 U.S. election based on the bootstrap is 0.0533 (with Bootstrap standard error of 0.002).}
 \end{figure}
 

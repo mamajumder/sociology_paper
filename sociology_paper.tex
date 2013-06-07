@@ -104,7 +104,7 @@ For any evaluation the observer may or may not identify the actual data plot. Un
 
 %Some of the factors that may affect the performance of the observer are discussed in Section \ref{sec:factor_performance}. In this paper we focus on estimating the learning effect of the observer in terms of both proportion correct and time taken to evaluate a lineup through the attempts made during the evaluation of multiple plots. We also estimate the location effect of the observed data plot in a lineup. The other factors are controlled in simulation experiments so that learning effect and location effect can be estimated.
 
-There have been \dc{ten} experiments conducted using Amazon's Mechanical Turk~\cite{turk} that are being used to evaluate the the effect of the observer. Table \ref{tbl:visual_stat} summarizes these. Experiments XXX are used to evaluate the effects of demographic factors whethere there is a learning trend. The design of experiment XXX enabled effect of position in the lineup, and the sample of nulls, to be evaluated. Section \ref{sec:factor_performance} describes the factors that may affect the performance of the observer. Section \ref{sec:exp_design} describes the methods used to assess the effects, and Section \ref{sec:result_socio} describes the results.
+There have been \dc{ten} experiments conducted using Amazon's Mechanical Turk~\cite{turk} that are being used to evaluate the the effect of the observer. Table \ref{tbl:visual_stat} summarizes these. All of these experiments are used to evaluate the effects of demographic factors. Experiments 5,6 and 7 are used to study learning trend of the observer. The design of experiment 9 enabled effect of position in the lineup, and the sample of nulls, to be evaluated. Section \ref{sec:factor_performance} describes the factors that may affect the performance of the observer. Section \ref{sec:exp_design} describes the methods used to assess the effects, and Section \ref{sec:result_socio} describes the results.
 
 %\subsection{Experiments pooled}
 
@@ -114,25 +114,27 @@ There have been \dc{ten} experiments conducted using Amazon's Mechanical Turk~\c
 \centering 
 \begin{tabular}{m{.5cm}m{3cm}m{3cm}m{6.5cm}} 
 \hline\hline 
-Case & Statistic & Test Statistic & Lineup question \\ [0.5ex] % inserts table %heading 
+Serial & Experiment & Test Statistic & Lineup question \\ [0.5ex] % inserts table %heading 
 \hline 
-1  & Box plot & \begin{minipage}[t]{3cm} 	\scalebox{0.45}{\includegraphics{stat_category.pdf}} \end{minipage} & Which set of box plots shows biggest vertical difference 
+1  & Box plot & \begin{minipage}[t]{3cm} \begin{center}	\scalebox{0.4}{\includegraphics{stat_category.pdf}} \end{center} \end{minipage} & Which set of box plots shows biggest vertical difference 
 between group A and B? \\
-2 &  Scatter plot & \begin{minipage}[t]{3cm}   \scalebox{0.45}{\includegraphics{stat_beta_k.pdf}}\end{minipage} & Of the scatter plots below which one shows data that has steepest slope? \\ 
+2 &  Scatter plot & \begin{minipage}[t]{3cm}  \begin{center} \scalebox{0.45}{\includegraphics{stat_beta_k.pdf}} \end{center} \end{minipage} & Of the scatter plots below which one shows data that has steepest slope? \\ 
 
-  3 & Contaminated plot &  \\ 
-  4 & Polar vs Cartesian &  \\ 
-  5 & Hist vs density &  \\ 
-  6 & Violine vs boxplot &  \\ 
-  7 & Group separation &  \\ 
-  8 & Sine Illusion &  \\ 
-  9 & Gene expression &  \\ 
-  10 & Test normality &  \\ 
+  3 & Contaminated plot &\begin{minipage}[t]{3cm} \begin{center} \scalebox{0.45}{\includegraphics{stat_contaminated.pdf}} \end{center} \end{minipage} & Of the scatter plots below which one shows data that has steepest slope? \\  \\ 
+  4 & Polar vs Cartesian & \begin{minipage}[t]{3cm} \begin{center}  \scalebox{0.35}{\includegraphics{stat_polar.pdf}} \end{center} \end{minipage} &Which plot is different? \\ 
+  5 & Hist vs density & \begin{minipage}[t]{3cm} \begin{center}  \scalebox{0.35}{\includegraphics{stat_density.pdf}} \end{center} \end{minipage} &In which plot is the blue group furthest to the right?\\ 
+  6 & Violine vs boxplot & \begin{minipage}[t]{3cm} \begin{center}  \scalebox{0.35}{\includegraphics{stat_violin.pdf}} \end{center} \end{minipage}&  In which plot does the blue group look the most different from  the red group?\\ 
+  7 & Group separation & \begin{minipage}[t]{3cm} \begin{center}  \scalebox{0.4}{\includegraphics{stat_separation.pdf}} \end{center} \end{minipage} &Which of these plots has the most separation between the coloured groups?\\ 
+  8 & Sine Illusion & \begin{minipage}[t]{3cm} \begin{center}  \scalebox{0.28}{\includegraphics{stat_sine.pdf}} \end{center} \end{minipage} & In what picture is the size of the curve most consistent?\\ 
+  9 & Gene expression &\begin{minipage}[t]{3cm} \begin{center}  \scalebox{0.45}{\includegraphics{stat_gene.pdf}} \end{center} \end{minipage} & In which of these plots is the green line the steepest, and the spread of the green points relatively small?\\ 
+  10 & Test normality & \begin{minipage}[t]{3cm} \begin{center}  \scalebox{0.35}{\includegraphics{stat_normality.pdf}} \end{center} \end{minipage} &Which of these plots is most different from the others?\\ 
 
 \hline 
 \end{tabular} 
 \label{tbl:visual_stat} 
 \end{table*} 
+
+
 
 
 \section{Factors Affecting the performance of the observer} \label{sec:factor_performance} 
@@ -146,7 +148,7 @@ The visual test statistic is chosen so that it displays a specific patter in cas
 
 \subsection{Choice of Visual Test Statistic}  The visual test statistic should be highly associated with the hypothesis under investigation. To achieve this purposes it is very important to decide which plot type and plot features should be adopted.  In a linear regression setting, the visual test statistics are presented in \citep{majumder:2013} for some common hypothesis testing.  It is also observed that a scatterplot may do a better job than a box plot when using as a visual test statistic for regression parameters.  Some of the effective features of visual test statistics are discussed in \citep{heike:2012} including plot type, color and shape of the plots.  \cite{niladri:2012} presents some \textit{distance measure} to determine how a plot may be different from each other.
 
-Plots to do: for the same signal strength show the proportion correct for scatterplot and boxplot. eg., qplot(effect, ump-visual power, color= plot-type)
+%Plots to do: for the same signal strength show the proportion correct for scatterplot and boxplot. eg., qplot(effect, ump-visual power, color= plot-type)
 
 \subsection{Question that Human Observer Answers} The researcher knows about the underlying hypothesis but the observer does not necessarily know the underlying details of the lineup. So, the researcher needs to ask a question observer is to answer while evaluating the lineup. This question should provide the observer a little clue so that the answer reflects the hypothesized patterns in the actual plot. For example Table \ref{tbl:visual_stat} shows the questions asked for the simulation experiments done by  \citet{majumder:2013}. Notice that for case 1 if the observer can identify the actual plot in the lineup that should indicate that the plot chosen has the most vertical difference between groups A and B which is exactly what the researchers intend to examine. Similarly for case 2, a correct evaluation would indicate that the slope is different than the slope that may show up just from randomness.
 

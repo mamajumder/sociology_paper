@@ -369,6 +369,7 @@ The large number of participants are from age group 18 to 35. Interestingly we s
 \begin{table}[htbp]
 \centering
 \caption{Parameter estimates of Model \eqref{eqn:trend_time} fitted for log time taken to evaluate a lineup. Both fixed effect parameters of Attempt ($\alpha_1$ and $\alpha$) are highly significant for all three experiments 5, 6 and 7.}
+\scalebox{0.9}{
 \begin{tabular}{rrrrccrrrccrrrc}
   \hline
 & \multicolumn{4}{c} {Experiment 5} & &\multicolumn{4}{c} {Experiment 6} && \multicolumn{4}{c} {Experiment 7}\\
@@ -377,15 +378,39 @@ The large number of participants are from age group 18 to 35. Interestingly we s
  Effect& Est & SE & Zval & $p$-value && Est & SE & Zval & $p$-value && Est & SE & Zval & $p$-value \\ 
   \hline
 Fixed &  &  &  & && &  & & & & & &  & \\ 
-$\mu$\phantom{$_1$} & 3.82 & 0.04 & 97.38 & $<$0.001 & & 3.90 & 0.03 & 118.19 & $<$0.001 && 3.73 & 0.05 & 69.04 & $<$0.001 \\ 
-  $\alpha_1$ & 0.33 & 0.04 & 9.35 & $<$0.001 && 0.34 & 0.03 & 11.40 & $<$0.001 && 0.28 & 0.05 & 5.63 & $<$0.001 \\ 
-  $\alpha$\phantom{$_1$} & -0.04 & 0.00 & -9.30 & $<$0.001 && -0.04 & 0.00 & -10.19 & $<$0.001 && -0.03 & 0.01 & -4.22 & $<$0.001 \\ 
+$\mu$ & 3.817 & 0.039 & 97.38 & $<$0.001 &   & 3.901 & 0.033 & 118.19 & $<$0.001 &   & 3.731 & 0.054 & 69.04 & $<$0.001 \\   $\alpha_1$ & 0.326 & 0.035 & 9.35 & $<$0.001 &   & 0.335 & 0.029 & 11.4 & $<$0.001 &   & 0.280 & 0.050 & 5.63 & $<$0.001 \\   $\alpha$ & -0.038 & 0.004 & -9.3 & $<$0.001 &   & -0.039 & 0.004 & -10.19 & $<$0.001 &   & -0.029 & 0.007 & -4.22 & $<$0.001 \\ 
 \multicolumn{2}{l}{Random}   &  &  &  &  & & &&& & & &  & \\ 
   $\sigma^2_a$ & 0.001 & 0.027 &  &  &   & 0.002 & 0.045 &  &  &   & 0.002 & 0.049 &  &  \\   $\sigma^2_u$ & 0.259 & 0.509 &  &  &   & 0.245 & 0.495 &  &  &   & 0.134 & 0.366 &  &  \\   $\sigma^2_l$ & 0.008 & 0.091 &  &  &   & 0.040 & 0.199 &  &  &   & 0.055 & 0.235 &  &  \\   $\sigma^2$ & 0.211 & 0.460 &  &  &   & 0.251 & 0.501 &  &  &   & 0.206 & 0.454 &  &  \\ 
    \hline
 \end{tabular}
+}
 \label{tbl:model_result_time}
 \end{table}
+
+
+
+\begin{table}[htbp]
+\centering
+\caption{Parameter estimates of Model \eqref{eqn:trend_response} fitted for log time taken to evaluate a lineup. None of the fixed factor effects of attempt (2-10) seem to be significantly different from each other at \%5 level in all three experiments 5, 6 and 7.}
+\scalebox{0.9}{
+\begin{tabular}{rrrrccrrrccrrrc}
+  \hline
+& \multicolumn{4}{c} {Experiment 5} & &\multicolumn{4}{c} {Experiment 6} && \multicolumn{4}{c} {Experiment 7}\\
+
+\cline{2-5} \cline{7-10} \cline{12-15} 
+ Effect& Est & SE & Zval & $p$-value && Est & SE & Zval & $p$-value && Est & SE & Zval & $p$-value \\ 
+  \hline
+Fixed &  &  &  & && &  & & & & & &  & \\ 
+$\mu$ & -1.304 & 0.179 & -7.28 & $<$0.001 &   & -0.220 & 0.147 & -1.5 & 0.134 &   & -1.737 & 0.481 & -3.61 & $<$0.001 \\   $\alpha2$ & 0.270 & 0.219 & 1.24 & 0.217 &   & 0.262 & 0.158 & 1.66 & 0.098 &   & -0.456 & 0.385 & -1.18 & 0.237 \\   $\alpha3$ & -0.178 & 0.226 & -0.79 & 0.432 &   & 0.342 & 0.157 & 2.18 & 0.029 &   & -0.105 & 0.386 & -0.27 & 0.786 \\   $\alpha4$ & 0.083 & 0.224 & 0.37 & 0.712 &   & 0.358 & 0.159 & 2.26 & 0.024 &   & -0.378 & 0.381 & -0.99 & 0.322 \\   $\alpha5$ & 0.298 & 0.224 & 1.33 & 0.183 &   & 0.376 & 0.159 & 2.36 & 0.018 &   & -0.107 & 0.385 & -0.28 & 0.781 \\   $\alpha6$ & 0.042 & 0.231 & 0.18 & 0.857 &   & 0.246 & 0.158 & 1.56 & 0.12 &   & 0.026 & 0.407 & 0.06 & 0.949 \\   $\alpha7$ & 0.283 & 0.230 & 1.23 & 0.217 &   & 0.160 & 0.159 & 1.01 & 0.314 &   & 0.057 & 0.401 & 0.14 & 0.886 \\   $\alpha8$ & -0.045 & 0.233 & -0.19 & 0.847 &   & 0.341 & 0.160 & 2.13 & 0.033 &   & -0.003 & 0.394 & -0.01 & 0.994 \\   $\alpha9$ & -0.195 & 0.232 & -0.84 & 0.400 &   & 0.378 & 0.160 & 2.36 & 0.018 &   & 0.204 & 0.436 & 0.47 & 0.639 \\   $\alpha10$ & 0.513 & 0.228 & 2.25 & 0.024 &   & 0.192 & 0.163 & 1.18 & 0.238 &   & -0.213 & 0.432 & -0.49 & 0.622 \\ 
+\multicolumn{2}{l}{Random}   &  &  &  &  & & &&& & & &  & \\ 
+  $\sigma^2_a$ & $<$0.001 & 0.017 &  &  &   & 0.001 & 0.034 &  &  &   & 0.027 & 0.163 &  &  \\   $\sigma^2_u$ & 0.720 & 0.848 &  &  &   & 0.815 & 0.903 &  &  &   & $<$0.001 & $<$0.001 &  &  \\   $\sigma^2_l$ & 2.178 & 1.476 &  &  &   & 2.009 & 1.418 &  &  &   & 10.980 & 3.314 &  &  \\ 
+   \hline
+\end{tabular}
+}
+\label{tbl:model_result_response}
+\end{table}
+
+
 
 
 

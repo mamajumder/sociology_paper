@@ -325,6 +325,7 @@ gregexpr("\\W+", reason.correct)
 
 
 # =====================================================
+# Model fitting
 # Examining learning trend while giving feedback
 
 # function two obtain sequential attempt information from start_time
@@ -352,12 +353,17 @@ for (i in 1:7){
 
 
 # Attempt vs mean time taken for each lineup
-
-qplot(attempt, time_taken, data=subset(dtrend, time_taken< 200),colour=factor(experiment)) +
+qplot(attempt, log(time_taken), data=dtrend,colour=factor(experiment)) +
   stat_smooth(method="loess")
 
+# Log time taken appears to be normal
+qplot(log(time_taken), geom="density",
+      data=subset(dtrend, experiment %in% c(5,6,7)), color=factor(experiment)) +
+  scale_colour_hue(name="Experiment")
+
+# Modeling time taken
 # fitting linear random effect model to check 
-# if time_taken has any trend over sequential attempts
+# if log time_taken has any trend over sequential attempts
 
 dpt <- NULL
 for (i in 5:7){
@@ -397,16 +403,46 @@ ggplot() +
 
 ggsave("../images/learning_trend_time.pdf", width=10.5, height = 3.5)
 
+# Getting results of mixed effect model with log(time_taken)
 
-# Fitting generalized mixed effect model with time taken
-# Link function is inverse link (1/mu) since response is gamma
+get_estimates <- function(fit){
+  Vcov <- vcov(fit, useScale = FALSE)
+  betas <- fixef(fit)
+  se <- sqrt(diag(Vcov))
+  zval <- betas / se
+  pval <- round(2 * pnorm(abs(zval), lower.tail = FALSE),4)
+  pval[pval==0] <- "$<$0.001"
+  fe <- data.frame(Est=round(betas,3),SE= round(se,3), Zval=round(zval,2), pvalue=pval)
+  rem <- summary(fit)@REmat
+  re <- data.frame(Est=rem[,3], SE= rem[,4], Zval="",pvalue="")
+  re$Est <- round(as.numeric(as.character(re$Est)),3)
+  re$SE <- round(as.numeric(as.character(re$SE)),3)
+  rownames(re) <- paste(rem[,1],rem[,2])
+  return(rbind(fe,re[order(rownames(re)),]))
+}
 
-qplot(time_taken, geom="density", data=subset(dpt, time_taken<300), color=factor(experiment)) +
-  scale_colour_hue(name="Experiment")
+model <- as.formula(log(time_taken) ~I(attempt==1)+ attempt + (attempt|id) + (1|pic_id))
+dt5 <- subset(dtrend, experiment==5)
+f5 <- lmer(model, data=dt5) 
+estimates5 <- get_estimates(f5)
+dt6 <- subset(dtrend, experiment==6)
+f6 <- lmer(model, data=dt6)
+estimates6 <- get_estimates(f6)
+dt7 <- subset(dtrend, experiment==7)
+f7 <- lmer(model, data=dt7)
+estimates7 <- get_estimates(f7)
 
+estimates <- data.frame(estimates5,g1=" ",estimates6,g2=" ", estimates7)
+rownames(estimates) <- c("$\\mu$","$\\alpha_1$","$\\alpha$", "$\\sigma^2_a$",
+                         "$\\sigma^2_u$","$\\sigma^2_l$","$\\sigma^2$")
+dgt <- c(rep(0,7), rep(3,14), rep(2,7), rep(0,7))
+dgts <- matrix(rep(dgt,3), ncol=15)
+print(xtable(estimates, digits=dgts),  sanitize.text.function = function(x){x})
 
-# Checking if the performance increases with attempts
+# ---------------------------------------------------------------
+# Modeling proportion correct
 # Fiting generalized mixed effect model with prportion correct
+# Checking if the performance increases with attempts
 
 trend.dat <- NULL
 for (i in 5:7){
@@ -435,13 +471,41 @@ ggsave("../images/learning_trend.pdf", width=10.5, height = 3.5)
 
 # Checking if the trend shown in the plot is significant or not
 # For all experiments 5,6,7 slope is not statistically significant
-
+# It appears that none of them are significant
 fit1 <- lm(resid ~ attempt, data=subset(trend.dat, experiment==5))
 fit2 <- lm(resid ~ attempt, data=subset(trend.dat, experiment==6))
 fit3 <- lm(resid ~ attempt, data=subset(trend.dat, experiment==7))
 
-# fitting models with response (percent correct)
+# Getting results of model with proportion correct
+model <- as.formula(response ~ factor(attempt) + (1|pic_name) + (attempt|id))
+dt5 <- subset(dtrend, experiment==5)
+fp5 <- lmer(model,family="binomial",data=dt5)
+res5 <- get_estimates(fp5)
+res5$pvalue <- as.character(res5$pvalue)
+res5$pvalue[2:10] <- round(as.numeric(res5$pvalue[2:10]),3)
 
+dt6 <- subset(dtrend, experiment==6)
+fp6 <- lmer(model,family="binomial",data=dt6)
+res6 <- get_estimates(fp6)
+res6$pvalue <- as.character(res6$pvalue)
+res6$pvalue[1:10] <- round(as.numeric(res6$pvalue[1:10]),3)
+
+dt7 <- subset(dtrend, experiment==7)
+fp7 <- lmer(model,family="binomial",data=dt7)
+res7 <- get_estimates(fp7)
+res7$pvalue <- as.character(res7$pvalue)
+res7$pvalue[1:10] <- round(as.numeric(res7$pvalue[1:10]),3)
+
+results <- data.frame(res5,g1=" ",res6,g2=" ", res7)
+rownames(results) <- c("$\\mu$", paste("$\\alpha", 2:10, "$",sep=""),
+                         "$\\sigma^2_a$","$\\sigma^2_u$","$\\sigma^2_l$")
+
+print(xtable(results, digits=3),  sanitize.text.function = function(x){x})
+
+
+
+
+# Examining different models with response (percent correct)
 dt <- subset(dtrend, experiment==5)
 fit0 <- lmer(response ~ attempt + p_value + (attempt -1|id), family="binomial", data=dt)
 
@@ -453,43 +517,6 @@ fit3 <- lmer(response ~ factor(attempt) + (attempt|id) + (1|pic_id), family="bin
 anova(fit3,fit2)
 
 
-# Fitting mixed effect models with log(time_taken)
-
-qplot(log(time_taken), data=dt, geom="histogram", binwidth=.1)
-
-get_estimates <- function(fit){
-  Vcov <- vcov(fit, useScale = FALSE)
-  betas <- fixef(fit)
-  se <- sqrt(diag(Vcov))
-  zval <- betas / se
-  pval <- round(2 * pnorm(abs(zval), lower.tail = FALSE),4)
-  pval[pval==0] <- "$<$0.001"
-  fe <- data.frame(Est=round(betas,3),SE= round(se,3), Zval=round(zval,2), pvalue=pval)
-  rem <- summary(fit)@REmat
-  re <- data.frame(Est=rem[,3], SE= rem[,4], Zval="",pvalue="")
-  re$Est <- round(as.numeric(as.character(re$Est)),3)
-  re$SE <- round(as.numeric(as.character(re$SE)),3)
-  rownames(re) <- paste(rem[,1],rem[,2])
-  return(rbind(fe,re[order(rownames(re)),]))
-}
-
-
-dt5 <- subset(dtrend, experiment==5)
-f5 <- lmer(log(time_taken) ~I(attempt==1)+ attempt + (attempt|id) + (1|pic_id), data=dt5) 
-estimates5 <- get_estimates(f5)
-dt6 <- subset(dtrend, experiment==6)
-f6 <- lmer(log(time_taken) ~I(attempt==1)+ attempt + (attempt|id) + (1|pic_id), data=dt6)
-estimates6 <- get_estimates(f6)
-dt7 <- subset(dtrend, experiment==7)
-f7 <- lmer(log(time_taken) ~I(attempt==1)+ attempt + (attempt|id) + (1|pic_id), data=dt7)
-estimates7 <- get_estimates(f7)
-
-estimates <- data.frame(estimates5,g1=" ",estimates6,g2=" ", estimates7)
-rownames(estimates) <- c("$\\mu$","$\\alpha_1$","$\\alpha$", "$\\sigma^2_a$",
-                         "$\\sigma^2_u$","$\\sigma^2_l$","$\\sigma^2$")
-dgt <- c(rep(0,7), rep(3,14), rep(2,7), rep(0,7))
-dgts <- matrix(rep(dgt,3), ncol=15)
-print(xtable(estimates, digits=dgts),  sanitize.text.function = function(x){x})
 
 
 

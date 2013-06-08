@@ -366,13 +366,30 @@ The large number of participants are from age group 18 to 35. Interestingly we s
 
 %Each subject participating the experiment has seen multiple number of lineups for evaluations. Suppose $K$ be the number of lineups evaluated by a subject and $A_k$ be the $kth$ attempt, $k=1,2, ..., K$. Subjects may have a chance for self learning and do better on lineups shown later in the sequence. They may learn from their previous mistake or they may learn about the features of the plots being evaluated as they progress. Thus if there is any learning trend that should be apparent in proportion correct over $A_k$. But to obtain this we have to adjust for lineup difficulty and individual performances.
 
-\begin{table}[htbp]\centering
-\caption{Parameter estimates of Model \eqref{eqn:trend_time} fitted for log time taken to evaluate a lineup. Both fixed effect parameters of Attempt ($\alpha_1$ and $\alpha$) are highly significant for all three experiments 5, 6 and 7.}\begin{tabular}{rrrcccrrcccrrcc}  \hline
+\begin{table}[htbp]
+\centering
+\caption{Parameter estimates of Model \eqref{eqn:trend_time} fitted for log time taken to evaluate a lineup. Both fixed effect parameters of Attempt ($\alpha_1$ and $\alpha$) are highly significant for all three experiments 5, 6 and 7.}
+\begin{tabular}{rrrrccrrrccrrrc}
+  \hline
 & \multicolumn{4}{c} {Experiment 5} & &\multicolumn{4}{c} {Experiment 6} && \multicolumn{4}{c} {Experiment 7}\\
-\cline{2-5} \cline{7-10} \cline{12-15}  Effect& Est & SE & Zval & pvalue && Est & SE & Zval & pvalue && Est & SE & Zval & pvalue \\   \hline
-Fixed &  &  &  & && &  & & & & & &  & \\ $\mu$ & 3.82 & 0.04 & 97.38 & $<$0.001 & & 3.90 & 0.03 & 118.19 & $<$0.001 && 3.73 & 0.05 & 69.04 & $<$0.001 \\   $\alpha_1$ & 0.33 & 0.04 & 9.35 & $<$0.001 && 0.34 & 0.03 & 11.4 & $<$0.001 && 0.28 & 0.05 & 5.63 & $<$0.001 \\   $\alpha$ & -0.04 & 0.00 & -9.3 & $<$0.001 && -0.04 & 0.00 & -10.19 & $<$0.001 && -0.03 & 0.01 & -4.22 & $<$0.001 \\ 
-Rand &  &  &  &  &  & & &&& & & &  & \\   $\sigma^2_a$ & 0.00 & 0.05 &  &  &   & 0.00 & 0.05 &  &  &   & 0.00 & 0.05 &  &  \\   $\sigma^2_u$ & 0.13 & 0.37 &  &  &   & 0.13 & 0.37 &  &  &   & 0.13 & 0.37 &  &  \\   $\sigma^2_l$ & 0.06 & 0.23 &  &  &   & 0.06 & 0.23 &  &  &   & 0.06 & 0.23 &  &  \\   $\sigma^2$ & 0.21 & 0.45 &  &  &   & 0.21 & 0.45 &  &  &   & 0.21 & 0.45 &  &  \\    \hline\end{tabular}
-\label{tbl:model_result_time}\end{table}
+
+\cline{2-5} \cline{7-10} \cline{12-15} 
+ Effect& Est & SE & Zval & $p$-value && Est & SE & Zval & $p$-value && Est & SE & Zval & $p$-value \\ 
+  \hline
+Fixed &  &  &  & && &  & & & & & &  & \\ 
+$\mu$\phantom{$_1$} & 3.82 & 0.04 & 97.38 & $<$0.001 & & 3.90 & 0.03 & 118.19 & $<$0.001 && 3.73 & 0.05 & 69.04 & $<$0.001 \\ 
+  $\alpha_1$ & 0.33 & 0.04 & 9.35 & $<$0.001 && 0.34 & 0.03 & 11.40 & $<$0.001 && 0.28 & 0.05 & 5.63 & $<$0.001 \\ 
+  $\alpha$\phantom{$_1$} & -0.04 & 0.00 & -9.30 & $<$0.001 && -0.04 & 0.00 & -10.19 & $<$0.001 && -0.03 & 0.01 & -4.22 & $<$0.001 \\ 
+\multicolumn{2}{l}{Random}   &  &  &  &  & & &&& & & &  & \\ 
+  $\sigma^2_l$ & 0.01 & 0.09 &  &  && 0.24 & 0.49 &  &&  & 0.13 & 0.37 &  &  \\ 
+  $\sigma^2_u$ & 0.26 & 0.51 &  &  & &0.00 & 0.05 & & &  & 0.00 & 0.05 &  &  \\ 
+   $\sigma^2_a$ & 0.00 & 0.03 &  &  & &0.04 & 0.20 & & &  & 0.06 & 0.24 &  &  \\ 
+  $\sigma^2$ & 0.21 & 0.46 &  &  & &0.25 & 0.50 &  &  && 0.21 & 0.45 &  &  \\ 
+   \hline
+\end{tabular}
+\label{tbl:model_result_time}
+\end{table}
+
 
 
 

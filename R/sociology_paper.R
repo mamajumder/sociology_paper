@@ -215,7 +215,7 @@ qplot(variable_level, value, geom="boxplot", data=mdat[complete.cases(mdat),]) +
   facet_grid(variable~variable_name, scales="free") +
   stat_summary(fun.y=mean, geom="point") + xlab("Levels of demographic factors")+
   theme(axis.text.x=element_text(angle=90, hjust=1))
-ggsave("../images/demographic_effect.pdf", width=8, height=8)
+ggsave("../images/demographic_effect.pdf", width=6, height=6.5)
 
 # testing significance of demographic factor main effects
 
@@ -453,17 +453,36 @@ fit3 <- lmer(response ~ factor(attempt) + (attempt|id) + (1|pic_id), family="bin
 anova(fit3,fit2)
 
 
-
-# Fitting gamma mixed effect models with log(time_taken)
+# Fitting mixed effect models with log(time_taken)
 
 qplot(log(time_taken), data=dt, geom="histogram", binwidth=.1)
 
-# f0 <- lmer(time_taken ~ factor(attempt) + (attempt|id) + (1|pic_id), family=Gamma(link="inverse"), data=dt)
-# f0 <- lmer(time_taken ~ factor(attempt) + (attempt|id) + (1|pic_id), family=Gamma(link="log"), data=dt)
-f0 <- lmer(log(time_taken) ~I(attempt==1)+ attempt + (attempt|id) + (1|pic_id), data=dt)
+get_estimates <- function(fit){
+  Vcov <- vcov(fit, useScale = FALSE)
+  betas <- fixef(fit)
+  se <- sqrt(diag(Vcov))
+  zval <- betas / se
+  pval <- round(2 * pnorm(abs(zval), lower.tail = FALSE),4)
+  pval[pval==0] <- "<0.001"
+  fe <- data.frame(Est=round(betas,3),SE= round(se,3), Zval=round(zval,2), pvalue=pval)
+  rem <- summary(fit)@REmat
+  re <- data.frame(Est=rem[,3], SE= rem[,4], Zval="",pvalue="")
+  re$Est <- round(as.numeric(as.character(re$Est)),2)
+  re$SE <- round(as.numeric(as.character(re$SE)),2)
+  rownames(re) <- paste(rem[,1],rem[,2])
+  return(rbind(fe,re))
+}
 
 
-
+dt <- subset(dtrend, experiment==5)
+f0 <- lmer(log(time_taken) ~I(attempt==1)+ attempt + (attempt|id) + (1|pic_id), data=dt) 
+estimates <- get_estimates(f0)
+for (i in 6:7){
+  dt <- subset(dtrend, experiment==i)
+  f0 <- lmer(log(time_taken) ~I(attempt==1)+ attempt + (attempt|id) + (1|pic_id), data=dt) 
+  estimates <- cbind(estimates,get_estimates(f0))
+}
+xtable(estimates)
 
 # ==============================================================
 # Analysis of location effect of the plot using turk 9 data

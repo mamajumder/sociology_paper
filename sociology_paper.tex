@@ -353,9 +353,11 @@ Gender & Male & 1348 & 48.51 & 13493 \\
 \end{table}
 
 
-The largest number of participants are from age group 18 to 25 which is the youngest age group in the study. Interestingly we see many participants from older age groups as well. Specially for united states almost all the age groups show uniform participations after age 30 as in Figure \ref{fig:demographic_info}. Notice that fewer people participated from India beyond age 40 compared to united states. Even thoug total participations from india is larger compared to United States, they are mostly young people who are capable of using internet and computer. 
+The largest number of participants are from age group 18 to 25 which is the youngest age group in the study. Interestingly we see many participants from older age groups as well. Specially for united states almost all the age groups show uniform participations after age 30 as in Figure \ref{fig:demographic_info}. Notice that fewer people participated from India beyond age 40 compared to united states. Even though total participations from india is larger compared to United States, they are mostly young people who are capable of using internet and computer. 
 
-\subsection{Demographic Factors} Proportions of correct responses and the logarithm of average time taken for each lineup are computed and their distributions are shown as boxplots in Figure \ref{fig:demographic_effect} for different demographic factor levels.
+Most of the participants are graduate degree holder. They are mostly from India as any university degree is considered a graduate degree unlike north America where graduate degree means Masters level education. This is apparent in Figure \ref{fig:demographic_info}. Most of the unites states participants are with an Undergraduate degree or at least have some undergraduate course. 
+
+\subsection{Demographic Factors} Proportions of correct responses and the logarithm of average time taken to evaluate  each lineup are computed and their distributions are shown as boxplots in Figure \ref{fig:demographic_effect} for different demographic factor levels. The youngest age group (18-25) took least average time to evaluate a lineup. People from India took more time than others. People who have only a high school degree took less time and this is related to what we have seen for young age group. The time taken by male and female participants are almost similar. None of the factors are significant in describing time taken to evaluate a lineup.
 
 \begin{figure}[htbp] 
    \centering
@@ -363,6 +365,8 @@ The largest number of participants are from age group 18 to 25 which is the youn
    \caption{Boxplots of average time taken in log scale and proportion correct responses of all the lineups plotted for each demographic factor variables. The dots inside the box represents mean. None of the demographic factors appear to be statistically significant except India effect for proportion correct. Effect of graduate degree in proportion correct is also significant but is actually the India effect since, Most of the graduate degree holders are coming from India.}
    \label{fig:demographic_effect}
 \end{figure}
+
+We observed some variations in median proportion of correct responses for different levels of the demographic factors as in Figure \ref{fig:demographic_effect}. But the variability of proportion correct responses are huge as per design of the experiments since we have some easy and some difficult lineups. There were lineups which were not expected to be evaluated correctly and some were very easy and expected to be evaluated correctly 100\% of the time.
 
 \subsection{Learning Trend} Model \eqref{eqn:trend_time} is fitted to the data from experiment 5, 6, and 7 separately.   For this the function $lmer()$ is used from R package $lme4$ by \cite{lme4:2011}. To obtain the $p$-values of fixed effect parameters estimates, normal approximation is used for $Z$ scores computed as the ratio of estimates to the estimated standard errors. The results are shown in Table \ref{tbl:model_result_time}. Both fixed effect parameters of covariate Attempt ($\alpha_1$ and $\alpha$) are highly significant.
 

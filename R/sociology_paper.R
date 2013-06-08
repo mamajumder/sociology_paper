@@ -467,22 +467,30 @@ get_estimates <- function(fit){
   fe <- data.frame(Est=round(betas,3),SE= round(se,3), Zval=round(zval,2), pvalue=pval)
   rem <- summary(fit)@REmat
   re <- data.frame(Est=rem[,3], SE= rem[,4], Zval="",pvalue="")
-  re$Est <- round(as.numeric(as.character(re$Est)),2)
-  re$SE <- round(as.numeric(as.character(re$SE)),2)
+  re$Est <- round(as.numeric(as.character(re$Est)),3)
+  re$SE <- round(as.numeric(as.character(re$SE)),3)
   rownames(re) <- paste(rem[,1],rem[,2])
-  return(rbind(fe,re))
+  return(rbind(fe,re[order(rownames(re)),]))
 }
 
 
-dt <- subset(dtrend, experiment==5)
-f0 <- lmer(log(time_taken) ~I(attempt==1)+ attempt + (attempt|id) + (1|pic_id), data=dt) 
-estimates <- get_estimates(f0)
-for (i in 6:7){
-  dt <- subset(dtrend, experiment==i)
-  f0 <- lmer(log(time_taken) ~I(attempt==1)+ attempt + (attempt|id) + (1|pic_id), data=dt) 
-  estimates <- cbind(estimates,get_estimates(f0))
-}
-xtable(estimates)
+dt5 <- subset(dtrend, experiment==5)
+f5 <- lmer(log(time_taken) ~I(attempt==1)+ attempt + (attempt|id) + (1|pic_id), data=dt5) 
+estimates5 <- get_estimates(f5)
+dt6 <- subset(dtrend, experiment==6)
+f6 <- lmer(log(time_taken) ~I(attempt==1)+ attempt + (attempt|id) + (1|pic_id), data=dt6)
+estimates6 <- get_estimates(f6)
+dt7 <- subset(dtrend, experiment==7)
+f7 <- lmer(log(time_taken) ~I(attempt==1)+ attempt + (attempt|id) + (1|pic_id), data=dt7)
+estimates7 <- get_estimates(f7)
+
+estimates <- data.frame(estimates5,g1=" ",estimates6,g2=" ", estimates7)
+rownames(estimates) <- c("$\\mu$","$\\alpha_1$","$\\alpha$", "$\\sigma^2_a$",
+                         "$\\sigma^2_u$","$\\sigma^2_l$","$\\sigma^2$")
+print(xtable(estimates),  sanitize.text.function = function(x){x})
+
+
+
 
 # ==============================================================
 # Analysis of location effect of the plot using turk 9 data

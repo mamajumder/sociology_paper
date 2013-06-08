@@ -362,7 +362,7 @@ The large number of participants are from age group 18 to 35. Interestingly we s
    \label{fig:demographic_effect}
 \end{figure}
 
-\subsection{Learning Trend} Model \eqref{eqn:trend_time} is fitted to the data from experiment 5, 6, and 7. The results are shown in Table \ref{tbl:model_result_time}.  The model is fitted using R function $lmer()$ from package $lme4$. To obtain the $p$-values of fixed effect parameters, normal approximation is used $Z$ scores are computed accordingly. 
+\subsection{Learning Trend} Model \eqref{eqn:trend_time} is fitted to the data from experiment 5, 6, and 7 separately.   For this the function $lmer()$ is used from R package $lme4$ by \cite{lme4:2011}. To obtain the $p$-values of fixed effect parameters estimates, normal approximation is used for $Z$ scores computed as the ratio of estimates to the estimated standard errors. The results are shown in Table \ref{tbl:model_result_time}. Both fixed effect parameters of covariate Attempt ($\alpha_1$ and $\alpha$) are highly significant.
 
 %Each subject participating the experiment has seen multiple number of lineups for evaluations. Suppose $K$ be the number of lineups evaluated by a subject and $A_k$ be the $kth$ attempt, $k=1,2, ..., K$. Subjects may have a chance for self learning and do better on lineups shown later in the sequence. They may learn from their previous mistake or they may learn about the features of the plots being evaluated as they progress. Thus if there is any learning trend that should be apparent in proportion correct over $A_k$. But to obtain this we have to adjust for lineup difficulty and individual performances.
 

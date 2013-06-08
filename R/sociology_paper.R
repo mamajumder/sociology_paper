@@ -463,7 +463,7 @@ get_estimates <- function(fit){
   se <- sqrt(diag(Vcov))
   zval <- betas / se
   pval <- round(2 * pnorm(abs(zval), lower.tail = FALSE),4)
-  pval[pval==0] <- "<0.001"
+  pval[pval==0] <- "$<$0.001"
   fe <- data.frame(Est=round(betas,3),SE= round(se,3), Zval=round(zval,2), pvalue=pval)
   rem <- summary(fit)@REmat
   re <- data.frame(Est=rem[,3], SE= rem[,4], Zval="",pvalue="")
@@ -487,8 +487,9 @@ estimates7 <- get_estimates(f7)
 estimates <- data.frame(estimates5,g1=" ",estimates6,g2=" ", estimates7)
 rownames(estimates) <- c("$\\mu$","$\\alpha_1$","$\\alpha$", "$\\sigma^2_a$",
                          "$\\sigma^2_u$","$\\sigma^2_l$","$\\sigma^2$")
-print(xtable(estimates),  sanitize.text.function = function(x){x})
-
+dgt <- c(rep(0,7), rep(3,14), rep(2,7), rep(0,7))
+dgts <- matrix(rep(dgt,3), ncol=15)
+print(xtable(estimates, digits=dgts),  sanitize.text.function = function(x){x})
 
 
 

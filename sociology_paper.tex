@@ -440,6 +440,9 @@ The estimated variance ($\sigma^2_a$) of the random effect attempt is much small
 
 To visualize further how the performance in correct response improves over successive attempt, we fitted Model \eqref{eqn:trend_response} excluding the covariates related to attempt from the model and computed the residuals. The averages of these residuals for each of the attempts are plotted against attempt as shown in Figure \ref{fig:learning_trend_response}. Least square linear regression lines are drown through the points. Even though positive slopes over the attempts are observed, none of the trends is statistically significant.
 
+Table \ref{tbl:model_result_time} presents the results of Model \eqref{eqn:trend_time}. The parameter $\alpha$ for fixed effect covariate attempt is highly significant in all the experiments. The negative estimates suggest that later attempt took less time for an evaluation. This suggest that even though observers did not improve the performance over attempt, they became efficient in responding faster. The parameter $\alpha_1$ for first attempt is also highly significant. The positive estimates of $\alpha_1$ indicates that first attempt made by an observer required much more times than other attempts. It is because for initial attempt the observer might have gone through instruction and became familiar with the experimental environment. 
+
+
 \begin{table}[htbp]
 \centering
 \caption{Parameter estimates of Model \eqref{eqn:trend_time} fitted for log time taken to evaluate a lineup. Both fixed effect parameters of Attempt ($\alpha_1$ and $\alpha$) are highly significant for all three experiments 5, 6 and 7.}
@@ -468,16 +471,9 @@ $\mu$ & 3.817 & 0.039 & 97.38 & $<$0.001 &   & 3.901 & 0.033 & 118.19 & $<$0.001
 
 
 
-
-
-
-
-
-To accomplish this we fit generalized mixed effect model \eqref{eqn:trend_response} with lineups and subjects as random effect and no fixed effect. This gives the estimation of proportion correct responses  and we obtain residuals of the fitted model. The residuals give variations in proportion correct adjusted for lineup difficulties and individual skills. If there is any learning trend over different attempt $A_k$, the residuals should have that information since $A_k$ was not included as a covariate in the model. %At this point we focus on absolute residuals over different attempts to study the deviations due to attempts. An smaller absolute residual at attempt $A_k$ should indicate learning from all other attempts less than $k$. 
+%To accomplish this we fit generalized mixed effect model \eqref{eqn:trend_response} with lineups and subjects as random effect and no fixed effect. This gives the estimation of proportion correct responses  and we obtain residuals of the fitted model. The residuals give variations in proportion correct adjusted for lineup difficulties and individual skills. If there is any learning trend over different attempt $A_k$, the residuals should have that information since $A_k$ was not included as a covariate in the model. %At this point we focus on absolute residuals over different attempts to study the deviations due to attempts. An smaller absolute residual at attempt $A_k$ should indicate learning from all other attempts less than $k$. 
 
 A plot of residuals against the attempts $A_k$ should reveal the trend if there is any. Figure \ref{fig:learning_trend} shows such plots for three experiments naming experiment 5, 6 and 7. For all the experiments we see some increasing trend of the residuals. This could be attributed to the exhaustion of subjects' attempt after some earlier evaluations are made.  But none of apparent trend are statistically significant. 
-
-
 
 Learning trend is not only related to the proportion correct responses. It may be possible that people learn to answer fast. We examine this by the time taken for each evaluation. We fit a mixed effect linear model with time taken considering lineup and subjects as random effect. The resulting residuals are plotted in Figure \ref{fig:learning_trend_time}. It appears that in the later attempts observers take less time to evaluate a lineup. Even though it does not tell much about improving their performance over attempts, but it does indicate the improvement of their evaluation skill. Adding this information with what we observe in Figure \ref{fig:learning_trend}, we can say that the observers' improved skills could not contribute to their performance. It only help them finish the task faster in later attempts.
 

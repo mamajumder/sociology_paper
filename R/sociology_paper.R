@@ -112,7 +112,7 @@ for (i in 1:10){
   di$academic_study[di$academic_study==0] <- NA
   di$experiment = paste("experiment_",i, sep="")
   di$id = paste("exp",i,"_",di$id, sep="")
-  degree <- factor(c("High school or less", "Some under graduate courses",
+  degree <- factor(c("High school or less", "Some under grad courses",
                   "Under graduate degree","Some graduate courses",
                   "Graduate degree")[di$academic_study])
   di$degree <- factor(degree, levels=levels(degree)[order(c(5,1,4,2,3))], ordered=T)
@@ -132,7 +132,7 @@ demographics$country[(demographics$country_code != "IN") & (demographics$country
 demographics$country[demographics$country=="Namibia"] <- "Rest of the world"
 demographics$country[demographics$country==NA] <- "Rest of the world"
 levels(demographics$age_level)[7:9] <- 7
-levels(demographics$age_level)[1:7] <- c(levels(turker$age_level)[1:6], "above 50")
+levels(demographics$age_level)[1:7] <- c(levels(demographics$age_level)[1:6], "above 50")
 
 
 # getting unique participants for plotting purpose only
@@ -192,9 +192,6 @@ qplot(degree, per_correct, geom="bar", stat="identity", data=pdat[complete.cases
 ggsave("../images/age_gender_within_country_correct.pdf", width=10, height=8)
 
 # Demographic factor main effect for percent correct and average time aggregated by lineup
-gdat <- ddply(demographics, .(gender_level, pic_name), summarize,
-              prop_correct = mean(response),
-              avg_time = mean(time_taken))
 get_effect <- function(dat, var){
   res <- ddply(dat,c(var), summarize,
                log_avg_time = round(log(mean(time_taken)),2),
@@ -211,11 +208,12 @@ adat <- get_effect(demographics, c("age_level", "pic_name"))
 
 mdat <- melt(rbind(gdat,edat,cdat,adat), id=c("variable_level", "pic_name", "variable_name"))
 
-qplot(variable_level, value, geom="boxplot", data=mdat[complete.cases(mdat),]) +
+qplot(variable_level, value, geom="boxplot",data=mdat[complete.cases(mdat),]) +
   facet_grid(variable~variable_name, scales="free") +
   stat_summary(fun.y=mean, geom="point") + xlab("Levels of demographic factors")+
   theme(axis.text.x=element_text(angle=90, hjust=1))
-ggsave("../images/demographic_effect.pdf", width=6, height=6.5)
+
+ggsave("../images/demographic_effect.pdf", width=6, height=6)
 
 # testing significance of demographic factor main effects
 

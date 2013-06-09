@@ -136,7 +136,7 @@ For any evaluation the observer may or may not identify the actual data plot. Un
 
 %Some of the factors that may affect the performance of the observer are discussed in Section \ref{sec:factor_performance}. In this paper we focus on estimating the learning effect of the observer in terms of both proportion correct and time taken to evaluate a lineup through the attempts made during the evaluation of multiple plots. We also estimate the location effect of the observed data plot in a lineup. The other factors are controlled in simulation experiments so that learning effect and location effect can be estimated.
 
-There have been \dc{ten} experiments conducted using Amazon's Mechanical Turk~\cite{turk} that are being used to evaluate the the effect of the observer. Table \ref{tbl:visual_stat} summarizes these. All of these experiments are used to evaluate the effects of demographic factors. Experiments 5,6 and 7 are used to study learning trend of the observer. The design of experiment 9 enabled effect of position in the lineup, and the sample of nulls, to be evaluated. Section \ref{sec:factor_performance} describes the factors that may affect the performance of the observer. Section \ref{sec:exp_design} describes the methods used to assess the effects, and Section \ref{sec:result_socio} describes the results.
+There have been ten experiments conducted using Amazon's Mechanical Turk~\cite{turk} that are being used to evaluate the the effect of the observer. Table \ref{tbl:visual_stat} summarizes these. All of these experiments are used to evaluate the effects of demographic factors. Experiments 5,6 and 7 are used to study learning trend of the observer. The design of experiment 9 enabled effect of position in the lineup, and the sample of nulls, to be evaluated. Section \ref{sec:factor_performance} describes the factors that may affect the performance of the observer. Section \ref{sec:exp_design} describes the methods used to assess the effects, and Section \ref{sec:result_socio} describes the results.
 
 %\subsection{Experiments pooled}
 
@@ -175,16 +175,18 @@ A brief description of the factors that may affect the power of visual inference
 
 \subsection{Signal in the data}
 
-The visual test statistic is chosen so that it displays a specific patter in case the null hypothesis not true. Thus the most important factor that help an observer to correctly evaluate a lineup is the presence of any detectable signal in the data. On the other hand, if the null hypothesis is not true, visual test statistic should not display any distinguishable pattern. In fact, some of the null plots may appear to be the most different plot in a lineup influencing the observer to chose a plot different than actual data plot. This is an elegant feature of the lineup. It force the observer to chose a wrong plot when the null hypothesis should not be rejected.
+The visual test statistic is chosen so that it displays a specific pattern in case the null hypothesis is not true. Thus the most important factor that help an observer to correctly evaluate a lineup is the presence of any detectable signal in the data. On the other hand, if the null hypothesis is not true, visual test statistic should not display any distinguishable pattern. In fact, some of the null plots may appear to be the most different plot in a lineup influencing the observer to chose a plot different than actual data plot. This is an elegant feature of the lineup. It force the observer to chose a wrong plot when the null hypothesis should not be rejected.
 
 
 \subsection{Choice of Visual Test Statistic}  The visual test statistic should be highly associated with the hypothesis under investigation. To achieve this purposes it is very important to decide which plot type and plot features should be adopted.  In a linear regression setting, the visual test statistics are presented in \citep{majumder:2013} for some common hypothesis testing.  It is also observed that a scatterplot may do a better job than a box plot when using as a visual test statistic for regression parameters.  Some of the effective features of visual test statistics are discussed in \citep{heike:2012} including plot type, color and shape of the plots.  \cite{niladri:2012} presents some \textit{distance measure} to determine how a plot may be different from each other.
+
+Table \ref{tbl:visual_stat} shows the visual test statistics used in this study. For both experiment 2 and 3 a scatterplot is used but a regression line fitted through the points is overlaid for experiment 2. It is easier to spot the slope of the line compared to just the scatterplot itself. But it appears that people are better in noticing the unusual pattern in the data which is some contamination purposefully added for experiment 3. It is observed that for experiment 3 the performance of the observers are much better compared to experiment 2 \citep{majumder:2013}.
 
 %Plots to do: for the same signal strength show the proportion correct for scatterplot and boxplot. eg., qplot(effect, ump-visual power, color= plot-type)
 
 \subsection{Question that Human Observer Answers} The researcher knows about the underlying hypothesis but the observer does not necessarily know the underlying details of the lineup. So, the researcher needs to ask a question observer is to answer while evaluating the lineup. This question should provide the observer a little clue so that the answer reflects the hypothesized patterns in the actual plot. For example Table \ref{tbl:visual_stat} shows the questions asked for the simulation experiments done by  \citet{majumder:2013}. Notice that for case 1 if the observer can identify the actual plot in the lineup that should indicate that the plot chosen has the most vertical difference between groups A and B which is exactly what the researchers intend to examine. Similarly for case 2, a correct evaluation would indicate that the slope is different than the slope that may show up just from randomness.
 
-These questions are very crucial for the power of visual test. They help observer think in a controlled direction. Notice that there may be unnecessary patterns in the actual data plot which may not necessarily indicate the existence of the significant signal in the plot. These question help observer not to be misguided by those patterns. To review further on this \citet{majumder:2013} have also asked why the observers choose a specific plot. 
+These questions are very crucial for the power of visual test. They help observer think in a meaningful direction. Notice that there may be unnecessary patterns in the actual data plot which may not necessarily indicate the existence of the significant signal in the plot. These question help observer not to be misguided by those patterns. To review further on this \citet{majumder:2013} have also asked why the observers choose a specific plot. 
 
 
 
@@ -194,11 +196,19 @@ These questions are very crucial for the power of visual test. They help observe
 %
 %Given this pattern of human eye tracks, it may effect the performance of an observer depending on where the actual plot is placed in the lineup. If the actual plot is on the top left corner and the observer starts from that point it may be easier to detect the actual plot earlier in the exercise and the observer could get plenty of time to make comparison. Thus the position of the actual plot in a lineup may have some impact.
 
-\subsection{Demographics of Observer}  Some of the demographics of the observer such as age, gender, education level and geographical location may have effect on how an observer would examine the lineup. This may produce some variability in the performance of the observer. For example, a high school student may not respond same as a well educated person while evaluating a lineup. Also, to meet the Institutional Regulatory Board (IRB) requirement is is necessary to exclude any subject less than 18 years of old to participate human subject experiment. Thus we intend to only focus on the performance of observer with age 18 years or older. But still there may be variation in different age groups. Recruiting subjects with a well variety of age groups may be necessary to have control over this variability. 
+\subsection{Demographics of Observer}  Some of the demographics of the observer such as age, gender, education level and geographical location may have effect on how an observer would examine the lineup. This may produce some variability in the performance of the observer. For example, a high school student may not respond same as a well educated person while evaluating a lineup. There may be variation in different age groups as well. Recruiting subjects with a well variety of age groups is be necessary to study this variability. 
+
+To meet the Institutional Regulatory Board (IRB) requirement, it is necessary to exclude any subject less than 18 years of old to participate human subject experiment. Thus we intend to only focus on the performance of observer with age 18 years or older. We don't expect many older people to participate our study and we are interested of age from 18 to 65 years.
 
 Education level has some relation with age. Younger observer may not have higher degree. Thus some of the variability in performance for different education level may be confounded with age. On the other hand, it could be possible to have undergrad degree with higher age. Specially for any geographical location where not many certain gender group have higher education, this may occur. Thus the effect of all these demographical factors may be confounded at certain level. 
 
-\subsection{Learning Trend of the Observer} When an observer evaluates a lineup he or she may learn something from the experience. If the same observer is shown another lineup the learning from previous evaluation may help. The more evaluations an observer makes the more skillful the observer may become. This learning trend may or may not be significant overall but it could influence the performance of the observer in some way. This paper investigates the learning trend with multiple simulation experiments.
+We don't expect much difference in performances between male and female observers. Gender may have some influence through the education level and geographical locations since some location may have small number of educated female population. We intend to include similar number of male and female subjects in our study so that this can be examined.
+
+\subsection{Learning Trend of the Observer} When an observer evaluates a lineup he or she may learn something from the experiences of the earlier observations. If the same observer is shown another lineup the learning from previous evaluation may help. The more evaluations an observer makes the more skillful the observer may become. This learning trend may or may not be significant overall but it could influence the performance of the observer in some way. 
+
+Learning may occur in two different ways. An observer can become more trained on the lineup structure and the pattern in the plots shown. This could be learning in proportion of correct evaluation. Or, he or she may become efficient in responding faster in the later evaluations. This could be observed as the time taken for evaluating a lineup. This paper investigates both of these learning trends with multiple simulation experiments.
+
+When an observer evaluate a lineup for the first time, he or she has to read through many instructions and become familiar with the environment of the experiment. We expect that this would require much more time compared to the rest of the evaluations. Time taken for the second or successive attempt would be much lower than the time taken for the first lineup. We attribute this to the adaptation to the experiment environment, not a learning of evaluating a lineup.
 
 \subsection{Location of Actual Plot in the Lineup} The actual data plot is placed in a random spot in a lineup. While evaluating the lineup some people may start looking from some specific part of the lineup. With the help of eye-tracking equipment \citet{zhao:2012} track the observers' eyes to see how they go through the plots in a lineup to come to their answers. The results suggest that people have particular methods of reading lineups. Some people read lineups from left to write direction while some read from upward to downward. Some people start looking from the center of the lineup while others start from the top left corner. In the earlier phase of the exercise, the observer tend to scan the plots and then start comparing plots to make a final decision. Beside right-left or up-down directions observer show some diagonal movement too. 
 
@@ -240,7 +250,7 @@ It is very fast, cheap and reliable to recruit people from MTurk. Thats why it i
 
 Because of its convenience it is getting popular for scientific research study as well. In comparison with a lab study \cite{suri:2010} perform the same study using MTurk and demonstrate that their study results are as good as the lab study results even though MTurk study required less time and cost while provided more convenience. \cite{majumder:2013} recruited people from MTurk for their simulation study in estimating the power of visual statistical inference. They have done numerous pilot studies in lab before doing actual MTurk study and found similar results. \cite{mason:2012} explains various features of MTurk and describes how it can be used as part of human behavioral study.
 
-We design and develop a web site which enables to display the lineups to the observers as per experimental design. The MTurk workers are redirect to the web site and the data are collected, stored automatically into a local database server. Demographic informations such as age group, gender and education levels were collected. The time taken for each evaluation is computed based on the time the plot was shown and the time the feedback was received. The location of the observer is determined by the ip address of the observer.
+We designed and developed a web site which enables to display the lineups to the observers as per experimental design. The MTurk workers were redirected to the web site and the data were collected, stored automatically into a local database server. Demographic informations such as age group, gender and education levels were also collected. The time taken for each evaluation is computed based on the time the plot was shown and the time the feedback was received. The location of the observer is determined by the ip address of the observer.
 
 \subsection{Model to Estimate Learning Trend}
 
@@ -384,9 +394,14 @@ We observed some variations in median proportion of correct responses for differ
  Effect& Est & SE & Zval & $p$-value && Est & SE & Zval & $p$-value && Est & SE & Zval & $p$-value \\ 
   \hline
 Fixed &  &  &  & && &  & & & & & &  & \\ 
-$\mu$ & 3.817 & 0.039 & 97.38 & $<$0.001 &   & 3.901 & 0.033 & 118.19 & $<$0.001 &   & 3.731 & 0.054 & 69.04 & $<$0.001 \\   $\alpha_1$ & 0.326 & 0.035 & 9.35 & $<$0.001 &   & 0.335 & 0.029 & 11.40 & $<$0.001 &   & 0.280 & 0.050 & 5.63 & $<$0.001 \\   $\alpha$ & -0.038 & 0.004 & -9.30 & $<$0.001 &   & -0.039 & 0.004 & -10.19 & $<$0.001 &   & -0.029 & 0.007 & -4.22 & $<$0.001 \\ 
+$\mu$ & 3.817 & 0.039 & 97.38 & $<$0.001 &   & 3.901 & 0.033 & 118.19 & $<$0.001 &   & 3.731 & 0.054 & 69.04 & $<$0.001 \\ 
+  $\alpha_1$ & 0.326 & 0.035 & 9.35 & $<$0.001 &   & 0.335 & 0.029 & 11.40 & $<$0.001 &   & 0.280 & 0.050 & 5.63 & $<$0.001 \\ 
+  $\alpha$ & -0.038 & 0.004 & -9.30 & $<$0.001 &   & -0.039 & 0.004 & -10.19 & $<$0.001 &   & -0.029 & 0.007 & -4.22 & $<$0.001 \\ 
 \multicolumn{2}{l}{Random}   &  &  &  &  & & &&& & & &  & \\ 
-  $\sigma^2_a$ & 0.001 & 0.027 &  &  &   & 0.002 & 0.045 &  &  &   & 0.002 & 0.049 &  &  \\   $\sigma^2_u$ & 0.259 & 0.509 &  &  &   & 0.245 & 0.495 &  &  &   & 0.134 & 0.366 &  &  \\   $\sigma^2_l$ & 0.008 & 0.091 &  &  &   & 0.040 & 0.199 &  &  &   & 0.055 & 0.235 &  &  \\   $\sigma^2$ & 0.211 & 0.460 &  &  &   & 0.251 & 0.501 &  &  &   & 0.206 & 0.454 &  &  \\ 
+  $\sigma^2_a$ & 0.001 & 0.027 &  &  &   & 0.002 & 0.045 &  &  &   & 0.002 & 0.049 &  &  \\ 
+  $\sigma^2_u$ & 0.259 & 0.509 &  &  &   & 0.245 & 0.495 &  &  &   & 0.134 & 0.366 &  &  \\ 
+  $\sigma^2_l$ & 0.008 & 0.091 &  &  &   & 0.040 & 0.199 &  &  &   & 0.055 & 0.235 &  &  \\ 
+  $\sigma^2$ & 0.211 & 0.460 &  &  &   & 0.251 & 0.501 &  &  &   & 0.206 & 0.454 &  &  \\ 
    \hline
 \end{tabular}
 }
@@ -397,7 +412,7 @@ $\mu$ & 3.817 & 0.039 & 97.38 & $<$0.001 &   & 3.901 & 0.033 & 118.19 & $<$0.001
 
 \begin{table}[htbp]
 \centering
-\caption{Parameter estimates of Model \eqref{eqn:trend_response} fitted for log time taken to evaluate a lineup. None of the fixed factor effects of attempt (2-10) seem to be significantly different from each other at \%5 level in all three experiments 5, 6 and 7.}
+\caption{Parameter estimates of Model \eqref{eqn:trend_response} fitted for log time taken to evaluate a lineup. None of the fixed factor effects of attempt (2-10) seem to be significantly different from each other at \%5 level in all three experiments 5, 6 and 7. For experiment 7 subject specific variation is very small on the other hand lineup variance is much higher compared to the other two experiments.}
 \scalebox{0.9}{
 \begin{tabular}{rrrrccrrrccrrrc}
   \hline
@@ -407,9 +422,20 @@ $\mu$ & 3.817 & 0.039 & 97.38 & $<$0.001 &   & 3.901 & 0.033 & 118.19 & $<$0.001
  Effect& Est & SE & Zval & $p$-value && Est & SE & Zval & $p$-value && Est & SE & Zval & $p$-value \\ 
   \hline
 Fixed &  &  &  & && &  & & & & & &  & \\ 
-$\mu$ & -1.304 & 0.179 & -7.28 & $<$0.001 &   & -0.220 & 0.147 & -1.5 & 0.134 &   & -1.737 & 0.481 & -3.61 & $<$0.001 \\   $\alpha2$ & 0.270 & 0.219 & 1.24 & 0.217 &   & 0.262 & 0.158 & 1.66 & 0.098 &   & -0.456 & 0.385 & -1.18 & 0.237 \\   $\alpha3$ & -0.178 & 0.226 & -0.79 & 0.432 &   & 0.342 & 0.157 & 2.18 & 0.029 &   & -0.105 & 0.386 & -0.27 & 0.786 \\   $\alpha4$ & 0.083 & 0.224 & 0.37 & 0.712 &   & 0.358 & 0.159 & 2.26 & 0.024 &   & -0.378 & 0.381 & -0.99 & 0.322 \\   $\alpha5$ & 0.298 & 0.224 & 1.33 & 0.183 &   & 0.376 & 0.159 & 2.36 & 0.018 &   & -0.107 & 0.385 & -0.28 & 0.781 \\   $\alpha6$ & 0.042 & 0.231 & 0.18 & 0.857 &   & 0.246 & 0.158 & 1.56 & 0.12 &   & 0.026 & 0.407 & 0.06 & 0.949 \\   $\alpha7$ & 0.283 & 0.230 & 1.23 & 0.217 &   & 0.160 & 0.159 & 1.01 & 0.314 &   & 0.057 & 0.401 & 0.14 & 0.886 \\   $\alpha8$ & -0.045 & 0.233 & -0.19 & 0.847 &   & 0.341 & 0.160 & 2.13 & 0.033 &   & -0.003 & 0.394 & -0.01 & 0.994 \\   $\alpha9$ & -0.195 & 0.232 & -0.84 & 0.400 &   & 0.378 & 0.160 & 2.36 & 0.018 &   & 0.204 & 0.436 & 0.47 & 0.639 \\   $\alpha10$ & 0.513 & 0.228 & 2.25 & 0.024 &   & 0.192 & 0.163 & 1.18 & 0.238 &   & -0.213 & 0.432 & -0.49 & 0.622 \\ 
+$\mu$ & -1.304 & 0.179 & -7.28 & $<$0.001 &   & -0.220 & 0.147 & -1.5 & 0.134 &   & -1.737 & 0.481 & -3.61 & $<$0.001 \\ 
+  $\alpha2$ & 0.270 & 0.219 & 1.24 & 0.217 &   & 0.262 & 0.158 & 1.66 & 0.098 &   & -0.456 & 0.385 & -1.18 & 0.237 \\ 
+  $\alpha3$ & -0.178 & 0.226 & -0.79 & 0.432 &   & 0.342 & 0.157 & 2.18 & 0.029 &   & -0.105 & 0.386 & -0.27 & 0.786 \\ 
+  $\alpha4$ & 0.083 & 0.224 & 0.37 & 0.712 &   & 0.358 & 0.159 & 2.26 & 0.024 &   & -0.378 & 0.381 & -0.99 & 0.322 \\ 
+  $\alpha5$ & 0.298 & 0.224 & 1.33 & 0.183 &   & 0.376 & 0.159 & 2.36 & 0.018 &   & -0.107 & 0.385 & -0.28 & 0.781 \\ 
+  $\alpha6$ & 0.042 & 0.231 & 0.18 & 0.857 &   & 0.246 & 0.158 & 1.56 & 0.12 &   & 0.026 & 0.407 & 0.06 & 0.949 \\ 
+  $\alpha7$ & 0.283 & 0.230 & 1.23 & 0.217 &   & 0.160 & 0.159 & 1.01 & 0.314 &   & 0.057 & 0.401 & 0.14 & 0.886 \\ 
+  $\alpha8$ & -0.045 & 0.233 & -0.19 & 0.847 &   & 0.341 & 0.160 & 2.13 & 0.033 &   & -0.003 & 0.394 & -0.01 & 0.994 \\ 
+  $\alpha9$ & -0.195 & 0.232 & -0.84 & 0.400 &   & 0.378 & 0.160 & 2.36 & 0.018 &   & 0.204 & 0.436 & 0.47 & 0.639 \\ 
+  $\alpha10$ & 0.513 & 0.228 & 2.25 & 0.024 &   & 0.192 & 0.163 & 1.18 & 0.238 &   & -0.213 & 0.432 & -0.49 & 0.622 \\ 
 \multicolumn{2}{l}{Random}   &  &  &  &  & & &&& & & &  & \\ 
-  $\sigma^2_a$ & $<$0.001 & 0.017 &  &  &   & 0.001 & 0.034 &  &  &   & 0.027 & 0.163 &  &  \\   $\sigma^2_u$ & 0.720 & 0.848 &  &  &   & 0.815 & 0.903 &  &  &   & $<$0.001 & $<$0.001 &  &  \\   $\sigma^2_l$ & 2.178 & 1.476 &  &  &   & 2.009 & 1.418 &  &  &   & 10.980 & 3.314 &  &  \\ 
+  $\sigma^2_a$ & $<$0.001 & 0.017 &  &  &   & 0.001 & 0.034 &  &  &   & 0.027 & 0.163 &  &  \\ 
+  $\sigma^2_u$ & 0.720 & 0.848 &  &  &   & 0.815 & 0.903 &  &  &   & $<$0.001 & $<$0.001 &  &  \\ 
+  $\sigma^2_l$ & 2.178 & 1.476 &  &  &   & 2.009 & 1.418 &  &  &   & 10.980 & 3.314 &  &  \\ 
    \hline
 \end{tabular}
 }

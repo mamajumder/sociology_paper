@@ -198,7 +198,7 @@ These questions are very crucial for the power of visual test. They help observe
 
 \subsection{Demographics of Observer}  Some of the demographics of the observer such as age, gender, education level and geographical location may have effect on how an observer would examine the lineup. This may produce some variability in the performance of the observer. For example, a high school student may not respond same as a well educated person while evaluating a lineup. There may be variation in different age groups as well. Recruiting subjects with a well variety of age groups is be necessary to study this variability. 
 
-To meet the Institutional Regulatory Board (IRB) requirement, it is necessary to exclude any subject less than 18 years of old to participate human subject experiment. Thus we intend to only focus on the performance of observer with age 18 years or older. We don't expect many older people to participate our study and we are interested of age from 18 to 65 years.
+To meet the Institutional Review Board (IRB) requirement, it is necessary to exclude any subject less than 18 years of old to participate human subject experiment. Thus we intend to only focus on the performance of observer with age 18 years or older. We don't expect many older people to participate our study and we are interested of age from 18 to 65 years.
 
 Education level has some relation with age. Younger observer may not have higher degree. Thus some of the variability in performance for different education level may be confounded with age. On the other hand, it could be possible to have undergrad degree with higher age. Specially for any geographical location where not many certain gender group have higher education, this may occur. Thus the effect of all these demographical factors may be confounded at certain level. 
 
@@ -365,7 +365,11 @@ Gender & Male & 1348 & 48.51 & 13493 \\
 
 The largest number of participants are from age group 18 to 25 which is the youngest age group in the study. Interestingly we see many participants from older age groups as well. Specially for united states almost all the age groups show uniform participations after age 30 as in Figure \ref{fig:demographic_info}. Notice that fewer people participated from India beyond age 40 compared to united states. Even though total participations from india is larger compared to United States, they are mostly young people who are capable of using internet and computer. 
 
-Most of the participants are graduate degree holder. They are mostly from India as any university degree is considered a graduate degree unlike north America where graduate degree means Masters level education. This is apparent in Figure \ref{fig:demographic_info}. Most of the unites states participants are with an Undergraduate degree or at least have some undergraduate course. 
+Most of the participants are graduate degree holder. They are mostly from India as any university degree is considered a graduate degree unlike north America where graduate degree means Masters level education. This is apparent in Figure \ref{fig:demographic_info}. Most of the unites states participants are with an Undergraduate degree or at least have some undergraduate courses. 
+
+Male and female participants are similarly distributed among all age groups except age 18-25 in India where less female participants were observed as we see in Figure \ref{fig:gender_country_bar}. Most of the participants from India are below age 40 while in United States the distribution of participants are similar beyond age 40.
+
+A total of XX lineups were evaluated in all these 10 experiments. Each person was supposed to evaluate 10 lineups except experiment 9 where three lineups were evaluated by each person. To clean the data we used the test plot as the basis and did not include the results of that test plot. In some cases the demographic information were not provided by the participants. Also, for some ip address, the actual geographical locations could not be retrieved. This resulted some missing demographic information.
 
 \subsection{Demographic Factors} Proportions of correct responses and the logarithm of average time taken to evaluate  each lineup are computed and their distributions are shown as boxplots in Figure \ref{fig:demographic_effect} for different demographic factor levels. The youngest age group (18-25) took least average time to evaluate a lineup. People from India took more time than others. People who have only a high school degree took less time and this is related to what we have seen for young age group. The time taken by male and female participants are almost similar. None of the factors are significant in describing time taken to evaluate a lineup.
 
@@ -376,7 +380,9 @@ Most of the participants are graduate degree holder. They are mostly from India 
    \label{fig:demographic_effect}
 \end{figure}
 
-We observed some variations in median proportion of correct responses for different levels of the demographic factors as in Figure \ref{fig:demographic_effect}. But the variability of proportion correct responses are huge as per design of the experiments since we have some easy and some difficult lineups. There were lineups which were not expected to be evaluated correctly and some were very easy and expected to be evaluated correctly 100\% of the time.
+We observed some variations in median proportion of correct responses for different levels of the demographic factors as in Figure \ref{fig:demographic_effect}. But the variability of proportion correct responses are huge as per design of the experiments since we have some easy and some difficult lineups. There were lineups which were not expected to be evaluated correctly and some were very easy and expected to be evaluated correctly 100\% of the time. This is why we see the boxes ranges from 0 to 1 in most of the factor levels. 
+
+The averages of proportion correct are for different factor levels are shown as dots in Figure \ref{fig:demographic_effect}. Unlike median, less variations are observed in the averages for different factor levels. As expected, there is no significant difference between Male and female performances. Among all the demographic factor levels only graduate degree, India and age group 31-35 appear to be significantly different from others. Most of the Indian participants reported to have a graduate degree. Thus the effect of graduate degree is actually the effect of India.
 
 \subsection{Learning Trend} Model \eqref{eqn:trend_time} is fitted to the data from experiment 5, 6, and 7 separately.   For this the function $lmer()$ is used from R package $lme4$ by \cite{lme4:2011}. To obtain the $p$-values of fixed effect parameters estimates, normal approximation is used for $Z$ scores computed as the ratio of estimates to the estimated standard errors. The results are shown in Table \ref{tbl:model_result_time}. Both fixed effect parameters of covariate Attempt ($\alpha_1$ and $\alpha$) are highly significant.
 
@@ -542,7 +548,7 @@ We also fit Model \eqref{manova} with only two locations based on outer or inner
 %------------------------------------------------------------------------------------
 \paragraph{Acknowledgments}
 %------------------------------------------------------------------------------------
-This work was funded in part by National Science Foundation grant DMS 1007697. All studies were conducted with approval from the internal review board IRB 10-347.
+This work was funded in part by National Science Foundation grant DMS 1007697. All studies were conducted with approval from the Institutional Review Board IRB 10-347.
 
 \section{Conclusion}
 
@@ -622,7 +628,7 @@ Serial & description & submitted & rejected & time(min) & Actual & 100 task& \$/
    \centering
    \includegraphics[width=6.5in]{age_gender_within_country_bar.pdf} 
    \caption{Countrywise distribution of age and academic levels of the MTurk workers participating the experiments shows the diversity of the subjects in all the demographic aspect. Male and female participants differ in India specially for agelevel 18-25. For United States number of participants are similar beyond age 40 while few number of participants coming from India beyond that age.}
-   \label{fig:gender_country}
+   \label{fig:gender_country_bar}
 \end{figure}
 
 
@@ -631,7 +637,7 @@ Serial & description & submitted & rejected & time(min) & Actual & 100 task& \$/
    \centering
    \includegraphics[width=6.5in]{age_gender_within_country_time.pdf} 
    \caption{Countrywise average time taken for different age and academic levels of the MTurk workers participating the experiments shows that the demographic factors may not have effect on time taken. }
-   \label{fig:gender_country}
+   \label{fig:gender_country_time}
 \end{figure}
 
 
@@ -639,7 +645,7 @@ Serial & description & submitted & rejected & time(min) & Actual & 100 task& \$/
    \centering
    \includegraphics[width=6.5in]{age_gender_within_country_correct.pdf} 
    \caption{Countrywise percentage of correct responses for different age and academic levels of the MTurk workers participating the experiments shows that the demographic factors may not have effect on the percentage of correct responses. }
-   \label{fig:gender_country}
+   \label{fig:gender_country_response}
 \end{figure}
 
 

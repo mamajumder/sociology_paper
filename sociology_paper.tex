@@ -76,13 +76,13 @@ In visual inference, the test statistic is a plot of the observed data. To creat
 \begin{figure}[hbtp] 
    \centering
    \includegraphics[width=0.99\textwidth]{electoral-5-13.pdf} 
-   \caption{ \label{fig:elect-1} \dc{Which one of the plots is the most different from the others? Maybe this question will have people picking 4, because it is the only one where the red side is higher.}}
+   \caption{ \label{fig:elect-1} Which one of the plots is the most different from the others?}
 \end{figure}
 
 Figure~\ref{fig:tower} displays a lineup of 20 plots where one of the plots is observed data, while the remaining 19 plots are rendered from data generated under a null model. Which one of the 20 plots is the most different from the others? When asked this question, 12 of 72 observers picked the same plot (with number equal to the result of $3^2+4$), with reasons given being 'asymmetry' (36\%), 'trend' (26\%) or `outliers' (16\%).  The corresponding $p$-value is 0.00023, indicating sufficient evidence to reject the null hypothesis. 
 , indicating that we have enough evidence to reject the null hypothesis.
 What does this mean, though? For that, we need to know the context of the data and we need to have more information about the generation of the null plots. For that, we need to know the context of the data and we need to have more information about the generation of the null plots. This example investigates the results from the 2012 US presidential election in comparison to the poll results just prior to the election. 
-(Although this example is more simplistic than most of the tests conducted to date, it will serve the purpose of illustrating the lineup protocol.) The data is looking at the difference in poll results between the two (major) presidential candidates, Obama and Romney, for all states. Each panel in Figure~\ref{fig:elect-1} shows an `electoral building' \citep{nytimes} where each state in the union is represented by a rectangle. This difference is plotted horizontally, and the height of each box corresponds to the state's electoral votes. Color indicates party affiliation.  The null hypothesis is ``that the election results were consistent with the polls''. The polling results provides the null model from which data is simulated. Because each poll has a margin of error, this is used to simulate different scenarios that might have resulted on election day, if the polls were on target. A null data set is then generated as a set of draws from normal distribution, with mean equal to the difference in poll percentage of the latest state poll results, and standard deviation equal to 2.5, approximating a margin of error of 5\%. These samples are plotted as electoral buildings, and the plot made with the results from the election is placed randomly among them in a lineup of size $5\times 4$. If the null hypothesis is true the actual data plot should look just like any of the other plots, and not be identified by an observer.
+(Although this example is more simplistic than most of the tests conducted to date, it will serve the purpose of illustrating the lineup protocol.) The data is looking at the difference in poll results between the two (major) presidential candidates, Obama and Romney, for all states. Each panel in Figure~\ref{fig:elect-1} shows an `electoral building' where each state in the union is represented by a rectangle. This difference is plotted horizontally, and the height of each box corresponds to the state's electoral votes. Color indicates party affiliation.  The null hypothesis is ``that the election results were consistent with the polls''. The polling results provides the null model from which data is simulated. Because each poll has a margin of error, this is used to simulate different scenarios that might have resulted on election day, if the polls were on target. A null data set is then generated as a set of draws from normal distribution, with mean equal to the difference in poll percentage of the latest state poll results, and standard deviation equal to 2.5, approximating a margin of error of 5\%. These samples are plotted as electoral buildings, and the plot made with the results from the election is placed randomly among them in a lineup of size $5\times 4$. If the null hypothesis is true the actual data plot should look just like any of the other plots, and not be identified by an observer.
  \hh{Figure~\ref{fig:tower} shows a plot of the electoral building with added context information and labels.}
  %A party needs 270 electoral votes or more to win the presidential election. 
 %\begin{figure}[htbp] 
@@ -136,11 +136,6 @@ For any evaluation the observer may or may not identify the actual data plot. Un
 
 %Some of the factors that may affect the performance of the observer are discussed in Section \ref{sec:factor_performance}. In this paper we focus on estimating the learning effect of the observer in terms of both proportion correct and time taken to evaluate a lineup through the attempts made during the evaluation of multiple plots. We also estimate the location effect of the observed data plot in a lineup. The other factors are controlled in simulation experiments so that learning effect and location effect can be estimated.
 
-There have been ten experiments conducted using Amazon's Mechanical Turk~\citep{turk} that are being used to evaluate the the effect of the observer. Table \ref{tbl:visual_stat} summarizes these. All of these experiments are used to evaluate the effects of demographic factors. Experiments 5,6 and 7 are used to study learning trend of the observer. The design of experiment 9 enabled effect of position in the lineup, and the sample of nulls, to be evaluated. Section \ref{sec:factor_performance} describes the factors that may affect the performance of the observer. Section \ref{sec:exp_design} describes the methods used to assess the effects, and Section \ref{sec:result_socio} describes the results.
-
-%\subsection{Experiments pooled}
-
-
 \begin{table*}[hbtp] 
 \centering 
 \caption{Visual test statistics used in 10 different simulation experiments. The observers are asked different questions to answer while evaluating a lineup} 
@@ -166,12 +161,17 @@ between group A and B? \\
 \label{tbl:visual_stat} 
 \end{table*} 
 
+There have been ten experiments conducted using Amazon's Mechanical Turk~\citep{turk} that are being used to evaluate the effects of observers' demographic factors on the inference. Table \ref{tbl:visual_stat} summarizes these experiments. Each of these experiments collected demographic details of the subjects. Experiments 5, 6 and 7 are used to study the learning trend of the observer. The design of experiment 9 incorporated components that allows position of the actual data plot in the lineup, and the sample of nulls, to be evaluated. Section \ref{sec:factor_performance} discusses human factors that may affect the performance of the observer. Section \ref{sec:exp_design} describes the methods used to assess the effects, and Section \ref{sec:result_socio} describes the results.
+
+%\subsection{Experiments pooled}
 
 
 
-\section{Factors Affecting the performance of the observer} \label{sec:factor_performance} 
+\section{Factors Affecting  Observer Performance} \label{sec:factor_performance} 
 
 A brief description of the factors that may affect the power of visual inference.
+
+\dc{You need to have more than one sentence to open this section, it needs a paragraph overviewing the factors.}
 
 \subsection{Signal in the data}
 
@@ -220,8 +220,10 @@ It may be possible that some part of the lineup is little explored or not scanne
 
 \subsection{Individual Performance of the Observer} Each person is different from others in some way. For example, in a controlled experimental study \citet{zhao:2012}  notice that some people spend a lot of time to decide no matter whether the lineup is difficult or easy while some simply glance at lineups to make a decision. This influences the response of the observer. Also subject specific variation in the power of visual test is observed in \citep{majumder:2013}. 
 
-\section{Simulation Experiment and Methods}\label{sec:exp_design}
+\section{Experimental Designs and Methods}\label{sec:exp_design}
 The performance of the observer while evaluating a lineup would depend on the factors described in Section \ref{sec:factor_performance}. This section presents the simulation experimental setup, data collection methods and data analysis plans with models to asses the influence of those factors on visual statistical inference. 
+
+\dc{Learning trend and location effect need to be separate sections, cannot be simply bolded.}
 
 \subsection{Experiment Setup}  In addition to obtain evaluation responses of the lineups, all the 10 experiments shown in Table \ref{tbl:visual_stat} were designed to collect the following demographic information of the subjects participating the experiments:
 

@@ -215,13 +215,16 @@ qplot(variable_level, value, geom="boxplot",data=mdat[complete.cases(mdat),]) +
 
 ggsave("../images/demographic_effect.pdf", width=6, height=6)
 
+# --------------------------------------------------------------
+# Model fitting with demographic factors
 # testing significance of demographic factor main effects
-
-ft <- lmer(log(time_taken)~age_level+country+degree+gender_level+ (1|id)+(1|pic_name), data=demographics)
+# --------------------------------------------------------------
+ft <- lmer(log(time_taken)~age_level+country+degree+gender_level+(1|pic_name), 
+           data=subset(demographics, experiment=="experiment_6"))
 summary(ft)
 
-fp <- lmer(response~age_level+country+degree+gender_level+ (1|id)+(1|pic_name), 
-           family="binomial", data=demographics)
+fp <- lmer(response~age_level+country+degree+gender_level+(1|pic_name), 
+           family="binomial", subset(demographics, experiment=="experiment_5"))
 summary(fp)
 
 
@@ -323,8 +326,9 @@ gregexpr("\\W+", reason.correct)
 
 
 # =====================================================
-# Model fitting
+# Model fitting with trend
 # Examining learning trend while giving feedback
+# -----------------------------------------------------
 
 # function two obtain sequential attempt information from start_time
 get_trend <- function(dat){

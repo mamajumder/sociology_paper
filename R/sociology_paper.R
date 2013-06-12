@@ -221,6 +221,9 @@ ggsave("../images/demographic_effect.pdf", width=6, height=6)
 # --------------------------------------------------------------
 ft <- lmer(log(time_taken)~age_level+country+degree+gender_level+(1|pic_name), 
            data=subset(demographics, experiment=="experiment_6"))
+
+ft <- lmer(log(time_taken)~age_level+country+degree+gender_level+experiment+(1|pic_name), 
+           data=subset(demographics,))
 summary(ft)
 
 fp <- lmer(response~age_level+country+degree+gender_level+(1|pic_name), 

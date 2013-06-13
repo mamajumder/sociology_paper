@@ -258,6 +258,23 @@ Because of its convenience it is getting popular for scientific research study a
 
 We designed and developed a web site which enables to display the lineups to the observers as per experimental design. The MTurk workers were redirected to the web site and the data were collected, stored automatically into a local database server. Demographic informations such as age group, gender and education levels were also collected. The time taken for each evaluation is computed based on the time the plot was shown and the time the feedback was received. The location of the observer is determined by the ip address of the observer.
 
+\subsection{Model to Estimate Demographic Factor Effect} Suppose $Y_{ij}$ denotes the response from observer $i$ on a  lineup $j$. Let $\pi_{ij}=  E(Y_{ij})$ be the probability that  observer $i$ correctly picks the data panel from lineup $j$. We model this in a generalized mixed effects model of the form
+\begin{equation} \label{eqn:demographic_response}
+g( \pi_{ij} )= \mu + X_{i}\beta + \ell_j,  
+\end{equation}
+
+where $\mu$ is an overall average probability for picking out the data plot from a lineup. $X_{i}=(X_{1i},X_{2i}, .., X_{pi})'$ is the vector of demographic factors of the observer $i$ and $\beta$ is the corresponding fixed effect coefficient vector. $p$ indicates the number of demographic factor variables. For $\ell_j$ we assume a normal distribution, $N(0, \sigma_\ell^2)$. $\ell_j$ is a random intercept predicting lineup difficulty level. $g(.)$ denotes the {\it logit} link function $g(\pi)=g_1(\pi)=\log(\pi) - \log(1-\pi); 0 \le \pi \le 1$.
+
+
+The effect of demographic factors can be observed as time taken for each evaluation by an observer. Suppose $Z_{ij}$ denotes the logarithm of time taken for an observer $i$ to evaluate a  lineup $j$. Let $\mu_{ij}=  E(Z_{ij})$ be the average of log(time taken) by  observer $i$ to pick the data panel from lineup $j$. We model this in a mixed effects model of the form
+%\hh{
+\begin{equation} \label{eqn:demographic_time}
+Z_{ij} = \mu + X_{i}\beta + \ell_j+ \epsilon_{ij},  
+\end{equation}
+where $\mu$ represents overall average of log time taken by an observer to evaluate a lineup. $\ell_j$ is a lineup-specific random effect for the time needed to evaluate a lineup; $\ell_j \sim N(0, \sigma_\ell^2)$ and the overall error $\epsilon_{ijk} \sim N(0, \sigma^2)$.
+
+
+
 \subsection{Model to Estimate Learning Trend}
 
 The feedback provided by each observer on a lineup is a binary response variable. Suppose $Y_{ijk}$ denotes the response from observer $i$ on a  lineup $j$ in his/her $k$th attempt.  $Y_{ijk}=1$ if the response is correct otherwise  $Y_{ijk}=0$. 
@@ -396,11 +413,11 @@ Table \ref{tbl:model_result_response} presents the parameter estimates and $p$-v
 
 \begin{table}[htbp]
 \centering
-\caption{Parameter estimates of Model \eqref{eqn:model_demo} fitted for avarage log time taken and probability of correct lineup evaluation.}
+\caption{Parameter estimates of Models \eqref{eqn:demographic_time} and \eqref{eqn:demographic_response} fitted for avarage log time taken and probability of correct lineup evaluations respectively. For time taken all the demographic factors appear to be significant. For probability of correct response age group 36-40, rest of the world and graduate degree appears to be significantly different. Gender does not show any difference in performance.}
 \scalebox{0.9}{
 \begin{tabular}{rlrrrrrrrrrr}
   \hline
-Demographic&& \multicolumn{4}{c} {Model Log(Time)} & &\multicolumn{4}{c} {Model Proportion Correct} \\
+Demographic&& \multicolumn{4}{c} {Model \eqref{eqn:demographic_time} Log Time} & &\multicolumn{4}{c} {Model \eqref{eqn:demographic_response} Proportion Correct} \\
 
 \cline{3-6} \cline{8-11} 
 Factor & Level& Est & SE & Zval & $p$-value && Est & SE & Zval & $p$-value  \\ 

@@ -131,8 +131,13 @@ demographics$country <- as.character(demographics$country_name)
 demographics$country[(demographics$country_code != "IN") & (demographics$country_code != "US")] <- "Rest of the world"
 demographics$country[demographics$country=="Namibia"] <- "Rest of the world"
 demographics$country[demographics$country==NA] <- "Rest of the world"
+country <- factor(demographics$country)
+demographics$country <- factor(country,levels=levels(country)[c(3,1,2)], ordered=T)
+
 levels(demographics$age_level)[7:9] <- 7
 levels(demographics$age_level)[1:7] <- c(levels(demographics$age_level)[1:6], "above 50")
+
+
 
 
 # getting unique participants for plotting purpose only
@@ -255,9 +260,56 @@ fp <- lmer(response~age_level+country+degree+gender_level+(1|pic_name),
 summary(fp)
 
 est.factor <- cbind(get_estimates(ft)[-16,],g1=" ",get_estimates(fp))
+rownames(est.factor) <- c("$mu$",substr(rownames(est.factor)[2:7],10,nchar(rownames(est.factor)[2:7])),
+                          levels(demographics$country)[-1], levels(demographics$degree)[-1],
+                          "Male", "lineup")
 dgt <- c(rep(0,15), rep(3,30), rep(2,15),rep(0,15))
 dgts <- matrix(rep(dgt,2), ncol=10)
 print(xtable(est.factor, digits=dgts),  sanitize.text.function = function(x){x})
+
+fta <- lmer(log(time_taken)~country+degree+gender_level+(1|pic_name), 
+           data=demographics)
+ftc <- lmer(log(time_taken)~age_level+degree+gender_level+(1|pic_name), 
+           data=demographics)
+ftd <- lmer(log(time_taken)~age_level+country+gender_level+(1|pic_name), 
+           data=demographics)
+ftg <- lmer(log(time_taken)~age_level+country+degree+(1|pic_name), 
+           data=demographics)
+
+tag <- anova(ft,fta)
+tcn <- anova(ft,ftc)
+tde <- anova(ft,ftd)
+tge <- anova(ft,ftg)
+
+anova.time <- rbind(data.frame(round(tag[1,1:4],2),round(tag[2,5:7]/1,2)),
+                    data.frame(round(tcn[1,1:4],2),round(tcn[2,5:7]/1,2)),
+                    data.frame(round(tde[1,1:4],2),round(tde[2,5:7]/1,2)),
+                    data.frame(round(tge[1,1:4],2),round(tge[2,5:7]/1,2)))
+
+fpa <- lmer(response~country+degree+gender_level+(1|pic_name), 
+           family="binomial", demographics)
+fpc <- lmer(response~age_level+degree+gender_level+(1|pic_name), 
+           family="binomial", demographics)
+fpd <- lmer(response~age_level+country+gender_level+(1|pic_name), 
+           family="binomial", demographics)
+fpg <- lmer(response~age_level+country+degree+(1|pic_name), 
+           family="binomial", demographics)
+
+pag <- anova(fp,fpa)
+pcn <- anova(fp,fpc)
+pde <- anova(fp,fpd)
+pge <- anova(fp,fpg)
+anova.prop <- rbind(data.frame(round(pag[1,1:4],2),round(pag[2,5:7]/1,2)),
+                    data.frame(round(pcn[1,1:4],2),round(pcn[2,5:7]/1,2)),
+                    data.frame(round(pde[1,1:4],2),round(pde[2,5:7]/1,2)),
+                    data.frame(round(pge[1,1:4],2),round(pge[2,5:7]/1,2)))
+
+
+anova.reseult <- rbind(anova.time, anova.prop)
+
+
+
+
 
 
 # Time of the day when Mturk worker works
@@ -395,9 +447,11 @@ qplot(log(time_taken), geom="density",
       data=subset(dtrend, experiment %in% c(5,6,7)), color=factor(experiment)) +
   scale_colour_hue(name="Experiment")
 
+# ---------------------------------------------------------------
 # Modeling time taken
 # fitting linear random effect model to check 
 # if log time_taken has any trend over sequential attempts
+# ---------------------------------------------------------------
 
 dpt <- NULL
 for (i in 5:7){
@@ -460,6 +514,7 @@ print(xtable(estimates, digits=dgts),  sanitize.text.function = function(x){x})
 # Modeling proportion correct
 # Fiting generalized mixed effect model with prportion correct
 # Checking if the performance increases with attempts
+# ---------------------------------------------------------------
 
 trend.dat <- NULL
 for (i in 5:7){
@@ -521,17 +576,20 @@ print(xtable(results, digits=3),  sanitize.text.function = function(x){x})
 
 
 
-
+# ---------------------------------------------------------------
 # Examining different models with response (percent correct)
+# ---------------------------------------------------------------
+
 dt <- subset(dtrend, experiment==5)
-fit0 <- lmer(response ~ attempt + p_value + (attempt -1|id), family="binomial", data=dt)
-
-fit1 <- lmer(response ~ attempt + (attempt|id) , family="binomial", data=dt)
+fit0 <- lmer(response ~ I(attempt==1)+ attempt + (attempt|id) + (1|pic_id), family="binomial", data=dt)
+fit1 <- lmer(response ~ factor(attempt) + (attempt|id) + (1|pic_id), family="binomial", data=dt)
 fit2 <- lmer(response ~ attempt + (attempt|id) + (1|pic_id), family="binomial", data=dt)
-anova(fit2, fit1)
-fit3 <- lmer(response ~ factor(attempt) + (attempt|id) + (1|pic_id), family="binomial", data=dt)
+fit3 <- lmer(response ~ attempt + (attempt|id) , family="binomial", data=dt)
 
-anova(fit3,fit2)
+anova(fit0,fit2)
+anova(fit1,fit2)
+
+
 
 
 

@@ -215,6 +215,27 @@ qplot(variable_level, value, geom="boxplot",data=mdat[complete.cases(mdat),]) +
 
 ggsave("../images/demographic_effect.pdf", width=6, height=6)
 
+#----------------------------------------------------------------
+# Function to obtain estimates of fitted model for latex xtable
+# Getting results of mixed effect model with log(time_taken)
+#----------------------------------------------------------------
+get_estimates <- function(fit){
+  Vcov <- vcov(fit, useScale = FALSE)
+  betas <- fixef(fit)
+  se <- sqrt(diag(Vcov))
+  zval <- betas / se
+  pval <- round(2 * pnorm(abs(zval), lower.tail = FALSE),4)
+  pval[pval==0] <- "$<$0.001"
+  fe <- data.frame(Est=round(betas,3),SE= round(se,3), Zval=round(zval,2), pvalue=pval)
+  rem <- summary(fit)@REmat
+  re <- data.frame(Est=rem[,3], SE= rem[,4], Zval="",pvalue="")
+  re$Est <- round(as.numeric(as.character(re$Est)),3)
+  re$SE <- round(as.numeric(as.character(re$SE)),3)
+  rownames(re) <- paste(rem[,1],rem[,2])
+  return(rbind(fe,re[order(rownames(re)),]))
+}
+
+
 # --------------------------------------------------------------
 # Model fitting with demographic factors
 # testing significance of demographic factor main effects
@@ -222,13 +243,21 @@ ggsave("../images/demographic_effect.pdf", width=6, height=6)
 ft <- lmer(log(time_taken)~age_level+country+degree+gender_level+(1|pic_name), 
            data=subset(demographics, experiment=="experiment_6"))
 
-ft <- lmer(log(time_taken)~age_level+country+degree+gender_level+experiment+(1|pic_name), 
-           data=subset(demographics,))
+ft <- lmer(log(time_taken)~age_level+country+degree+gender_level+(1|pic_name), 
+           data=demographics)
 summary(ft)
 
 fp <- lmer(response~age_level+country+degree+gender_level+(1|pic_name), 
            family="binomial", subset(demographics, experiment=="experiment_5"))
+fp <- lmer(response~age_level+country+degree+gender_level+(1|pic_name), 
+           family="binomial", demographics)
+
 summary(fp)
+
+est.factor <- cbind(get_estimates(ft)[-16,],g1=" ",get_estimates(fp))
+dgt <- c(rep(0,15), rep(3,30), rep(2,15),rep(0,15))
+dgts <- matrix(rep(dgt,2), ncol=10)
+print(xtable(est.factor, digits=dgts),  sanitize.text.function = function(x){x})
 
 
 # Time of the day when Mturk worker works
@@ -408,23 +437,6 @@ ggplot() +
 
 ggsave("../images/learning_trend_time.pdf", width=10.5, height = 3.5)
 
-# Getting results of mixed effect model with log(time_taken)
-
-get_estimates <- function(fit){
-  Vcov <- vcov(fit, useScale = FALSE)
-  betas <- fixef(fit)
-  se <- sqrt(diag(Vcov))
-  zval <- betas / se
-  pval <- round(2 * pnorm(abs(zval), lower.tail = FALSE),4)
-  pval[pval==0] <- "$<$0.001"
-  fe <- data.frame(Est=round(betas,3),SE= round(se,3), Zval=round(zval,2), pvalue=pval)
-  rem <- summary(fit)@REmat
-  re <- data.frame(Est=rem[,3], SE= rem[,4], Zval="",pvalue="")
-  re$Est <- round(as.numeric(as.character(re$Est)),3)
-  re$SE <- round(as.numeric(as.character(re$SE)),3)
-  rownames(re) <- paste(rem[,1],rem[,2])
-  return(rbind(fe,re[order(rownames(re)),]))
-}
 
 model <- as.formula(log(time_taken) ~I(attempt==1)+ attempt + (attempt|id) + (1|pic_id))
 dt5 <- subset(dtrend, experiment==5)

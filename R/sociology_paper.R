@@ -306,7 +306,7 @@ anova.prop <- rbind(data.frame(round(pag[1,1:4],2),round(pag[2,5:7]/1,2)),
 
 
 anova.reseult <- rbind(anova.time, anova.prop)
-
+xtable(anova.reseult)
 
 
 
@@ -467,14 +467,29 @@ qplot(attempt,resid, group=id, data= dpt, geom="line", alpha=I(0.1)) +
   facet_wrap(~experiment, scales="free_y") +
   scale_x_continuous(breaks = seq(2,10,by=2)) 
 
+
+
 dmt <- ddply(dpt, .(experiment,attempt), summarise,
              mean_resid = mean(resid))
 
 ggplot() + 
   geom_line(aes(attempt,resid, group=id), data= dpt, alpha=I(0.1)) +
   geom_smooth(aes(attempt,mean_resid), data= dmt, size=1.5, method="lm", se=F) +
-  facet_wrap(~experiment, scales="free_y") + ylab("Residual time taken") 
+  facet_wrap(~experiment, scales="free_y") + ylab("Residual time taken") +
   scale_x_continuous(breaks = seq(2,10,by=2)) 
+
+ggplot() +
+  geom_smooth(aes(attempt,mean_resid), data= dmt, size=1.5, method="lm", se=F) +
+  geom_smooth(aes(attempt,resid, group=id),method="lm", se=F, data=dpt, alpha=I(.01))+
+  facet_wrap(~experiment, scales="free_y")+
+  scale_x_continuous(breaks = seq(2,10,by=2)) 
+
+ggplot() + 
+  geom_point(aes(attempt,mean_resid), data= dmt) +
+  geom_smooth(aes(attempt,mean_resid), data= subset(dmt, attempt>1), method="lm", se=F) +
+  geom_smooth(aes(attempt,resid, group=id),method="lm", se=F, data=subset(dpt, attempt>1), alpha=I(.01))+
+  facet_wrap(~experiment, scales="free_y") + ylab("Residual log(time taken)") +
+  scale_x_continuous(breaks = seq(2,10,by=2))
 
 ggsave("../images/learning_trend_time_subject.pdf", width=10.5, height = 3.5)
 
@@ -539,6 +554,16 @@ qplot(attempt,mean_resid, data= ddt) + geom_point(size=2.5) +
   scale_x_continuous(breaks = seq(2,10,by=2)) 
 
 ggsave("../images/learning_trend.pdf", width=10.5, height = 3.5)
+
+
+ggplot() + 
+  geom_point(aes(attempt,mean_resid), data= dmt) +
+  geom_smooth(aes(attempt,mean_resid), data= subset(dmt, attempt>1), method="lm", se=F) +
+  geom_smooth(aes(attempt,resid, group=id),method="lm", se=F, data=subset(dpt, attempt>1), alpha=I(.01))+
+  facet_wrap(~experiment, scales="free_y") + ylab("Residual log(time taken)") +
+  scale_x_continuous(breaks = seq(2,10,by=2))
+
+ggsave("../images/learning_trend_subject.pdf", width=10.5, height = 3.5)
 
 
 # Checking if the trend shown in the plot is significant or not

@@ -56,7 +56,7 @@
 \maketitle
 
 \begin {abstract}  
-Visual statistical inference is a way to determine significance of patterns found while exploring data. It is dependent on the evaluation of a lineup, of a data plot among a sample of null plots, by human observers. Each individual is different in their cognitive psychology and judiciousness, which can affect the visual inference. The usual way to estimate the effectiveness of a statistical test is its power. The estimate of power of a lineup can be controlled by combining evaluations from multiple observers. Factors that may also affect the power of visual inference are the observers' demographics, visual skills, and experience, the sample of null plots taken from the null distribution, the position of the data plot in the lineup, and the signal strength in the data. This paper examine these factors. Results from multiple visual inference studies using Amazon's Mechanical Turk are examined to provide an assessment of these. The experiments suggest that individual skills vary substantially,  but demographics do not have a huge effect on performance. There is evidence that a learning effect exists but only in that observers get faster with repeated evaluations, but not more often correct. The placement of data plot in the lineup does not affect the inference.
+Visual statistical inference is a way to determine significance of patterns found while exploring data. It is dependent on the evaluation of a lineup, of a data plot among a sample of null plots, by human observers. Each individual is different in their cognitive psychology and judiciousness, which can affect the visual inference. The usual way to estimate the effectiveness of a statistical test is its power. The estimate of power of a lineup can be controlled by combining evaluations from multiple observers. Factors that may also affect the power of visual inference are the observers' demographics, visual skills, and experience, the sample of null plots taken from the null distribution, the position of the data plot in the lineup, and the signal strength in the data. This paper examines these factors. Results from multiple visual inference studies using Amazon's Mechanical Turk are examined to provide an assessment of these. The experiments suggest that individual skills vary substantially,  but demographics do not have a huge effect on performance. There is evidence that a learning effect exists but only in that observers get faster with repeated evaluations, but not more often correct. The placement of data plot in the lineup does not affect the inference.
 
 {\bf Keywords: \sf statistical graphics, non-parametric test, cognitive phycology, data visualization, exploratory data analysis, data mining, visual analytics} 
 \end {abstract}
@@ -227,7 +227,7 @@ The performance of the observer while evaluating a lineup would depend on the fa
 \subsection{Experiment Setup}  In addition to obtain evaluation responses of the lineups, all the 10 experiments shown in Table \ref{tbl:visual_stat} were designed to collect the following demographic information of the subjects participating the experiments:
 
 \begin{enumerate} \leftmargin 5cm  \itemsep 0in
-\item Age level
+\item Age group
 \item Gender
 \item Academic education level
 \item Geographical location
@@ -260,17 +260,21 @@ We designed and developed a web application which enables to display the lineups
 
 \subsection{Model to Estimate Demographic Factor Effect} The feedback provided by each observer on a lineup is a binary response variable. Suppose $Y_{ij}$ denotes the response from observer $i$ on a  lineup $j$. Yij = 1 if the response is correct otherwise Yij = 0. Let $\pi_{ij}=  E(Y_{ij})$ be the probability that  observer $i$ correctly picks the data panel from lineup $j$. We model this in a generalized mixed effects model of the form
 \begin{equation} \label{eqn:demographic_response}
-g( \pi_{ij} )= \mu + X_{i}\beta + \ell_j,  
+g( \pi_{ij} )= \mu + \alpha_{k(i)} + \gamma_{l(i)} + \tau_{m(i)}+ \kappa_{s(i)} + \ell_j,  
 \end{equation}
-where $\mu$ is an overall average probability for picking out the data plot from a lineup. $X_{i}=(X_{1i},X_{2i}, .., X_{pi})'$ is the vector of demographic factors of the observer $i$ and $\beta$ is the corresponding fixed effect coefficient vector. $p$ indicates the number of demographic factor variables. For $\ell_j$ we assume a normal distribution, $N(0, \sigma_\ell^2)$. $\ell_j$ is a random intercept predicting lineup difficulty level. $g(.)$ denotes the {\it logit} link function $g(\pi)=g_1(\pi)=\log(\pi) - \log(1-\pi); 0 \le \pi \le 1$.
+where $\mu$ is an overall average probability for picking out the data plot from a lineup. $\alpha$, $\gamma$, $\tau$ and  $\kappa$ are the effect of age group $k(i)$, gender category $l(i)$, education level $m(i)$ and country name $s(i)$ respectively for observer $i$. $\ell_j$ is a random intercept predicting lineup difficulty level and we assume  $\ell_j \sim N(0, \sigma_\ell^2)$. $g(.)$ denotes the {\it logit} link function $g(\pi)=g_1(\pi)=\log(\pi) - \log(1-\pi); 0 \le \pi \le 1$.
+
+
+
+% and $k(i) \in \{18-25, 26-30, 31-35, 36-40, 41-45, 46-50, \text{above } 50 \}$. $\gamma$ is the effect of gender category $l(i) \in \{\text{Male, Female}\}$. $\tau$ is the effect of education levels $m(i) \in \{ \text{High school, Undergrad course, Undergrad degree, Graduate course, }\}$
 
 
 The effect of demographic factors can be observed as time taken for each evaluation by an observer. Suppose $Z_{ij}$ denotes the logarithm of time taken for an observer $i$ to evaluate a  lineup $j$. Let $\mu_{ij}=  E(Z_{ij})$ be the average of log(time taken) by  observer $i$ to pick the data panel from lineup $j$. We model this in a mixed effects model of the form
 %\hh{
 \begin{equation} \label{eqn:demographic_time}
-Z_{ij} = \mu + X_{i}\beta + \ell_j+ \epsilon_{ij},  
+Z_{ij} = \mu + \alpha_{k(i)} + \gamma_{l(i)} + \tau_{m(i)}+ \kappa_{s(i)} + \ell_j+ \epsilon_{ij},  
 \end{equation}
-where $\mu$ represents overall average of log time taken by an observer to evaluate a lineup. $\ell_j$ is a lineup-specific random effect for the time needed to evaluate a lineup; $\ell_j \sim N(0, \sigma_\ell^2)$ and the overall error $\epsilon_{ijk} \sim N(0, \sigma^2)$.
+where $\mu$ represents overall average of log time taken by an observer to evaluate a lineup. $\alpha$, $\gamma$, $\tau$ and  $\kappa$ are as described in Model \eqref{eqn:demographic_response}. $\ell_j$ is a lineup-specific random effect for the time needed to evaluate a lineup; $\ell_j \sim N(0, \sigma_\ell^2)$ and the overall error $\epsilon_{ijk} \sim N(0, \sigma^2)$.
 
 
 
@@ -395,12 +399,39 @@ A total of 1911 lineups were evaluated in all these 10 experiments. Each person 
    \label{fig:demographic_effect}
 \end{figure}
 
-The distribution of time taken to evaluate a lineup is positively skewed. But in log scale it is symmetric for all the demographic factor variables as we see in Figure \ref{fig:demographic_effect}. Mean and medians are very similar as well. This allowed us to fit linear mixed model to the log time taken with normal error structure.
+The distribution of time taken to evaluate a lineup is positively skewed. But in log scale it appears to be symmetric for all the demographic factor variables as we see in Figure \ref{fig:demographic_effect}. Mean and medians are very similar as well. This allowed us to fit linear mixed model to the log time taken with normal error structure.
 
 We observed some differences in median proportion of correct responses for different levels of the demographic factors as in Figure \ref{fig:demographic_effect}. But the variability of proportion correct responses are huge as per design of the experiments since we have some super easy and some extremely difficult lineups. There were lineups which were not expected to be evaluated correctly since some of the null plots in those lineups were showing more signal than the actual plot itself. In those scenarios,  one may not reject the null hypothesis. We call these difficult lineup. Some of the lineups were so easy that data plot is detectable in a first glance. These were expected to be evaluated correctly 100\% of the time. This is why we see the boxes range from 0 to 1 in most of the factor levels. Unlike median, less differences are observed in the average proportion of correct responses for different factor levels. 
 
-Model \eqref{eqn:demographic_response} is fitted to the data for different demographic factors such as age, country, education and gender. The results are shown in Table \ref{tbl:model_result_demographics}. For parameter estimation the first factor levels shown the Table are are used as the base line. The age group 36-40 is significantly different than the base line age group 18-25. The rest of the age levels appears to be similar in explaining the probability of correct response. For country, the rest of the world is different from USA but India appears to be similar to USA. We see from Table \ref{tbl:demographics} that most of the participants (about 90\%) are from India and USA. The rest of the 10\% data are from 76 different countries. This diversity in the rest of the world may make it different from India and USA.
+Model \eqref{eqn:demographic_response} is fitted to the data with fixed effect factors such as age, country, education and gender. To estimate the overall factor main effect, a reduced model is fitted removing that factor from Model \eqref{eqn:demographic_response}. Analysis of variance (ANOVA)  results shown in Table~\ref{tbl:anova_factor} suggest that all the factor variables are significantly different in describing the the probability of correct response except gender. Gender does not seem to show any difference in performance. The similar ANOVA results are obtained by fitting Model \eqref{eqn:demographic_time} to the data of log time taken and are shown in Table~\ref{tbl:anova_factor}. All the factor variables are significantly different for log time taken including gender.  
 
+\begin{table}[htbp]
+\centering
+\caption{Anova of full model with all the demographic factors vs reduced model with removing respective factor variable. Gender does not seem to have any effect on probability of correct response.}
+\begin{tabular}{lrrrrrrr}
+  \hline
+Model & & AIC & BIC & logLik & Chisq & Chi.Df & $p$-value \\ 
+  \hline
+Proportion Correct &Full & 23822.00 &23943.00 &-11896.00  & &  &  \\ 
+& \multicolumn{2}{l}{Reduced}  &  &  &  & \\
+  &Age & 23835.22 & 23907.93 & -11908.61 & 25.50 & 6 & $<$0.001 \\ 
+  &Country  & 24099.57 & 24204.72 & -12036.78 & 281.85 & 2 & $<$0.001 \\ 
+  &Education  & 23837.48 & 23926.34 & -11907.74 & 23.77 & 4 & $<$0.001 \\ 
+  &Gender  & 23821.88 & 23934.98 & -11896.94 & 2.17 & 1 & 0.140 \\ 
+   \hline
+   Log Time &Full &  51904.00 &52034.00 & -25936.00 & &  &  \\ 
+& \multicolumn{2}{l}{Reduced}  &  &  &  & \\
+&Age  & 52435.63 & 52516.41 & -26207.81 & 543.18 & 6 & $<$0.001 \\ 
+ & Country  & 52849.92 & 52963.15 & -26410.96 & 949.47 & 2 & $<$0.001 \\ 
+  &Education  & 52012.68 & 52109.61 & -25994.34 & 116.23 & 4 & $<$0.001 \\ 
+  &Gender  & 51970.57 & 52091.74 & -25970.28 & 68.12 & 1 & $<$0.001 \\ 
+\hline
+\end{tabular}
+\label{tbl:anova_factor}
+\end{table}
+
+
+To further illustrate how the individual factor levels differ from each other the detailed results of Models \eqref{eqn:demographic_response} and \eqref{eqn:demographic_time} are shown in Table \ref{tbl:model_result_demographics}. For parameter estimation the first factor levels shown in the Table are are used as the base line. The effect of all the demographic factors on log time taken to evaluate a lineup appears to be significant. But for probability of correct responses we observe that not all the factor levels are significant. 
 
 \begin{table}[htbp]
 \centering
@@ -446,37 +477,44 @@ Gender & Female&0.000   &---  &---  &---  &  &--- &--- &---& ---\\
 \label{tbl:model_result_demographics}
 \end{table}
 
+Age group 36-40 is significantly different than the base line age group 18-25. The rest of the age levels appears to be similar in explaining the probability of correct response. For country, the rest of the world is different from USA but India appears to be similar to USA. We see from Table \ref{tbl:demographics} that most of the participants (about 90\%) are from India and USA. The rest of the 10\% data are from 76 different countries. This diversity in the rest of the world may make it different from India and USA.
 
 The graduate degree holders are significantly different as well. The positive parameter estimate indicates that they perform better and the probability of correct response is higher than other education levels. As expected, there is no significant difference between Male and female performances. 
 
-Notice that lineup specific variance estimate is 5.259 with a standard error of 2.293 which is much higher than the other significant parameter estimates in Model \eqref{eqn:demographic_response}. This indicates that the major and most important factor affecting the probability of correct response is the lineup difficulty. This is also evident from the large variability in the proportion correct in Figure~\ref{fig:demographic_effect}. Because of this huge impact of lineup specific variance, the actual effect of other factor variables on the probability of correct response is in fact very small even though they appear to be significant.
+Notice that lineup specific variance estimate is 5.259 with a standard error of 2.293 which is much higher than the other significant parameter estimates in Model \eqref{eqn:demographic_response}. This indicates that the major and most important factor affecting the probability of correct response is the lineup difficulty. This is also evident from the large variability in the proportion correct in Figure~\ref{fig:demographic_effect}. Because of this huge impact of lineup specific variance, the actual effect of other factor variables on the probability of correct response is in fact very small even though they appear to be significant. We illustrate this with the following example of the significant effect of graduate degree.
 
-Model \eqref{eqn:demographic_time} is fitted for the log time taken to evaluate a lineup and the results are also shown in  Table~\ref{tbl:model_result_demographics}.  The effect of all the demographic factors on log time taken to evaluate a lineup appears to be significant. 
+Effect of graduate degree is estimated as 0.182 which appears to be highly significant. This causes an increase of probability of correct response for graduate degree over high school by 
+$$ \frac {\exp(-0.683+0.182)}{1+\exp(-0.683+0.182)}-  \frac {\exp(-0.683)}{1+\exp(-0.683)} = 0.377- 0.336 =0.042.$$  If we move away one standard deviation of lineup variation, in other words if we add 2.293 to teach of the exponent term in above equation, this increase reduces to 0.024. For two standard deviations it further reduces to 0.003 which is practically very small. The similar calculation shows the same negligible impact of age level 36-40 and country on the probability of correct response. Thus even though some of the factor levels are significant, their practical impact is negligible because of high variability of lineup difficulties.
 
-\begin{table}[htbp]
-\centering
-\caption{Anova of full model with all the demographic factors vs reduced model with removing respective factor.}
-\begin{tabular}{lrrrrrrrr}
-  \hline
-Model && Df & AIC & BIC & logLik & Chisq & Chi.Df & $p$-value \\ 
-  \hline
-Log Time &Full& 16 &  51904.00 &52034.00 & -25936.00 & &  &  \\ 
-& \multicolumn{2}{l}{Reduced} &  &  &  &  & \\
-&Age & 10 & 52435.63 & 52516.41 & -26207.81 & 543.18 & 6 & $<$0.001 \\ 
- & Country & 14 & 52849.92 & 52963.15 & -26410.96 & 949.47 & 2 & $<$0.001 \\ 
-  &Education & 12 & 52012.68 & 52109.61 & -25994.34 & 116.23 & 4 & $<$0.001 \\ 
-  &Gender & 15 & 51970.57 & 52091.74 & -25970.28 & 68.12 & 1 & $<$0.001 \\ 
-\hline
-Proportion Correct &Full& 15 & 23822.00 &23943.00 &-11896.00  & &  &  \\ 
-& \multicolumn{2}{l}{Reduced} &  &  &  &  & \\
-  &Age & 9 & 23835.22 & 23907.93 & -11908.61 & 25.50 & 6 & $<$0.001 \\ 
-  &Country & 13 & 24099.57 & 24204.72 & -12036.78 & 281.85 & 2 & $<$0.001 \\ 
-  &Education & 11 & 23837.48 & 23926.34 & -11907.74 & 23.77 & 4 & $<$0.001 \\ 
-  &Gender & 14 & 23821.88 & 23934.98 & -11896.94 & 2.17 & 1 & 0.140 \\ 
-   \hline
-\end{tabular}
-\end{table}
+%Model \eqref{eqn:demographic_time} is fitted for the log time taken to evaluate a lineup and the results are also shown in  Table~\ref{tbl:model_result_demographics}.  The effect of all the demographic factors on log time taken to evaluate a lineup appears to be significant. 
 
+
+
+%
+%\begin{table}[htbp]
+%\centering
+%\caption{Anova of full model with all the demographic factors vs reduced model with removing respective factor.}
+%\begin{tabular}{lrrrrrrrr}
+%  \hline
+%Model && Df & AIC & BIC & logLik & Chisq & Chi.Df & $p$-value \\ 
+%  \hline
+%Log Time &Full& 16 &  51904.00 &52034.00 & -25936.00 & &  &  \\ 
+%& \multicolumn{2}{l}{Reduced} &  &  &  &  & \\
+%&Age & 10 & 52435.63 & 52516.41 & -26207.81 & 543.18 & 6 & $<$0.001 \\ 
+% & Country & 14 & 52849.92 & 52963.15 & -26410.96 & 949.47 & 2 & $<$0.001 \\ 
+%  &Education & 12 & 52012.68 & 52109.61 & -25994.34 & 116.23 & 4 & $<$0.001 \\ 
+%  &Gender & 15 & 51970.57 & 52091.74 & -25970.28 & 68.12 & 1 & $<$0.001 \\ 
+%\hline
+%Proportion Correct &Full& 15 & 23822.00 &23943.00 &-11896.00  & &  &  \\ 
+%& \multicolumn{2}{l}{Reduced} &  &  &  &  & \\
+%  &Age & 9 & 23835.22 & 23907.93 & -11908.61 & 25.50 & 6 & $<$0.001 \\ 
+%  &Country & 13 & 24099.57 & 24204.72 & -12036.78 & 281.85 & 2 & $<$0.001 \\ 
+%  &Education & 11 & 23837.48 & 23926.34 & -11907.74 & 23.77 & 4 & $<$0.001 \\ 
+%  &Gender & 14 & 23821.88 & 23934.98 & -11896.94 & 2.17 & 1 & 0.140 \\ 
+%   \hline
+%\end{tabular}
+%\end{table}
+%
 
 
 \subsection{Learning Trend} Models \eqref{eqn:trend_response} and \eqref{eqn:trend_time} are fitted to the data from experiment 5, 6, and 7 separately. Table \ref{tbl:model_result_response} presents the parameter estimates and $p$-values of fixed effect estimates of Model \eqref{eqn:trend_response}. The larger $p$-values suggest that none of the levels of attempt ($\alpha_2$ through $\alpha_{10}$) appears to be significant at \%1 significance level. Moreover, some of the estimates are positive and some are negative and they show up seemingly in random order suggesting later attempts not necessarily improved. This indicates that there may be no learning effect on the probability of correct evaluations. 
@@ -519,7 +557,7 @@ $\mu$ & -1.304 & 0.179 & -7.28 & $<$0.001 &   & -0.220 & 0.147 & -1.50 & 0.134 &
 
 \begin{figure}[htbp] 
    \centering
-   \includegraphics[width=6.5in]{learning_trend.pdf} 
+%   \includegraphics[width=6.5in]{learning_trend.pdf} 
     \includegraphics[width=6.5in]{learning_trend_subject.pdf} 
    \caption{ Mean residuals of proportion correct obtained from the model \eqref{eqn:trend_response} fitted without attempt are plotted against attempt. Linear regression lines fitted through the points are shown. None of the slopes in these three experiments are statistically significant. Subject specific variations in the slopes are observed where some of the observers did worse and some did better over the successive attempts.}
    \label{fig:learning_trend_response}
@@ -580,7 +618,7 @@ To visualize how the time taken reduces over the successive attempts, we fitted 
 
 \begin{figure}[htbp] 
    \centering
-   \includegraphics[width=6.5in]{learning_trend_time.pdf}    
+%   \includegraphics[width=6.5in]{learning_trend_time.pdf}    
  \includegraphics[width=6.5in]{learning_trend_time_subject.pdf}    
    \caption{ Mean residuals of log(time taken) obtained from model \eqref{eqn:trend_time} fitted without covariate attempt plotted against attempt. Linear regression lines are fitted through the points excluding the first attempt. For all the three experiments the downward slopes are statistically significant which indicates that MTurk workers take less time as they progress through their attempts. But subject specific variations in slopes are also observed where some of the subjects did worse over successive attempts while others did better.}
    \label{fig:learning_trend_time}

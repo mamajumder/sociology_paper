@@ -603,22 +603,53 @@ print(xtable(results, digits=3),  sanitize.text.function = function(x){x})
 
 
 # ---------------------------------------------------------------
-# Examining different models with response (percent correct)
+# Examining different models 
+# with response (percent correct)
 # ---------------------------------------------------------------
 
 dt <- subset(dtrend, experiment==5)
-fit0 <- lmer(response ~ I(attempt==1)+ attempt + (attempt|id) + (1|pic_id), family="binomial", data=dt)
-fit1 <- lmer(response ~ factor(attempt) + (attempt|id) + (1|pic_id), family="binomial", data=dt)
+fit0 <- lmer(response ~ factor(attempt) + (attempt|id) + (1|pic_id), family="binomial", data=dt)
+fit1 <- lmer(response ~ I(attempt==1)+ attempt + (attempt|id) + (1|pic_id), family="binomial", data=dt)
 fit2 <- lmer(response ~ attempt + (attempt|id) + (1|pic_id), family="binomial", data=dt)
 fit3 <- lmer(response ~ attempt + (attempt|id) , family="binomial", data=dt)
 
+anova(fit0,fit1)
 anova(fit0,fit2)
 anova(fit1,fit2)
 
+# ---------------------------------------------------------------
+# Examining different models 
+# with response (log time taken)
+# ft1 apears to be the best model since no difference with ft0
+# ---------------------------------------------------------------
+
+dt <- subset(dtrend, experiment %in% c(5,6,7))
+
+ft0 <- lmer(log(time_taken) ~ factor(attempt) + (attempt|id) + (1|pic_id),  data=dt, method="ML")
+ft1 <- lmer(log(time_taken) ~ I(attempt==1)+ attempt + (attempt|id) + (1|pic_id),  data=dt, method="ML")
+ft2 <- lmer(log(time_taken) ~ attempt + (attempt|id) + (1|pic_id),  data=dt, method="ML")
+ft3 <- lmer(log(time_taken) ~ attempt + (attempt|id) , data=dt, method="ML")
+
+anova(ft0,ft1)
+anova(ft0,ft2)
+anova(ft1,ft2)
+
+# ==============================================================
+# examining the practical significance of demographics
+# ---------------------------------------------------------------
+
+xb0 <- -0.683
+xb1 <- xb0+0.182
+exp(xb1)/(1+exp(xb1)) - exp(xb0)/(1+exp(xb0))
 
 
+xb01 <- -0.683+2.293
+xb11 <- xb01 +0.182
+exp(xb11)/(1+exp(xb11)) - exp(xb01)/(1+exp(xb01))
 
-
+xb01 <- -0.683+2.293*2
+xb11 <- xb01 +0.182
+exp(xb11)/(1+exp(xb11)) - exp(xb01)/(1+exp(xb01))
 
 
 # ==============================================================

@@ -487,7 +487,7 @@ ggplot() +
 ggplot() + 
   geom_smooth(aes(attempt,resid, group=id),method="lm", se=F, data=subset(dpt, attempt>1), colour=rgb(0,0,0, alpha=.05))+
   geom_point(aes(attempt,mean_resid), data= dmt) +
-  geom_smooth(aes(attempt,mean_resid), data= subset(dmt, attempt>1), method="lm", se=F) +
+  geom_smooth(aes(attempt,mean_resid), data= subset(dmt, attempt>1), method="lm", se=F, size=I(1.2)) +
   facet_wrap(~experiment, scales="free_y") + ylab("Residual log(time taken)") +
   scale_x_continuous(breaks = seq(2,10,by=2))  
 #  coord_cartesian(ylim=c(-0.5,0.5))
@@ -560,7 +560,7 @@ ggsave("../images/learning_trend.pdf", width=10.5, height = 3.5)
 ggplot() + 
   geom_smooth(aes(attempt,resid, group=id),method="lm", se=F,  data=trend.dat, colour=rgb(0,0,0, alpha=0.05))+
   geom_point(aes(attempt,mean_resid, group=1), data= ddt) +
-  geom_smooth(aes(attempt,mean_resid, group=1), data= ddt, method="lm", se=F) +
+  geom_smooth(aes(attempt,mean_resid, group=1), data= ddt, method="lm", se=F, size=I(1.2)) +
   facet_wrap(~experiment, scales="free_y") + ylab("Mean residual proportion correct") +
   scale_x_continuous(breaks = seq(2,10,by=2))
 

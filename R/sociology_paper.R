@@ -607,7 +607,7 @@ print(xtable(results, digits=3),  sanitize.text.function = function(x){x})
 # with response (percent correct)
 # ---------------------------------------------------------------
 
-dt <- subset(dtrend, experiment==5)
+dt <- subset(dtrend, experiment %in% c(5,6,7))
 fit0 <- lmer(response ~ factor(attempt) + (attempt|id) + (1|pic_id), family="binomial", data=dt)
 fit1 <- lmer(response ~ I(attempt==1)+ attempt + (attempt|id) + (1|pic_id), family="binomial", data=dt)
 fit2 <- lmer(response ~ attempt + (attempt|id) + (1|pic_id), family="binomial", data=dt)

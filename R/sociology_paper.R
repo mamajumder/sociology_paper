@@ -779,6 +779,16 @@ int.dat$locs <- "out"
 int.dat$locs[int.dat$plot_location %in% c(9,12)] <- "in"
 summary(manova(cbind(null_1,null_2,null_3,null_4,null_5)~factor(locs), data=int.dat))
 
+# ===========================================================
+# Modeling location effect
+# Fiting generalized mixed model for location effect
+# Locations are not significant
+# -----------------------------------------------------------
+
+colnames(df)
+fi <- lmer(response~factor(plot_location)+nulls+(1|pic_name), family="binomial",data=subset(df,plot_type=="Interaction"))
+fg <- lmer(response~factor(plot_location)+nulls+(1|pic_name), family="binomial",data=subset(df,plot_type=="Genotype"))
+
 # test for equivalency
 library(equivalence)
 

@@ -532,8 +532,18 @@ Notice that lineup specific variance estimate is 5.259 with a standard error of 
 
 Effect of graduate degree is estimated as 0.182 which is highly significant. For an 18-25 year old female in the United States, the expected difference in the probability of correct response, if she has a graduate degree as compared to a high school degree, is, for a lineup with random effect of zero:
 $$ \frac {\exp(-0.683+0.182)}{1+\exp(-0.683+0.182)}-  \frac {\exp(-0.683)}{1+\exp(-0.683)} = 0.377- 0.336 =0.041.$$ 
-For a lineup with a predicted random effect of one standard deviation, i.e. we move away one standard deviation of lineup variation by adding 2.293 to each of the exponent terms in the equation, this difference reduces to 0.024. For two standard deviations it further reduces to 0.003 which is practically very small. 
-A similar calculation shows the same negligible impact of age level 36-40 (0.0533 at most)  and country (0.0424 at most) on the probability of correct response. Thus even though some of the factor levels are significant, their practical impact is negligible because of high variability of lineup difficulties.
+For a lineup with a predicted random effect of one standard deviation, i.e. we move away one standard deviation of lineup variation by adding 2.293 to each of the exponent terms in the equation, this difference reduces to 0.024. For two standard deviations it further reduces to 0.003 which is practically very small. Figure~\ref{fig:practical_impact_demographics} illustrates this example showing how the change in probability diminishes for larger variability of lineup difficulty. A similar calculation shows the same negligible impact of age level 36-40 (0.0533 at most)  and country (0.0424 at most) on the probability of correct response. Thus even though some of the factor levels are significant, their practical impact is negligible because of high variability of lineup difficulties.
+
+\begin{figure}[htbp] 
+   \centering
+%   \includegraphics[width=6.5in]{learning_trend.pdf} 
+    \includegraphics[width=3in]{practical_impact_demographics.pdf} 
+   \caption{ Change in probability of correct response due to graduate degree as compared to high school degree diminishes rapidly as the variability in lineup difficulty $\sigma_{\ell}$ increases.}
+   \label{fig:practical_impact_demographics}
+\end{figure}
+
+
+
 
 %Model \eqref{eqn:demographic_time} is fitted for the log time taken to evaluate a lineup and the results are also shown in  Table~\ref{tbl:model_result_demographics}.  The effect of all the demographic factors on log time taken to evaluate a lineup appears to be significant. 
 

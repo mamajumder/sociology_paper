@@ -308,7 +308,59 @@ anova.prop <- rbind(data.frame(round(pag[1,1:4],2),round(pag[2,5:7]/1,2)),
 anova.reseult <- rbind(anova.time, anova.prop)
 xtable(anova.reseult)
 
+# ==============================================================
+# Exploring the practical significance of demographics
+# ---------------------------------------------------------------
 
+et <- 6
+xb <- seq(-et,et, by=.1)
+px <- function(xb){exp(xb)/(1+exp(xb))}
+pdat <- data.frame(xb,px=px(xb))
+
+s1 <- 2.293
+s2 <- s1*2
+xx <- c(0,0.182)
+
+x <- c(xx,-et,-et,xx+s1,-et,-et,xx+s2,-et,-et)
+xend <- c(xx,xx,xx+s1,xx+s1,xx+s2,xx+s2 )
+y <- c(0,0,px(xx),0,0,px(xx+s1),0,0,px(xx+s2))
+yend <- px(xend)
+ldat <- data.frame(x,xend,y,yend)
+
+ggplot()+geom_line(aes(xb,px), data=pdat)+
+  geom_segment(aes(x=x,xend=xend,y=y,yend=yend), data=ldat, linetype="dashed") + 
+  theme_bw() + xlab(expression(eta)) + ylab("Prability of correct evaluation")
+
+
+get_change <- function(s){
+  xb0 <- -0.683 + s
+  xb1 <- xb0 + 0.182 
+  px(xb1) - px(xb0)
+}
+
+sgl <- 2.293
+get_change(c(0,sgl,sgl*2))
+get_change(2.293)
+
+xx <- (1:2)*sgl
+x <- c(xx,0,0)
+xend <- c(xx,xx)
+y <- c(0,0, get_change(xx))
+yen <- get_change(xend)
+ldat <- data.frame(x=c(xx,0,0), xend=c(xx,xx),y=c(0,0,get_change(xx)), yend=get_change(c(xx,xx)))
+
+ss <- seq(0,6.5, by=.1)
+qplot(ss,get_change(ss), geom="line") + 
+  geom_segment(aes(x=x,xend=xend,y=y,yend=yend), data=ldat, linetype="dashed") +
+  ylab("Change in probability of correct response \n due to graduate degree") +
+  xlab("Lineup variability") +
+  scale_y_continuous(breaks =c(0,.003237246,.01,.02,.02376092,.03,.04), expand = c(0.02,0),
+                     labels =c(0,0.003,.01,.02,.024,.03,.04)) +
+  scale_x_continuous(breaks=c(0,2,2.293,4,4.586,6), expand = c(0.02,0),
+                     labels=c(0,2, expression(sigma[l],4,2*sigma[l],6)))+
+  theme_bw() +theme(panel.grid = element_blank())
+
+ggsave("../images/practical_impact_demographics.pdf", width=5.5, height=5)
 
 
 
@@ -633,23 +685,6 @@ ft3 <- lmer(log(time_taken) ~ attempt + (attempt|id) , data=dt, method="ML")
 anova(ft0,ft1)
 anova(ft0,ft2)
 anova(ft1,ft2)
-
-# ==============================================================
-# examining the practical significance of demographics
-# ---------------------------------------------------------------
-
-xb0 <- -0.683
-xb1 <- xb0+0.182
-exp(xb1)/(1+exp(xb1)) - exp(xb0)/(1+exp(xb0))
-
-
-xb01 <- -0.683+2.293
-xb11 <- xb01 +0.182
-exp(xb11)/(1+exp(xb11)) - exp(xb01)/(1+exp(xb01))
-
-xb01 <- -0.683+2.293*2
-xb11 <- xb01 +0.182
-exp(xb11)/(1+exp(xb11)) - exp(xb01)/(1+exp(xb01))
 
 
 # ==============================================================

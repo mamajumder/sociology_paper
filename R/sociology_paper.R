@@ -112,10 +112,10 @@ for (i in 1:10){
   di$academic_study[di$academic_study==0] <- NA
   di$experiment = paste("experiment_",i, sep="")
   di$id = paste("exp",i,"_",di$id, sep="")
-  degree <- factor(c("High school or less", "Some under grad courses",
-                  "Under graduate degree","Some graduate courses",
+  degree <- factor(c("High school or less", "Under grad courses",
+                  "Under grad degree","Graduate courses",
                   "Graduate degree")[di$academic_study])
-  di$degree <- factor(degree, levels=levels(degree)[order(c(5,1,4,2,3))], ordered=T)
+  di$degree <- factor(degree, levels=levels(degree)[order(c(4,5,1,2,3))], ordered=T)
   di$age_level <- factor(c("below 18","18-25","26-30","31-35","36-40",
                   "41-45","46-50","51-55","56-60","above 60")[di$age])
   di$gender_level <- factor(c("Male","Female")[di$gender])
@@ -218,7 +218,7 @@ qplot(variable_level, value, geom="boxplot",data=mdat[complete.cases(mdat),]) +
   stat_summary(fun.y=mean, geom="point") + xlab("Levels of demographic factors")+
   theme(axis.text.x=element_text(angle=90, hjust=1))
 
-ggsave("../images/demographic_effect.pdf", width=6, height=6)
+ggsave("../images/demographic_effect.pdf", width=6.5, height=6)
 
 #----------------------------------------------------------------
 # Function to obtain estimates of fitted model for latex xtable
@@ -246,14 +246,9 @@ get_estimates <- function(fit){
 # testing significance of demographic factor main effects
 # --------------------------------------------------------------
 ft <- lmer(log(time_taken)~age_level+country+degree+gender_level+(1|pic_name), 
-           data=subset(demographics, experiment=="experiment_6"))
-
-ft <- lmer(log(time_taken)~age_level+country+degree+gender_level+(1|pic_name), 
            data=demographics)
 summary(ft)
 
-fp <- lmer(response~age_level+country+degree+gender_level+(1|pic_name), 
-           family="binomial", subset(demographics, experiment=="experiment_5"))
 fp <- lmer(response~age_level+country+degree+gender_level+(1|pic_name), 
            family="binomial", demographics)
 
@@ -321,15 +316,17 @@ s1 <- 2.293
 s2 <- s1*2
 xx <- c(0,0.182)
 
-x <- c(xx,-et,-et,xx+s1,-et,-et,xx+s2,-et,-et)
-xend <- c(xx,xx,xx+s1,xx+s1,xx+s2,xx+s2 )
-y <- c(0,0,px(xx),0,0,px(xx+s1),0,0,px(xx+s2))
-yend <- px(xend)
-ldat <- data.frame(x,xend,y,yend)
+ldat <- data.frame(x =c(xx,-et,-et,xx+s1,-et,-et,xx+s2,-et,-et),
+                   xend = c(xx,xx,xx+s1,xx+s1,xx+s2,xx+s2 ),
+                   y = c(0,0,px(xx),0,0,px(xx+s1),0,0,px(xx+s2)),
+                   yend= px(c(xx,xx,xx+s1,xx+s1,xx+s2,xx+s2 )))
 
 ggplot()+geom_line(aes(xb,px), data=pdat)+
   geom_segment(aes(x=x,xend=xend,y=y,yend=yend), data=ldat, linetype="dashed") + 
-  theme_bw() + xlab(expression(eta)) + ylab("Prability of correct evaluation")
+  theme_bw() + xlab(expression(eta)) + ylab("Prability of correct evaluation") +
+  theme(panel.grid = element_blank())+
+  scale_y_continuous(expand = c(0.01,0)) +
+  scale_x_continuous(expand = c(0.01,0))
 
 
 get_change <- function(s){
@@ -338,15 +335,10 @@ get_change <- function(s){
   px(xb1) - px(xb0)
 }
 
-sgl <- 2.293
-get_change(c(0,sgl,sgl*2))
+get_change(c(0,s1,s2))
 get_change(2.293)
 
-xx <- (1:2)*sgl
-x <- c(xx,0,0)
-xend <- c(xx,xx)
-y <- c(0,0, get_change(xx))
-yen <- get_change(xend)
+xx <- (1:2)*s1
 ldat <- data.frame(x=c(xx,0,0), xend=c(xx,xx),y=c(0,0,get_change(xx)), yend=get_change(c(xx,xx)))
 
 ss <- seq(0,6.5, by=.1)

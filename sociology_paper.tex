@@ -386,7 +386,7 @@ Gender & Male & 1348&57.63 & 48.51 & 13493 \\
 
 
 
-
+% This table contains the demographic information without factor wise percentages.
 %\begin{table}[hbtp]
 %\caption{Demographic information of the subjects participated the MTurk experiments. Average time taken for evaluating a lineup is shown in seconds.}
 %\centering
@@ -433,22 +433,22 @@ The distribution of male and female participants are similar among all age group
 
 A total of 1911 lineups were evaluated in the ten experiments. Each person evaluated at least 10 lineups except for experiment 9 where three lineups were evaluated by each person. A test plot was shown to each observer and the feedback received from that plot is used to examine the data quality or process payment. But the data received for the test lineup is not included in the analysis. In some cases the demographic information were not provided by the participants. Also, for some ip address, the actual geographical locations could not be retrieved. This resulted some missing demographic information.
 
-\subsection{Demographic Factors} Proportions of correct responses and the logarithm of average time taken to evaluate  each lineup are computed and their distributions are shown as boxplots in Figure \ref{fig:demographic_effect} for different demographic factor levels. Averages of these distributions are represented by dots inside the boxplots. The youngest age group (18-25) took least average time to evaluate a lineup. People from India took more time than others. People who have only a high school degree took less time and this is related to what we have seen for young age group. The time taken by male and female participants are almost the same. 
+\subsection{Demographic Factors} Proportions of correct responses and natural logarithms of average time taken to evaluate  each lineup are computed  for different demographic factor levels. Their distributions are shown using boxplots in Figure \ref{fig:demographic_effect}. Averages of these distributions are represented by dots inside the boxplots. The youngest age group (18-25) took least average time to evaluate a lineup. People from India took more time than others. People who have only a high school degree took less time and this is related to what we have seen for young age group. Averages of log time taken by male and female participants look similar but there are some differences as we see in Table~\ref{tbl:demographics}. 
 
 %All of the factors are significant in describing time taken to evaluate a lineup.
 
 \begin{figure}[htbp] 
    \centering
    \includegraphics[width=4in]{demographic_effect.pdf} 
-   \caption{Boxplots of average time taken in log scale and proportion correct responses of all the lineups plotted for each demographic factor variables. The dots inside the boxes represent means. Demographic factors appear to be statistically significant for explaining time taken. Effect of graduate degree and India in proportion correct is much different but is actually the India effect since, Most of the graduate degree holders are coming from India.}
+   \caption{Boxplots of average log time taken and proportion correct responses of all the lineups plotted for each demographic factor levels. The dots inside the boxes represent means. Some differences in means of various demographic factors are observed. Variability in proportion correct indicates large variability in lineup difficulties.}
    \label{fig:demographic_effect}
 \end{figure}
 
 The distribution of time taken to evaluate a lineup is positively skewed. But in log scale it appears to be symmetric for all the demographic factor variables as we see in Figure \ref{fig:demographic_effect}. Mean and medians are very similar as well. This allows us to fit linear mixed model to the log time taken with normal error structure.
 
-We observed some differences in median proportion of correct responses for different levels of the demographic factors as in Figure \ref{fig:demographic_effect}. But the variability of proportion correct responses are huge as per design of the experiments since we have some very easy and some extremely difficult lineups. Some of the lineups  were not expected to be evaluated correctly as some of the null plots in those lineups were showing more signal than the actual plot itself. In those scenarios,  one may not reject the null hypothesis. We call these difficult lineup. Some of the lineups were so easy that data plot is detectable at a first glance. These were expected to be evaluated correctly 100\% of the time. This is why we see the boxes range from 0 to 1 in most of the factor levels. Unlike median, fewer differences are observed in the average proportion of correct responses for different factor levels. 
+We observed some differences in median proportion of correct responses for different demographic factor levels. But the variability of proportion correct responses are huge as per design of the experiments since there were some very easy as well as extremely difficult lineups. Some of the lineups  were not expected to be evaluated correctly as the null plots in those lineups were showing more signal than the actual data plot itself. In those scenarios,  one may not reject the null hypothesis. We call these difficult lineups. Some of the lineups were so easy that data plot is detectable at a first glance. These were expected to be evaluated correctly 100\% of the time. This is why we see the boxes range from 0 to 1 in most of the factor levels. Unlike median, fewer differences are observed in the average proportion of correct responses for different factor levels. 
 
-Model \eqref{eqn:demographic_response} is fitted to the data with fixed effect factors such as age, country, education and gender. To estimate the overall factor main effect, a reduced model is fitted removing that factor from Model \eqref{eqn:demographic_response}. Analysis of variance (ANOVA)  results shown in Table~\ref{tbl:anova_factor} suggest that all the factor variables are significantly different in describing the the probability of correct response except gender. Gender does not show any significant difference in performance.  Similarly, ANOVA results are obtained by fitting Model \eqref{eqn:demographic_time} to the data of log time taken and are shown in Table~\ref{tbl:anova_factor}. All the factor variables are significantly different for log time taken including gender.  
+Model \eqref{eqn:demographic_response} is fitted to the data with fixed effect factors such as age, country, education and gender. To estimate the overall factor main effect, a reduced model is fitted removing that factor from Model \eqref{eqn:demographic_response}. Analysis of variance (ANOVA)  results shown in Table~\ref{tbl:anova_factor} suggest that all the factor variables are significantly different in describing the the probability of correct response except gender. Gender does not show any significant difference in performance.  Similarly, ANOVA results are obtained by fitting Model \eqref{eqn:demographic_time} to the data of log time taken and are shown in Table~\ref{tbl:anova_factor} as well. All the factor variables are significantly different for log time taken including gender.  
 
 \begin{table}[htbp]
 \centering
@@ -478,11 +478,11 @@ Proportion Correct &Full & 23822.00 &23943.00 &-11896.00  & &  &  \\
 \end{table}
 
 
-To further illustrate how the individual factor levels differ from each other  detailed results of Models \eqref{eqn:demographic_response} and \eqref{eqn:demographic_time} are shown in Table \ref{tbl:model_result_demographics}. For parameter estimation the first factor levels shown in the Table are  used as the base line. Demographic factors have significant effects on log time taken to evaluate a lineup on all their levels. For the probability of correct responses not all the factor levels are significant. 
+To further illustrate how the individual factor levels differ from each other  the detailed results of Models \eqref{eqn:demographic_response} and \eqref{eqn:demographic_time} are shown in Table \ref{tbl:model_result_demographics}. For parameter estimation the first factor levels shown in the Table are  used as the base line. Demographic factor levels have significant effects on log time taken to evaluate a lineup. But not all the levels are significant for the probability of correct responses.
 
 \begin{table}[htbp]
 \centering
-\caption{Parameter estimates of Models \eqref{eqn:demographic_time} and \eqref{eqn:demographic_response} fitted for average log time taken and probability of correct lineup evaluations respectively. For time taken all the demographic factors are significant. For probability of correct response age group 36-40, rest of the world and graduate degree are significantly different. For gender we do not see any difference in performance.}
+\caption{Parameter estimates of Models \eqref{eqn:demographic_time} and \eqref{eqn:demographic_response} fitted for average log time taken and probability of correct lineup evaluations respectively. For time taken all the demographic factors are significant. For probability of correct response age group 36-40, rest of the world and graduate degree are significantly different. For gender no difference in performance is observed. Lineup variability is estimated to be very large for Model \eqref{eqn:demographic_response}.}
 \scalebox{0.9}{
 \begin{tabular}{rlrrrrrrrrrr}
   \hline
@@ -528,7 +528,7 @@ Age group 36-40 is significantly different than the base line age group of 18-25
 
 The graduate degree holders are significantly different as well. The positive parameter estimate indicates that they perform better and the probability of correct response is higher than other education levels. As expected, there is no significant difference between male and female performances. 
 
-Notice that lineup specific variance estimate is 5.259 with a standard error of 2.293 which is much higher than the other significant parameter estimates in Model \eqref{eqn:demographic_response}. This indicates that the major and most important factor affecting the probability of correct response is  lineup difficulty. This is also evident from the large variability in the proportion correct in Figure~\ref{fig:demographic_effect}. Because of this huge impact of lineup specific variance, the practical impact of other factor variables on the probability of correct response is in fact very small. We illustrate this with the following example of the significant effect of graduate degree.
+Notice that lineup specific variance estimate is 5.259 with a standard error of 2.293 which is much higher than the other significant parameter estimates in Model \eqref{eqn:demographic_response}. This indicates that the major and most important factor affecting the probability of correct response is  lineup difficulty. This is also evident from the large variability in the proportion correct in Figure~\ref{fig:demographic_effect}. Because of this huge impact of lineup specific variance, the practical impact of other factor variables on the probability of correct response is in fact very small. We illustrate this with the following example of graduate degree.
 
 Effect of graduate degree is estimated as 0.182 which is highly significant. For an 18-25 year old female in the United States, the expected difference in the probability of correct response, if she has a graduate degree as compared to a high school degree, is, for a lineup with random effect of zero:
 $$ \frac {\exp(-0.683+0.182)}{1+\exp(-0.683+0.182)}-  \frac {\exp(-0.683)}{1+\exp(-0.683)} = 0.377- 0.336 =0.041.$$ 

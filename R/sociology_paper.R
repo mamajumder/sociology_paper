@@ -817,11 +817,24 @@ summary(manova(cbind(null_1,null_2,null_3,null_4,null_5)~factor(locs), data=int.
 # Modeling location effect
 # Fiting generalized mixed model for location effect
 # Locations are not significant
+# Model fi1 shows the effect of null plots variability is negligible 
+# as location effects are much bigger compared to null variability
 # -----------------------------------------------------------
 
 colnames(df)
-fi <- lmer(response~factor(plot_location)+nulls+(1|pic_name), family="binomial",data=subset(df,plot_type=="Interaction"))
+fi0 <- lmer(response~factor(plot_location)+nulls+(1|pic_name), family="binomial",data=subset(df,plot_type=="Interaction"))
+fi1 <- lmer(response~factor(plot_location)+(1|nulls), family="binomial",data=subset(df,plot_type=="Interaction"))
+fi2 <- glm(response~factor(plot_location), family="binomial",data=subset(df,plot_type=="Interaction"))
+
+# this model shows null set 3 for interaction is significant
+fi3 <- lmer(response~factor(nulls)+(1|plot_location), family="binomial",data=subset(df,plot_type=="Interaction"))
+
 fg <- lmer(response~factor(plot_location)+nulls+(1|pic_name), family="binomial",data=subset(df,plot_type=="Genotype"))
+
+# the following plot shows null set 3 is different in interaction lineup
+dd <- ddply(df, .(plot_type,nulls), summarize, prop_correct=mean(response))
+qplot(nulls, prop_correct, geom="bar", stat="identity", facets=~plot_type, data=dd)
+
 
 # test for equivalency
 library(equivalence)

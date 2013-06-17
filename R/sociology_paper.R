@@ -303,6 +303,13 @@ anova.prop <- rbind(data.frame(round(pag[1,1:4],2),round(pag[2,5:7]/1,2)),
 anova.reseult <- rbind(anova.time, anova.prop)
 xtable(anova.reseult)
 
+# Model with demographic factor interaction
+# India:Undergrad course is hghly significant
+fit <- lmer(response~age_level+country+degree+gender_level+country:degree+(1|pic_name), 
+               family="binomial", demographics)
+
+
+fit
 # ==============================================================
 # Exploring the practical significance of demographics
 # ---------------------------------------------------------------

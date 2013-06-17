@@ -66,7 +66,7 @@ Visual statistical inference is a way to determine significance of patterns foun
 
 \section{Introduction}  
 
-The lineup protocol introduced in \citet{buja:2009} can be used to test the significance of findings during the exploratory data analysis. The methodology is a part of what is called visual statistical inference.  These concepts have been developed further by \citet{majumder:2013} who refined the terminology and validated the lineup protocol with a head to head comparison with conventional inference. One of the major contributions of  \citet{majumder:2013}  is to define the power of the visual test and how to estimate the power for a particular lineup. It was observed that the power can be as good or better than that of a conventional test in some scenarios.
+The lineup protocol introduced in \citet{buja:2009} can be used to test the significance of findings during the exploratory data analysis. The methodology is a part of what is called visual statistical inference.  These concepts have been developed further by \citet{majumder:2013} who refined the terminology and validated the lineup protocol with a head to head comparison with conventional inference. One of the major contributions of  \citet{majumder:2013}  is to define the power of the visual test and provide methods to obtain the power for a particular lineup. It was observed that the power can be as good or better than that of a conventional test in some scenarios.
 
 In visual inference, the test statistic is a plot of the observed data. To create a lineup, this plot, called the actual data plot, is placed in a layout of null plots. The null plots  are generated from the model specified by a null hypothesis, essentially describing what the plot might look like if the data had no structure. An observer is asked to evaluate the lineup. If the  actual data plot is detected by the observer, the null hypothesis is rejected. This means that the structure in the actual data plot has significant structure, a pattern that is not simply due to randomness. Combining the choices of multiple observers provides more stability in the estimation of significance.
 
@@ -179,7 +179,7 @@ The visual test statistic is chosen so that it displays a specific pattern in ca
 
 \subsection{Choice of Visual Test Statistic}  The visual test statistic should be highly associated with the hypothesis under investigation. To achieve this purpose it is very important to decide which plot type and plot features should be adopted.  In a linear regression setting, the visual test statistics are presented in \citep{majumder:2013} for some common hypothesis testing.  It is also observed that a scatterplot may do a better job than a box plot when using as a visual test statistic for regression parameters.  Some of the effective features of visual test statistics are discussed in \citep{heike:2012} including plot type, color and shape of the plots.  \cite{niladri:2012} presents some \textit{distance measure} to determine how a plot may be different from each other.
 
-Table \ref{tbl:visual_stat} shows the visual test statistics used in this study. For both experiments 2 and 3 a scatterplot is used but a regression line fitted through the points is overlaid for experiment 2. It is easier to spot the slope of the line compared to just the scatterplot itself. But it appears that people are better in noticing the unusual pattern in the data which is some contamination purposefully added for experiment 3. For experiment 3 the performance of the observers was much better compared to experiment 2 \citep{majumder:2013}.
+Table \ref{tbl:visual_stat} shows the visual test statistics used in this study. For both experiments 2 and 3 a scatterplot is used but a regression line fitted through the points is overlaid for experiment 2. It is easier to spot the slope of the line compared to just the scatterplot itself. But people are better in noticing the unusual pattern in the data which is some contamination purposefully added for experiment 3. For experiment 3 the performance of the observers was much better compared to experiment 2 \citep{majumder:2013}.
 
 %Plots to do: for the same signal strength show the proportion correct for scatterplot and boxplot. eg., qplot(effect, ump-visual power, color= plot-type)
 
@@ -311,8 +311,8 @@ where $\mu$ represents overall average of log time taken by an observer to evalu
 %where the link function $g_1(\mu)=1/\mu;  \mu >0$ and $\mu_1$ represents the inverse of overall average time taken to evaluate a lineup. 
 
 Equation \ref{eqn:trend_time} leads to the estimate of the subject and the lineup specific time taken for an evaluation in $kth$ attempt by a single observer as 
-\begin{equation} \label{eqn:trend_power}
-\hat \mu_{ijk} =  \hat{\mu} + \hat{\alpha_1}+ \hat{\alpha}k + \hat{u}_i +  \hat{a}_i k + \hat{\ell}_j).
+\begin{equation} \label{eqn:trend_time_est}
+\hat \mu_{ijk} =  \hat{\mu} + \hat{\alpha_1}+ \hat{\alpha}k + \hat{u}_i +  \hat{a}_i k + \hat{\ell}_j.
 \end{equation}
 
 %For $Y_{l,i}$ being binary response we use {\it logit} link function $g(\mu)=g_1(\mu)=\log(\mu) - \log(1-\mu); 0 \le \mu \le 1$ and $\hat p_{\ell i}$ gives the estimate of proportion correct by subject $i$ with lineup $\ell$.  The response time taken is a positive random variable with a right skewed distribution. For this the usual convention is to model a gamma distribution with time. Thus we used inverse link function $g(\mu)=g_2(\mu)=1/\mu;  \mu >0$ for gamma response $Y_{l,i}$ and $\hat p_{\ell i}$ gives the estimate of mean time taken by subject $i$ for lineup $\ell$.
@@ -452,7 +452,7 @@ Model \eqref{eqn:demographic_response} is fitted to the data with fixed effect f
 
 \begin{table}[htbp]
 \centering
-\caption{Anova of full model with all the demographic factors vs reduced model with removing respective factor variable. Gender does not seem to have any effect on probability of correct response.}
+\caption{Anova of full model with all the demographic factors vs reduced model with removing respective factor variable. Gender does not have any effect on probability of correct response.}
 \scalebox{.9}{
 \begin{tabular}{rlrrrrrr}
   \hline
@@ -524,7 +524,7 @@ Gender & Female&0.000   &---  &---  &---  &  &--- &--- &---& ---\\
 \label{tbl:model_result_demographics}
 \end{table}
 
-Age group 36-40 is significantly different than the base line age group of 18-25 year olds. The other age levels appears to be similar in explaining the probability of correct response. For country, the rest of the world is different from USA but India appears to be similar to USA. We see from Table \ref{tbl:demographics} that most of the participants (about 90\%) are from India and USA. The rest of the 10\% data are from 76 different countries. This diversity in the rest of the world may make it different from India and USA.
+Age group 36-40 is significantly different than the base line age group of 18-25 year olds. The other age levels are similar in explaining the probability of correct response. For country, the rest of the world is different from USA but India appears to be similar to USA. We see from Table \ref{tbl:demographics} that most of the participants (about 90\%) are from India and USA. The rest of the 10\% data are from 76 different countries. This diversity in the rest of the world may make it different from India and USA.
 
 The graduate degree holders are significantly different as well. The positive parameter estimate indicates that they perform better and the probability of correct response is higher than other education levels. As expected, there is no significant difference between male and female performances. 
 
@@ -576,14 +576,14 @@ For a lineup with a predicted random effect of one standard deviation, i.e. we m
 %
 
 
-\subsection{Learning Trend} Models \eqref{eqn:trend_response} and \eqref{eqn:trend_time} are fitted to the data from experiment 5, 6, and 7 separately.  As an alternative to Model \eqref{eqn:trend_response} we examined a reduced model with attempt as a continuous covariate. They did not appear to be significantly different with a $p$-value of 0.856. But we consider the bigger Model \eqref{eqn:trend_response} with attempt as a factor variable with 10 levels. Attempt 1 is considered to be base level while fitting the model.
+\subsection{Learning Trend} Models \eqref{eqn:trend_response} and \eqref{eqn:trend_time} are fitted to the data from experiment 5, 6, and 7 separately.  As an alternative to Model \eqref{eqn:trend_response} we examined a reduced model with attempt as a continuous covariate. They did not appear to be significantly different with a $p$-value of 0.856. But we consider the bigger Model \eqref{eqn:trend_response} with attempt as a factor variable with 10 levels to examine the effect of each level. Attempt 1 is considered to be base level while fitting the model.
 
-Table \ref{tbl:model_result_response} presents the parameter estimates and $p$-values of fixed effect estimates of Model \eqref{eqn:trend_response}. The larger $p$-values suggest that none of the levels of attempt ($\alpha_2$ through $\alpha_{10}$) appears to be significant at \%1 significance level. Moreover, some of the estimates are positive and some are negative and they show up seemingly in random order suggesting later attempts not necessarily improved. This indicates that there may be no learning effect on the probability of correct evaluations. 
+Table \ref{tbl:model_result_response} presents the parameter estimates and $p$-values of fixed effect estimates of Model \eqref{eqn:trend_response}. The larger $p$-values suggest that none of the levels of attempt ($\alpha_2$ through $\alpha_{10}$) are significant at \%1 significance level. Moreover, some of the estimates are positive and some are negative and they show up seemingly in random order suggesting later attempts not necessarily have improved. This indicates that there may be no learning effect on the probability of correct evaluations. 
 
 
 \begin{table}[htbp]
 \centering
-\caption{Parameter estimates of Model \eqref{eqn:trend_response} fitted for probability of correct lineup evaluation. None of the fixed factor effects of attempt ($\alpha_2$ through $\alpha_{10}$) seem to be significantly different from the first attempt $\alpha_1$
+\caption{Parameter estimates of Model \eqref{eqn:trend_response} fitted for probability of correct lineup evaluation. None of the fixed factor effects of attempt ($\alpha_2$ through $\alpha_{10}$) are significantly different from the first attempt $\alpha_1$
 at \%1 level in all three experiments 5, 6 and 7. For experiment 7 subject specific variation is very small on the other hand lineup variance is much higher compared to the other two experiments.}
 \scalebox{0.9}{
 \begin{tabular}{rrrrccrrrccrrrc}
@@ -608,7 +608,7 @@ $\mu$ & -1.304 & 0.179 & -7.28 & $<$0.001 &   & -0.220 & 0.147 & -1.50 & 0.134 &
 \multicolumn{2}{l}{Random}   &  &  &  &  & & &&& & & &  & \\ 
   $\sigma^2_a$ & $<$0.001 & 0.017 &  &  &   & 0.001 & 0.034 &  &  &   & 0.027 & 0.163 &  &  \\ 
   $\sigma^2_u$ & 0.720 & 0.848 &  &  &   & 0.815 & 0.903 &  &  &   & $<$0.001 & $<$0.001 &  &  \\ 
-  $\sigma^2_l$ & 2.178 & 1.476 &  &  &   & 2.009 & 1.418 &  &  &   & 10.980 & 3.314 &  &  \\ 
+  $\sigma^2_{\ell}$ & 2.178 & 1.476 &  &  &   & 2.009 & 1.418 &  &  &   & 10.980 & 3.314 &  &  \\ 
    \hline
 \end{tabular}
 }
@@ -616,16 +616,7 @@ $\mu$ & -1.304 & 0.179 & -7.28 & $<$0.001 &   & -0.220 & 0.147 & -1.50 & 0.134 &
 \end{table}
 
 
-\begin{figure}[htbp] 
-   \centering
-%   \includegraphics[width=6.5in]{learning_trend.pdf} 
-    \includegraphics[width=6.5in]{learning_trend_subject.pdf} 
-   \caption{ Mean residuals of proportion correct obtained from the model \eqref{eqn:trend_response} fitted without attempt are plotted against attempt. Linear regression lines fitted through the points are shown. None of the slopes in these three experiments are statistically significant. Subject specific least square lines show large subject specific variability. Some of the observers did worse and some did better over the successive attempts.}
-   \label{fig:learning_trend_response}
-\end{figure}
-
-
-The variance of random slope for attempt ($\sigma^2_a$) is estimated to be very small compared to other random effects except for subject variability ($\sigma^2_u$) for experiment 7. This suggest that most of the variability for attempt is accounted for by the fixed effect factors of attempt. For experiment 7 the lineup variability ($\sigma^2_l$) was the largest as per experimental design. Some of the lineups were very easy and some were really difficult in experiment 7. The overall average probability for picking out the data plot from a lineup ($\mu$) appears to be significant for both experiments 5 and 7. But for experiment 6 it does not seem to be significant suggesting that experiment 6 lineups were difficult compared to the other experimental lineups. This shows a feature of the experimental designs where a mixture of difficult and easy lineups were included within the experiments as well as between the experiments.  For easy lineups there may be small chance to improve performances. But for harder lineups, the scope to improve performances is large.  Since for none of these experiments improvement in performances is observed, it is important in the sense that performances did not improve over attempts in both difficult and easy lineup situations.
+The variance of random slope for attempt ($\sigma^2_a$) is estimated to be very small compared to other random effects except for subject variability ($\sigma^2_u$) for experiment 7. This suggests that most of the variability for attempt is accounted for by the fixed effect factor attempt. For all three experiments the lineup variabilities ($\sigma^2_l$) were estimated to be very large making the practical impact of other factor levels even more negligible. Some of the lineups were very easy and some were really difficult in experiment 7. The overall average probability for picking out the data plot from a lineup ($\mu$) is significant for both experiments 5 and 7. But for experiment 6 it is not significant suggesting that experiment 6 lineups were difficult compared to the other experimental lineups. This shows a feature of the experimental designs where a mixture of difficult and easy lineups were included within the experiments as well as between the experiments.  For easy lineups there may be small chance to improve performances. But for harder lineups, the scope to improve performances is large.  Since for none of these experiments improvement in performances is observed, it is important in the sense that performances did not improve over attempts in both difficult and easy lineup situations.
 
 %The results are shown in Tables \ref{tbl:model_result_response} \ref{tbl:model_result_time}.
 
@@ -634,9 +625,19 @@ The variance of random slope for attempt ($\sigma^2_a$) is estimated to be very 
 
 %Each subject participating the experiment has seen multiple number of lineups for evaluations. Suppose $K$ be the number of lineups evaluated by a subject and $A_k$ be the $kth$ attempt, $k=1,2, ..., K$. Subjects may have a chance for self learning and do better on lineups shown later in the sequence. They may learn from their previous mistake or they may learn about the features of the plots being evaluated as they progress. Thus if there is any learning trend that should be apparent in proportion correct over $A_k$. But to obtain this we have to adjust for lineup difficulty and individual performances.
 
-To visualize further how the performance in correct response improves over successive attempt, we fitted Model \eqref{eqn:trend_response} excluding the covariates related to attempt from the model and computed the residuals. The averages of these residuals for each of the attempts are plotted against attempt as shown in Figure \ref{fig:learning_trend_response}. Least square linear regression lines are fitted through the points. Even though positive slopes over the attempts are observed, none of the trends is statistically significant. Subject specific least square lines show large overall variability. Some subjects show improvement over time and some show the decrease in performance. The subject specific slopes are very different as well.
+To visualize how the performance in correct response improves over successive attempts, we fitted Model \eqref{eqn:trend_response} excluding the covariates related to attempt from the model and computed the residuals. Least square regression lines were fitted through the subject specific residuals as shown in Figure~\ref{fig:learning_trend_response}. Two important features were observed; one is subject specific variability and the other is random slope with attempts which indicates subjects specific learning trend. Some subjects show improvement over time and some show the decrease in performance. 
 
-Model \eqref{eqn:trend_time} was compared to couple of other alternatives. A bigger model with attempt as a factor was considered but they did not appear to be significantly different with $p$ value 0.236. A reduced model with attempt as a continuos covariate was also considered but they were significantly different with $p$-value $<0.001$. Table \ref{tbl:model_result_time} presents the results of Model \eqref{eqn:trend_time}. The parameter $\alpha$ for fixed effect covariate attempt is highly significant in all the experiments. The negative estimates suggest that later attempt took less time for an evaluation. It is interesting to note that even though observers did not improve the performance over attempt, they became efficient in responding faster. The parameter $\alpha_1$ for first attempt is also highly significant. The positive estimates of $\alpha_1$ indicates that first attempt made by an observer required much more times than other attempts. It is because for initial attempt the observer might have gone through instructions and became familiar with the experimental environment. Each page in the web site contains information about choice reason and the observers's confidence level. Also, the first page asks for observer Identification to be typed. The later pages of the web site was similar just the lineup was changed. Thus in the later attempts an observer does not need to spend any time for reading instructions. The model reflects that fact.
+\begin{figure}[htbp] 
+   \centering
+%   \includegraphics[width=6.5in]{learning_trend.pdf} 
+    \includegraphics[width=6.5in]{learning_trend_subject.pdf} 
+   \caption{ Least square lines fitted through the subject specific residual proportion correct obtained from Model \eqref{eqn:trend_response} fitted without attempt are plotted against attempt. Subject specific positive and negative slopes are observed. Mean residuals are shown as dots and least square regression lines fitted through the points show no overall learning trend in each of the three experiments.}
+   \label{fig:learning_trend_response}
+\end{figure}
+
+The averages of these residuals for each of the attempts are shown as dots in Figure~\ref{fig:learning_trend_response}. Least square linear regression lines are fitted through the points for each of the experiments. Positive slopes over the attempts are observed but none of them is statistically significant. 
+
+Table \ref{tbl:model_result_time} presents the results of Model \eqref{eqn:trend_time}. The parameter $\alpha$ for fixed effect covariate attempt is highly significant in all the experiments. The negative estimates suggest that on an average later attempt took less time for an evaluation. Even though observers did not improve the performance over attempt, they became efficient in responding faster. The parameter $\alpha_1$ for first attempt is also highly significant. The positive estimates of $\alpha_1$ indicates that first attempt made by an observer required much more times than other attempts. It is because for initial attempt the observer might have gone through instructions and became familiar with the experimental environment. Each page in the web site contains information about choice reason and the observers's confidence level. Also, the first page asks for observer Identification to be typed. The later pages of the web site was similar just the lineup was changed. Thus in the later attempts an observer does not need to spend any time for reading instructions. The model reflects that fact.
 
 
 \begin{table}[htbp]
@@ -657,7 +658,7 @@ $\mu$ & 3.817 & 0.039 & 97.38 & $<$0.001 &   & 3.901 & 0.033 & 118.19 & $<$0.001
 \multicolumn{2}{l}{Random}   &  &  &  &  & & &&& & & &  & \\ 
   $\sigma^2_a$ & 0.001 & 0.027 &  &  &   & 0.002 & 0.045 &  &  &   & 0.002 & 0.049 &  &  \\ 
   $\sigma^2_u$ & 0.259 & 0.509 &  &  &   & 0.245 & 0.495 &  &  &   & 0.134 & 0.366 &  &  \\ 
-  $\sigma^2_l$ & 0.008 & 0.091 &  &  &   & 0.040 & 0.199 &  &  &   & 0.055 & 0.235 &  &  \\ 
+  $\sigma^2_{\ell}$ & 0.008 & 0.091 &  &  &   & 0.040 & 0.199 &  &  &   & 0.055 & 0.235 &  &  \\ 
   $\sigma^2$ & 0.211 & 0.460 &  &  &   & 0.251 & 0.501 &  &  &   & 0.206 & 0.454 &  &  \\ 
    \hline
 \end{tabular}
@@ -665,9 +666,13 @@ $\mu$ & 3.817 & 0.039 & 97.38 & $<$0.001 &   & 3.901 & 0.033 & 118.19 & $<$0.001
 \label{tbl:model_result_time}
 \end{table}
 
-The lineup variance of experiment 7 is estimated as $\hat{\sigma}^2 = 10.98$ from Model \eqref{eqn:trend_response}. But from Model \eqref{eqn:trend_time} it is estimated to be much smaller in all these experiments. This suggest that the harder lineups not necessarily took more time than easier lineups. The observers spent enough times to evaluate a easy lineup and for difficult lineup they might just give up at some point and provided the feedback.
+The lineup variance of experiment 7 is estimated as $\hat{\sigma}^2_{\ell} = 10.98$ from Model \eqref{eqn:trend_response}. But from Model \eqref{eqn:trend_time} it is estimated to be much smaller in all these experiments. This suggests that the harder lineups not necessarily took more time than easier lineups. The observers spent enough times to evaluate a easy lineup and for difficult lineup they might just give up at some point and provided the feedback.
 
-To visualize how the time taken reduces over the successive attempts, we fitted Model \eqref{eqn:trend_time} excluding the covariate attempt from the model and computed the residuals. The averages of these residuals for each attempt are plotted in Figure \ref{fig:learning_trend_time} for all three experiments. Least square regression lines are fitted to the points excluding the first attempt. The downward trends are evident in the plots. All the slopes are highly significant. For attempt 1, we observed large positive residuals for each of the experiments. These results indicate that after working with the multiple tasks each observer became efficient which helped them finish the task faster in later attempts. Subject specific least square lines show variations in slopes and overall time taken. Even though overall skill improved, there are some subjects who took more times in later attempts.
+Model \eqref{eqn:trend_time} was compared to couple of other alternatives. A bigger model with attempt as a factor was considered but it was not significantly different with $p$ value 0.236. A reduced model without the first attempt was also considered but it was significantly different with $p$-value $<0.001$. 
+
+To visualize how the time taken reduces over the successive attempts, we fitted Model \eqref{eqn:trend_time} excluding the covariate attempt from the model and computed the residuals. Least square regression lines are fitted through the subject specific residuals. Subject specific slopes are much different in each of the three experiments as we see in Figure \ref{fig:learning_trend_time}. Some subjects improved over attempts by taking less time in the later attempts while others got worse. The averages of these residuals for each attempt are plotted as dots. Least square regression lines are fitted to these points excluding the first attempt since for first attempt we fitted an indicator covariate. The downward trends are evident in the plots. All the slopes are highly significant. As expected we observed large positive residuals for each of the experiments for first attempt. 
+
+%These results indicate that after working with the multiple tasks each observer became efficient which helped them finish the task faster in later attempts. Subject specific least square lines show variations in slopes and overall time taken. Even though overall skill improved, there are some subjects who took more times in later attempts.
 
 
 
@@ -681,7 +686,7 @@ To visualize how the time taken reduces over the successive attempts, we fitted 
    \centering
 %   \includegraphics[width=6.5in]{learning_trend_time.pdf}    
  \includegraphics[width=6.5in]{learning_trend_time_subject.pdf}    
-   \caption{ Mean residuals of log(time taken) obtained from model \eqref{eqn:trend_time} fitted without covariate attempt plotted against attempt. Linear regression lines are fitted through the points excluding the first attempt. For all the three experiments the downward slopes are statistically significant which indicates that MTurk workers take less time as they progress through their attempts. But subject specific variations in slopes are also observed where some of the subjects did worse over successive attempts while others did better.}
+   \caption{Least square regression lines fitted through the subject specific residuals obtained by  fitting Model \eqref{eqn:trend_time} without covariate attempt. Differences in subject specific slopes are observed. Some of the subjects did worse over successive attempts while others did better. Averages of these residuals are plotted as dots and least square regression lines are fitted to obtain overall trends. For all the three experiments the overall downward slopes are statistically significant which indicates that MTurk workers take less time as they progress through their attempts.}
    \label{fig:learning_trend_time}
 \end{figure}
 
@@ -760,7 +765,7 @@ We also examined whether the proportion of correct responses differs if the actu
 
 \section{Conclusion}
 
-Observer demographics seem to have significant influence on performance in time taken to evaluate a lineup. Some variations among the factors are observed in terms of probability of correct evaluation. Age group 36-40, Countries other than India and United states, People who have a graduate degree appear to be significantly different. But their practical impact on probability to correctly evaluate a lineup is very small and in some cases very negligible as the lineup difficulties increase or decreases. Gender does not have any effect on performance.
+Observer demographics have significant influence on performance in time taken to evaluate a lineup. Some variations among the factors are observed in terms of probability of correct evaluation. Age group 36-40, Countries other than India and United states, People who have a graduate degree are significantly different. But their practical impact on probability to correctly evaluate a lineup is very small and in some cases very negligible as the lineup difficulties increase or decreases. Gender does not have any effect on performance.
 
 Individual learning trend is observed in both time taken and observer performance. Some individuals improved the performances while others showed decrease in their performances over attempts. But the overall performance of the observers does not increase through successive attempts while evaluating multiple lineups. This result is very important as it suggests that the power estimated for visual inference using human subject experiment is robust and may not change if those participants are allowed to give feedback again. The skill in evaluating the lineup in shorter time gets improved over successive evaluations. The earlier evaluations take significantly longer than the later evaluations.  This investigation suggest that the skilled person may only do it faster.
 
@@ -770,7 +775,7 @@ The subjects participating this study may not necessarily know about statistical
 
 This investigation allowed each observer to evaluate 10 lineups assuming that it would not cause fatigue or disinterest toward the task of evaluating lineups. This assumption is made based on the pilot studies. The future research may involve doing more experiments to check if fewer or more than 10 lineups have any significant impact on performance of the observer. The learning trend in terms of time taken shows downward trends. At some points it should level of. It would be useful to know for how many lineups time taken levels off.
 
-A lineup with fewer or larger than 20 plots may yield different results. If the size of the lineup is much higher than 20, it is intuitive that there may be location effect of the data plot in the lineup. It is because, the observer may get tiered of scanning and make decision based on the partial scanning of the lineup. On the other hand fewer than 20 plots will allow observer to compare the actual plot with fewer null plots giving more chance of picking actual plot as an error not as an actual plot. These are the some of the issues that require further investigation.
+A lineup with fewer or larger than 20 plots may yield different results. If the size of the lineup is much higher than 20, it is intuitive that there may be location effect of the data plot in the lineup. It is because, the observer may get tired of scanning and make decision based on the partial scanning of the lineup. On the other hand fewer than 20 plots will allow observer to compare the actual plot with fewer null plots giving more chance of picking actual plot as an error not as an actual plot. These are the some of the issues that require further investigation.
 
 
 %------------------------------------------------------------------------------------
@@ -827,8 +832,24 @@ Turk workers are not necessarily trained on statistics or aware of specific term
 %   \caption{Percentage of rejected tasks and duration of each experiment in hour per 100 tasks for each of the 10 experiments. Most of the tasks got rejected for box plot experiment.  Even though the sine illusion experiment took longest to finish the rejection rate is lowest for this experiment.}
 %   \label{fig:task_duration}
 %\end{figure}
-
+\clearpage
 \section{Some Plots of Exploratory Data Analysis}
+
+\begin{figure}[htbp] 
+   \centering
+   \includegraphics[width=5.8in]{turker_location_experiment.pdf} 
+   \caption{World maps showing where the participants are coming from for all the 10 experiments.}
+   \label{fig:turker_location_experiment}
+\end{figure}
+
+\begin{figure}[htbp] 
+   \centering
+   \includegraphics[width=6.5in]{participation_time.pdf} 
+   \caption{Number of participants by time of the day feedbacks received (central time). Experiment 1 shows MTurk workers participated the experiments around the clock. Other experiments did not take a whole day to finish. For experiment 3 most of the participants are from India because of timing. No matter when the experiment is started, subjects from India shows participations. For United States, subjects participated if the experiment is not in the mid night, except for experiment 6.}
+   \label{fig:participation_time}
+\end{figure}
+
+
 
 \begin{figure}[htbp] 
    \centering
@@ -844,7 +865,6 @@ Turk workers are not necessarily trained on statistics or aware of specific term
    \caption{Countrywise distribution of age and academic levels of the MTurk workers participating the experiments shows the diversity of the subjects in all the demographic aspect. Male and female participants differ in India specially for agelevel 18-25. For United States number of participants are similar beyond age 40 while few number of participants coming from India beyond that age.}
    \label{fig:gender_country_bar}
 \end{figure}
-
 
 
 \begin{figure}[htbp] 
@@ -863,23 +883,6 @@ Turk workers are not necessarily trained on statistics or aware of specific term
 \end{figure}
 
 
-\begin{figure}[htbp] 
-   \centering
-   \includegraphics[width=6in]{turker_location_experiment.pdf} 
-   \caption{World maps showing where the participants are coming from for all the 10 experiments.}
-   \label{fig:turker_location_experiment}
-\end{figure}
-
-
-
-
-
-\begin{figure}[htbp] 
-   \centering
-   \includegraphics[width=6.5in]{participation_time.pdf} 
-   \caption{Time of the day when the participants work (central time). Experiment 1 shows MTurk workers participated the experiments around the clock. Other experiments did not take a whole day to finish. For experiment 3 most of the participants are from India because of timing. No matter when the experiment is started, subjects from India shows participations. For United States, subjects participated if the experiment is not in the mid night, except for experiment 6.}
-   \label{fig:participation_time}
-\end{figure}
 
 \clearpage
 \section{Electoral Building Lineups and Results}

@@ -362,6 +362,26 @@ qplot(ss,get_change(ss), geom="line") +
 ggsave("../images/practical_impact_demographics.pdf", width=5.5, height=5)
 
 
+difficulty <- seq(-6,6, by=.1)
+hs_xb <- -0.683 + difficulty
+gd_xb <- hs_xb + 0.182
+ddat <- data.frame(difficulty=difficulty, prop_hs = px(hs_xb),prop_gd=px(gd_xb))
+
+# Maximum difference in prop correct is 0.045
+qplot(difficulty, prop_gd-prop_hs, data=ddat, geom="line")
+with(ddat, max(prop_gd-prop_hs))
+
+mddat <- melt(ddat,id=c("difficulty"))
+qplot(difficulty, value, data=mddat, color=variable, geom="line")+
+  xlab("Lineup difficulty") + ylab("Proportion of correct response") +
+  scale_x_continuous(breaks=c(-6,-2*2.293,-2.293,0,2.293,2*2.293,6), expand = c(0.02,0),
+                     labels=c("Difficult",expression(-2*sigma[l],-sigma[l],0,sigma[l], 
+                                                     2*sigma[l],"Easy"))) +
+  scale_color_discrete(name="Education",
+                      labels=c("High school", "Grad. degree"))
+
+ggsave("../images/practical_impact_graduate.pdf", width=6.5, height=4.5)
+
 
 # Time of the day when Mturk worker works
 turker$hours <- as.factor(hour(as.POSIXlt(turker$start_time)))

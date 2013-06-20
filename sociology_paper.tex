@@ -58,7 +58,7 @@
 \begin {abstract}  
 Visual statistical inference is a way to determine significance of patterns found while exploring data. It is dependent on the evaluation of a lineup, of a data plot among a sample of null plots, by human observers. Each individual is different in their cognitive psychology and judiciousness, which can affect the visual inference. The usual way to estimate the effectiveness of a statistical test is its power. The estimate of power of a lineup can be controlled by combining evaluations from multiple observers. Factors that may also affect the power of visual inference are the observers' demographics, visual skills, and experience, the sample of null plots taken from the null distribution, the position of the data plot in the lineup, and the signal strength in the data. This paper examines these factors. Results from multiple visual inference studies using Amazon's Mechanical Turk are examined to provide an assessment of these. The experiments suggest that individual skills vary substantially,  but demographics do not have a huge effect on performance. There is evidence that a learning effect exists but only in that observers get faster with repeated evaluations, but not more often correct. The placement of data plot in the lineup does not affect the inference.
 
-{\bf Keywords: \sf statistical graphics, non-parametric test, cognitive phycology, data visualization, exploratory data analysis, data mining, visual analytics} 
+{\bf Keywords: \sf statistical graphics, non-parametric test, cognitive phycology, data visualization, exploratory data analysis, data mining, visual analytics.} 
 \end {abstract}
 
 %\begin{multicols}{2}
@@ -76,6 +76,7 @@ In visual inference, the test statistic is a plot of the observed data. To creat
 \begin{figure}[hbtp] 
    \centering
    \includegraphics[width=0.99\textwidth]{electoral-5-13.pdf} 
+%      \includegraphics[width=0.99\textwidth]{electoral-1-1.pdf} 
    \caption{ \label{fig:elect-1} Which one of the plots is the most different from the others?}
 \end{figure}
 
@@ -494,30 +495,30 @@ Factor & Level& Est & SE & Zval & $p$-value && Est & SE & Zval & $p$-value  \\
 \multicolumn{2}{l}{Fixed Effect} &  &  &  &  &  & & && \\ 
 &$\mu$ & 3.360 & 0.013 & 249.21 & $<$0.001 &   & -0.683 & 0.071 & -9.64 & $<$0.001 \\ 
 \hline
-Age&18-25&0.000   &---  &---  &---  &  &--- &--- &---& ---\\   
- & 26-30 & 0.058 & 0.013 & 4.50 & $<$0.001 &   & 0.062 & 0.049 & 1.27 & 0.2058 \\ 
+Age ($\alpha$)& 18-25&0.000   &---  &---  &---  &  &--- &--- &---& ---\\   
+ &26-30 & 0.058 & 0.013 & 4.50 & $<$0.001 &   & 0.062 & 0.049 & 1.27 & 0.2058 \\ 
   &31-35 & 0.068 & 0.014 & 4.72 & $<$0.001 &   & 0.115 & 0.055 & 2.08 & 0.0376 \\ 
   &36-40 & 0.231 & 0.016 & 14.05 & $<$0.001 &   & 0.310 & 0.063 & 4.93 & $<$0.001 \\ 
   &41-45 & 0.176 & 0.021 & 8.56 & $<$0.001 &   & 0.158 & 0.081 & 1.96 & 0.0501 \\ 
   &46-50 & 0.272 & 0.024 & 11.29 & $<$0.001 &   & 0.141 & 0.096 & 1.47 & 0.1425 \\ 
   &above 50 & 0.352 & 0.018 & 19.19 & $<$0.001 &   & 0.147 & 0.071 & 2.06 & 0.0394 \\ 
   \hline
-Country& United States&0.000   &---  &---  &---  &  &--- &--- &---& ---\\  
+Country($\kappa$)& United States&0.000   &---  &---  &---  &  &--- &--- &---& ---\\  
   &India & 0.101 & 0.011 & 9.11 & $<$0.001 &   & 0.058 & 0.043 & 1.33 & 0.183 \\ 
   &Rest of world & -0.129 & 0.009 & -13.82 & $<$0.001 &   & 0.185 & 0.035 & 5.22 & $<$0.001 \\ 
   \hline
-Education &High school or less&0.000   &---  &---  &---  &  &--- &--- &---& ---\\     
+Education($\tau$) &High school or less&0.000   &---  &---  &---  &  &--- &--- &---& ---\\     
  &Under grad courses & 0.042 & 0.013 & 3.25 & 0.0011 &   & -0.083 & 0.050 & -1.65 & 0.098 \\ 
   &Under grad degree & -0.037 & 0.012 & -3.21 & 0.0013 &   & -0.044 & 0.045 & -0.97 & 0.3307 \\ 
   &Graduate courses & 0.117 & 0.013 & 9.12 & $<$0.001 &   & 0.070 & 0.050 & 1.42 & 0.1566 \\ 
   &Graduate degree & 0.046 & 0.011 & 4.12 & $<$0.001 &   & 0.182 & 0.043 & 4.22 & $<$0.001 \\ 
   \hline
-Gender & Female&0.000   &---  &---  &---  &  &--- &--- &---& ---\\      
-  &Male & 0.078 & 0.009 & 8.26 & $<$0.001 &   & 0.055 & 0.036 & 1.5 & 0.1331 \\ 
+Gender ($\gamma$)& Female&0.000   &---  &---  &---  &  &--- &--- &---& ---\\      
+  &Male & 0.078 & 0.009 & 8.26 & $<$0.001 &   & 0.055 & 0.036 & 1.50 & 0.1331 \\ 
   \hline
 \multicolumn{2}{l}{Random Effect} &  &  &  &  &  & & && \\ 
-& lineup & 0.082 & 0.287 &  &  &   & 5.259 & 2.293 &  &  \\ 
- & Error & 0.479 & 0.692 &  &  & & && &\\ 
+& lineup($\sigma_{\ell}$) & 0.082 & 0.287 &  &  &   & 5.259 & 2.293 &  &  \\ 
+ & Error($\sigma$) & 0.479 & 0.692 &  &  & & && &\\ 
    \hline
 \end{tabular}
 }
@@ -526,21 +527,30 @@ Gender & Female&0.000   &---  &---  &---  &  &--- &--- &---& ---\\
 
 Age group 36-40 is significantly different than the base line age group of 18-25 year olds. The other age levels are similar in explaining the probability of correct response. For country, the rest of the world is different from USA but India appears to be similar to USA. We see from Table \ref{tbl:demographics} that most of the participants (about 90\%) are from India and USA. The rest of the 10\% data are from 76 different countries. This diversity in the rest of the world may make it different from India and USA.
 
-The graduate degree holders are significantly different as well. The positive parameter estimate indicates that they perform better and the probability of correct response is higher than other education levels. As expected, there is no significant difference between male and female performances. 
+The graduate degree holders are significantly different as well. The positive parameter estimate indicates that they perform better and the probability of correct response is higher than other education levels. There is no significant difference between male and female performances. 
 
 Notice that lineup specific variance estimate is 5.259 with a standard error of 2.293 which is much higher than the other significant parameter estimates in Model \eqref{eqn:demographic_response}. This indicates that the major and most important factor affecting the probability of correct response is  lineup difficulty. This is also evident from the large variability in the proportion correct in Figure~\ref{fig:demographic_effect}. Because of this huge impact of lineup specific variance, the practical impact of other factor variables on the probability of correct response is in fact very small. We illustrate this with the following example of graduate degree.
 
 Effect of graduate degree is estimated as 0.182 which is highly significant. For an 18-25 year old female in the United States, the expected difference in the probability of correct response, if she has a graduate degree as compared to a high school degree, is, for a lineup with random effect of zero:
 $$ \frac {\exp(-0.683+0.182)}{1+\exp(-0.683+0.182)}-  \frac {\exp(-0.683)}{1+\exp(-0.683)} = 0.377- 0.336 =0.041.$$ 
-For a lineup with a predicted random effect of one standard deviation, i.e. we move away one standard deviation of lineup variation by adding 2.293 to each of the exponent terms in the equation, this difference reduces to 0.024. For two standard deviations it further reduces to 0.003 which is practically very small. Figure~\ref{fig:practical_impact_demographics} illustrates this example showing how the change in probability diminishes for larger variability of lineup difficulty. A similar calculation shows the same negligible impact of age level 36-40 (0.0533 at most)  and country (0.0424 at most) on the probability of correct response. Thus even though some of the factor levels are significant, their practical impact is negligible because of high variability of lineup difficulties.
+For a lineup with a predicted random effect of one standard deviation, i.e. we move away one standard deviation of lineup variation by adding 2.293 to each of the exponent terms in the equation, this difference reduces to 0.024. For two standard deviations it further reduces to 0.003 which is practically very small. Figure~\ref{fig:practical_impact_graduate} illustrates this example showing the proportions of correct responses due to graduate degree as compared to high school degree. The highest practical difference in proportions of correct response is estimated as 0.045 which is very negligible. The difference further diminishes if we move one or two standard deviation of lineup variability. A similar calculation shows the same negligible impact of age level 36-40 (0.0533 at most)  and country (0.0424 at most) on the probability of correct response. Thus even though some of the factor levels are statistically significant, their practical impact is negligible.
 
 \begin{figure}[htbp] 
    \centering
 %   \includegraphics[width=6.5in]{learning_trend.pdf} 
-    \includegraphics[width=3in]{practical_impact_demographics.pdf} 
-   \caption{ Change in probability of correct response due to graduate degree as compared to high school degree diminishes rapidly as the variability in lineup difficulty $\sigma_{\ell}$ increases.}
-   \label{fig:practical_impact_demographics}
+    \includegraphics[width=4in]{practical_impact_graduate.pdf} 
+   \caption{Proportion of correct responses due to graduate degree as compared to high school degree for an 18-25 year old female in the United States. Even though graduate degree is statistically significant, the largest practical difference in proportion correct is  0.045 which is very negligible. The difference even diminishes as we move away one or two standard deviations ($\sigma_{\ell} =2.293$) of lineup variability.}
+   \label{fig:practical_impact_graduate}
 \end{figure}
+
+
+%\begin{figure}[htbp] 
+%   \centering
+%%   \includegraphics[width=6.5in]{learning_trend.pdf} 
+%    \includegraphics[width=3in]{practical_impact_demographics.pdf} 
+%   \caption{ Change in probability of correct response due to graduate degree as compared to high school degree diminishes rapidly as the variability in lineup difficulty $\sigma_{\ell}$ increases.}
+%   \label{fig:practical_impact_demographics}
+%\end{figure}
 
 
 
@@ -768,13 +778,13 @@ We also examined whether the proportion of correct responses differs if the actu
 
 \section{Conclusion}
 
-It is found that observer demographics have significant influence on performance in time taken to evaluate a lineup. Some variations among the factors are observed in terms of probability of correct evaluation. Age group 36-40, Countries other than India and United states, People who have a graduate degree are significantly different. But their practical impact on probability to correctly evaluate a lineup is very small and in some cases very negligible as the lineup difficulties increase or decreases. Gender does not have any effect on performance.
+Human demographics have significant influence on performance in time taken to evaluate a lineup. Some variations among the factors are observed in terms of probability of correct evaluation. Age group 36-40, Countries other than India and United states, People who have a graduate degree are significantly different. But their practical impact on probability to correctly evaluate a lineup is very negligible and in some cases it diminishes  as the lineup difficulties increase or decrease. Gender does not have any significant effect on performance. Thus there may be differences in time taken to evaluate a lineup for different human demographics but the practical impact of demographics on the performance is very negligible. This result is very important for the power of visual test as it demonstrates the robustness of the test for different human factors.
 
-Individual learning trend is observed in both time taken and observer performance. Some individuals improved the performances while others showed decrease in their performances over attempts. But the overall performance of the observers does not increase through successive attempts while evaluating multiple lineups. This result is very important as it suggests that the power estimated for visual inference using human subject experiment is robust and may not change if those participants are allowed to give feedback again. The skill in evaluating the lineup in shorter time gets improved over successive evaluations. The earlier evaluations take significantly longer than the later evaluations.  This investigation suggest that the skilled person may only do it faster.
+Individual learning trend is observed in both time taken and observer performance. Some individuals improved the performances while others showed decrease in their performances over attempts. But the overall performance of the observers does not increase through successive attempts while evaluating multiple lineups. This result suggests that the power estimated for visual inference using human subject experiment is robust and may not change if those participants are allowed to give feedback again. The skill in evaluating the lineup in shorter time gets improved over successive evaluations. The earlier evaluations take significantly longer time than the later evaluations.  It suggests that the skilled person may only do it faster.
 
 The simulation experiment reveals that there is no significant effect of location of actual data plot in the lineup. This is important as the visual statistical inference procedure suggests that the data plot be placed at random anywhere in the lineup. This paper suggests that any random place in a lineup is as good as other places in the lineup. Even though there are variations on the performance depending on different null sets, their impact on probability to correctly evaluate a lineup is very negligible.
 
-The subjects participating this study may not necessarily know about statistical graphics. The numerous pilot studies done with more trained participants suggest that power of visual statical inference may be higher for observers knowledgeable about statistical graphics. The fact that a person with graduate degree performs better may be associated with this. But a graduate degree does not necessarily mean to have training on statistical graphics. More experiments may be needed to learn about the differences in power with trained and a non-trained observer in terms of knowledge about statistical graphics. 
+The subjects participating this study may not necessarily know about statistical graphics. The numerous pilot studies done with more trained participants suggest that power of visual statical inference may be higher for observers who have advanced knowledge about statistical graphics. The fact that a person with graduate degree performs better may be associated with this. But a graduate degree does not necessarily mean to have training on statistical graphics. More experiments may be needed to learn about the differences in power with trained and a non-trained observer in terms of knowledge about statistical graphics. 
 
 This investigation allowed each observer to evaluate 10 lineups assuming that it would not cause fatigue or disinterest toward the task of evaluating lineups. This assumption is made based on the pilot studies. The future research may involve doing more experiments to check if fewer or more than 10 lineups have any significant impact on performance of the observer. The learning trend in terms of time taken shows downward trends. At some point it should level of. It will be useful to know for how many lineups time taken levels off to decide how many lineups is appropriate to show.
 
@@ -836,7 +846,51 @@ Turk workers are not necessarily trained on statistics or aware of specific term
 %   \caption{Percentage of rejected tasks and duration of each experiment in hour per 100 tasks for each of the 10 experiments. Most of the tasks got rejected for box plot experiment.  Even though the sine illusion experiment took longest to finish the rejection rate is lowest for this experiment.}
 %   \label{fig:task_duration}
 %\end{figure}
-\clearpage
+
+
+%\clearpage
+\section{Electoral Building Lineups and Results}
+%Figures~\ref{fig:elect-1} and \ref{fig:elect.2} through~\ref{fig:elect.5}
+
+Five lineups were shown to (different) Amazon Turk workers in an experiment. They all were created as described in the introduction of the paper. In order to not bias observers, no context information was given about how these plots were created or what data they were displaying. This also made it necessary to slightly more stylize the display. 
+
+% latex table generated in R 3.0.1 by xtable 1.7-1 package
+% Wed Jun  5 17:39:09 2013
+\begin{table}[hbtp]
+\centering
+\begin{tabular}{rrrrrr}
+  \hline
+ lineup & \#1 & \#2 & \#3 & \#4 & \#5 \\ 
+  \hline
+  \# correct/ \#evaluation &  12/72 & 11/66 & 5/74 & 14/72 & 19/57 \\ 
+$p$-value & 0.00023 & 0.00041 & 0.31 & 1.2e-05 &  1.9e-11 \\ 
+data panel & $3\cdot4+1$ & $2^4+1$ & $4^2+2 $ & $12+\sqrt{25}$ & $2^3-7$ \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+% latex table generated in R 3.0.1 by xtable 1.7-1 package
+% Wed Jun  5 18:00:55 2013
+\begin{table}[hbtp]
+\centering
+\caption{\label{tbl:response}Overview of all choices by observers for each of the lineups. The correct choice is bolded. In most lineups there are null plots that were picked more often by observers, but the actual result is among the plots being picked most often, indicating that there is some indication that the election result is not completely consistent with the polls.}
+\begin{tabular}{rrrrrrrrrrrrrrrrrrrrr}
+  \hline
+& \multicolumn{10}{l}{panel chosen}\\
+Lineup & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 & 20 \\ 
+  \hline
+\#  1 & 2 & 2 & 0 & 10 & 2 & 2 & 6 &  23 & 1 & 1 & 0 & 1 & \bf 12 & 3 & 3 & 1 & 0 & 1 & 1 & 1 \\ 
+\#  2 & 0 & 16 & 1 & 1 & 5 & 1 & 0 & 8 & 0 & 2 & 0 & 0 & 0 & 4 & 2 & 1 & \bf 11 & 1 & 0 & 13 \\ 
+\#  3 & 7 & 26 & 0 & 2 & 0 & 5 & 3 & 0 & 2 & 1 & 0 & 4 & 0 & 0 & 2 & 0 & 9 & \bf 5 & 0 & 6 \\ 
+\#  4 & 0 & 0 & 0 & 2 & 0 & 0 & 0 & 3 & 1 & 10 & 2 & 18 & 1 & 0 & 4 & 2 &\bf 14 & 0 & 13 & 0 \\ 
+\# 5 &\bf 19 & 1 & 4 & 1 & 0 & 1 & 0 & 12 & 0 & 0 & 0 & 4 & 1 & 0 & 0 & 12 & 1 & 1 & 0 & 0 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+
+
+%\clearpage
 \section{Some Plots of Exploratory Data Analysis}
 
 \begin{figure}[htbp] 
@@ -888,45 +942,6 @@ Turk workers are not necessarily trained on statistics or aware of specific term
 
 
 
-\clearpage
-\section{Electoral Building Lineups and Results}
-%Figures~\ref{fig:elect-1} and \ref{fig:elect.2} through~\ref{fig:elect.5}
-
-Five lineups were shown to (different) Amazon Turk workers in an experiment. They all were created as described in the introduction of the paper. In order to not bias observers, no context information was given about how these plots were created or what data they were displaying. This also made it necessary to slightly more stylize the display. 
-
-% latex table generated in R 3.0.1 by xtable 1.7-1 package
-% Wed Jun  5 17:39:09 2013
-\begin{table}[hbtp]
-\centering
-\begin{tabular}{rrrrrr}
-  \hline
- lineup & \#1 & \#2 & \#3 & \#4 & \#5 \\ 
-  \hline
-  \# correct/ \#evaluation &  12/72 & 11/66 & 5/74 & 14/72 & 19/57 \\ 
-$p$-value & 0.00023 & 0.00041 & 0.31 & 1.2e-05 &  1.9e-11 \\ 
-data panel & $3\cdot4+1$ & $2^4+1$ & $4^2+2 $ & $12+\sqrt{25}$ & $2^3-7$ \\ 
-   \hline
-\end{tabular}
-\end{table}
-
-% latex table generated in R 3.0.1 by xtable 1.7-1 package
-% Wed Jun  5 18:00:55 2013
-\begin{table}[hbtp]
-\centering
-\caption{\label{tbl:response}Overview of all choices by observers for each of the lineups. The correct choice is bolded. In most lineups there are null plots that were picked more often by observers, but the actual result is among the plots being picked most often, indicating that there is some indication that the election result is not completely consistent with the polls.}
-\begin{tabular}{rrrrrrrrrrrrrrrrrrrrr}
-  \hline
-& \multicolumn{10}{l}{panel chosen}\\
-Lineup & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 & 20 \\ 
-  \hline
-\#  1 & 2 & 2 & 0 & 10 & 2 & 2 & 6 &  23 & 1 & 1 & 0 & 1 & \bf 12 & 3 & 3 & 1 & 0 & 1 & 1 & 1 \\ 
-\#  2 & 0 & 16 & 1 & 1 & 5 & 1 & 0 & 8 & 0 & 2 & 0 & 0 & 0 & 4 & 2 & 1 & \bf 11 & 1 & 0 & 13 \\ 
-\#  3 & 7 & 26 & 0 & 2 & 0 & 5 & 3 & 0 & 2 & 1 & 0 & 4 & 0 & 0 & 2 & 0 & 9 & \bf 5 & 0 & 6 \\ 
-\#  4 & 0 & 0 & 0 & 2 & 0 & 0 & 0 & 3 & 1 & 10 & 2 & 18 & 1 & 0 & 4 & 2 &\bf 14 & 0 & 13 & 0 \\ 
-\# 5 &\bf 19 & 1 & 4 & 1 & 0 & 1 & 0 & 12 & 0 & 0 & 0 & 4 & 1 & 0 & 0 & 12 & 1 & 1 & 0 & 0 \\ 
-   \hline
-\end{tabular}
-\end{table}
 
 
 %\begin{figure}[htbp] 

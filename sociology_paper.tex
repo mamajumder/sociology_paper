@@ -484,7 +484,7 @@ To further illustrate how the individual factor levels differ from each other  t
 \begin{table}[htbp]
 \centering
 \caption{Parameter estimates of Models \eqref{eqn:demographic_time} and \eqref{eqn:demographic_response} fitted for average log time taken and probability of correct lineup evaluations respectively. For time taken all the demographic factors are significant. For probability of correct response age group 36-40, rest of the world and graduate degree are significantly different. For gender no difference in performance is observed. Lineup variability is estimated to be very large for Model \eqref{eqn:demographic_response}.}
-\scalebox{0.9}{
+\scalebox{0.86}{
 \begin{tabular}{rlrrrrrrrrrr}
   \hline
 Demographic&& \multicolumn{4}{c} {Model \eqref{eqn:demographic_time} Log Time} & &\multicolumn{4}{c} {Model \eqref{eqn:demographic_response} Proportion Correct} \\
@@ -538,8 +538,8 @@ For a lineup with a predicted random effect of one standard deviation, i.e. we m
 \begin{figure}[htbp] 
    \centering
 %   \includegraphics[width=6.5in]{learning_trend.pdf} 
-    \includegraphics[width=4in]{practical_impact_graduate.pdf} 
-   \caption{Proportion of correct responses due to graduate degree as compared to high school degree for an 18-25 year old female in the United States. Even though graduate degree is statistically significant, the largest practical difference in proportion correct is  0.045 which is very negligible. The difference even diminishes as we move away one or two standard deviations ($\sigma_{\ell} =2.293$) of lineup variability.}
+    \includegraphics[width=3.5in]{practical_impact_graduate.pdf} 
+   \caption{Proportion of correct responses due to graduate degree as compared to high school degree for an 18-25 year old female in the United States. Even though graduate degree is statistically significant, the largest difference in proportion correct is  0.045 which is very negligible. The difference diminishes as we move away one or two standard deviations ($\sigma_{\ell} =2.293$) of lineup variability.}
    \label{fig:practical_impact_graduate}
 \end{figure}
 
@@ -595,7 +595,7 @@ Table \ref{tbl:model_result_response} presents the parameter estimates and $p$-v
 \centering
 \caption{Parameter estimates of Model \eqref{eqn:trend_response} fitted for probability of correct lineup evaluation. None of the fixed factor effects of attempt ($\alpha_2$ through $\alpha_{10}$) are significantly different from the first attempt $\alpha_1$
 at \%1 level in all three experiments 5, 6 and 7. For experiment 7 subject specific variation is very small on the other hand lineup variance is much higher compared to the other two experiments.}
-\scalebox{0.9}{
+\scalebox{0.81}{
 \begin{tabular}{rrrrccrrrccrrrc}
   \hline
 & \multicolumn{4}{c} {Experiment 5} & &\multicolumn{4}{c} {Experiment 6} && \multicolumn{4}{c} {Experiment 7}\\
@@ -640,7 +640,7 @@ To visualize how the performance in correct response improves over successive at
 \begin{figure}[htbp] 
    \centering
 %   \includegraphics[width=6.5in]{learning_trend.pdf} 
-    \includegraphics[width=6.5in]{learning_trend_subject.pdf} 
+    \includegraphics[width=6.3in]{learning_trend_subject.pdf} 
    \caption{ Least square lines fitted through the subject specific residual proportion correct obtained from Model \eqref{eqn:trend_response} fitted without attempt are plotted against attempt. Subject specific positive and negative slopes are observed. Mean residuals are shown as dots and least square regression lines fitted through the points show no overall learning trend in each of the three experiments.}
    \label{fig:learning_trend_response}
 \end{figure}
@@ -653,7 +653,7 @@ Table \ref{tbl:model_result_time} presents the results of Model \eqref{eqn:trend
 \begin{table}[htbp]
 \centering
 \caption{Parameter estimates of Model \eqref{eqn:trend_time} fitted for log time taken to evaluate a lineup. Both fixed effect parameters of Attempt ($\alpha_1$ and $\alpha$) are highly significant for all three experiments 5, 6 and 7.}
-\scalebox{0.9}{
+\scalebox{0.81}{
 \begin{tabular}{rrrrccrrrccrrrc}
   \hline
 & \multicolumn{4}{c} {Experiment 5} & &\multicolumn{4}{c} {Experiment 6} && \multicolumn{4}{c} {Experiment 7}\\
@@ -695,7 +695,7 @@ To visualize how the time taken reduces over the successive attempts, we fitted 
 \begin{figure}[htbp] 
    \centering
 %   \includegraphics[width=6.5in]{learning_trend_time.pdf}    
- \includegraphics[width=6.5in]{learning_trend_time_subject.pdf}    
+ \includegraphics[width=6.3in]{learning_trend_time_subject.pdf}    
    \caption{Least square regression lines fitted through the subject specific residuals obtained by  fitting Model \eqref{eqn:trend_time} without covariate attempt. Differences in subject specific slopes are observed. Some of the subjects did worse over successive attempts while others did better. Averages of these residuals are plotted as dots and least square regression lines are fitted to obtain overall trends. For all the three experiments the overall downward slopes are statistically significant which indicates that MTurk workers take less time as they progress through their attempts.}
    \label{fig:learning_trend_time}
 \end{figure}
@@ -848,50 +848,12 @@ Turk workers are not necessarily trained on statistics or aware of specific term
 %\end{figure}
 
 
-%\clearpage
-\section{Electoral Building Lineups and Results}
-%Figures~\ref{fig:elect-1} and \ref{fig:elect.2} through~\ref{fig:elect.5}
-
-Five lineups were shown to (different) Amazon Turk workers in an experiment. They all were created as described in the introduction of the paper. In order to not bias observers, no context information was given about how these plots were created or what data they were displaying. This also made it necessary to slightly more stylize the display. 
-
-% latex table generated in R 3.0.1 by xtable 1.7-1 package
-% Wed Jun  5 17:39:09 2013
-\begin{table}[hbtp]
-\centering
-\begin{tabular}{rrrrrr}
-  \hline
- lineup & \#1 & \#2 & \#3 & \#4 & \#5 \\ 
-  \hline
-  \# correct/ \#evaluation &  12/72 & 11/66 & 5/74 & 14/72 & 19/57 \\ 
-$p$-value & 0.00023 & 0.00041 & 0.31 & 1.2e-05 &  1.9e-11 \\ 
-data panel & $3\cdot4+1$ & $2^4+1$ & $4^2+2 $ & $12+\sqrt{25}$ & $2^3-7$ \\ 
-   \hline
-\end{tabular}
-\end{table}
-
-% latex table generated in R 3.0.1 by xtable 1.7-1 package
-% Wed Jun  5 18:00:55 2013
-\begin{table}[hbtp]
-\centering
-\caption{\label{tbl:response}Overview of all choices by observers for each of the lineups. The correct choice is bolded. In most lineups there are null plots that were picked more often by observers, but the actual result is among the plots being picked most often, indicating that there is some indication that the election result is not completely consistent with the polls.}
-\begin{tabular}{rrrrrrrrrrrrrrrrrrrrr}
-  \hline
-& \multicolumn{10}{l}{panel chosen}\\
-Lineup & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 & 20 \\ 
-  \hline
-\#  1 & 2 & 2 & 0 & 10 & 2 & 2 & 6 &  23 & 1 & 1 & 0 & 1 & \bf 12 & 3 & 3 & 1 & 0 & 1 & 1 & 1 \\ 
-\#  2 & 0 & 16 & 1 & 1 & 5 & 1 & 0 & 8 & 0 & 2 & 0 & 0 & 0 & 4 & 2 & 1 & \bf 11 & 1 & 0 & 13 \\ 
-\#  3 & 7 & 26 & 0 & 2 & 0 & 5 & 3 & 0 & 2 & 1 & 0 & 4 & 0 & 0 & 2 & 0 & 9 & \bf 5 & 0 & 6 \\ 
-\#  4 & 0 & 0 & 0 & 2 & 0 & 0 & 0 & 3 & 1 & 10 & 2 & 18 & 1 & 0 & 4 & 2 &\bf 14 & 0 & 13 & 0 \\ 
-\# 5 &\bf 19 & 1 & 4 & 1 & 0 & 1 & 0 & 12 & 0 & 0 & 0 & 4 & 1 & 0 & 0 & 12 & 1 & 1 & 0 & 0 \\ 
-   \hline
-\end{tabular}
-\end{table}
-
 
 
 %\clearpage
 \section{Some Plots of Exploratory Data Analysis}
+
+This section includes some plots showing results from exploratory data analysis. The results are discussed in Section~\ref{sec:result_socio}.
 
 \begin{figure}[htbp] 
    \centering
@@ -968,6 +930,51 @@ Lineup & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 
 %   \caption{Lineup \#5 - electoral building. Which building looks the most different from the other buildings? }
 %   \label{fig:elect.5}
 %\end{figure}
+
+
+\clearpage
+\section{Electoral Building Lineups and Results}
+%Figures~\ref{fig:elect-1} and \ref{fig:elect.2} through~\ref{fig:elect.5}
+
+Five lineups were shown to (different) Amazon Turk workers in an experiment. They all were created as described in the introduction of the paper. In order to not bias observers, no context information was given about how these plots were created or what data they were displaying. This also made it necessary to slightly more stylize the display. 
+
+% latex table generated in R 3.0.1 by xtable 1.7-1 package
+% Wed Jun  5 17:39:09 2013
+\begin{table}[hbtp]
+\centering
+\begin{tabular}{rrrrrr}
+  \hline
+ lineup & \#1 & \#2 & \#3 & \#4 & \#5 \\ 
+  \hline
+  \# correct/ \#evaluation &  12/72 & 11/66 & 5/74 & 14/72 & 19/57 \\ 
+$p$-value & 0.00023 & 0.00041 & 0.31 & 1.2e-05 &  1.9e-11 \\ 
+data panel & $3\cdot4+1$ & $2^4+1$ & $4^2+2 $ & $12+\sqrt{25}$ & $2^3-7$ \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+% latex table generated in R 3.0.1 by xtable 1.7-1 package
+% Wed Jun  5 18:00:55 2013
+\begin{table}[hbtp]
+\centering
+\caption{\label{tbl:response}Overview of all choices by observers for each of the lineups. The correct choice is bolded. In most lineups there are null plots that were picked more often by observers, but the actual result is among the plots being picked most often, indicating that there is some indication that the election result is not completely consistent with the polls.}
+\scalebox{.9}{
+\begin{tabular}{rrrrrrrrrrrrrrrrrrrrr}
+  \hline
+& \multicolumn{10}{l}{panel chosen}\\
+Lineup & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 & 20 \\ 
+  \hline
+\#  1 & 2 & 2 & 0 & 10 & 2 & 2 & 6 &  23 & 1 & 1 & 0 & 1 & \bf 12 & 3 & 3 & 1 & 0 & 1 & 1 & 1 \\ 
+\#  2 & 0 & 16 & 1 & 1 & 5 & 1 & 0 & 8 & 0 & 2 & 0 & 0 & 0 & 4 & 2 & 1 & \bf 11 & 1 & 0 & 13 \\ 
+\#  3 & 7 & 26 & 0 & 2 & 0 & 5 & 3 & 0 & 2 & 1 & 0 & 4 & 0 & 0 & 2 & 0 & 9 & \bf 5 & 0 & 6 \\ 
+\#  4 & 0 & 0 & 0 & 2 & 0 & 0 & 0 & 3 & 1 & 10 & 2 & 18 & 1 & 0 & 4 & 2 &\bf 14 & 0 & 13 & 0 \\ 
+\# 5 &\bf 19 & 1 & 4 & 1 & 0 & 1 & 0 & 12 & 0 & 0 & 0 & 4 & 1 & 0 & 0 & 12 & 1 & 1 & 0 & 0 \\ 
+   \hline
+\end{tabular}
+}
+\end{table}
+
+
 
 
 

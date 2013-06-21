@@ -145,9 +145,9 @@ Serial & Experiment & Test Statistic & Lineup question \\ [0.5ex] % inserts tabl
 \hline 
 1  & Box plot & \begin{minipage}[t]{3cm} \begin{center}	\scalebox{0.4}{\includegraphics{stat_category.pdf}} \end{center} \end{minipage} & Which set of box plots shows biggest vertical difference 
 between group A and B? \\
-2 &  Scatter plot & \begin{minipage}[t]{3cm}  \begin{center} \scalebox{0.45}{\includegraphics{stat_beta_k.pdf}} \end{center} \end{minipage} & Of the scatter plots below which one shows data that has steepest slope? \\ 
+2 &  Scatter plot & \begin{minipage}[t]{3cm}  \begin{center} \scalebox{0.3}{\includegraphics{stat_beta_k1.png}} \end{center} \end{minipage} & Of the scatter plots below which one shows data that has steepest slope? \\ 
 
-  3 & Contaminated plot &\begin{minipage}[t]{3cm} \begin{center} \scalebox{0.45}{\includegraphics{stat_contaminated.pdf}} \end{center} \end{minipage} & Of the scatter plots below which one shows data that has steepest slope? \\  \\ 
+  3 & Contaminated plot &\begin{minipage}[t]{3cm} \begin{center} \scalebox{0.5}{\includegraphics{stat_contaminated.pdf}} \end{center} \end{minipage} & Of the scatter plots below which one shows data that has steepest slope? \\  \\ 
   4 & Polar vs Cartesian & \begin{minipage}[t]{3cm} \begin{center}  \scalebox{0.32}{\includegraphics{stat_polar.pdf}} \end{center} \end{minipage} &Which plot is different? \\ 
   5 & Hist vs density & \begin{minipage}[t]{3cm} \begin{center}  \scalebox{0.38}{\includegraphics{stat_density.pdf}} \end{center} \end{minipage} &In which plot is the blue group furthest to the right?\\ 
   6 & Violin vs boxplot & \begin{minipage}[t]{3cm} \begin{center}  \scalebox{0.35}{\includegraphics{stat_violin.pdf}} \end{center} \end{minipage}&  In which plot does the blue group look the most different from  the red group?\\ 
@@ -481,6 +481,7 @@ Proportion Correct &Full & 23822.00 &23943.00 &-11896.00  & &  &  \\
 
 To further illustrate how the individual factor levels differ from each other  the detailed results of Models \eqref{eqn:demographic_response} and \eqref{eqn:demographic_time} are shown in Table \ref{tbl:model_result_demographics}. For parameter estimation the first factor levels shown in the Table are  used as the base line. Demographic factor levels have significant effects on log time taken to evaluate a lineup. But not all the levels are significant for the probability of correct responses.
 
+
 \begin{table}[htbp]
 \centering
 \caption{Parameter estimates of Models \eqref{eqn:demographic_time} and \eqref{eqn:demographic_response} fitted for average log time taken and probability of correct lineup evaluations respectively. For time taken all the demographic factors are significant. For probability of correct response age group 36-40, rest of the world and graduate degree are significantly different. For gender no difference in performance is observed. Lineup variability is estimated to be very large for Model \eqref{eqn:demographic_response}.}
@@ -496,12 +497,12 @@ Factor & Level& Est & SE & Zval & $p$-value && Est & SE & Zval & $p$-value  \\
 &$\mu$ & 3.360 & 0.013 & 249.21 & $<$0.001 &   & -0.683 & 0.071 & -9.64 & $<$0.001 \\ 
 \hline
 Age ($\alpha$)& 18-25&0.000   &---  &---  &---  &  &--- &--- &---& ---\\   
- &26-30 & 0.058 & 0.013 & 4.50 & $<$0.001 &   & 0.062 & 0.049 & 1.27 & 0.2058 \\ 
-  &31-35 & 0.068 & 0.014 & 4.72 & $<$0.001 &   & 0.115 & 0.055 & 2.08 & 0.0376 \\ 
+ &26-30 & 0.058 & 0.013 & 4.50 & $<$0.001 &   & 0.062 & 0.049 & 1.27 & 0.206 \\ 
+  &31-35 & 0.068 & 0.014 & 4.72 & $<$0.001 &   & 0.115 & 0.055 & 2.08 & 0.038 \\ 
   &36-40 & 0.231 & 0.016 & 14.05 & $<$0.001 &   & 0.310 & 0.063 & 4.93 & $<$0.001 \\ 
-  &41-45 & 0.176 & 0.021 & 8.56 & $<$0.001 &   & 0.158 & 0.081 & 1.96 & 0.0501 \\ 
-  &46-50 & 0.272 & 0.024 & 11.29 & $<$0.001 &   & 0.141 & 0.096 & 1.47 & 0.1425 \\ 
-  &above 50 & 0.352 & 0.018 & 19.19 & $<$0.001 &   & 0.147 & 0.071 & 2.06 & 0.0394 \\ 
+  &41-45 & 0.176 & 0.021 & 8.56 & $<$0.001 &   & 0.158 & 0.081 & 1.96 & 0.050 \\ 
+  &46-50 & 0.272 & 0.024 & 11.29 & $<$0.001 &   & 0.141 & 0.096 & 1.47 & 0.143 \\ 
+  &above 50 & 0.352 & 0.018 & 19.19 & $<$0.001 &   & 0.147 & 0.071 & 2.06 & 0.039 \\ 
   \hline
 Country($\kappa$)& United States&0.000   &---  &---  &---  &  &--- &--- &---& ---\\  
   &India & 0.101 & 0.011 & 9.11 & $<$0.001 &   & 0.058 & 0.043 & 1.33 & 0.183 \\ 
@@ -509,12 +510,12 @@ Country($\kappa$)& United States&0.000   &---  &---  &---  &  &--- &--- &---& --
   \hline
 Education($\tau$) &High school or less&0.000   &---  &---  &---  &  &--- &--- &---& ---\\     
  &Under grad courses & 0.042 & 0.013 & 3.25 & 0.0011 &   & -0.083 & 0.050 & -1.65 & 0.098 \\ 
-  &Under grad degree & -0.037 & 0.012 & -3.21 & 0.0013 &   & -0.044 & 0.045 & -0.97 & 0.3307 \\ 
-  &Graduate courses & 0.117 & 0.013 & 9.12 & $<$0.001 &   & 0.070 & 0.050 & 1.42 & 0.1566 \\ 
+  &Under grad degree & -0.037 & 0.012 & -3.21 & 0.0013 &   & -0.044 & 0.045 & -0.97 & 0.331 \\ 
+  &Graduate courses & 0.117 & 0.013 & 9.12 & $<$0.001 &   & 0.070 & 0.050 & 1.42 & 0.157 \\ 
   &Graduate degree & 0.046 & 0.011 & 4.12 & $<$0.001 &   & 0.182 & 0.043 & 4.22 & $<$0.001 \\ 
   \hline
 Gender ($\gamma$)& Female&0.000   &---  &---  &---  &  &--- &--- &---& ---\\      
-  &Male & 0.078 & 0.009 & 8.26 & $<$0.001 &   & 0.055 & 0.036 & 1.50 & 0.1331 \\ 
+  &Male & 0.078 & 0.009 & 8.26 & $<$0.001 &   & 0.055 & 0.036 & 1.50 & 0.133 \\ 
   \hline
 \multicolumn{2}{l}{Random Effect} &  &  &  &  &  & & && \\ 
 & lineup($\sigma_{\ell}$) & 0.082 & 0.287 &  &  &   & 5.259 & 2.293 &  &  \\ 
@@ -524,6 +525,53 @@ Gender ($\gamma$)& Female&0.000   &---  &---  &---  &  &--- &--- &---& ---\\
 }
 \label{tbl:model_result_demographics}
 \end{table}
+
+
+
+% This table had 4 digits $p$-value for last column
+%\begin{table}[htbp]
+%\centering
+%\caption{Parameter estimates of Models \eqref{eqn:demographic_time} and \eqref{eqn:demographic_response} fitted for average log time taken and probability of correct lineup evaluations respectively. For time taken all the demographic factors are significant. For probability of correct response age group 36-40, rest of the world and graduate degree are significantly different. For gender no difference in performance is observed. Lineup variability is estimated to be very large for Model \eqref{eqn:demographic_response}.}
+%\scalebox{0.86}{
+%\begin{tabular}{rlrrrrrrrrrr}
+%  \hline
+%Demographic&& \multicolumn{4}{c} {Model \eqref{eqn:demographic_time} Log Time} & &\multicolumn{4}{c} {Model \eqref{eqn:demographic_response} Proportion Correct} \\
+%
+%\cline{3-6} \cline{8-11} 
+%Factor & Level& Est & SE & Zval & $p$-value && Est & SE & Zval & $p$-value  \\ 
+%  \hline
+%\multicolumn{2}{l}{Fixed Effect} &  &  &  &  &  & & && \\ 
+%&$\mu$ & 3.360 & 0.013 & 249.21 & $<$0.001 &   & -0.683 & 0.071 & -9.64 & $<$0.001 \\ 
+%\hline
+%Age ($\alpha$)& 18-25&0.000   &---  &---  &---  &  &--- &--- &---& ---\\   
+% &26-30 & 0.058 & 0.013 & 4.50 & $<$0.001 &   & 0.062 & 0.049 & 1.27 & 0.2058 \\ 
+%  &31-35 & 0.068 & 0.014 & 4.72 & $<$0.001 &   & 0.115 & 0.055 & 2.08 & 0.0376 \\ 
+%  &36-40 & 0.231 & 0.016 & 14.05 & $<$0.001 &   & 0.310 & 0.063 & 4.93 & $<$0.001 \\ 
+%  &41-45 & 0.176 & 0.021 & 8.56 & $<$0.001 &   & 0.158 & 0.081 & 1.96 & 0.0501 \\ 
+%  &46-50 & 0.272 & 0.024 & 11.29 & $<$0.001 &   & 0.141 & 0.096 & 1.47 & 0.1425 \\ 
+%  &above 50 & 0.352 & 0.018 & 19.19 & $<$0.001 &   & 0.147 & 0.071 & 2.06 & 0.0394 \\ 
+%  \hline
+%Country($\kappa$)& United States&0.000   &---  &---  &---  &  &--- &--- &---& ---\\  
+%  &India & 0.101 & 0.011 & 9.11 & $<$0.001 &   & 0.058 & 0.043 & 1.33 & 0.183 \\ 
+%  &Rest of world & -0.129 & 0.009 & -13.82 & $<$0.001 &   & 0.185 & 0.035 & 5.22 & $<$0.001 \\ 
+%  \hline
+%Education($\tau$) &High school or less&0.000   &---  &---  &---  &  &--- &--- &---& ---\\     
+% &Under grad courses & 0.042 & 0.013 & 3.25 & 0.0011 &   & -0.083 & 0.050 & -1.65 & 0.098 \\ 
+%  &Under grad degree & -0.037 & 0.012 & -3.21 & 0.0013 &   & -0.044 & 0.045 & -0.97 & 0.3307 \\ 
+%  &Graduate courses & 0.117 & 0.013 & 9.12 & $<$0.001 &   & 0.070 & 0.050 & 1.42 & 0.1566 \\ 
+%  &Graduate degree & 0.046 & 0.011 & 4.12 & $<$0.001 &   & 0.182 & 0.043 & 4.22 & $<$0.001 \\ 
+%  \hline
+%Gender ($\gamma$)& Female&0.000   &---  &---  &---  &  &--- &--- &---& ---\\      
+%  &Male & 0.078 & 0.009 & 8.26 & $<$0.001 &   & 0.055 & 0.036 & 1.50 & 0.1331 \\ 
+%  \hline
+%\multicolumn{2}{l}{Random Effect} &  &  &  &  &  & & && \\ 
+%& lineup($\sigma_{\ell}$) & 0.082 & 0.287 &  &  &   & 5.259 & 2.293 &  &  \\ 
+% & Error($\sigma$) & 0.479 & 0.692 &  &  & & && &\\ 
+%   \hline
+%\end{tabular}
+%}
+%\label{tbl:model_result_demographics}
+%\end{table}
 
 Age group 36-40 is significantly different than the base line age group of 18-25 year olds. The other age levels are similar in explaining the probability of correct response. For country, the rest of the world is different from USA but India appears to be similar to USA. We see from Table \ref{tbl:demographics} that most of the participants (about 90\%) are from India and USA. The rest of the 10\% data are from 76 different countries. This diversity in the rest of the world may make it different from India and USA.
 

@@ -88,7 +88,8 @@ dat9$response_all <- apply(subset(dat9, select=c(plot_location,response_no)), 1,
                     res_no <- as.numeric(unlist(strsplit(x[2],split=",")))
                     return(plot %in% res_no)
                   })
-
+# responses on the plot used for defense talk
+subset(dat9, pic_name=="plot_turk9_interaction_1_3.svg")
 
 # ==============================================================
 # Summary statistics of demographic data

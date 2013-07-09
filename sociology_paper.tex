@@ -138,7 +138,7 @@ For any evaluation the observer may or may not identify the actual data plot. Un
 
 \begin{table*}[hbtp] 
 \centering 
-\caption{Visual test statistics used in 10 different simulation experiments. The observers are asked different questions to answer while evaluating a lineup} 
+\caption{Visual test statistics used in 10 different simulation experiments. The observers are asked different questions to answer while evaluating a lineup. All the experiment data are used to estimate the effect of demographic factors on visual inference while some are used to estimate the learning trend and location effect of actual data in the lineup.} 
 \begin{tabular}{m{.5cm}m{2.6cm}m{2cm}m{4.5cm}m{3.5cm}} 
 \hline\hline 
 Serial & Experiment &  Test Statistic  & Lineup question & Provided data to estimate\\ [0.5ex] % inserts table %heading 
@@ -166,7 +166,7 @@ There have been ten experiments conducted using Amazon's Mechanical Turk~\citep{
 
 
 
-\section{Factors Affecting  Observer Performance} \label{sec:factor_performance} 
+\section{Factors Affecting Visual Inference} \label{sec:factor_performance} 
 
 Based on human evaluation on a lineup a decision is made in visual statistical inference. While the visual test statistic is defined to have a direct influence on the observer to pick a plot based on the signal in the data, there are other human factors that may affect the observer performance. It is important to study the effect of those factors and examine the extent of their influence. This section presents a brief description of the factors that may affect the power of visual inference.   
 
@@ -215,9 +215,9 @@ Given a specific pattern of eye movement of the observer in examining the lineup
 
 It may be possible that some part of the lineup is less explored or even never scanned by the observer if he or she feels that the actual plot is found before even seriously scanning the whole lineup. In those scenarios the location where the observer first start scanning is important. Placing the actual data plot in that location may yield different results.
 
-\subsection{Selection of Null Plots} A lineup becomes difficult to evaluate if one of the null plots appears to be very similar to the actual plot. When null hypothesis is true it is a common scenario. With alternative hypothesis being true,  it may happen if  we compare actual plot with many null plots. But we have only specific number of null plots in a lineup. So, a different set of null plots may yield some variation in the difficulty of the lineup with the same actual plot. This may affect the performance of the observer while evaluating a lineup.
+\subsection{Sample of Null Plots} A lineup becomes difficult to evaluate if one of the null plots appears to be very similar to the actual plot. When null hypothesis is true it is a common scenario. With alternative hypothesis being true,  it may happen if  we compare actual plot with many null plots. But we have only specific number of null plots in a lineup. So, a different sample of null plots may yield some variation in the difficulty of the lineup with the same actual plot. This may affect the performance of the observer while evaluating a lineup.
 
-\subsection{Individual Performance of the Observer} Each person is different from others in some way. For example, in a controlled experimental study \citet{zhao:2012}  noticed that some people spent a lot of time to decide no matter whether the lineup is difficult or easy while some simply glanced at lineups to make a decision. This influences the response of the observer. Also subject specific variation in the power of visual test is observed in \cite{majumder:2013}. 
+\subsection{Individual Skill or Ability of the Observer} Each person is different from others in some way. For example, in a controlled experimental study \citet{zhao:2012}  noticed that some people spent a lot of time to decide no matter whether the lineup is difficult or easy while some simply glanced at lineups to make a decision. This influences the response of the observer. Also subject specific variation in the power of visual test is observed in \cite{majumder:2013}. 
 
 \section{Experimental Designs and Methods}\label{sec:exp_design}
 While evaluating a lineup, the performance of the observer may depend on the factors described in Section \ref{sec:factor_performance}. Some of these factors such as signal in the data and individual abilities were studied in \cite{majumder:2013}. In this paper we intend to study effect of the factors such as human demographics, learning trend, actual plot locations and selection of null plots. This section presents the simulation experiment setup, data collection methods and data analysis plans with models to asses the influence of those factors on visual statistical inference. 
@@ -747,8 +747,12 @@ To visualize how the time taken reduces over the successive attempts, we fitted 
    \label{fig:learning_trend_time}
 \end{figure}
 
+\subsection{Lineup Design}
 
-\subsection{Location Effect}
+\subsubsection{Sample of lineup}
+\subsubsection{Sample of Null Plots}
+
+\subsubsection{Location Effect}
 
 A total of 111 subjects were recruited to evaluate lineups designed to investigate the location effect of the actual data plot in the lineup as described in Section~\ref{sec:location_design}. Each subject evaluated two lineups;  one for Interaction effect and the other for Genotype.  In total there were 222 feedbacks or responses on 50 lineups. The data on the test lineup were excluded from the analysis.
 

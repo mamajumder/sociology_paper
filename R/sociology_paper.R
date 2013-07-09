@@ -188,12 +188,15 @@ pdat <- ddply(demographics, .(country,gender_level, age_level,degree), summarize
               per_correct = mean(response),
               avg_time = mean(time_taken))
 qplot(degree, avg_time, geom="bar", stat="identity", data=pdat[complete.cases(pdat),]) +
-  facet_grid(age_level~country+gender_level) + coord_flip() + xlab("Academic Study") 
+  facet_grid(age_level~country+gender_level) + coord_flip() + 
+  xlab("Academic Study") + ylab("Average time taken")
 
 ggsave("../images/age_gender_within_country_time.pdf", width=10, height=8)
 
-qplot(degree, per_correct, geom="bar", stat="identity", data=pdat[complete.cases(pdat),]) +
-  facet_grid(age_level~country+gender_level) + coord_flip() + xlab("Academic Study") 
+qplot(degree, per_correct*100, geom="bar", stat="identity", data=pdat[complete.cases(pdat),]) +
+  facet_grid(age_level~country+gender_level) + coord_flip() + 
+  xlab("Academic Study") + ylab("Percent correct") +
+  scale_y_continuous(breaks=c(25,50,75,100)) 
 
 ggsave("../images/age_gender_within_country_correct.pdf", width=10, height=8)
 

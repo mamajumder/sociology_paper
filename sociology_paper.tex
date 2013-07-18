@@ -168,20 +168,21 @@ There have been ten experiments conducted using Amazon's Mechanical Turk~\citep{
 
 \section{Factors Potentially Affecting Visual Inference} \label{sec:factor_performance} 
 
-Because visual statistical inference relies on human evaluation, it is important to understand the factors that might affect results.  This section provides a brief description of the factors that may influence results.  
+Because visual statistical inference relies on plotting choices, lineup design and human evaluation, it is important to understand how these factors that might affect results.  This section provides a brief description of the factors that are expected to have some impact on the performance of visual statistical inference.  
 
 %ased on human evaluation on a lineup a decision is made in visual statistical inference. While the visual test statistic is defined to have a direct influence on the observer to pick a plot based on the signal in the data, there are other human factors that may affect the observer performance. It is important to study the effect of those factors and examine the extent of their influence. This section presents a brief description of the factors that may affect the power of visual inference.   
 
 %\dc{You need to have more than one sentence to open this section, it needs a paragraph overviewing the factors.}
 
+\subsection{Choice of Visual Test Statistic}  
+
+There are a variety of ways that data can be plotted and enhanced. The choice of plot that is used as the visual test statistic should be closely associated with the problem being investigated. For example, side-by-side boxplots may be more appropriate than side-by-side dotplots, when one variable is categorical. Enhancements, such as a line overlaying a scatterplot to represent a fitted model, might be appropriate for studying some types of problems.  Some choices of visual test statistics provide better results than others when studying the same problem, which is discussed in \cite{heike:2012}.  This makes sense, because some plot types will make it easier for see some structure. It also presents as a flip-side to visual inference, that the same methods could be used to determine the optimal plot choice. 
+
+Table \ref{tbl:visual_stat} shows the visual test statistics used in the Turk studies completed so far. Side-by-side boxplots were used in experiment 1 to study the importance of a categorical variable in a regression model. For both experiments 2 and 3 a scatterplot is used but a regression line fitted through the points is overlaid for experiment 2. It is easier to spot the slope of the line compared to just the scatterplot itself. But people are better in noticing the unusual pattern in the data which is some contamination purposefully added for experiment 3. Experiment 4 compared polar coordinates to euclidean coordinates on the reading of structure in a barchart.  In addition, this experiment also examined the style of plot for a bivariate data problem: a scatterplot, side-by-side dot plots, overlaid densities or side-by-side boxplots. .... expand description of experiments here...
+
 \subsection{Signal in the Data}
 
 The visual test statistic is chosen so that it displays a specific pattern in case the null hypothesis is not true. Thus the most important factor that help an observer to correctly evaluate a lineup is the presence of any detectable signal in the data. On the other hand, if the null hypothesis is not true, visual test statistic should not display any distinguishable pattern. In fact, some of the null plots may appear to be the most different plot in a lineup influencing the observer to chose a plot different than actual data plot. This is an elegant feature of the lineup. It force the observer to chose a wrong plot when the null hypothesis should not be rejected.
-
-
-\subsection{Choice of Visual Test Statistic}  The visual test statistic should be highly associated with the hypothesis under investigation. To achieve this purpose it is very important to decide which plot type and plot features should be adopted.  In a linear regression setting, the visual test statistics are presented in \citep{majumder:2013} for some common hypothesis testing.  It is also observed that a scatterplot may do a better job than a box plot when using as a visual test statistic for regression parameters.  Some of the effective features of visual test statistics are discussed in \citep{heike:2012} including plot type, color and shape of the plots.  \cite{niladri:2012} presents some \textit{distance measure} to determine how a plot may be different from each other.
-
-Table \ref{tbl:visual_stat} shows the visual test statistics used in this study. For both experiments 2 and 3 a scatterplot is used but a regression line fitted through the points is overlaid for experiment 2. It is easier to spot the slope of the line compared to just the scatterplot itself. But people are better in noticing the unusual pattern in the data which is some contamination purposefully added for experiment 3. For experiment 3 the performance of the observers was much better compared to experiment 2 \citep{majumder:2013}.
 
 %Plots to do: for the same signal strength show the proportion correct for scatterplot and boxplot. eg., qplot(effect, ump-visual power, color= plot-type)
 

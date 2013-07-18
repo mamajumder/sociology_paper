@@ -100,12 +100,12 @@ What does this mean, though? For that, we need to know the context of the data a
    \end{minipage}
     \hfill
    \begin{minipage}[c]{0.45\textwidth}
-   Freedom's Lighthouse Averages \\
+   Poll aggregator 1 \\
       \includegraphics[width=\textwidth]{freedom-sim.pdf} 
-   RealClearPolitics Averages\\
+   Poll aggregator 2\\
       \includegraphics[width=\textwidth]{rcp-sim.pdf} 
    \end{minipage}
-   \caption{ \label{fig:tower} Electoral building plot of the results of the 2012 U.S. Presidential Election (left). On the right two histograms of 10,000 simulations each based on polling averages from two different sources. For the histogram on the top, the $p$-value of observing results as extreme as  the  2012 U.S. election results based on the bootstrap is 0.0533 (with Bootstrap standard error of 0.002), making the election results almost significantly different from the polls. There is no indication of any inconsistency between polls and election results based on the bootstrap simulation below. The lineups are based on the top source. }
+   \caption{ \label{fig:tower} Electoral building plot of the results of the 2012 U.S. Presidential Election (left). On the right two histograms of 10,000 simulations each based on polling averages from two different sources. For the histogram on the top, the $p$-value of observing results as extreme as  the  2012 U.S. election results based on the bootstrap is 0.0533 (with Bootstrap standard error of 0.002), making the election results almost significantly different from the polls (data source for poll aggregator 1 is Freedom`s Lighthouse Averages). There is no indication of any inconsistency between polls and election results based on the bootstrap simulation below (data source for poll aggregator 2 is RealClearPolitics Averages). The lineups are based on the top source.}
 \end{figure}
 
 %The rest of the 19 plots are generated from the assumption that there is no difference between two groups of data. For this, the group structure of the data is broken by random permutation of the groups. 
@@ -138,22 +138,22 @@ For any evaluation the observer may or may not identify the actual data plot. Un
 
 \begin{table*}[hbtp] 
 \centering 
-\caption{Visual test statistics used in 10 different simulation experiments. The observers are asked different questions to answer while evaluating a lineup. All the experiment data are used to estimate the effect of demographic factors on visual inference while some are used to estimate the learning trend and location effect of actual data in the lineup.} 
-\begin{tabular}{m{.5cm}m{2.6cm}m{2cm}m{4.5cm}m{3.5cm}} 
+\caption{Visual test statistics used in 10 different simulation experiments. The observers are asked different questions to answer while evaluating a lineup. All the experiment data are used to estimate the effect of demographic factors (DF) on visual inference while some are used to estimate the learning trend (LT) and location effect (LE) of actual data in the lineup as shown in the right most column.} 
+\begin{tabular}{m{.5cm}m{2.6cm}m{2cm}m{5.5cm}m{3cm}} 
 \hline\hline 
-Serial & Experiment &  Test Statistic  & Lineup question & Provided data to estimate\\ [0.5ex] % inserts table %heading 
+Serial & Experiment &  Test Statistic  & Lineup question & Designed to study\\ [0.5ex] % inserts table %heading 
 \hline 
 1  & Box plot & \begin{minipage}[t]{2cm} \begin{center}	\scalebox{0.12}{\includegraphics{stat_category1.pdf}} \end{center} \end{minipage} & Which set of box plots shows biggest vertical difference 
-between group A and B? & Demographic factor\\
-2 &  Scatter plot & \begin{minipage}[t]{2cm}  \begin{center} \scalebox{0.3}{\includegraphics{stat_beta_k1.png}} \end{center} \end{minipage} & Of the scatter plots below which one shows data that has steepest slope? & Demographic factor\\
-  3 & Contaminated plot &\begin{minipage}[t]{2cm} \begin{center} \scalebox{0.5}{\includegraphics{stat_contaminated.pdf}} \end{center} \end{minipage} & Of the scatter plots below which one shows data that has steepest slope? & Demographic factor\\
- 4 & Polar vs Cartesian & \begin{minipage}[t]{2cm} \begin{center}  \scalebox{0.32}{\includegraphics{stat_polar.pdf}} \end{center} \end{minipage} &Which plot is different?& Demographic factor\\
-  5 & Hist vs density & \begin{minipage}[t]{2cm} \begin{center}  \scalebox{0.38}{\includegraphics{stat_density.pdf}} \end{center} \end{minipage} &In which plot is the blue group furthest to the right?& Learning trend and Demographic factor\\  
-  6 & Violin vs boxplot & \begin{minipage}[t]{2cm} \begin{center}  \scalebox{0.35}{\includegraphics{stat_violin.pdf}} \end{center} \end{minipage}&  In which plot does the blue group look the most different from  the red group? & Learning trend and Demographic factor\\
-  7 & Group separation & \begin{minipage}[t]{2cm} \begin{center}  \scalebox{0.4}{\includegraphics{stat_separation.pdf}} \end{center} \end{minipage} &Which of these plots has the most separation between the coloured groups? & Learning trend and  Demographic factor\\ 
-  8 & Sine Illusion & \begin{minipage}[t]{2cm} \begin{center}  \scalebox{0.28}{\includegraphics{stat_sine.pdf}} \end{center} \end{minipage} & In what picture is the size of the curve most consistent? & Demographic factor\\ 
-  9 & Gene expression &\begin{minipage}[t]{2cm} \begin{center}  \scalebox{0.45}{\includegraphics{stat_gene.pdf}} \end{center} \end{minipage} & In which of these plots is the green line the steepest, and the spread of the green points relatively small? & Location effect and Demographic factor\\ 
-  10 & Test normality & \begin{minipage}[t]{2cm} \begin{center}  \scalebox{0.35}{\includegraphics{stat_normality.pdf}} \end{center} \end{minipage} &Which of these plots is most different from the others? & Demographic factor\\ 
+between group A and B? & DF\\
+2 &  Scatter plot & \begin{minipage}[t]{2cm}  \begin{center} \scalebox{0.3}{\includegraphics{stat_beta_k1.png}} \end{center} \end{minipage} & Of the scatter plots below which one shows data that has steepest slope? & DF\\
+  3 & Contaminated plot &\begin{minipage}[t]{2cm} \begin{center} \scalebox{0.5}{\includegraphics{stat_contaminated.pdf}} \end{center} \end{minipage} & Of the scatter plots below which one shows data that has steepest slope? & DF\\
+ 4 & Polar vs Cartesian & \begin{minipage}[t]{2cm} \begin{center}  \scalebox{0.32}{\includegraphics{stat_polar.pdf}} \end{center} \end{minipage} &Which plot is different?& DF\\
+  5 & Hist vs density & \begin{minipage}[t]{2cm} \begin{center}  \scalebox{0.38}{\includegraphics{stat_density.pdf}} \end{center} \end{minipage} &In which plot is the blue group furthest to the right?&  DF and LT \\  
+  6 & Violin vs boxplot & \begin{minipage}[t]{2cm} \begin{center}  \scalebox{0.35}{\includegraphics{stat_violin.pdf}} \end{center} \end{minipage}&  In which plot does the blue group look the most different from  the red group? &  DF and LT \\
+  7 & Group separation & \begin{minipage}[t]{2cm} \begin{center}  \scalebox{0.4}{\includegraphics{stat_separation.pdf}} \end{center} \end{minipage} &Which of these plots has the most separation between the coloured groups? & DF and LT \\ 
+  8 & Sine Illusion & \begin{minipage}[t]{2cm} \begin{center}  \scalebox{0.28}{\includegraphics{stat_sine.pdf}} \end{center} \end{minipage} & In what picture is the size of the curve most consistent? & DF\\ 
+  9 & Gene expression &\begin{minipage}[t]{2cm} \begin{center}  \scalebox{0.45}{\includegraphics{stat_gene.pdf}} \end{center} \end{minipage} & In which of these plots is the green line the steepest, and the spread of the green points relatively small? & DF and LE\\ 
+  10 & Test normality & \begin{minipage}[t]{2cm} \begin{center}  \scalebox{0.35}{\includegraphics{stat_normality.pdf}} \end{center} \end{minipage} &Which of these plots is most different from the others? & DF\\ 
 
 \hline 
 \end{tabular} 
@@ -166,7 +166,7 @@ There have been ten experiments conducted using Amazon's Mechanical Turk~\citep{
 
 
 
-\section{Factors Affecting Visual Inference} \label{sec:factor_performance} 
+\section{Factors Potentially Affecting Visual Inference} \label{sec:factor_performance} 
 
 Based on human evaluation on a lineup a decision is made in visual statistical inference. While the visual test statistic is defined to have a direct influence on the observer to pick a plot based on the signal in the data, there are other human factors that may affect the observer performance. It is important to study the effect of those factors and examine the extent of their influence. This section presents a brief description of the factors that may affect the power of visual inference.   
 
@@ -219,12 +219,12 @@ It may be possible that some part of the lineup is less explored or even never s
 
 \subsection{Individual Skill or Ability of the Observer} Each person is different from others in some way. For example, in a controlled experimental study \citet{zhao:2012}  noticed that some people spent a lot of time to decide no matter whether the lineup is difficult or easy while some simply glanced at lineups to make a decision. This influences the response of the observer. Also subject specific variation in the power of visual test is observed in \cite{majumder:2013}. 
 
-\section{Experimental Designs and Methods}\label{sec:exp_design}
+\section{Experimental Methods}\label{sec:exp_design}
 While evaluating a lineup, the performance of the observer may depend on the factors described in Section \ref{sec:factor_performance}. Some of these factors such as signal in the data and individual abilities were studied in \cite{majumder:2013}. In this paper we intend to study effect of the factors such as human demographics, learning trend, actual plot locations and selection of null plots. This section presents the simulation experiment setup, data collection methods and data analysis plans with models to asses the influence of those factors on visual statistical inference. 
 
 %\dc{Learning trend and location effect need to be separate sections, cannot be simply bolded.}
 
-\subsection{Experiment Setup}  In addition to obtain evaluation responses of the lineups, all the 10 experiments shown in Table \ref{tbl:visual_stat} were designed to collect the following demographic information of the subjects participating the experiments:
+\subsection{Demographic Factors}  In addition to obtain evaluation responses of the lineups, all the 10 experiments shown in Table \ref{tbl:visual_stat} were designed to collect the following demographic information of the subjects participating the experiments:
 
 \begin{enumerate} \leftmargin 5cm  \itemsep 0in
 \item Age group
@@ -235,38 +235,11 @@ While evaluating a lineup, the performance of the observer may depend on the fac
 
 Instead of collecting exact age, 9 levels of age were collected. They are 18-25, 26-30, 31-35, 36-40, 41-45, 46-50, 51-55, 56-60, above 60. There were five levels of academic information. They are (1) High school or less , (2) Some under grad course, (3) Under graduate degree, (4) Some graduate courses,  (5) Graduate degree.  Geographical locations were collected using the true public ip addresses of the participants' computer. This provides latitude and longitude of the ip address as well as the city and country information. 
 
-%Multiple simulation experiments are designed to investigate the learning trend of the observer and the location effect of the actual data in the lineup. These are explained in tis section.
-
-\subsubsection{Learning Trend} Learning trend of a subject can be observed in terms of performance over successive feedbacks received when multiple lineups are shown for evaluation. Experiments 5, 6 and 7 were used for this. Each subject was shown a total of 10 lineups randomly selected from a pool of lineups. The lineups are not necessarily with the same difficulty levels. But the order of lineups were randomized. The responses of the lineups were recorded by attempt 1 through 10. Attempt 1 means that the response is for the first lineup the observer evaluates and attempt 10 refers to the response for the 10th lineup. The goal is to estimate whether performance of the observer improves from attempt 1 to attempt 10.
-
-\subsubsection{Design for Location Effect} \label{sec:location_design} Experiment 9 shown in Table~\ref{tbl:visual_stat} is designed to to assess the location effect of a data plot in a lineup. It is set up based on the gene expression data \citep{atwood:2013} with two groups. One is the Genotype and the other the Empty Vector (EV). For each of the groups, gene expression data were collected in presence or absence of iron sufficiency. Two factors were of primary interest. One is the Genotype main effect and the other is the interaction effect between Genotype and iron sufficiency. 
-
-For Genotype main effect side by side dot plots of two groups are used as the visual test statistics. For interaction effect the same plot type is used except that the means of iron sufficiency or insufficiency were connected by lines colored by the groups. One of the interaction test statistics is shown in Table~\ref{tbl:visual_stat} for experiment 9. For no interaction, the visual test statistic shows two parallel lines representing two groups and for significant interaction the lines are not parallel. Null plots were generated by randomizing the group structure of the data. The actual plot was randomly placed in five different locations in a lineup of size 20. The locations are 2,9,12,16,20 for Interaction effect and 1,8,12,17,20 for Genotype effect. For a lineup with specific data plot location, five different sets of null plots were used to produce 5 lineups for each location. In total we have 25 lineups for Interaction effect and 25 lineups for Genotype effect. 
-
-
-%We set up a Turk experiment to examine whether there is any difference of performance based on the location of actual data plot in the lineup. For this five locations of a lineup were randomly chosen to put the same actual data plot. The locations are 2,9,12,16,20 for Interaction effect and 1,8,12,17,20 for Genotype effect. For a lineup with specific data plot location, five sets of null plots are used giving 5 lineups for each location. In total we have 25 lineups for Interaction effect and 25 lineups for Genotype effect. These 50 lineups are evaluated by 100 people recruited from Amazon Mechanical Turk. Each person evaluated 3 lineups one from Interaction, one from Genotype and the third one was a test lineup. The test lineup is used to process the payment and examine the quality of the data and the responses of the test plot is not added to our analysis. 
-
-%One such lineup is shown in Figure \ref{fig:lineup_geno}. 
-
-Each observer saw three lineups, first an Interaction lineup then a Genotype lineup. Finally a test lineup was shown to screen out unusual evaluation. The subjects did not know which one was the test lineup but they were informed before accepting the task that there would be one. The test lineup was very easy and everyone should detect the data plot. The MTurk workers were paid based on whether they could correctly evaluate the test lineup. But the data on the test plot are excluded from the analysis.
-
-\subsection{Data Collection Methods}  Human subjects were recruited to evaluate the experimental lineups through Amazon Mechanical Turk \citep{turk} or MTurk Web site.  It is an online work place where people from around the world can perform some tasks and get paid. Usually tasks are very simple and no specialized training is required to do them. Being a human is the main requirement. Tasks are designed for anyone to do but some tasks may require some skills depending on the recruiters' need. Each task is usually planned to complete in a short time. Humans are still better than computers in performing these types of tasks. The the amount of money paid for each task is very small as well. 
-
-%It is very fast, cheap and reliable to recruit people from MTurk. Thats why it is getting very popular among the researchers who perform human subject experiment. The another benefit is that a very diverse pool of subjects can be recruited which is otherwise very hard to obtain for a study. The researchers can easily filter the workers based on their experimental design, such as recruiting people only from a specific geographical location or a group of people who satisfy certain criteria etc. The recruiter can decide who they pay or not. Workers have to satisfy the task requirement to ensure payment. But at the end it is the recruiter who has the final say. Usually recruiters pay promptly after the task has been done properly and thats why MTurk is very popular among the online job seeker. At any point of time thousands of tasks are available for the thousands of workers around the world. 
-
-%Because of its convenience it is getting popular for scientific research study as well. In comparison with a lab study \cite{suri:2010} perform the same study using MTurk and demonstrate that their study results are as good as the lab study results even though MTurk study required less time and cost while provided more convenience. \cite{majumder:2013} recruited people from MTurk for their simulation study in estimating the power of visual statistical inference. They have done numerous pilot studies in lab before doing actual MTurk study and found similar results. \cite{mason:2012} explains various features of MTurk and describes how it can be used as part of human behavioral study.
-
-We designed and developed a web application which enables to display the lineups to the observers as per experimental need. The MTurk workers were redirected to the web site to evaluate lineups. The data were collected, stored automatically into a local database server. Demographic informations such as age group, gender and education levels were also collected. The time taken for each evaluation is computed based on the time the plot was shown and the time the feedback was received. It is measured in seconds. The location of the observer is determined by the ip address of the observer.
-
-\subsection{Model to Estimate Demographic Factor Effect} The feedback provided by each observer on a lineup is a binary response variable. Suppose $Y_{ij}$ denotes the response from observer $i$ on a  lineup $j$. $Y_{ij} =1$ if the response is correct otherwise $Y_{ij} =0$. Let $\pi_{ij}=  E(Y_{ij})$ be the probability that  observer $i$ correctly picks the data panel from lineup $j$. We model this in a generalized mixed effects model of the form
+The feedback provided by each observer on a lineup is a binary response variable. Suppose $Y_{ij}$ denotes the response from observer $i$ on a  lineup $j$. $Y_{ij} =1$ if the response is correct otherwise $Y_{ij} =0$. Let $\pi_{ij}=  E(Y_{ij})$ be the probability that  observer $i$ correctly picks the data panel from lineup $j$. We model this in a generalized mixed effects model of the form
 \begin{equation} \label{eqn:demographic_response}
 g( \pi_{ij} )= \mu + \alpha_{k(i)} + \gamma_{l(i)} + \tau_{m(i)}+ \kappa_{s(i)} + \ell_j,  
 \end{equation}
 where $\mu$ is an overall average probability for picking out the data plot from a lineup. $\alpha$, $\gamma$, $\tau$ and  $\kappa$ are the effects of age group $k(i)$, gender category $l(i)$, education level $m(i)$ and country name $s(i)$ respectively for observer $i$. $\ell_j$ is a random intercept predicting lineup difficulty level and we assume  $\ell_j \sim N(0, \sigma_\ell^2)$. $g(.)$ denotes the {\it logit} link function $g(\pi)=\log(\pi) - \log(1-\pi); 0 \le \pi \le 1$.
-
-
-
-% and $k(i) \in \{18-25, 26-30, 31-35, 36-40, 41-45, 46-50, \text{above } 50 \}$. $\gamma$ is the effect of gender category $l(i) \in \{\text{Male, Female}\}$. $\tau$ is the effect of education levels $m(i) \in \{ \text{High school, Undergrad course, Undergrad degree, Graduate course, }\}$
 
 
 The effect of demographic factors can be observed as time taken for each evaluation by an observer. Suppose $Z_{ij}$ denotes the logarithm of time taken for an observer $i$ to evaluate a  lineup $j$. Let $\mu_{ij}=  E(Z_{ij})$ be the average of log(time taken) by  observer $i$ to pick the data panel from lineup $j$. We model this in a mixed effects model of the form
@@ -277,50 +250,49 @@ Z_{ij} = \mu + \alpha_{k(i)} + \gamma_{l(i)} + \tau_{m(i)}+ \kappa_{s(i)} + \ell
 where $\mu$ represents overall average of log time taken by an observer to evaluate a lineup. $\alpha$, $\gamma$, $\tau$ and  $\kappa$ are as described in Model \eqref{eqn:demographic_response}. $\ell_j$ is a lineup-specific random effect for the time needed to evaluate a lineup; $\ell_j \sim N(0, \sigma_\ell^2)$ and the overall error $\epsilon_{ijk} \sim N(0, \sigma^2)$.
 
 
+\subsection{Learning Trend} Learning trend of a subject can be observed in terms of performance over successive feedbacks received when multiple lineups are shown for evaluation. Experiments 5, 6 and 7 were used for this. Each subject was shown a total of 10 lineups randomly selected from a pool of lineups. The lineups are not necessarily with the same difficulty levels. But the order of lineups were randomized. The responses of the lineups were recorded by attempt 1 through 10. Attempt 1 means that the response is for the first lineup the observer evaluates and attempt 10 refers to the response for the 10th lineup. The goal is to estimate whether performance of the observer improves from attempt 1 to attempt 10.
 
-\subsection{Model to Estimate Learning Trend}
+%\subsection{Model to Estimate Learning Trend}
 
-Multiple lineups were sequentially shown to each observer for evaluation. Suppose $Y_{ijk}$ denotes the response from observer $i$ on a  lineup $j$ in his/her $k$th attempt.  $Y_{ijk}=1$ if the response is correct otherwise  $Y_{ijk}=0$. Let $\pi_{ijk}=  E(Y_{ijk})$ be the probability that  observer $i$ correctly picks the data panel from lineup $j$ in his/her $k$th attempt. We model this in a generalized mixed effects model of the form
+Multiple lineups were sequentially shown to each observer for evaluation. Suppose $Y_{ijk}$ denotes the response from observer $i$ on a  lineup $j$ in his/her $k^{th}$ attempt.  $Y_{ijk}=1$ if the response is correct otherwise  $Y_{ijk}=0$. Let $\pi_{ijk}=  E(Y_{ijk})$ be the probability that  observer $i$ correctly picks the data panel from lineup $j$ in his/her $k^{th}$ attempt. We model this in a generalized mixed effects model of the form
 \begin{equation} \label{eqn:trend_response}
 g( \pi_{ijk} )= \mu + \alpha_k + u_i +  a_{i} k + \ell_j,  
 \end{equation}
-where $\mu$ is an overall average probability for picking out the data plot from a lineup, $\alpha_k$ is the effect of the $k$th attempt on the probability, with $\alpha_1 = 0$ and $k = 1, ..., K$.
+where $\mu$ is an overall average probability for picking out the data plot from a lineup, $\alpha_k$ is the effect of the $k^{th}$ attempt on the probability, with $\alpha_1 = 0$ and $k = 1, ..., K$.
 $u_i$ and $a_i$ are observer specific random effects, $i = 1, ..., I$. $u_i$ is a random intercept, describing a basic subject-specific ability. We assume $u_i \sim N(0, \sigma_u^2)$. 
 $a_i$ is a random slope capturing an individual's specific learning effect over the course of $K$ attempts. We assume $a_i \sim N(0, \sigma_a^2)$. 
 For $\ell_j$ we again assume a normal distribution, $N(0, \sigma_\ell^2)$. $\ell_j$ is a random intercept predicting lineup difficulty level. $g(.)$ denotes the {\it logit} link function $g(\pi)=\log(\pi) - \log(1-\pi); 0 \le \pi \le 1$ . 
 
-%$W$ is a design matrix of covariates corresponding to specifics of lineup $\ell$ and subject $i$, and $\delta$ is the vector of corresponding parameters. Covariates could include  demographic information of individuals, such as age, gender, education level etc.,  as well as the attempt made by the observer. $Z_{\ell i}$,  $1 \le i \le K$, $1 \le \ell \le L$,  is a design matrix corresponding to random effects specific to individual $i$ and lineup $\ell$; and 
-%$\tau$  is a vector of independent normally distributed random variables $\tau_{\ell i}$ with  variance matrix $\sigma_\tau I_{KL \times KL}$. $\tau$ will usually include a component incorporating an individual's ability or skill to evaluate lineups. 
-
-The inverse link function, $g^{-1}(.)$, from  Equation \ref{eqn:trend_response} leads to the estimate of the subject and the lineup specific probability of successful evaluation in $kth$ attempt by a single observer as 
+The inverse link function, $g^{-1}(.)$, from  Equation \ref{eqn:trend_response} leads to the estimate of the subject and the lineup specific probability of successful evaluation in $k^{th}$ attempt by a single observer as 
 \begin{equation} \label{eqn:trend_power}
 \hat p_{ijk} =  g^{-1}(\hat{\mu} + \hat{\alpha}_k + \hat{u}_i +  \hat{a}_i k + \hat{\ell}_j).
 \end{equation}
 
-The learning of each observer over a course of $K$ evaluations may be observed as the improvement of the time taken to evaluate a lineup in the later attempts. Suppose $Z_{ijk}$ denotes the logarithm of time taken for an observer $i$ to evaluate a  lineup $j$ in his/her $k$th attempt. Let $\mu_{ijk}=  E(Z_{ijk})$ be the average of log(time taken) by  observer $i$ to pick the data panel from lineup $j$ in his/her $k$th attempt. We model this in a mixed effects model of the form
+The learning of each observer over a course of $K$ evaluations may be observed as the improvement of the time taken to evaluate a lineup in the later attempts. Suppose $Z_{ijk}$ denotes the logarithm of time taken for an observer $i$ to evaluate a  lineup $j$ in his/her $k^{th}$ attempt. Let $\mu_{ijk}=  E(Z_{ijk})$ be the average of log(time taken) by  observer $i$ to pick the data panel from lineup $j$ in his/her $k^{th}$ attempt. We model this in a mixed effects model of the form
 %\hh{
 \begin{equation} \label{eqn:trend_time}
 Z_{ijk} = \mu + \alpha_1 + \alpha k + u_i +  a_{i} k + \ell_j + \epsilon_{ijk},  
 \end{equation}
 where $\mu$ represents overall average of log time taken by an observer to evaluate a lineup. $\alpha$ is the average change in log time taken for each additional attempt.  $\alpha_1$ is an offset in log time taken for the first attempt. All other effects are random effects: as before, $u_i$ is a subject-specific intercept representing  individual speed of an observer with $u_i \sim N(0, \sigma_u^2)$. $a_i$ is a subject-specific slope representing the deviation of the speed-up (or -down) by attempt $k$. We assume $a_i \sim N(0, \sigma_a^2)$. $\ell_j$ is a lineup-specific random effect for the time needed to evaluate a lineup; $\ell_j \sim N(0, \sigma_\ell^2)$ and the overall error $\epsilon_{ijk} \sim N(0, \sigma^2)$.
-%}
 
-%\begin{equation} \label{eqn:trend_time}
-%Z_{ijk} = \mu_1 + \alpha_k + u_i +  a_{i} k + \ell_j + \epsilon_{ijk},  
-%\end{equation}
-%where the link function $g_1(\mu)=1/\mu;  \mu >0$ and $\mu_1$ represents the inverse of overall average time taken to evaluate a lineup. 
 
 Equation \ref{eqn:trend_time} leads to the estimate of the subject and the lineup specific time taken for an evaluation in $kth$ attempt by a single observer as 
 \begin{equation} \label{eqn:trend_time_est}
 \hat \mu_{ijk} =  \hat{\mu} + \hat{\alpha_1}+ \hat{\alpha}k + \hat{u}_i +  \hat{a}_i k + \hat{\ell}_j.
 \end{equation}
 
-%For $Y_{l,i}$ being binary response we use {\it logit} link function $g(\mu)=g_1(\mu)=\log(\mu) - \log(1-\mu); 0 \le \mu \le 1$ and $\hat p_{\ell i}$ gives the estimate of proportion correct by subject $i$ with lineup $\ell$.  The response time taken is a positive random variable with a right skewed distribution. For this the usual convention is to model a gamma distribution with time. Thus we used inverse link function $g(\mu)=g_2(\mu)=1/\mu;  \mu >0$ for gamma response $Y_{l,i}$ and $\hat p_{\ell i}$ gives the estimate of mean time taken by subject $i$ for lineup $\ell$.
-
 To fit all these mixed effect models the function $lmer()$ is used from R package $lme4$ by \cite{lme4:2011}. To obtain the $p$-values of fixed effect parameters estimates, normal approximation is used for $Z$ scores computed as the ratio of estimates to the estimated standard errors. 
 
-\subsection{Model to Estimate Location Effect}
 
+
+\subsection{Location Effect} \label{sec:location_design} Experiment 9 shown in Table~\ref{tbl:visual_stat} is designed to to assess the location effect of a data plot in a lineup. It is set up based on the gene expression data \citep{atwood:2013} with two groups. One is the Genotype and the other the Empty Vector (EV). For each of the groups, gene expression data were collected in presence or absence of iron sufficiency. Two factors were of primary interest. One is the Genotype main effect and the other is the interaction effect between Genotype and iron sufficiency. 
+
+For Genotype main effect side by side dot plots of two groups are used as the visual test statistics. For interaction effect the same plot type is used except that the means of iron sufficiency or insufficiency were connected by lines colored by the groups. One of the interaction test statistics is shown in Table~\ref{tbl:visual_stat} for experiment 9. For no interaction, the visual test statistic shows two parallel lines representing two groups and for significant interaction the lines are not parallel. Null plots were generated by randomizing the group structure of the data. The actual plot was randomly placed in five different locations in a lineup of size 20. The locations are 2,9,12,16,20 for Interaction effect and 1,8,12,17,20 for Genotype effect. For a lineup with specific data plot location, five different sets of null plots were used to produce 5 lineups for each location. In total we have 25 lineups for Interaction effect and 25 lineups for Genotype effect. 
+
+
+Each observer saw three lineups, first an Interaction lineup then a Genotype lineup. Finally a test lineup was shown to screen out unusual evaluation. The subjects did not know which one was the test lineup but they were informed before accepting the task that there would be one. The test lineup was very easy and everyone should detect the data plot. The MTurk workers were paid based on whether they could correctly evaluate the test lineup. But the data on the test plot are excluded from the analysis.
+
+%\subsection{Model to Estimate Location Effect}
 
 As per the design of experiment for location effect, the actual data plot is same for each of the null sets of plot. Thus the response data of this experiment constitute a multivariate response. To examine if the difference in proportion correct among the locations is statistically significant we fit a one way multi variate analysis of variance (MANOVA) model to the data.
 
@@ -329,6 +301,73 @@ Suppose $\mathbf{Y}=(Y_1,Y_2, ... , Y_p)^\top$ be a vector of random variable wi
 \mathbf{Y}_{ij} = \mu_{i} + \epsilon_{ij}
 \end{equation}
 where $\mu_{i}= (\mu_{1i},\mu_{2i}, ..., \mu_{pi})^\top$ is the mean vector for location $i$ and $Var(\epsilon_{ij})=\Sigma$. 
+
+
+\subsection{Data Collection Methods}  Human subjects were recruited to evaluate the experimental lineups through Amazon Mechanical Turk \citep{turk} or MTurk Web site.  It is an online work place where people from around the world can perform some tasks and get paid. Usually tasks are very simple and no specialized training is required to do them. Being a human is the main requirement. Tasks are designed for anyone to do but some tasks may require some skills depending on the recruiters' need. Each task is usually planned to complete in a short time. Humans are still better than computers in performing these types of tasks. The the amount of money paid for each task is very small as well. 
+
+%It is very fast, cheap and reliable to recruit people from MTurk. Thats why it is getting very popular among the researchers who perform human subject experiment. The another benefit is that a very diverse pool of subjects can be recruited which is otherwise very hard to obtain for a study. The researchers can easily filter the workers based on their experimental design, such as recruiting people only from a specific geographical location or a group of people who satisfy certain criteria etc. The recruiter can decide who they pay or not. Workers have to satisfy the task requirement to ensure payment. But at the end it is the recruiter who has the final say. Usually recruiters pay promptly after the task has been done properly and thats why MTurk is very popular among the online job seeker. At any point of time thousands of tasks are available for the thousands of workers around the world. 
+
+%Because of its convenience it is getting popular for scientific research study as well. In comparison with a lab study \cite{suri:2010} perform the same study using MTurk and demonstrate that their study results are as good as the lab study results even though MTurk study required less time and cost while provided more convenience. \cite{majumder:2013} recruited people from MTurk for their simulation study in estimating the power of visual statistical inference. They have done numerous pilot studies in lab before doing actual MTurk study and found similar results. \cite{mason:2012} explains various features of MTurk and describes how it can be used as part of human behavioral study.
+
+We designed and developed a web application which enables to display the lineups to the observers as per experimental need. The MTurk workers were redirected to the web site to evaluate lineups. The data were collected, stored automatically into a local database server. Demographic informations such as age group, gender and education levels were also collected. The time taken for each evaluation is computed based on the time the plot was shown and the time the feedback was received. It is measured in seconds. The location of the observer is determined by the ip address of the observer.
+
+%\subsection{Model to Estimate Demographic Factor Effect} The feedback provided by each observer on a lineup is a binary response variable. Suppose $Y_{ij}$ denotes the response from observer $i$ on a  lineup $j$. $Y_{ij} =1$ if the response is correct otherwise $Y_{ij} =0$. Let $\pi_{ij}=  E(Y_{ij})$ be the probability that  observer $i$ correctly picks the data panel from lineup $j$. We model this in a generalized mixed effects model of the form
+%\begin{equation} \label{eqn:demographic_response}
+%g( \pi_{ij} )= \mu + \alpha_{k(i)} + \gamma_{l(i)} + \tau_{m(i)}+ \kappa_{s(i)} + \ell_j,  
+%\end{equation}
+%where $\mu$ is an overall average probability for picking out the data plot from a lineup. $\alpha$, $\gamma$, $\tau$ and  $\kappa$ are the effects of age group $k(i)$, gender category $l(i)$, education level $m(i)$ and country name $s(i)$ respectively for observer $i$. $\ell_j$ is a random intercept predicting lineup difficulty level and we assume  $\ell_j \sim N(0, \sigma_\ell^2)$. $g(.)$ denotes the {\it logit} link function $g(\pi)=\log(\pi) - \log(1-\pi); 0 \le \pi \le 1$.
+%
+%
+%The effect of demographic factors can be observed as time taken for each evaluation by an observer. Suppose $Z_{ij}$ denotes the logarithm of time taken for an observer $i$ to evaluate a  lineup $j$. Let $\mu_{ij}=  E(Z_{ij})$ be the average of log(time taken) by  observer $i$ to pick the data panel from lineup $j$. We model this in a mixed effects model of the form
+%%\hh{
+%\begin{equation} \label{eqn:demographic_time}
+%Z_{ij} = \mu + \alpha_{k(i)} + \gamma_{l(i)} + \tau_{m(i)}+ \kappa_{s(i)} + \ell_j+ \epsilon_{ij},  
+%\end{equation}
+%where $\mu$ represents overall average of log time taken by an observer to evaluate a lineup. $\alpha$, $\gamma$, $\tau$ and  $\kappa$ are as described in Model \eqref{eqn:demographic_response}. $\ell_j$ is a lineup-specific random effect for the time needed to evaluate a lineup; $\ell_j \sim N(0, \sigma_\ell^2)$ and the overall error $\epsilon_{ijk} \sim N(0, \sigma^2)$.
+
+
+
+%\subsection{Model to Estimate Learning Trend}
+%
+%Multiple lineups were sequentially shown to each observer for evaluation. Suppose $Y_{ijk}$ denotes the response from observer $i$ on a  lineup $j$ in his/her $k^{th}$ attempt.  $Y_{ijk}=1$ if the response is correct otherwise  $Y_{ijk}=0$. Let $\pi_{ijk}=  E(Y_{ijk})$ be the probability that  observer $i$ correctly picks the data panel from lineup $j$ in his/her $k^{th}$ attempt. We model this in a generalized mixed effects model of the form
+%\begin{equation} \label{eqn:trend_response}
+%g( \pi_{ijk} )= \mu + \alpha_k + u_i +  a_{i} k + \ell_j,  
+%\end{equation}
+%where $\mu$ is an overall average probability for picking out the data plot from a lineup, $\alpha_k$ is the effect of the $k^{th}$ attempt on the probability, with $\alpha_1 = 0$ and $k = 1, ..., K$.
+%$u_i$ and $a_i$ are observer specific random effects, $i = 1, ..., I$. $u_i$ is a random intercept, describing a basic subject-specific ability. We assume $u_i \sim N(0, \sigma_u^2)$. 
+%$a_i$ is a random slope capturing an individual's specific learning effect over the course of $K$ attempts. We assume $a_i \sim N(0, \sigma_a^2)$. 
+%For $\ell_j$ we again assume a normal distribution, $N(0, \sigma_\ell^2)$. $\ell_j$ is a random intercept predicting lineup difficulty level. $g(.)$ denotes the {\it logit} link function $g(\pi)=\log(\pi) - \log(1-\pi); 0 \le \pi \le 1$ . 
+%
+%The inverse link function, $g^{-1}(.)$, from  Equation \ref{eqn:trend_response} leads to the estimate of the subject and the lineup specific probability of successful evaluation in $k^{th}$ attempt by a single observer as 
+%\begin{equation} \label{eqn:trend_power}
+%\hat p_{ijk} =  g^{-1}(\hat{\mu} + \hat{\alpha}_k + \hat{u}_i +  \hat{a}_i k + \hat{\ell}_j).
+%\end{equation}
+%
+%The learning of each observer over a course of $K$ evaluations may be observed as the improvement of the time taken to evaluate a lineup in the later attempts. Suppose $Z_{ijk}$ denotes the logarithm of time taken for an observer $i$ to evaluate a  lineup $j$ in his/her $k^{th}$ attempt. Let $\mu_{ijk}=  E(Z_{ijk})$ be the average of log(time taken) by  observer $i$ to pick the data panel from lineup $j$ in his/her $k^{th}$ attempt. We model this in a mixed effects model of the form
+%%\hh{
+%\begin{equation} \label{eqn:trend_time}
+%Z_{ijk} = \mu + \alpha_1 + \alpha k + u_i +  a_{i} k + \ell_j + \epsilon_{ijk},  
+%\end{equation}
+%where $\mu$ represents overall average of log time taken by an observer to evaluate a lineup. $\alpha$ is the average change in log time taken for each additional attempt.  $\alpha_1$ is an offset in log time taken for the first attempt. All other effects are random effects: as before, $u_i$ is a subject-specific intercept representing  individual speed of an observer with $u_i \sim N(0, \sigma_u^2)$. $a_i$ is a subject-specific slope representing the deviation of the speed-up (or -down) by attempt $k$. We assume $a_i \sim N(0, \sigma_a^2)$. $\ell_j$ is a lineup-specific random effect for the time needed to evaluate a lineup; $\ell_j \sim N(0, \sigma_\ell^2)$ and the overall error $\epsilon_{ijk} \sim N(0, \sigma^2)$.
+%
+%
+%Equation \ref{eqn:trend_time} leads to the estimate of the subject and the lineup specific time taken for an evaluation in $kth$ attempt by a single observer as 
+%\begin{equation} \label{eqn:trend_time_est}
+%\hat \mu_{ijk} =  \hat{\mu} + \hat{\alpha_1}+ \hat{\alpha}k + \hat{u}_i +  \hat{a}_i k + \hat{\ell}_j.
+%\end{equation}
+%
+%To fit all these mixed effect models the function $lmer()$ is used from R package $lme4$ by \cite{lme4:2011}. To obtain the $p$-values of fixed effect parameters estimates, normal approximation is used for $Z$ scores computed as the ratio of estimates to the estimated standard errors. 
+
+%\subsection{Model to Estimate Location Effect}
+%
+%
+%As per the design of experiment for location effect, the actual data plot is same for each of the null sets of plot. Thus the response data of this experiment constitute a multivariate response. To examine if the difference in proportion correct among the locations is statistically significant we fit a one way multi variate analysis of variance (MANOVA) model to the data.
+%
+%Suppose $\mathbf{Y}=(Y_1,Y_2, ... , Y_p)^\top$ be a vector of random variable with dimension $p$, the total number of null sets. let $\mathbf{Y}_{ij}$ represents $jth$ vector response for $ith$ location with $i=1,2, ..., I$. We fit the following MANOVA model 
+%\begin{equation}\label{manova}
+%\mathbf{Y}_{ij} = \mu_{i} + \epsilon_{ij}
+%\end{equation}
+%where $\mu_{i}= (\mu_{1i},\mu_{2i}, ..., \mu_{pi})^\top$ is the mean vector for location $i$ and $Var(\epsilon_{ij})=\Sigma$. 
 
 
 \section{Results}\label{sec:result_socio}

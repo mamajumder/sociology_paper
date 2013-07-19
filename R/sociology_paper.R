@@ -387,6 +387,25 @@ qplot(difficulty, value, data=mddat, color=variable, geom="line")+
 ggsave("../images/practical_impact_graduate.pdf", width=6.5, height=4.5)
 
 
+diff <- c(-2*2.293, -0.683, 2*2.293)
+hs_xb <- -0.683 + diff
+uc_xb <- hs_xb -0.083
+ud_xb <- hs_xb -0.044
+gc_xb <- hs_xb + 0.070
+gd_xb <- hs_xb + 0.182
+ddat.all <- data.frame(difficulty=diff, high.school = px(hs_xb),u.grad.course = px(uc_xb),
+                   u.grad.degree=px(ud_xb), grad.course=px(gc_xb), grad.degree=px(gd_xb))
+mddat.all <- melt(ddat.all,id=c("difficulty"))
+
+qplot(variable,value, color=factor(difficulty), data=mddat.all, size=I(3.5)) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  ylab("Proportion of correct responses") + xlab("Education")+
+  scale_color_discrete(name="Lineup difficulty", 
+                       labels=c("Difficult", "Medium","Easy"))
+
+ggsave("../images/practical_impact_degree.pdf", width=5.5, height=4.5)
+
+
 # Time of the day when Mturk worker works
 turker$hours <- as.factor(hour(as.POSIXlt(turker$start_time)))
 qplot(hours, data=subset(turker, complete.cases(turker))) +

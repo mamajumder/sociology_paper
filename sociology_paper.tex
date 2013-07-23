@@ -22,6 +22,7 @@
 \usepackage{color}
 \newcommand{\hh}[1]{{\color{magenta} #1}}
 \newcommand{\dc}[1]{{\color{green} #1}}
+\newcommand{\mm}[1]{{\color{blue} #1}}
 
 \setlength{\oddsidemargin}{0in}
 \setlength{\evensidemargin}{0in}
@@ -264,7 +265,7 @@ All the ten experiments shown in Table \ref{tbl:visual_stat}, had demographic in
 
 \begin{enumerate} \leftmargin 5cm  \itemsep 0in
 \item Age group, with categories set to be 18-25, 26-30, 31-35, 36-40, 41-45, 46-50, 51-55, 56-60, above 60.
-\item Gender, male of female.
+\item Gender, male or female.
 \item Education level, with levels being high school or less, some under grad course, under graduate degree, some graduate courses, and graduate degree.
 \item Geographical location, collected from the IP address of the participants' computer, as latitude, longitude, city and country. 
 \end{enumerate}
@@ -289,7 +290,7 @@ Z_{ij} = \mu + \alpha_{k(i)} + \gamma_{l(i)} + \tau_{m(i)}+ \kappa_{s(i)} + \ell
 \end{equation}
 where $\mu$ represents overall average of log time taken by an observer to evaluate a lineup, $\alpha$, $\gamma$, $\tau$ and  $\kappa$ are as described in model \eqref{eqn:demographic_response}, $\ell_j$ is a lineup-specific random effect for the time needed to evaluate a lineup, with $\ell_j \sim N(0, \sigma_\ell^2)$ and the overall error $\epsilon_{ijk} \sim N(0, \sigma^2)$.
 
-(*** No results are given for this model, are they????)
+(\dc{*** No results are given for this model, are they????}  \mm{results are given in table \ref{tbl:model_result_demographics}})
 
 \subsection{Learning Trend} Learning trend of a subject can be observed in terms of performance over successive feedbacks received when multiple lineups are shown for evaluation. Experiments 5, 6 and 7 were used for this. Each subject was shown a total of 10 lineups randomly selected from a pool of lineups. The lineups are not necessarily with the same difficulty levels, but the order of lineups was randomized. The responses of the lineups were recorded by attempt 1 through 10. Attempt 1 means that the response is for the first lineup the observer evaluates and attempt 10 refers to the response for the 10th lineup. The goal is to estimate whether performance of the observer improves, or changes, from attempt 1 to attempt 10. 
 
@@ -320,11 +321,11 @@ Equation \ref{eqn:trend_time} leads to the estimate of the subject and the lineu
 \hat \mu_{ijk} =  \hat{\mu} + \hat{\alpha_1}+ \hat{\alpha}k + \hat{u}_i +  \hat{a}_i k + \hat{\ell}_j.
 \end{equation}
 
-*** Doesn't this need to go in a place so that it is obvious that all models described are fit with these routines, at the end of the section perhaps?? To fit all these mixed effect models the function $lmer()$ is used from R package $lme4$ by \cite{lme4:2011}. To obtain the $p$-values of fixed effect parameters estimates, normal approximation is used for $Z$ scores computed as the ratio of estimates to the estimated standard errors. 
-
+\dc{*** Doesn't this need to go in a place so that it is obvious that all models described are fit with these routines, at the end of the section perhaps??} To fit all these mixed effect models the function $lmer()$ is used from R package $lme4$ by \cite{lme4:2011}. To obtain the $p$-values of fixed effect parameters estimates, normal approximation is used for $Z$ scores computed as the ratio of estimates to the estimated standard errors. 
+\dc{
 *** These models treat attempt as a linear effect, so that only linear increase or decrease is modelled *** something like this.
 
-*** Also, you need to say something about examining the residuals, which is what is done in several of the parts of the results section.
+*** Also, you need to say something about examining the residuals, which is what is done in several of the parts of the results section.}
 
 \subsection{Location Effect} \label{sec:location_design} Experiment 9 shown in Table~\ref{tbl:visual_stat} is designed to to assess the location effect of a data plot in a lineup. It is set up based on the gene expression data \citep{atwood:2013} with two groups. One is the Genotype and the other the Empty Vector (EV). For each of the groups, gene expression data were collected in presence or absence of iron sufficiency. Two factors were of primary interest. One is the Genotype main effect and the other is the interaction effect between Genotype and iron sufficiency. 
 

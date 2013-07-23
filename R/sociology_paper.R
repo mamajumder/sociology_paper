@@ -403,14 +403,15 @@ qplot(variable,value, shape=factor(difficulty), geom=c("point"),data=mddat.all, 
   scale_shape_discrete(name="Lineup difficulty", 
                        labels=c("Difficult", "Medium","Easy"))
 
-qplot(variable,value, shape=factor(difficulty), geom=c("point"),data=mddat.all, size=I(3.5)) +
+qplot(variable,value, shape=factor(difficulty),data=mddat.all, size=I(3.5)) +
+  geom_line(aes(variable,value, group=factor(difficulty)))+
   ylab("Proportion of correct responses") + xlab("Education")+
-  scale_x_discrete(labels=c("hs","uc","ud","gc","gd"))+
+  scale_x_discrete(labels=c("h.school","u.gd.course","u.grad.deg","grad.course","grad.deg"))+
   scale_shape_discrete(name="Lineup difficulty", 
                        labels=c("Difficult", "Medium","Easy"))
 
 
-ggsave("../images/practical_impact_degree.pdf", width=5.5, height=4.5)
+ggsave("../images/practical_impact_degree.pdf", width=6.5, height=4.5)
 
 
 # Time of the day when Mturk worker works

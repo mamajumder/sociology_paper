@@ -287,43 +287,44 @@ In addition, a model is constructed with time taken as the response variable. Le
 \begin{equation} \label{eqn:demographic_time}
 Z_{ij} = \mu + \alpha_{k(i)} + \gamma_{l(i)} + \tau_{m(i)}+ \kappa_{s(i)} + \ell_j+ \epsilon_{ij},  
 \end{equation}
-where $\mu$ represents overall average of log time taken by an observer to evaluate a lineup, $\alpha$, $\gamma$, $\tau$ and  $\kappa$ are as described in Model \eqref{eqn:demographic_response}, $\ell_j$ is a lineup-specific random effect for the time needed to evaluate a lineup, with $\ell_j \sim N(0, \sigma_\ell^2)$ and the overall error $\epsilon_{ijk} \sim N(0, \sigma^2)$.
+where $\mu$ represents overall average of log time taken by an observer to evaluate a lineup, $\alpha$, $\gamma$, $\tau$ and  $\kappa$ are as described in model \eqref{eqn:demographic_response}, $\ell_j$ is a lineup-specific random effect for the time needed to evaluate a lineup, with $\ell_j \sim N(0, \sigma_\ell^2)$ and the overall error $\epsilon_{ijk} \sim N(0, \sigma^2)$.
 
+(*** No results are given for this model, are they????)
 
-\subsection{Learning Trend} Learning trend of a subject can be observed in terms of performance over successive feedbacks received when multiple lineups are shown for evaluation. Experiments 5, 6 and 7 were used for this. Each subject was shown a total of 10 lineups randomly selected from a pool of lineups. The lineups are not necessarily with the same difficulty levels. But the order of lineups were randomized. The responses of the lineups were recorded by attempt 1 through 10. Attempt 1 means that the response is for the first lineup the observer evaluates and attempt 10 refers to the response for the 10th lineup. The goal is to estimate whether performance of the observer improves from attempt 1 to attempt 10.
+\subsection{Learning Trend} Learning trend of a subject can be observed in terms of performance over successive feedbacks received when multiple lineups are shown for evaluation. Experiments 5, 6 and 7 were used for this. Each subject was shown a total of 10 lineups randomly selected from a pool of lineups. The lineups are not necessarily with the same difficulty levels, but the order of lineups was randomized. The responses of the lineups were recorded by attempt 1 through 10. Attempt 1 means that the response is for the first lineup the observer evaluates and attempt 10 refers to the response for the 10th lineup. The goal is to estimate whether performance of the observer improves, or changes, from attempt 1 to attempt 10. 
+
+It should be noted that we are examining the observer's performance, when we model response as correct or incorrect, but this is not the goal of visual inference. Visual inference is constructed to measure the significance of structure discovered in data. It is expected that some observers will be more skilled at reading data plots, and hence, more readily detect the plot that is different. It is also expected that as observer's gain experience in evaluating lineups that they become more proficient in reading data plots, particularly if feedback is given on whether the actual data plot was chosen or not. Choosing the actual data plot will be more difficult in some lineups than others, and indeed should happen purely by chance in some lineups, so ``correct'' is more of a convenient rather than ideal word to use for this analysis. So in this context, correct, or not, is used as a response to examine individual differences. 
 
 %\subsection{Model to Estimate Learning Trend}
 
-Multiple lineups were sequentially shown to each observer for evaluation. Suppose $Y_{ijk}$ denotes the response from observer $i$ on a  lineup $j$ in his/her $k^{th}$ attempt.  $Y_{ijk}=1$ if the response is correct otherwise  $Y_{ijk}=0$. Let $\pi_{ijk}=  E(Y_{ijk})$ be the probability that  observer $i$ correctly picks the data panel from lineup $j$ in his/her $k^{th}$ attempt. We model this in a generalized mixed effects model of the form
+%Multiple lineups were sequentially shown to each observer for evaluation. 
+Let $Y_{ijk}$ denote the response from observer $i$ on lineup $j$ at their $k^{th}$ evaluation attempt, where $Y_{ijk}=1$ if the response is correct otherwise  $Y_{ijk}=0$. Let $\pi_{ijk}=  E(Y_{ijk})$ be the probability that  observer $i$ correctly picks the data panel from lineup $j$ in their $k^{th}$ attempt. Learning trend is assessed using a generalized mixed effects model of the form
 \begin{equation} \label{eqn:trend_response}
 g( \pi_{ijk} )= \mu + \alpha_k + u_i +  a_{i} k + \ell_j,  
 \end{equation}
-where $\mu$ is an overall average probability for picking out the data plot from a lineup, $\alpha_k$ is the effect of the $k^{th}$ attempt on the probability, with $\alpha_1 = 0$ and $k = 1, ..., K$.
-$u_i$ and $a_i$ are observer specific random effects, $i = 1, ..., I$. $u_i$ is a random intercept, describing a basic subject-specific ability. We assume $u_i \sim N(0, \sigma_u^2)$. 
-$a_i$ is a random slope capturing an individual's specific learning effect over the course of $K$ attempts. We assume $a_i \sim N(0, \sigma_a^2)$. 
-For $\ell_j$ we again assume a normal distribution, $N(0, \sigma_\ell^2)$. $\ell_j$ is a random intercept predicting lineup difficulty level. $g(.)$ denotes the {\it logit} link function $g(\pi)=\log(\pi) - \log(1-\pi); 0 \le \pi \le 1$ . 
-
-The inverse link function, $g^{-1}(.)$, from  Equation \ref{eqn:trend_response} leads to the estimate of the subject and the lineup specific probability of successful evaluation in $k^{th}$ attempt by a single observer as 
+where $\mu$ is an overall average probability for picking out the data plot from a lineup, $\alpha_k$ is the effect of the $k^{th}$ attempt on the probability, with $\alpha_1 = 0$ and $k = 1, ..., K$, $u_i$ and $a_i$ are observer specific random effects, $i = 1, ..., I$. The term, $u_i$ is a random intercept, describing a basic subject-specific ability, with $u_i \sim N(0, \sigma_u^2)$. 
+The term $a_i$ is a random slope capturing an individual's specific learning effect over the course of $K$ attempts, where $a_i \sim N(0, \sigma_a^2)$. 
+For $\ell_j$ a normal distribution, $N(0, \sigma_\ell^2)$, is assumed, and $\ell_j$ is a random intercept predicting lineup difficulty level. $g(.)$ denotes the {\it logit} link function $g(\pi)=\log(\pi) - \log(1-\pi); 0 \le \pi \le 1$. The inverse link function, $g^{-1}(.)$, from equation \ref{eqn:trend_response} leads to the estimate of the subject and the lineup specific probability of successful evaluation in $k^{th}$ attempt by a single observer as 
 \begin{equation} \label{eqn:trend_power}
 \hat p_{ijk} =  g^{-1}(\hat{\mu} + \hat{\alpha}_k + \hat{u}_i +  \hat{a}_i k + \hat{\ell}_j).
 \end{equation}
 
-The learning of each observer over a course of $K$ evaluations may be observed as the improvement of the time taken to evaluate a lineup in the later attempts. Suppose $Z_{ijk}$ denotes the logarithm of time taken for an observer $i$ to evaluate a  lineup $j$ in his/her $k^{th}$ attempt. Let $\mu_{ijk}=  E(Z_{ijk})$ be the average of log(time taken) by  observer $i$ to pick the data panel from lineup $j$ in his/her $k^{th}$ attempt. We model this in a mixed effects model of the form
+When time taken to evaluate a lineup is used as the response, let $Z_{ijk}$ denote the logarithm of time taken for an observer $i$ to evaluate a  lineup $j$ in his/her $k^{th}$ attempt. Let $\mu_{ijk}=  E(Z_{ijk})$ be the average of log(time taken) by  observer $i$ to pick the data panel from lineup $j$ in his/her $k^{th}$ attempt. We model this in a mixed effects model of the form
 %\hh{
 \begin{equation} \label{eqn:trend_time}
 Z_{ijk} = \mu + \alpha_1 + \alpha k + u_i +  a_{i} k + \ell_j + \epsilon_{ijk},  
 \end{equation}
-where $\mu$ represents overall average of log time taken by an observer to evaluate a lineup. $\alpha$ is the average change in log time taken for each additional attempt.  $\alpha_1$ is an offset in log time taken for the first attempt. All other effects are random effects: as before, $u_i$ is a subject-specific intercept representing  individual speed of an observer with $u_i \sim N(0, \sigma_u^2)$. $a_i$ is a subject-specific slope representing the deviation of the speed-up (or -down) by attempt $k$. We assume $a_i \sim N(0, \sigma_a^2)$. $\ell_j$ is a lineup-specific random effect for the time needed to evaluate a lineup; $\ell_j \sim N(0, \sigma_\ell^2)$ and the overall error $\epsilon_{ijk} \sim N(0, \sigma^2)$.
-
-
+where $\mu$ represents overall average of log time taken by an observer to evaluate a lineup, $\alpha$ is the average change in log time taken for each additional attempt,  $\alpha_1$ is an offset in log time taken for the first attempt. All other effects are random effects: $u_i$ is a subject-specific intercept representing individual speed of an observer with $u_i \sim N(0, \sigma_u^2)$, $a_i$ is a subject-specific slope representing the deviation of the speed-up (or -down) by attempt $k$, with $a_i \sim N(0, \sigma_a^2)$, $\ell_j$ is a lineup-specific random effect for the time needed to evaluate a lineup, $\ell_j \sim N(0, \sigma_\ell^2)$ and the overall error $\epsilon_{ijk} \sim N(0, \sigma^2)$.
 Equation \ref{eqn:trend_time} leads to the estimate of the subject and the lineup specific time taken for an evaluation in $kth$ attempt by a single observer as 
 \begin{equation} \label{eqn:trend_time_est}
 \hat \mu_{ijk} =  \hat{\mu} + \hat{\alpha_1}+ \hat{\alpha}k + \hat{u}_i +  \hat{a}_i k + \hat{\ell}_j.
 \end{equation}
 
-To fit all these mixed effect models the function $lmer()$ is used from R package $lme4$ by \cite{lme4:2011}. To obtain the $p$-values of fixed effect parameters estimates, normal approximation is used for $Z$ scores computed as the ratio of estimates to the estimated standard errors. 
+*** Doesn't this need to go in a place so that it is obvious that all models described are fit with these routines, at the end of the section perhaps?? To fit all these mixed effect models the function $lmer()$ is used from R package $lme4$ by \cite{lme4:2011}. To obtain the $p$-values of fixed effect parameters estimates, normal approximation is used for $Z$ scores computed as the ratio of estimates to the estimated standard errors. 
 
+*** These models treat attempt as a linear effect, so that only linear increase or decrease is modelled *** something like this.
 
+*** Also, you need to say something about examining the residuals, which is what is done in several of the parts of the results section.
 
 \subsection{Location Effect} \label{sec:location_design} Experiment 9 shown in Table~\ref{tbl:visual_stat} is designed to to assess the location effect of a data plot in a lineup. It is set up based on the gene expression data \citep{atwood:2013} with two groups. One is the Genotype and the other the Empty Vector (EV). For each of the groups, gene expression data were collected in presence or absence of iron sufficiency. Two factors were of primary interest. One is the Genotype main effect and the other is the interaction effect between Genotype and iron sufficiency. 
 

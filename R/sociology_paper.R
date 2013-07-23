@@ -376,12 +376,12 @@ qplot(difficulty, prop_gd-prop_hs, data=ddat, geom="line")
 with(ddat, max(prop_gd-prop_hs))
 
 mddat <- melt(ddat,id=c("difficulty"))
-qplot(difficulty, value, data=mddat, color=variable, geom="line")+
+qplot(difficulty, value, data=mddat, linetype=variable, geom="line")+
   xlab("Lineup difficulty") + ylab("Proportion of correct response") +
   scale_x_continuous(breaks=c(-6,-2*2.293,-2.293,0,2.293,2*2.293,6), expand = c(0.02,0),
                      labels=c("Difficult",expression(-2*sigma[l],-sigma[l],0,sigma[l], 
                                                      2*sigma[l],"Easy"))) +
-  scale_color_discrete(name="Education",
+  scale_linetype_discrete(name="Education",
                       labels=c("High school", "Grad. degree"))
 
 ggsave("../images/practical_impact_graduate.pdf", width=6.5, height=4.5)
@@ -397,11 +397,18 @@ ddat.all <- data.frame(difficulty=diff, high.school = px(hs_xb),u.grad.course = 
                    u.grad.degree=px(ud_xb), grad.course=px(gc_xb), grad.degree=px(gd_xb))
 mddat.all <- melt(ddat.all,id=c("difficulty"))
 
-qplot(variable,value, color=factor(difficulty), data=mddat.all, size=I(3.5)) +
+qplot(variable,value, shape=factor(difficulty), geom=c("point"),data=mddat.all, size=I(3.5)) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
   ylab("Proportion of correct responses") + xlab("Education")+
-  scale_color_discrete(name="Lineup difficulty", 
+  scale_shape_discrete(name="Lineup difficulty", 
                        labels=c("Difficult", "Medium","Easy"))
+
+qplot(variable,value, shape=factor(difficulty), geom=c("point"),data=mddat.all, size=I(3.5)) +
+  ylab("Proportion of correct responses") + xlab("Education")+
+  scale_x_discrete(labels=c("hs","uc","ud","gc","gd"))+
+  scale_shape_discrete(name="Lineup difficulty", 
+                       labels=c("Difficult", "Medium","Easy"))
+
 
 ggsave("../images/practical_impact_degree.pdf", width=5.5, height=4.5)
 

@@ -536,7 +536,7 @@ The distribution of time taken to evaluate a lineup is positively skewed. But in
 
 We observed some differences in median proportion of correct responses for different demographic factor levels. But the variability of proportion correct responses are huge as per design of the experiments since there were some very easy as well as extremely difficult lineups. Some of the lineups  were not expected to be evaluated correctly as the null plots in those lineups were showing more signal than the actual data plot itself. In those scenarios,  one may not reject the null hypothesis. We call these difficult lineups. Some of the lineups were so easy that data plot is detectable at a first glance. These were expected to be evaluated correctly 100\% of the time. This is why we see the boxes range from 0 to 1 in most of the factor levels. Unlike median, fewer differences are observed in the average proportion of correct responses for different factor levels. 
 
-Model \eqref{eqn:demographic_response} is fitted to the data with fixed effect factors such as age, country, education and gender. To estimate the overall factor main effect, a reduced model is fitted removing that factor from Model \eqref{eqn:demographic_response}. Analysis of variance (ANOVA)  results shown in Table~\ref{tbl:anova_factor} suggest that all the factor variables are significantly different in describing the the probability of correct response except gender. Gender does not show any significant difference in performance.  Similarly, ANOVA results are obtained by fitting Model \eqref{eqn:demographic_time} to the data of log time taken and are shown in Table~\ref{tbl:anova_factor} as well. All the factor variables are significantly different for log time taken including gender.  
+Model \eqref{eqn:demographic_response} is fitted to the data with fixed effect factors such as age, country, education and gender. To estimate the overall factor main effect, a reduced model is fitted removing that factor from model \eqref{eqn:demographic_response}. Analysis of variance (ANOVA)  results shown in Table~\ref{tbl:anova_factor} suggest that all the factor variables are significantly different in describing the the probability of correct response except gender. Gender does not show any significant difference in performance.  Similarly, ANOVA results are obtained by fitting model \eqref{eqn:demographic_time} to the data of log time taken and are shown in Table~\ref{tbl:anova_factor} as well. All the factor variables are significantly different for log time taken including gender.  
 
 \begin{table}[htbp]
 \centering
@@ -566,16 +566,16 @@ Proportion Correct &Full & 23822.00 &23943.00 &-11896.00  & &  &  \\
 \end{table}
 
 
-To further illustrate how the individual factor levels differ from each other  the detailed results of Models \eqref{eqn:demographic_response} and \eqref{eqn:demographic_time} are shown in Table \ref{tbl:model_result_demographics}. For parameter estimation the first factor levels shown in the Table are  used as the base line. Demographic factor levels have significant effects on log time taken to evaluate a lineup. But not all the levels are significant for the probability of correct responses.
+To further illustrate how the individual factor levels differ from each other  the detailed results of models \eqref{eqn:demographic_response} and \eqref{eqn:demographic_time} are shown in Table \ref{tbl:model_result_demographics}. For parameter estimation the first factor levels shown in the Table are  used as the base line. Demographic factor levels have significant effects on log time taken to evaluate a lineup. But not all the levels are significant for the probability of correct responses.
 
 
 \begin{table}[htbp]
 \centering
-\caption{Parameter estimates of Models \eqref{eqn:demographic_time} and \eqref{eqn:demographic_response} fitted for average log time taken and probability of correct lineup evaluations respectively. For time taken all the demographic factors are significant. For probability of correct response age group 36-40, rest of the world and graduate degree are significantly different. For gender no difference in performance is observed. Lineup variability is estimated to be very large for Model \eqref{eqn:demographic_response}.}
+\caption{Parameter estimates of models \eqref{eqn:demographic_time} and \eqref{eqn:demographic_response} fitted for average log time taken and probability of correct lineup evaluations respectively. For time taken all the demographic factors are significant. For probability of correct response age group 36-40, rest of the world and graduate degree are significantly different. For gender no difference in performance is observed. Lineup variability is estimated to be very large for model \eqref{eqn:demographic_response}.}
 \scalebox{0.86}{
 \begin{tabular}{rlrrrrrrrrrr}
   \hline
-Demographic&& \multicolumn{4}{c} {Model \eqref{eqn:demographic_time} Log Time} & &\multicolumn{4}{c} {Model \eqref{eqn:demographic_response} Proportion Correct} \\
+Demographic&& \multicolumn{4}{c} {Log Time (model \ref{eqn:demographic_time})} & &\multicolumn{4}{c} {Proportion Correct (model \ref{eqn:demographic_response})} \\
 
 \cline{3-6} \cline{8-11} 
 Factor & Level& Est & SE & Zval & $p$-value && Est & SE & Zval & $p$-value  \\ 
@@ -664,7 +664,7 @@ Age group 36-40 is significantly different than the base line age group of 18-25
 
 The graduate degree holders are significantly different as well. The positive parameter estimate indicates that they perform better and the probability of correct response is higher than other education levels. There is no significant difference between male and female performances. 
 
-Notice that lineup specific variance estimate is 5.259 with a standard error of 2.293 which is much higher than the other significant parameter estimates in Model \eqref{eqn:demographic_response}. This indicates that the major and most important factor affecting the probability of correct response is  lineup difficulty. This is also evident from the large variability in the proportion correct in Figure~\ref{fig:demographic_effect}. Because of this huge impact of lineup specific variance, the practical impact of other factor variables on the probability of correct response is in fact very small. We illustrate this with the following example of graduate degree.
+Notice that lineup specific variance estimate is 5.259 with a standard error of 2.293 which is much higher than the other significant parameter estimates in model \eqref{eqn:demographic_response}. This indicates that the major and most important factor affecting the probability of correct response is  lineup difficulty. This is also evident from the large variability in the proportion correct in Figure~\ref{fig:demographic_effect}. Because of this huge impact of lineup specific variance, the practical impact of other factor variables on the probability of correct response is in fact very small. We illustrate this with the following example of graduate degree.
 
 While some of the demographic factors are strongly statistically significant, the main source of variation in proportion correct is the lineup difficulty. For example, let's examine the effect of graduate degree. To see just how large the effect is, we examine the change in proportion correct for a (hypothetical) 18-25 year old female in the United States, with a graduate degree as compared to a high school degree, for an average difficulty lineup (random effect = 0). Plugging in the relevant quantities to the fitted model gives a difference equal to:
 $$ \frac {\exp(-0.683+0.182)}{1+\exp(-0.683+0.182)}-  \frac {\exp(-0.683)}{1+\exp(-0.683)} = 0.377- 0.336 =0.041.$$ 
@@ -722,14 +722,14 @@ The person with a high school education on average picks the data plot in 33.5\%
 %
 
 
-\subsection{Learning Trend} Models \eqref{eqn:trend_response} and \eqref{eqn:trend_time} are fitted to the data from experiment 5, 6, and 7 separately.  As an alternative to Model \eqref{eqn:trend_response} we examined a reduced model with attempt as a continuous covariate. They did not appear to be significantly different with a $p$-value of 0.856. But we consider the bigger Model \eqref{eqn:trend_response} with attempt as a factor variable with 10 levels to examine the effect of each level. Attempt 1 is considered to be base level while fitting the model.
+\subsection{Learning Trend} models \eqref{eqn:trend_response} and \eqref{eqn:trend_time} are fitted to the data from experiment 5, 6, and 7 separately.  As an alternative to model \eqref{eqn:trend_response} we examined a reduced model with attempt as a continuous covariate. They did not appear to be significantly different with a $p$-value of 0.856. But we consider the bigger model \eqref{eqn:trend_response} with attempt as a factor variable with 10 levels to examine the effect of each level. Attempt 1 is considered to be base level while fitting the model.
 
-Table \ref{tbl:model_result_response} presents the parameter estimates and $p$-values of fixed effect estimates of Model \eqref{eqn:trend_response}. The larger $p$-values suggest that none of the levels of attempt ($\alpha_2$ through $\alpha_{10}$) are significant at \%1 significance level. Moreover, some of the estimates are positive and some are negative and they show up seemingly in random order suggesting later attempts not necessarily have improved. This indicates that there may be no learning effect on the probability of correct evaluations. 
+Table \ref{tbl:model_result_response} presents the parameter estimates and $p$-values of fixed effect estimates of model \eqref{eqn:trend_response}. The larger $p$-values suggest that none of the levels of attempt ($\alpha_2$ through $\alpha_{10}$) are significant at \%1 significance level. Moreover, some of the estimates are positive and some are negative and they show up seemingly in random order suggesting later attempts not necessarily have improved. This indicates that there may be no learning effect on the probability of correct evaluations. 
 
 
 \begin{table}[htbp]
 \centering
-\caption{Parameter estimates of Model \eqref{eqn:trend_response} fitted for probability of correct lineup evaluation. None of the fixed factor effects of attempt ($\alpha_2$ through $\alpha_{10}$) are significantly different from the first attempt $\alpha_1$
+\caption{Parameter estimates of model \eqref{eqn:trend_response} fitted for probability of correct lineup evaluation. None of the fixed factor effects of attempt ($\alpha_2$ through $\alpha_{10}$) are significantly different from the first attempt $\alpha_1$
 at \%1 level in all three experiments 5, 6 and 7. For experiment 7 subject specific variation is very small on the other hand lineup variance is much higher compared to the other two experiments.}
 \scalebox{0.81}{
 \begin{tabular}{rrrrccrrrccrrrc}
@@ -771,24 +771,24 @@ The variance of random slope for attempt ($\sigma^2_a$) is estimated to be very 
 
 %Each subject participating the experiment has seen multiple number of lineups for evaluations. Suppose $K$ be the number of lineups evaluated by a subject and $A_k$ be the $kth$ attempt, $k=1,2, ..., K$. Subjects may have a chance for self learning and do better on lineups shown later in the sequence. They may learn from their previous mistake or they may learn about the features of the plots being evaluated as they progress. Thus if there is any learning trend that should be apparent in proportion correct over $A_k$. But to obtain this we have to adjust for lineup difficulty and individual performances.
 
-To visualize how the performance in correct response improves over successive attempts, we fitted Model \eqref{eqn:trend_response} excluding the covariates related to attempt from the model and computed the residuals. Least square regression lines were fitted through the subject specific residuals as shown in Figure~\ref{fig:learning_trend_response}. Two important features were observed; one is subject specific variability and the other is random slope with attempts which indicates subjects specific learning trend. Some subjects show improvement over time and some show the decrease in performance. 
+To visualize how the performance in correct response improves over successive attempts, we fitted model \eqref{eqn:trend_response} excluding the covariates related to attempt from the model and computed the residuals. Least square regression lines were fitted through the subject specific residuals as shown in Figure~\ref{fig:learning_trend_response}. Two important features were observed; one is subject specific variability and the other is random slope with attempts which indicates subjects specific learning trend. Some subjects show improvement over time and some show the decrease in performance. 
 
 \begin{figure}[htbp] 
    \centering
 %   \includegraphics[width=6.5in]{learning_trend.pdf} 
     \includegraphics[width=6.3in]{learning_trend_subject.pdf} 
-   \caption{ Least square lines fitted through the subject specific residual proportion correct obtained from Model \eqref{eqn:trend_response} fitted without attempt are plotted against attempt. Subject specific positive and negative slopes are observed. Mean residuals are shown as dots and least square regression lines fitted through the points show no overall learning trend in each of the three experiments.}
+   \caption{ Least square lines fitted through the subject specific residual proportion correct obtained from model \eqref{eqn:trend_response} fitted without attempt are plotted against attempt. Subject specific positive and negative slopes are observed. Mean residuals are shown as dots and least square regression lines fitted through the points show no overall learning trend in each of the three experiments.}
    \label{fig:learning_trend_response}
 \end{figure}
 
 The averages of these residuals for each of the attempts are shown as dots in Figure~\ref{fig:learning_trend_response}. Least square linear regression lines are fitted through the points for each of the experiments. Positive slopes over the attempts are observed but none of them is statistically significant. 
 
-Table \ref{tbl:model_result_time} presents the results of Model \eqref{eqn:trend_time}. The parameter $\alpha$ for fixed effect covariate attempt is highly significant in all the experiments. The negative estimates suggest that on an average later attempt took less time for an evaluation. Even though observers did not improve the performance over attempt, they became efficient in responding faster. The parameter $\alpha_1$ for first attempt is also highly significant. The positive estimates of $\alpha_1$ indicates that first attempt made by an observer required much more times than other attempts. It is because for initial attempt the observer might have gone through instructions and became familiar with the experimental environment. Each page in the web site contains information about choice reason and the observers's confidence level. Also, the first page asks for observer Identification to be typed. The later pages of the web site was similar just the lineup was changed. Thus in the later attempts an observer does not need to spend any time for reading instructions. The model reflects that fact.
+Table \ref{tbl:model_result_time} presents the results of model \eqref{eqn:trend_time}. The parameter $\alpha$ for fixed effect covariate attempt is highly significant in all the experiments. The negative estimates suggest that on an average later attempt took less time for an evaluation. Even though observers did not improve the performance over attempt, they became efficient in responding faster. The parameter $\alpha_1$ for first attempt is also highly significant. The positive estimates of $\alpha_1$ indicates that first attempt made by an observer required much more times than other attempts. It is because for initial attempt the observer might have gone through instructions and became familiar with the experimental environment. Each page in the web site contains information about choice reason and the observers's confidence level. Also, the first page asks for observer Identification to be typed. The later pages of the web site was similar just the lineup was changed. Thus in the later attempts an observer does not need to spend any time for reading instructions. The model reflects that fact.
 
 
 \begin{table}[htbp]
 \centering
-\caption{Parameter estimates of Model \eqref{eqn:trend_time} fitted for log time taken to evaluate a lineup. Both fixed effect parameters of Attempt ($\alpha_1$ and $\alpha$) are highly significant for all three experiments 5, 6 and 7.}
+\caption{Parameter estimates of model \eqref{eqn:trend_time} fitted for log time taken to evaluate a lineup. Both fixed effect parameters of Attempt ($\alpha_1$ and $\alpha$) are highly significant for all three experiments 5, 6 and 7.}
 \scalebox{0.81}{
 \begin{tabular}{rrrrccrrrccrrrc}
   \hline
@@ -812,11 +812,11 @@ $\mu$ & 3.817 & 0.039 & 97.38 & $<$0.001 &   & 3.901 & 0.033 & 118.19 & $<$0.001
 \label{tbl:model_result_time}
 \end{table}
 
-The lineup variance of experiment 7 is estimated as $\hat{\sigma}^2_{\ell} = 10.98$ from Model \eqref{eqn:trend_response}. But from Model \eqref{eqn:trend_time} it is estimated to be much smaller in all these experiments. This suggests that the harder lineups not necessarily took more time than easier lineups. The observers spent enough times to evaluate a easy lineup and for difficult lineup they might just give up at some point and provided the feedback.
+The lineup variance of experiment 7 is estimated as $\hat{\sigma}^2_{\ell} = 10.98$ from model \eqref{eqn:trend_response}. But from model \eqref{eqn:trend_time} it is estimated to be much smaller in all these experiments. This suggests that the harder lineups not necessarily took more time than easier lineups. The observers spent enough times to evaluate a easy lineup and for difficult lineup they might just give up at some point and provided the feedback.
 
 Model \eqref{eqn:trend_time} was compared to couple of other alternatives. A bigger model with attempt as a factor was considered but it was not significantly different with $p$ value 0.236. A reduced model without the first attempt was also considered but it was significantly different with $p$-value $<0.001$. 
 
-To visualize how the time taken reduces over the successive attempts, we fitted Model \eqref{eqn:trend_time} excluding the covariate attempt from the model and computed the residuals. Least square regression lines are fitted through the subject specific residuals. Subject specific slopes are much different in each of the three experiments as we see in Figure \ref{fig:learning_trend_time}. Some subjects improved over attempts by taking less time in the later attempts while others got worse. The averages of these residuals for each attempt are plotted as dots. Least square regression lines are fitted to these points excluding the first attempt since for first attempt we fitted an indicator covariate. The downward trends are evident in the plots. All the slopes are highly significant. As expected we observed large positive residuals for each of the experiments for first attempt. 
+To visualize how the time taken reduces over the successive attempts, we fitted model \eqref{eqn:trend_time} excluding the covariate attempt from the model and computed the residuals. Least square regression lines are fitted through the subject specific residuals. Subject specific slopes are much different in each of the three experiments as we see in Figure \ref{fig:learning_trend_time}. Some subjects improved over attempts by taking less time in the later attempts while others got worse. The averages of these residuals for each attempt are plotted as dots. Least square regression lines are fitted to these points excluding the first attempt since for first attempt we fitted an indicator covariate. The downward trends are evident in the plots. All the slopes are highly significant. As expected we observed large positive residuals for each of the experiments for first attempt. 
 
 %These results indicate that after working with the multiple tasks each observer became efficient which helped them finish the task faster in later attempts. Subject specific least square lines show variations in slopes and overall time taken. Even though overall skill improved, there are some subjects who took more times in later attempts.
 
@@ -832,7 +832,7 @@ To visualize how the time taken reduces over the successive attempts, we fitted 
    \centering
 %   \includegraphics[width=6.5in]{learning_trend_time.pdf}    
  \includegraphics[width=6.3in]{learning_trend_time_subject.pdf}    
-   \caption{Least square regression lines fitted through the subject specific residuals obtained by  fitting Model \eqref{eqn:trend_time} without covariate attempt. Differences in subject specific slopes are observed. Some of the subjects did worse over successive attempts while others did better. Averages of these residuals are plotted as dots and least square regression lines are fitted to obtain overall trends. For all the three experiments the overall downward slopes are statistically significant which indicates that MTurk workers take less time as they progress through their attempts.}
+   \caption{Least square regression lines fitted through the subject specific residuals obtained by  fitting model \eqref{eqn:trend_time} without covariate attempt. Differences in subject specific slopes are observed. Some of the subjects did worse over successive attempts while others did better. Averages of these residuals are plotted as dots and least square regression lines are fitted to obtain overall trends. For all the three experiments the overall downward slopes are statistically significant which indicates that MTurk workers take less time as they progress through their attempts.}
    \label{fig:learning_trend_time}
 \end{figure}
 
@@ -854,10 +854,10 @@ The overall average proportion of correct responses for each location are shown 
 The sizes of the dots in  Figure \ref{fig:location_effect} represents the number of responses obtained for that location and null set. For some locations we have as many as 10 responses. For location 1, we did not have any response for null set 1 in one of the interaction lineups. We observe larger variability for interaction lineups as compared to Genotype lineups. It is because some of the interaction lineups were evaluated only once as we see for null plot 3 and 5 for Interaction effect. This leads to the extreme proportion of correct since one response will either be correct or wrong. The larger variability observed for Interaction lineups can be controlled at some extent by evaluating them multiple times.
 
 
-We fitted Model \eqref{manova} to test if the mean performance vectors are similar for different locations. For this we use {\it anova()} function of {\it stats} package of \cite{R:2012}. The results are shown in Table \ref{tbl:manova}. The $p$-values for both Interaction and Genotype effect are much bigger than the conventional threshold of 0.05. This suggest that there may be no difference in location. 
+We fitted model \eqref{manova} to test if the mean performance vectors are similar for different locations. For this we use {\it anova()} function of {\it stats} package of \cite{R:2012}. The results are shown in Table \ref{tbl:manova}. The $p$-values for both Interaction and Genotype effect are much bigger than the conventional threshold of 0.05. This suggest that there may be no difference in location. 
 
 \begin{table}[hbtp]
-\caption{The summary of the results obtained by fitting MANOVA Model \eqref{manova} using Wilks test.}
+\caption{The summary of the results obtained by fitting MANOVA model \eqref{manova} using Wilks test.}
 \begin{center}
 \begin{tabular}{ccccccccc}
   \hline \hline
@@ -874,7 +874,7 @@ We fitted Model \eqref{manova} to test if the mean performance vectors are simil
 \end{table}
 
 
-We also examined whether the proportion of correct responses differs if the actual plot is on the outer boundary or in the inner locations. The locations 7,8,9,12,13,14 in the lineup are considered inner locations and the rest of the boundary locations are considered to be outer location. As we see in Figure \ref{fig:location_effect}, location 9, 12 are inside for Interaction effect and location 8, 12 are inside for Genotype. It does not show any differences whether the actual plot is inside or outer border of the lineup. We also fitted Model \eqref{manova} with two locations, inner and outer, as covariate and observed no significant differences. 
+We also examined whether the proportion of correct responses differs if the actual plot is on the outer boundary or in the inner locations. The locations 7,8,9,12,13,14 in the lineup are considered inner locations and the rest of the boundary locations are considered to be outer location. As we see in Figure \ref{fig:location_effect}, location 9, 12 are inside for Interaction effect and location 8, 12 are inside for Genotype. It does not show any differences whether the actual plot is inside or outer border of the lineup. We also fitted model \eqref{manova} with two locations, inner and outer, as covariate and observed no significant differences. 
 
 
 

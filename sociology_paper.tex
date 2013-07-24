@@ -838,11 +838,6 @@ To visualize how the time taken reduces over the successive attempts, we fitted 
 
 \subsection{Lineup Design}
 
-\subsubsection{Sample of lineup}
-\subsubsection{Sample of Null Plots}
-
-\subsubsection{Location Effect}
-
 A total of 111 subjects were recruited to evaluate lineups designed to investigate the location effect of the actual data plot in the lineup as described in Section~\ref{sec:location_design}. Each subject evaluated two lineups;  one for Interaction effect and the other for Genotype.  In total there were 222 feedbacks or responses on 50 lineups. The data on the test lineup were excluded from the analysis.
 
 The proportion of correct responses for each data plot location is shown in Figure \ref{fig:location_effect} colored by null sets. We observe some variability of performance for different null sets even though same data plot was used for all these null sets. This may happen when for some set of null plots, one null plot appears to be very similar to the actual plot. In another set of null plots this may not happen making some lineups easier than others even though the actual data plot is the same. This pattern is evident in the figure as we see proportion correct for null plot 5 is consistently above the null plot 1 for each of the locations. A test for differences in average performances of null sets shows significant difference only for null set 3 of interaction lineup. The rest of the null sets don't show any differences at 1\% significance level. 
@@ -862,16 +857,16 @@ The sizes of the dots in  Figure \ref{fig:location_effect} represents the number
 We fitted Model \eqref{manova} to test if the mean performance vectors are similar for different locations. For this we use {\it anova()} function of {\it stats} package of \cite{R:2012}. The results are shown in Table \ref{tbl:manova}. The $p$-values for both Interaction and Genotype effect are much bigger than the conventional threshold of 0.05. This suggest that there may be no difference in location. 
 
 \begin{table}[hbtp]
-\caption{The results obtained by fitting MANOVA Model \eqref{manova}.}
+\caption{The summary of the results obtained by fitting MANOVA Model \eqref{manova} using Wilks test.}
 \begin{center}
 \begin{tabular}{ccccccccc}
   \hline \hline
  Location & && & \multicolumn{3}{c} {Degrees of Freedom}  & F test \\
  \cline{5-7}
- Effect & DF & Pillai & Approx. F & Numerator& Denumerator &Residual & $p$-value\\
+ Effect & DF & Wilks & Approx. F & Numerator& Denumerator &Residual & $p$-value\\
   \hline
-  Interaction& 3&1.4783 &0.7772&15&12 & 6 & 0.6821 \\ 
-  Genotype &4&1.7796 &1.1221&20&28 & 8 &  0.3824 \\ 
+  Interaction& 3&0.07986 & 0.592 &15&5.92 & 6 & 0.8082 \\ 
+  Genotype & 4&0.01689 & 1.722 & 20&14.22 & 8 & 0.1488 \\ 
    \hline
 \end{tabular}
 \end{center}

@@ -382,7 +382,7 @@ qplot(difficulty, value, data=mddat, linetype=variable, geom="line")+
                      labels=c("Difficult",expression(-2*sigma[l],-sigma[l],0,sigma[l], 
                                                      2*sigma[l],"Easy"))) +
   scale_linetype_discrete(name="Education",
-                      labels=c("High school", "Grad. degree"))
+                      labels=c("High school", "Grad. degree")) 
 
 ggsave("../images/practical_impact_graduate.pdf", width=6.5, height=4.5)
 
@@ -408,7 +408,7 @@ qplot(variable,value, shape=factor(difficulty),data=mddat.all, size=I(3.5)) +
   ylab("Proportion of correct responses") + xlab("Education")+
   scale_x_discrete(labels=c("h.school","u.gd.course","u.grad.deg","grad.course","grad.deg"))+
   scale_shape_discrete(name="Lineup difficulty", 
-                       labels=c("Difficult", "Medium","Easy"))
+                       labels=c("Difficult", "Medium","Easy")) 
 
 
 ggsave("../images/practical_impact_degree.pdf", width=6.5, height=4.5)
@@ -854,10 +854,10 @@ model.dat <- dcast(df,plot_type+plot_location+replicates~nulls, value.var="respo
 model <- as.formula(cbind(null_1,null_2,null_3,null_4,null_5)~factor(plot_location))
 int.dat <- subset(model.dat, plot_type=="Interaction")
 fit1 <- manova(model, data=int.dat )
-summary(fit1)
+summary(fit1, test="W")
 
 fit2 <- manova(model, data=subset(model.dat, plot_type=="Genotype") )
-summary(fit2)
+summary(fit2, test="W")
 
 
 int.dat$locs <- "out"

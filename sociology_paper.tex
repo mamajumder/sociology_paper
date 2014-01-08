@@ -134,7 +134,9 @@ The question that is asked of the observer should be as general as possible, eff
 
 %\subsection{Observer task}
 
-For any evaluation the observer may or may not identify the actual data plot. Under the null hypothesis, the actual data plot should look similar to the null plots making it harder to detect. It is not expected that an observer would be able to detect the data plot in this scenario. But since there are limited number of plots in a lineup, which is 20 in the election example, there is a 1/20 chance that the observer would pick the actual plot. This proportion is associated with the Type~I error of the test. On the other hand, if null hypothesis is not true, the observed plot should look different from the null plots, making it easier to be detected. This is the definition of the power of the test. When multiple observers evaluate a lineup, the proportion of correct response can be used to estimate the power. The ability of individual observers can vary, and examining this is the purpose of this paper.
+For any evaluation the observer may or may not identify the actual data plot. Under the null hypothesis, the actual data plot should look similar to the null plots making it harder to detect. It is not expected that an observer would be able to detect the data plot in this scenario. But since there are limited number of plots in a lineup, which is 20 in the election example, there is a 1/20 chance that the observer would pick the actual plot. This proportion is associated with the Type~I error of the test. On the other hand, if null hypothesis is not true, the observed plot should look different from the null plots, making it easier to be detected. This is the definition of the power of the test. When multiple observers evaluate a lineup, the detection rate can be used to estimate the power. The ability of individual observers can vary, and examining this is the purpose of this paper.
+
+\dc{*** Am trying to use detection rate rather than correct response. This isharder for this paper because we are evaluating subject's abilities to some extent, but we should try to use this in our vis inference papers.}
 
 %For a lineup with fixed difficulty, the proportion correct responses may vary for different observers. If an observer evaluates multiple lineups, the proportion of correct evaluations by the observer could be used as a measure of performance by an observer. The another way of measuring the performance of the observer could be the time taken by an observer to evaluate a lineup. Since performance would also depend on the lineup difficulty it is essential to adjust for lineup difficulty before estimating the performance of the observer.
 
@@ -224,7 +226,7 @@ In the initial Turk experiments (1,2,3) conducted with simulated data to compare
 %We don't expect much difference in performances between male and female observers. Gender may have some influence through the education level and geographical locations since some location may have small number of educated female population. We intend to include similar number of male and female subjects in our study so that this can be examined.
 
 %\subsection{Learning Trend} 
-\item{\bf Learning Trend:} One might expect that as an observer evaluates more lineups they may become more skillful in their evaluations. Each subject in the experiments 5, 6 and 7 evaluated a block of of ten lineups of the same type of data plot. The ten lineups were randomly chosen from the lineups  produced for each study. Before evaluating the first lineup, the observer needs to read instructions and become accustomed to the type of plot used in the lineup. In subsequent lineups being evaluated the type of plot is the same, level of difficulty will be different. It is possible that the observer becomes more skillful at recognizing the most different plot, either by correctly finding the actual data plot or more quickly reporting their choice. These two ways of measuring learning trend are evaluated on data collected from experiments 5, 6 and 7.
+\item{\bf Learning Trend:} One might expect that as an observer evaluates more lineups they may become more skillful in their evaluations. Each subject in the experiments 5, 6 and 7 evaluated a block of of ten lineups of the same type of data plot. The ten lineups were randomly chosen from the lineups  produced for each study. Before evaluating the first lineup, the observer needs to read instructions and become accustomed to the type of plot used in the lineup. In subsequent lineups being evaluated the type of plot is the same, level of difficulty will be different. It is possible that the observer becomes more skillful at recognizing the most different plot, either by more often detecting the actual data plot or more quickly reporting their choice. These two ways of measuring learning trend are evaluated on data collected from experiments 5, 6 and 7.
 
 
 %When an observer evaluates a lineup he or she may learn something from the experiences of the earlier observations. If the same observer is shown another lineup the learning from previous evaluation may help. The more evaluations an observer makes the more skillful the observer may become. This learning trend may or may not be significant overall but it may influence the performance of the observer in some way. 
@@ -275,11 +277,11 @@ All the ten experiments shown in Table \ref{tbl:visual_stat}, had demographic in
 
 %Instead of collecting exact age, 9 levels of age were collected. They are 18-25, 26-30, 31-35, 36-40, 41-45, 46-50, 51-55, 56-60, above 60. There were five levels of academic information. They are (1) High school or less , (2) Some under grad course, (3) Under graduate degree, (4) Some graduate courses,  (5) Graduate degree.  Geographical locations were collected using the true public ip addresses of the participants' computer. This provides latitude and longitude of the ip address as well as the city and country information. 
 
-Let $Y_{ij}$ denote the response from observer $i$ on a lineup $j$, with $Y_{ij} =1$ if the response is correct otherwise $Y_{ij} =0$. The factors are examined in association with the observer's response using a mixed effects linear model: 
+Let $Y_{ij}$ denote the response from observer $i$ on a lineup $j$, with $Y_{ij} =1$ if the actual data plot is chosen, otherwise $Y_{ij} =0$. The factors are examined in association with the observer's response using a mixed effects linear model: 
 \begin{equation} \label{eqn:demographic_response}
 g( \pi_{ij} )= \mu + \alpha_{k(i)} + \gamma_{l(i)} + \tau_{m(i)}+ \kappa_{s(i)} + \ell_j,  
 \end{equation}
-where $\pi_{ij}=  E(Y_{ij})$ is the probability that  observer $i$ correctly picks the data panel from lineup $j$, %We model this in a generalized mixed effects model of the form
+where $\pi_{ij}=  E(Y_{ij})$ is the probability that  observer $i$ picks the actual data plot from lineup $j$, %We model this in a generalized mixed effects model of the form
 %\begin{equation} \label{eqn:demographic_response}
 %g( \pi_{ij} )= \mu + \alpha_{k(i)} + \gamma_{l(i)} + \tau_{m(i)}+ \kappa_{s(i)} + \ell_j,  
 %\end{equation}
@@ -295,12 +297,13 @@ where $\mu$ represents overall average of log time taken by an observer to evalu
 
 \subsection{Learning Trend} Learning trend of a subject can be observed in terms of performance over successive feedbacks received when multiple lineups are shown for evaluation. Experiments 5, 6 and 7 were used for this. Each subject was shown a total of 10 lineups randomly selected from a pool of lineups. The lineups are not necessarily with the same difficulty levels, but the order of lineups was randomized. The responses of the lineups were recorded by attempt 1 through 10. Attempt 1 means that the response is for the first lineup the observer evaluates and attempt 10 refers to the response for the 10th lineup. The goal is to estimate whether performance of the observer improves, or changes, from attempt 1 to attempt 10. 
 
-It should be noted that we are examining the observer's performance, when we model response as correct or incorrect, but this is not the goal of visual inference. Visual inference is constructed to measure the significance of structure discovered in data. It is expected that some observers will be more skilled at reading data plots, and hence, more readily detect the plot that is different. It is also expected that as observer's gain experience in evaluating lineups that they become more proficient in reading data plots, particularly if feedback is given on whether the actual data plot was chosen or not. Choosing the actual data plot will be more difficult in some lineups than others, and indeed should happen purely by chance in some lineups, so ``correct'' is more of a convenient rather than ideal word to use for this analysis. So in this context, correct, or not, is used as a response to examine individual differences. 
+It should be noted that we are examining the observer's performance, when we model response as detected or not, but this is not the goal of visual inference. Visual inference is constructed to measure the significance of structure discovered in data. It is expected that some observers will be more skilled at reading data plots, and hence, more readily detect the plot that is different. It is also expected that as observer's gain experience in evaluating lineups that they become more proficient in reading data plots, particularly if feedback is given on whether the actual data plot was chosen or not. Choosing the actual data plot will be more difficult in some lineups than others, and indeed should happen purely by chance in some lineups.%, so ``correct'' is more of a convenient rather than ideal word to use for this analysis. 
+So in this context, detected, or not, is used as a response to examine individual differences. 
 
 %\subsection{Model to Estimate Learning Trend}
 
 %Multiple lineups were sequentially shown to each observer for evaluation. 
-Let $Y_{ijk}$ denote the response from observer $i$ on lineup $j$ at their $k^{th}$ evaluation attempt, where $Y_{ijk}=1$ if the response is correct otherwise  $Y_{ijk}=0$. Let $\pi_{ijk}=  E(Y_{ijk})$ be the probability that  observer $i$ correctly picks the data panel from lineup $j$ in their $k^{th}$ attempt. Learning trend is assessed using a generalized mixed effects model of the form
+Let $Y_{ijk}$ denote the response from observer $i$ on lineup $j$ at their $k^{th}$ evaluation attempt, where $Y_{ijk}=1$ if the observer detected the actual data plot otherwise  $Y_{ijk}=0$. Let $\pi_{ijk}=  E(Y_{ijk})$ be the probability that  observer $i$ picks the actual data plot from lineup $j$ in their $k^{th}$ attempt. Learning trend is assessed using a generalized mixed effects model of the form
 \begin{equation} \label{eqn:trend_response}
 g( \pi_{ijk} )= \mu + \alpha_k + u_i +  a_{i} k + \ell_j,  
 \end{equation}
@@ -324,7 +327,7 @@ Equation \ref{eqn:trend_time} leads to the estimate of the subject and the lineu
 
 To fit all these mixed effect models the function $lmer()$ is used from R package $lme4$ by \cite{lme4:2011}. To obtain the $p$-values of fixed effect parameters estimates, normal approximation is used for $Z$ scores computed as the ratio of estimates to the estimated standard errors.  
 
-\subsection{Location Effect} \label{sec:location_design} Experiment 9 studied significant expression in an RNA-seq study, and was designed so that location effect of the actual data plot in a lineup could be assessed. The data used, documented in \cite{atwood:2013}, measures gene expression of soybean by RNA-seq methods. Two factors were of primary interest: genotype (call them RPA and EV) and the interaction between genotype and iron condition (sufficient or insufficient). The $2\times2$ factorial design provides four treatment conditions. For each gene there were 11 data points, because each treatment contained two or three replicates. There are on the order of \dc{*** how many} genes examined for significant expression. In large studies such as this there is a valid question whether the data exhibits any structure at all, or if the small $p$-values are simply occurring by chance, from the massive multiple testing. This overall significance is studied by visual inference. 
+\subsection{Location Effect} \label{sec:location_design} Experiment 9 studied significant expression in an RNA-seq study, and was designed so that location effect of the actual data plot in a lineup could also be assessed. The data used, documented in \cite{atwood:2013}, measures gene expression of soybean by RNA-seq methods. Two factors were of primary interest: genotype (call them RPA and EV) and the interaction between genotype and iron condition (sufficient or insufficient). The $2\times2$ factorial design provides four treatment conditions. For each gene there were 11 data points, because each treatment contained two or three replicates. There are on the order of \dc{*** how many} genes examined for significant expression. In large studies such as this there is a valid question whether the data exhibits any structure at all, or if the small $p$-values are simply occurring by chance, from the massive multiple testing. This overall significance is studied by visual inference. 
 
 For the study, the routine processing of the data was conducted to find (1) the gene that exhibited the most significance difference in expression between genotypes, (2) the gene that exhibited the most different expression on RPA, but insignificant expression on EV. Two different types of plots would be made to examine this. For (1) side-by-side dotplots of the expression levels for the one gene by genotype were created. For (2) an interaction plot, with iron sufficiency represented on the horizontal axis, expression vertically, and genotype by color. Colored lines connect the means for the two genotypes over iron treatment. The null plots were created by randomizing the experimental design, and re-doing everything else as done with the actual data. Any genes found under these circumstances had expression differences that can only be considered to by consistent with random differences. Full results are documented in \cite{tengfei:2013}. 
 
@@ -340,7 +343,7 @@ Multiple lineups of the data were produced. The actual plot was randomly placed 
 %\subsection{Model to Estimate Location Effect}
 
 %As per the design of experiment for location effect, the actual data plot is same for each of the null sets of plot. Thus the response data of this experiment constitute a multivariate response. 
-To examine if the difference in proportion correct among the locations is statistically significant a one-way multivariate analysis of variance (MANOVA) model is fit to the data.
+To examine if the difference in detection rate among the locations is statistically significant a one-way multivariate analysis of variance (MANOVA) model is fit to the data.
 Let $\mathbf{Y}=(Y_1,Y_2, ... , Y_p)^\top$ be a vector of random variables with dimension $p (=5)$, the total number of null sets, and let $\mathbf{Y}_{ij}$ represents $jth$ vector response for $ith$ location with $i=1,2, ..., I(=5)$. Because the same data plot is shown in each lineup, it is assumed that there could be some association between the responses for each null set, which suggests the MANOVA model rather than a univariate ANOVA.  The MANOVA model 
 \begin{equation}\label{manova}
 \mathbf{Y}_{ij} = \mu_{i} + \epsilon_{ij}
@@ -516,28 +519,15 @@ The distribution of male and female participants are similar among all age group
 
 A total of 1911 lineups were evaluated in the ten experiments. Each person evaluated at least 10 lineups except for experiment 9 where three lineups were evaluated by each person. A test plot was shown to each observer and the feedback received from that plot is used to ensure data quality. Data from participants who got it wrong were removed, and then results for just this lineup were removed for all participants who responded correctly. In some cases the demographic information were not provided by the participants. Also, for some ip address, the actual geographical locations could not be retrieved. This resulted some missing demographic information.
 
-\dc{*** Di is up to here on paper}
+\subsection{Demographic Factors} 
 
-\subsection{Demographic Factors} Proportions of correct responses and natural logarithms of average time taken to evaluate  each lineup are computed  for different demographic factor levels. Their distributions are shown using boxplots in Figure \ref{fig:demographic_effect}. Averages of these distributions are represented by dots inside the boxplots. The youngest age group (18-25) took least average time to evaluate a lineup. People from India took more time than others. People who have only a high school degree took less time and this is related to what we have seen for young age group. Averages of log time taken by male and female participants look similar but there are some differences as we see in Table~\ref{tbl:demographics}. 
+\dc{*** It seems repetitive to start with a description of what we learn from the plot, so start with the model summary and use the plot to support the model findings.}
 
-%All of the factors are significant in describing time taken to evaluate a lineup.
-
-\begin{figure}[htbp] 
-   \centering
-   \includegraphics[width=4in]{demographic_effect.pdf} 
-   \caption{Boxplots of average log time taken and proportion correct responses of all the lineups plotted for each demographic factor levels. The dots inside the boxes represent means. Some differences in means of various demographic factors are observed. Variability in proportion correct indicates large variability in lineup difficulties.}
-   \label{fig:demographic_effect}
-\end{figure}
-
-The distribution of time taken to evaluate a lineup is positively skewed. But in log scale it appears to be symmetric for all the demographic factor variables as we see in Figure \ref{fig:demographic_effect}. Mean and medians are very similar as well. This allows us to fit linear mixed model to the log time taken with normal error structure.
-
-We observed some differences in median proportion of correct responses for different demographic factor levels. But the variability of proportion correct responses are huge as per design of the experiments since there were some very easy as well as extremely difficult lineups. Some of the lineups  were not expected to be evaluated correctly as the null plots in those lineups were showing more signal than the actual data plot itself. In those scenarios,  one may not reject the null hypothesis. We call these difficult lineups. Some of the lineups were so easy that data plot is detectable at a first glance. These were expected to be evaluated correctly 100\% of the time. This is why we see the boxes range from 0 to 1 in most of the factor levels. Unlike median, fewer differences are observed in the average proportion of correct responses for different factor levels. 
-
-Model \eqref{eqn:demographic_response} is fitted to the data with fixed effect factors such as age, country, education and gender. To estimate the overall factor main effect, a reduced model is fitted removing that factor from model \eqref{eqn:demographic_response}. Analysis of variance (ANOVA)  results shown in Table~\ref{tbl:anova_factor} suggest that all the factor variables are significantly different in describing the the probability of correct response except gender. Gender does not show any significant difference in performance.  Similarly, ANOVA results are obtained by fitting model \eqref{eqn:demographic_time} to the data of log time taken and are shown in Table~\ref{tbl:anova_factor} as well. All the factor variables are significantly different for log time taken including gender.  
+To explore the significance of the demographic factors model \eqref{eqn:demographic_response} is fit to the data, with age, country, education and gender as fixed effects. To estimate the significance of the factors, reduced models are fit with that factor removed from the model. Table ~\ref{tbl:anova_factor} summarizes the results. All of the demographic factors are significantly different in describing the the detection rate, except for gender.  With respect to time taken, all of the demographic factors are significant. 
 
 \begin{table}[htbp]
 \centering
-\caption{Anova of full model with all the demographic factors vs reduced model with removing respective factor variable. Gender does not have any effect on probability of correct response.}
+\caption{Analysis of variance (ANOVA) table comparing full model, all the demographic factors, with the reduced models, obtained by removing respective factor variable. Gender does not have a significant effect on detection rate, but does on time to respond. All factors significantly affect time to respond.}
 \scalebox{.9}{
 \begin{tabular}{rlrrrrrr}
   \hline
@@ -562,17 +552,15 @@ Proportion Correct &Full & 23822.00 &23943.00 &-11896.00  & &  &  \\
 \label{tbl:anova_factor}
 \end{table}
 
-
-To further illustrate how the individual factor levels differ from each other  the detailed results of models \eqref{eqn:demographic_response} and \eqref{eqn:demographic_time} are shown in Table \ref{tbl:model_result_demographics}. For parameter estimation the first factor levels shown in the Table are  used as the base line. Demographic factor levels have significant effects on log time taken to evaluate a lineup. But not all the levels are significant for the probability of correct responses.
-
+Parameter estimates from the model fits are shown in Table \ref{tbl:model_result_demographics}. The first level of each factor serves as the baseline for the model. The age group 36-40 significantly has a higher detection rate than the 18-25, and to a lesser extent this is also true for age groups 31-35 and above 50. Participants from India have a similar detection rate to those from the USA, but ones from the rest of the world had a significantly improved detection rate. Subjects who listed themselves as having a graduate degree had a significantly higher detection rate. For time to respond, all age groups were significantly slower than the 18-25 year olds.  Participants from India were slower, and those from the rest of the world were faster than Americans. A higher degree corresponded to longer time, and males were slower than females!
 
 \begin{table}[htbp]
 \centering
-\caption{Parameter estimates of models \eqref{eqn:demographic_time} and \eqref{eqn:demographic_response} fitted for average log time taken and probability of correct lineup evaluations respectively. For time taken all the demographic factors are significant. For probability of correct response age group 36-40, rest of the world and graduate degree are significantly different. For gender no difference in performance is observed. Lineup variability is estimated to be very large for model \eqref{eqn:demographic_response}.}
+\caption{Parameter estimates of models \eqref{eqn:demographic_time} and \eqref{eqn:demographic_response} fitted for average log time taken and detection rate, respectively. For time taken all the demographic factors are significant. For detection rate, age group 36-40, rest of the world and graduate degree are significantly different. For gender no difference in performance is observed. Lineup variability is estimated to be very large for model \eqref{eqn:demographic_response}.}
 \scalebox{0.86}{
 \begin{tabular}{rlrrrrrrrrrr}
   \hline
-Demographic&& \multicolumn{4}{c} {Log Time (model \ref{eqn:demographic_time})} & &\multicolumn{4}{c} {Proportion Correct (model \ref{eqn:demographic_response})} \\
+Demographic&& \multicolumn{4}{c} {Log Time (model \ref{eqn:demographic_time})} & &\multicolumn{4}{c} {Detection rate (model \ref{eqn:demographic_response})} \\
 
 \cline{3-6} \cline{8-11} 
 Factor & Level& Est & SE & Zval & $p$-value && Est & SE & Zval & $p$-value  \\ 
@@ -609,6 +597,23 @@ Gender ($\gamma$)& Female&0.000   &---  &---  &---  &  &--- &--- &---& ---\\
 }
 \label{tbl:model_result_demographics}
 \end{table}
+
+Figure \ref{fig:demographic_effect} supports the model results. The average time taken to respond (natural log) and detection rate are computed for the different demographic factor levels, and displayed using boxplots. Data averages are represented by dots inside the boxplots. %There are some small differences across demographic groups. The youngest age group (18-25) took least average time to evaluate a lineup. People from India took more time than others. People who have only a high school degree took less time and this is related to what we have seen for young age group. Averages of log time taken by male and female participants look similar but there are some differences as we see in Table~\ref{tbl:demographics}. 
+
+%All of the factors are significant in describing time taken to evaluate a lineup.
+
+\begin{figure}[htbp] 
+   \centering
+   \includegraphics[width=4in]{demographic_effect.pdf} 
+   \caption{Boxplots of average log time taken and proportion correct responses of all the lineups plotted for each demographic factor levels. The dots inside the boxes represent means. Some differences in means of various demographic factors are observed. Variability in proportion correct indicates large variability in lineup difficulties. \dc{*** Vertical axis needs to be labelled ``detection rate'' for bottom row, and ``value'' needs to be removed.}}
+   \label{fig:demographic_effect}
+\end{figure}
+
+%The distribution of time taken to evaluate a lineup is positively skewed. But in log scale it appears to be symmetric for all the demographic factor variables as we see in Figure \ref{fig:demographic_effect}. Mean and medians are very similar as well. This allows us to fit linear mixed model to the log time taken with normal error structure.
+
+Some differences in median detection for different demographic factor levels can be seen,  but the variability in responses is huge. This variability is primarily in variability in the lineups -- some very easy and some extremely difficult lineups. Some of the lineups  were not expected to be evaluated correctly as the null plots in those lineups were showing more signal than the actual data plot itself. In those scenarios,  one may not reject the null hypothesis. We call these difficult lineups. Some of the lineups were so easy that data plot is detectable at a first glance. These were expected to be evaluated correctly 100\% of the time. This is why we see the boxes range from 0 to 1 in most of the factor levels. Unlike median, fewer differences are observed in the average proportion of correct responses for different factor levels. 
+
+To further illustrate how the individual factor levels differ from each other  the detailed results of models \eqref{eqn:demographic_response} and \eqref{eqn:demographic_time} are shown in Table \ref{tbl:model_result_demographics}. For parameter estimation the first factor levels shown in the Table are  used as the base line. Demographic factor levels have significant effects on log time taken to evaluate a lineup. But not all the levels are significant for the probability of correct responses.
 
 
 
@@ -657,9 +662,9 @@ Gender ($\gamma$)& Female&0.000   &---  &---  &---  &  &--- &--- &---& ---\\
 %\label{tbl:model_result_demographics}
 %\end{table}
 
-Age group 36-40 is significantly different than the base line age group of 18-25 year olds. The other age levels are similar in explaining the probability of correct response. For country, the rest of the world is different from USA but India appears to be similar to USA. We see from Table \ref{tbl:demographics} that most of the participants (about 90\%) are from India and USA. The rest of the 10\% data are from 76 different countries. This diversity in the rest of the world may make it different from India and USA.
+%Age group 36-40 is significantly different than the base line age group of 18-25 year olds. The other age levels are similar in explaining the probability of correct response. For country, the rest of the world is different from USA but India appears to be similar to USA. We see from Table \ref{tbl:demographics} that most of the participants (about 90\%) are from India and USA. The rest of the 10\% data are from 76 different countries. This diversity in the rest of the world may make it different from India and USA.
 
-The graduate degree holders are significantly different as well. The positive parameter estimate indicates that they perform better and the probability of correct response is higher than other education levels. There is no significant difference between male and female performances. 
+%The graduate degree holders are significantly different as well. The positive parameter estimate indicates that they perform better and the probability of correct response is higher than other education levels. There is no significant difference between male and female performances. 
 
 Notice that lineup specific variance estimate is 5.259 with a standard error of 2.293 which is much higher than the other significant parameter estimates in model \eqref{eqn:demographic_response}. This indicates that the major and most important factor affecting the probability of correct response is  lineup difficulty. This is also evident from the large variability in the proportion correct in Figure~\ref{fig:demographic_effect}. Because of this huge impact of lineup specific variance, the practical impact of other factor variables on the probability of correct response is in fact very small. We illustrate this with the following example of graduate degree.
 

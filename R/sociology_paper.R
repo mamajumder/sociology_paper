@@ -209,7 +209,7 @@ ggsave("../images/age_gender_within_country_correct.pdf", width=10, height=8)
 get_effect <- function(dat, var){
   res <- ddply(dat,c(var), summarize,
                log_avg_time = round(log(mean(time_taken)),2),
-               prop_correct = mean(response)
+               detection_rate = mean(response)
   )
   res$variable_name <- var[1]
   colnames(res) <- c("variable_level", colnames(res)[-1])
@@ -224,7 +224,7 @@ mdat <- melt(rbind(gdat,edat,cdat,adat), id=c("variable_level", "pic_name", "var
 
 qplot(variable_level, value, geom="boxplot",data=mdat[complete.cases(mdat),]) +
   facet_grid(variable~variable_name, scales="free") +
-  stat_summary(fun.y=mean, geom="point") + xlab("Levels of demographic factors")+
+  stat_summary(fun.y=mean, geom="point") + xlab("Levels of demographic factors")+ylab("")+
   theme(axis.text.x=element_text(angle=90, hjust=1))
 
 ggsave("../images/demographic_effect.pdf", width=6.5, height=6)

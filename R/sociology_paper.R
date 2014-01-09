@@ -91,6 +91,11 @@ dat9$response_all <- apply(subset(dat9, select=c(plot_location,response_no)), 1,
 # responses on the plot used for defense talk
 subset(dat9, pic_name=="plot_turk9_interaction_1_3.svg")
 
+# responses on the plot used for defense nsf grant
+subset(dat9, pic_name=="plot_turk9_geno_1_2.svg")
+subset(dat9, pic_name=="plot_turk9_interaction_2_1.svg")
+
+
 # ==============================================================
 # Summary statistics of demographic data
 # --------------------------------------------------------------

@@ -21,9 +21,11 @@
 
 
 \usepackage{color}
+\definecolor{mahbub}{rgb}{1.0, 0.6, 0.4}
+%\usepackage[usenames,dvipsnames]{color}
 \newcommand{\hh}[1]{{\color{magenta} #1}}
 \newcommand{\dc}[1]{{\color{green} #1}}
-\newcommand{\mm}[1]{{\color{cyan} #1}}
+\newcommand{\mm}[1]{{\color{mahbub} #1}}
 
 \setlength{\oddsidemargin}{0in}
 \setlength{\evensidemargin}{0in}
@@ -294,7 +296,7 @@ In addition, a model is constructed with time taken as the response variable. Le
 \begin{equation} \label{eqn:demographic_time}
 Z_{ij} = \mu + \alpha_{k(i)} + \gamma_{l(i)} + \tau_{m(i)}+ \kappa_{s(i)} + \ell_j+ \epsilon_{ij},  
 \end{equation}
-where $\mu$ represents overall average of log time taken by an observer to evaluate a lineup, $\alpha$, $\gamma$, $\tau$ and  $\kappa$ are as described in model \eqref{eqn:demographic_response}, $\ell_j$ is a lineup-specific random effect for the time needed to evaluate a lineup, with $\ell_j \sim N(0, \sigma_\ell^2)$ and the overall error $\epsilon_{ijk} \sim N(0, \sigma^2)$.
+where $\mu$ represents overall average of log time taken by an observer to evaluate a lineup, $\alpha$, $\gamma$, $\tau$ and  $\kappa$ are as described in model \eqref{eqn:demographic_response}, $\ell_j$ is a lineup-specific random effect for the time needed to evaluate a lineup, with $\ell_j \sim N(0, \sigma_\ell^2)$ and the overall error $\epsilon_{ijk} \sim N(0, \sigma^2)$.  \mm{ Since each person evaluate a lineup only once, should it be $\epsilon_{ij} \sim N(0, \sigma^2)$?}
 
 \subsection{Learning Trend} Learning trend of a subject can be observed in terms of performance over successive feedbacks received when multiple lineups are shown for evaluation. Experiments 5, 6 and 7 were used for this. Each subject was shown a total of 10 lineups randomly selected from a pool of lineups. The lineups are not necessarily with the same difficulty levels, but the order of lineups was randomized. The responses of the lineups were recorded by attempt 1 through 10. Attempt 1 means that the response is for the first lineup the observer evaluates and attempt 10 refers to the response for the 10th lineup. The goal is to estimate whether performance of the observer improves, or changes, from attempt 1 to attempt 10. 
 
@@ -592,7 +594,7 @@ Gender ($\gamma$)& Female&0.000   &---  &---  &---  &  &--- &--- &---& ---\\
   \hline
 \multicolumn{2}{l}{Random Effect} &  &  &  &  &  & & && \\ 
 & lineup($\sigma_{\ell}$) & 0.082 & 0.287 &  &  &   & 5.259 & 2.293 &  &  \\ 
- & Error($\sigma$) & 0.479 & &  &  &  & 0.692&& &\\ 
+ & Error($\sigma$) & 0.479 & &  &  &  & \mm{? 0.692}&& &\\ 
    \hline
 \end{tabular}
 }
@@ -683,7 +685,7 @@ The person with a high school education on average picks the data plot in 33.5\%
 %   \includegraphics[width=6.5in]{learning_trend.pdf} 
     \includegraphics[width=3.2in]{practical_impact_graduate.pdf} 
     \includegraphics[width=3.2in]{practical_impact_degree.pdf} 
-   \caption{Proportion of correct responses due to graduate degree as compared to high school degree for an 18-25 year old female in the United States. Even though graduate degree is statistically significant, the largest difference in proportion correct is  0.045 which is very negligible. The difference diminishes as we move away one or two standard deviations ($\sigma_{\ell} =2.293$) of lineup variability.}
+   \caption{Proportion of correct responses due to graduate degree as compared to high school degree for an 18-25 year old female in the United States. Even though graduate degree is statistically significant, the largest difference in proportion correct is  0.045 which is very negligible. The difference diminishes as we move away one or two standard deviations ($\sigma_{\ell} =2.293$) \mm{should it be 5.259 instead ?} of lineup variability.}
    \label{fig:practical_impact_graduate}
 \end{figure}
 

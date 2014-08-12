@@ -35,11 +35,11 @@
 \evensidemargin 
 \oddsidemargin
 
-\newtheorem{thm}{Theorem}[section]
-\newtheorem{dfn}{Definition}[section]
-\newtheorem{cor}{Corollary}[thm]
-\newtheorem{con}{Conjecture}[thm]
-\newtheorem{lemma}[thm]{Lemma}
+%\newtheorem{thm}{Theorem}[section]
+%\newtheorem{dfn}{Definition}[section]
+%\newtheorem{cor}{Corollary}[thm]
+%\newtheorem{con}{Conjecture}[thm]
+%\newtheorem{lemma}[thm]{Lemma}
 
 %\topmargin -0.10in   % when making pdf
 %\textheight 9.15in  % when making pdf
@@ -49,7 +49,7 @@
 
 \begin{document}
 
-\tableofcontents
+% tableofcontents
 
 % Article top matter
 \title{Human Factors Influencing Visual Statistical Inference }
@@ -139,7 +139,7 @@ The question that is asked of the observer should be as general as possible, eff
 
 For any evaluation the observer may or may not identify the actual data plot. Under the null hypothesis, the actual data plot should look similar to the null plots making it harder to detect. It is not expected that an observer would be able to detect the data plot in this scenario. But since there are limited number of plots in a lineup, which is 20 in the election example, there is a 1/20 chance that the observer would pick the actual plot. This proportion is associated with the Type~I error of the test. On the other hand, if null hypothesis is not true, the observed plot should look different from the null plots, making it easier to be detected. This is the definition of the power of the test. When multiple observers evaluate a lineup, the detection rate can be used to estimate the power. The ability of individual observers can vary, and examining this is the purpose of this paper.
 
-\dc{*** Am trying to use detection rate rather than correct response. This is harder for this paper because we are evaluating subject's abilities to some extent, but we should try to use this in our vis inference papers.} \mm{Di, do you suggest that I change ``correct response''  to ``detection rate'' in all the texts here?}
+%\dc{*** Am trying to use detection rate rather than correct response. This is harder for this paper because we are evaluating subject's abilities to some extent, but we should try to use this in our vis inference papers.} % \mm{Di, do you suggest that I change ``correct response''  to ``detection rate'' in all the texts here?}
 
 %For a lineup with fixed difficulty, the proportion correct responses may vary for different observers. If an observer evaluates multiple lineups, the proportion of correct evaluations by the observer could be used as a measure of performance by an observer. The another way of measuring the performance of the observer could be the time taken by an observer to evaluate a lineup. Since performance would also depend on the lineup difficulty it is essential to adjust for lineup difficulty before estimating the performance of the observer.
 
@@ -330,7 +330,8 @@ Equation \ref{eqn:trend_time} leads to the estimate of the subject and the lineu
 
 To fit all these mixed effect models the function $lmer()$ is used from R package $lme4$ by \cite{lme4:2011}. To obtain the $p$-values of fixed effect parameters estimates, normal approximation is used for $Z$ scores computed as the ratio of estimates to the estimated standard errors.  
 
-\subsection{Location Effect} \label{sec:location_design} Experiment 9 studied significant expression in an RNA-seq study, and was designed so that location effect of the actual data plot in a lineup could also be assessed. The data used, documented in \cite{atwood:2013}, measures gene expression of soybean by RNA-seq methods. Two factors were of primary interest: genotype (call them RPA and EV) and the interaction between genotype and iron condition (sufficient or insufficient). The $2\times2$ factorial design provides four treatment conditions. For each gene there were 11 data points, because each treatment contained two or three replicates.  \mm{Di, There are more than 40,000 genes examined for significant expression in \citep{tengfei:2013}. Is that what you wanted to put here?}. In large studies such as this there is a valid question whether the data exhibits any structure at all, or if the small $p$-values are simply occurring by chance, from the massive multiple testing. This overall significance is studied by visual inference. 
+\subsection{Location Effect} \label{sec:location_design} Experiment 9 studied significant expression in an RNA-seq study, and was designed so that location effect of the actual data plot in a lineup could also be assessed. The data used, documented in \cite{atwood:2013}, measures gene expression of soybean by RNA-seq methods. Two factors were of primary interest: genotype (call them RPA and EV) and the interaction between genotype and iron condition (sufficient or insufficient). The $2\times2$ factorial design provides four treatment conditions. For each gene there were 11 data points, because each treatment contained two or three replicates.  \mm{Di, There are more than 40,000 genes examined for significant expression in \citep{tengfei:2013}. Is that what you wanted to put here?}. 
+In large studies such as this there is a valid question whether the data exhibits any structure at all, or if the small $p$-values are simply occurring by chance, from the massive multiple testing. This overall significance is studied by visual inference. 
 
 For the study, the routine processing of the data was conducted to find (1) the gene that exhibited the most significance difference in expression between genotypes, (2) the gene that exhibited the most different expression on RPA, but insignificant expression on EV. Two different types of plots would be made to examine this. For (1) side-by-side dotplots of the expression levels for the one gene by genotype were created. For (2) an interaction plot, with iron sufficiency represented on the horizontal axis, expression vertically, and genotype by color. Colored lines connect the means for the two genotypes over iron treatment. The null plots were created by randomizing the experimental design, and re-doing everything else as done with the actual data. Any genes found under these circumstances had expression differences that can only be considered to by consistent with random differences. Full results are documented in \cite{tengfei:2013}. 
 
@@ -524,7 +525,7 @@ A total of 1911 lineups were evaluated in the ten experiments. Each person evalu
 
 \subsection{Demographic Factors} 
 
-\dc{*** It seems repetitive to start with a description of what we learn from the plot, so start with the model summary and use the plot to support the model findings.}
+%\dc{*** It seems repetitive to start with a description of what we learn from the plot, so start with the model summary and use the plot to support the model findings.}
 
 To explore the significance of the demographic factors model \eqref{eqn:demographic_response} is fit to the data, with age, country, education and gender as fixed effects. To estimate the significance of the factors, reduced models are fit with that factor removed from the model. Table ~\ref{tbl:anova_factor} summarizes the results. All of the demographic factors are significantly different in describing the the detection rate, except for gender.  With respect to time taken, all of the demographic factors are significant. 
 
@@ -685,7 +686,8 @@ The person with a high school education on average picks the data plot in 33.5\%
 %   \includegraphics[width=6.5in]{learning_trend.pdf} 
     \includegraphics[width=3.2in]{practical_impact_graduate.pdf} 
     \includegraphics[width=3.2in]{practical_impact_degree.pdf} 
-   \caption{Proportion of correct responses due to graduate degree as compared to high school degree for an 18-25 year old female in the United States. Even though graduate degree is statistically significant, the largest difference in proportion correct is  0.045 which is very negligible. The difference diminishes as we move away one or two standard deviations ($\sigma_{\ell} =2.293$) \mm{should it be 5.259 instead ?} of lineup variability.}
+   \caption{Proportion of correct responses due to graduate degree as compared to high school degree for an 18-25 year old female in the United States. Even though graduate degree is statistically significant, the largest difference in proportion correct is  0.045 which is very negligible. The difference diminishes as we move away one or two standard deviations ($\sigma_{\ell} =2.293$) \mm{should it be 5.259 instead ?} 
+   of lineup variability.}
    \label{fig:practical_impact_graduate}
 \end{figure}
 

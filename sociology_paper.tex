@@ -143,21 +143,14 @@ In the responses for this lineup we see something that is very typical of respon
  \hh{If we consider this difference to be the main objective of the visualization, a more focused question would}
  have been ``Which plot shows the biggest height difference between the two towers?'' %except that this tailors the inference to a specific feature which does not match the null hypothesis of interest. 
  
-%=======
-%A lineup can be evaluated by a single person or multiple observers. Based on the feedback of $K$ observers a $p$-value is computed with the help of a binomial random variable $X$ for the number of observers picking the data plot. Under the null hypothesis is $X$ is  distributed according to $B_{K, 1/20}$ \citep{majumder:2013}. The $p$-value for a lineup is then given as $P(X \ge x)$. 
-%%This finally a decision is made about the hypothesis being tested.
-%>>>>>>> example
+\hh{XXX why do we need the last paragraph? It distracts from the main flow somewhat}
 
-%\begin{figure}[htbp] 
-%   \centering
-%   \includegraphics[width=6.5in]{plot_turk9_geno_4_3.png} 
-%   \caption{A lineup of 20 plots. One of the plots is observed data and rest of the 19 plots are obtained by randomly permuting the group structure. Can you identify the observed data?}
-%   \label{fig:lineup_geno}
-%\end{figure}
+% HH already included:
+% For any evaluation the observer may or may not identify the actual data plot. Under the null hypothesis, the actual data plot should look similar to the null plots making it harder to detect. It is not expected that an observer would be able to detect the data plot in this scenario. But since there are limited number of plots in a lineup, which is 20 in the election example, there is a 1/20 chance that the observer would pick the actual plot. 
 
-%\subsection{Observer task}
-
-For any evaluation the observer may or may not identify the actual data plot. Under the null hypothesis, the actual data plot should look similar to the null plots making it harder to detect. It is not expected that an observer would be able to detect the data plot in this scenario. But since there are limited number of plots in a lineup, which is 20 in the election example, there is a 1/20 chance that the observer would pick the actual plot. This proportion is associated with the Type~I error of the test. On the other hand, if null hypothesis is not true, the observed plot should look different from the null plots, making it easier to be detected. This is the definition of the power of the test. When multiple observers evaluate a lineup, the detection rate can be used to estimate the power. The ability of individual observers can vary, and examining this is the purpose of this paper.
+\hh{The lineup protocols allows us to calculate all relevant properties that we are familiar with from conventional statistical tests. In particular, the power of a lineup is calculated as the {\it detection rate} at which observers identify the actual data plot. Visual power depends unlike power in conventional tests not only on the strength of the signal, but also on individuals' ability. }
+%This proportion is associated with the Type~I error of the test. On the other hand, if null hypothesis is not true, the observed plot should look different from the null plots, making it easier to be detected. This is the definition of the power of the test. When multiple observers evaluate a lineup, the detection rate can be used to estimate the power. 
+The ability of individual observers varies, and \hh{the effects that might influence ability are the focus} of this paper.
 
 %\dc{*** Am trying to use detection rate rather than correct response. This is harder for this paper because we are evaluating subject's abilities to some extent, but we should try to use this in our vis inference papers.} % \mm{Di, do you suggest that I change ``correct response''  to ``detection rate'' in all the texts here?}
 
@@ -189,7 +182,16 @@ between group A and B? & DF\\
 \label{tbl:visual_stat} 
 \end{table*} 
 
-There have been ten experiments conducted using Amazon's Mechanical Turk~\citep{turk} (MTurk) that are being used to evaluate the effects of observers' demographic factors on the inference. Table \ref{tbl:visual_stat} summarizes these experiments. Each of these experiments collected demographic details of the subjects. Experiments 5, 6 and 7 are used to study the learning trend of the observer. The design of experiment~9 incorporated components that allows position of the actual data plot in the lineup, and the sample of nulls, to be evaluated. Section \ref{sec:factor_performance} discusses human factors that may affect the performance of the observer. Section \ref{sec:exp_design} describes the methods used to assess the effects, and Section \ref{sec:result_socio} describes the results.
+\hh{We have conducted a series of experiments (see Table \ref{tbl:visual_stat} for an overview)}
+%There have been ten experiments conducted 
+using Amazon's Mechanical Turk~\citep{turk} (MTurk) that \hh{provide a basis for evaluating} 
+%are being used to evaluate 
+the effects of covariates on individual's abilities to evaluate lineups. 
+\hh{In all of the experiments we collected demographic details, such as gender, age bracket, and educational background.  }
+ %Each of these experiments collected demographic details of the subjects. 
+ Experiments~5, 6 and 7 can be used \hh{to investigate short term learning trends}. Experiment~9 was also designed to check whether the  positioning of the  data plot in the lineup had an effect on detection rate. 
+
+ Section \ref{sec:factor_performance} discusses human factors that may affect the performance of the observer. Section \ref{sec:exp_design} describes the methods used to assess the effects, and Section \ref{sec:result_socio} describes the results.
 
 %\subsection{Experiments pooled}
 

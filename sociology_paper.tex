@@ -563,7 +563,7 @@ Data from participants who \hh{gave the wrong answer on the test plot were consi
 
 %\dc{*** It seems repetitive to start with a description of what we learn from the plot, so start with the model summary and use the plot to support the model findings.}
 
-To explore the significance of the demographic factors model \eqref{eqn:demographic_response} is fit to the data, with age, country, education and gender as fixed effects. To estimate the significance of the factors, reduced models are fit with that factor removed from the model. Table ~\ref{tbl:anova_factor} summarizes the results. All of the demographic factors are significantly different in describing the the detection rate, except for gender.  With respect to time taken, all of the demographic factors are significant. 
+To explore the significance of the demographic factors model \eqref{eqn:demographic_response} is fit to the data, with age, country, education and gender as fixed effects. To estimate the significance of each of the factors, reduced models are fit with that factor removed from the model. Table ~\ref{tbl:anova_factor} summarizes the results. Except for gender, all of the demographic factors show significant differences in  detection rates.  With respect to time taken, all of the demographic factors are significant. 
 
 \begin{table}[htbp]
 \centering
@@ -592,11 +592,13 @@ Proportion Correct &Full & 23822.00 &23943.00 &-11896.00  & &  &  \\
 \label{tbl:anova_factor}
 \end{table}
 
-Parameter estimates from the model fits are shown in Table \ref{tbl:model_result_demographics}. The first level of each factor serves as the baseline for the model. The age group 36-40 significantly has a higher detection rate than the 18-25, and to a lesser extent this is also true for age groups 31-35 and above 50. Participants from India have a similar detection rate to those from the USA, but ones from the rest of the world had a significantly improved detection rate. Subjects who listed themselves as having a graduate degree had a significantly higher detection rate. For time to respond, all age groups were significantly slower than the 18-25 year olds.  Participants from India were slower, and those from the rest of the world were faster than Americans. A higher degree corresponded to longer time, and males were slower than females!
+Parameter estimates from the model fits are shown in Table \ref{tbl:model_result_demographics}. The first level of each factor serves as the baseline for the model. The age group 36-40  has a significantly higher detection rate than the 18-25 age group, and to a lesser extent this is also true for age groups 31-35 and above 50. Participants from India have a similar detection rate to those from the USA, but \hh{participants} from the rest of the world show a significantly \hh{higher} detection rate. Subjects  \hh{reporting to have}  a graduate degree had a significantly higher detection rate. For time to respond, all age groups were significantly slower than  18-25 year olds.  Participants from India were slower, while those from the rest of the world were faster than US Americans. A higher degree corresponded to longer time, and males were slower than females.
 
 \begin{table}[htbp]
 \centering
-\caption{Parameter estimates of models \eqref{eqn:demographic_time} and \eqref{eqn:demographic_response} fitted for average log time taken and detection rate, respectively. For time taken all the demographic factors are significant. For detection rate, age group 36-40, rest of the world and graduate degree are significantly different. For gender no difference in performance is observed. Lineup variability is estimated to be very large for model \eqref{eqn:demographic_response}.}
+\caption{Parameter estimates of models \eqref{eqn:demographic_time} and \eqref{eqn:demographic_response} fitted for average log time taken and detection rate, respectively. For time taken all the demographic factors are significant. For detection rate, age group 36-40, rest of the world and graduate degree are significantly different. For gender no difference in performance is observed. Lineup variability is estimated to be very large for model \eqref{eqn:demographic_response}.
+
+\hh{XXX -- the way that the random effects are listed is a bit misleading -- the first value is the {\bf variance} component, not the estimate of the standard deviation, while  the second value is its square root value, not the standard error of the estimate. I don't believe that lmer provides a standard error of the variance component estimates.}}
 \scalebox{0.86}{
 \begin{tabular}{rlrrrrrrrrrr}
   \hline
@@ -722,7 +724,7 @@ The person with a high school education on average picks the data plot in 33.5\%
 %   \includegraphics[width=6.5in]{learning_trend.pdf} 
     \includegraphics[width=3.2in]{practical_impact_graduate.pdf} 
     \includegraphics[width=3.2in]{practical_impact_degree.pdf} 
-   \caption{Proportion of correct responses due to graduate degree as compared to high school degree for an 18-25 year old female in the United States. Even though graduate degree is statistically significant, the largest difference in proportion correct is  0.045 which is very negligible. The difference diminishes as we move away one or two standard deviations ($\sigma_{\ell} =2.293$) \mm{should it be 5.259 instead ?} 
+   \caption{Proportion of correct responses due to graduate degree as compared to high school degree for an 18-25 year old female in the United States. Even though graduate degree is statistically significant, the largest difference in proportion correct is  0.045 which is very negligible. The difference diminishes as we move away one or two standard deviations ($\sigma_{\ell} =2.293$) \mm{should it be 5.259 instead ?} \hh{$\sigma$ is standard deviation, 5.259 is variance, I believe.}
    of lineup variability.}
    \label{fig:practical_impact_graduate}
 \end{figure}

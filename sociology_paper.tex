@@ -123,10 +123,10 @@ These samples are plotted as electoral buildings, and the plot based on the actu
 
 A lineup can be evaluated by a single person or multiple observers. A distribution \hh{similar to the binomial distribution, but adjusted for dependencies introduced by the lineup scenario,} is used to calculate the $p$-value based on the number of times observers identify the actual data plot, which provides the information needed to make a decision on rejecting or failing to reject the null hypothesis.  In order to avoid expectation errors \citep{meilgaard}, observers should not be aware of the data that constitutes a lineup, and should not have seen the actual data plot before seeing the lineup. This is the reason that in \hh{our first example we explained the context only after presenting the lineup.}%the election example, above, the scenario was explained after the lineup question, in the text. 
 
-\hh{When presenting a lineup to an observer we should also phrase the accompanying question in as general a manner as possible, effectively}
+\hh{When presenting a lineup to an observer we should also phrase the accompanying question in as general a manner as possible, }
 %The question that is asked of the observer should be as general as possible, 
 effectively asking the observer to pick the plot that is \hh{most} different, and allowing \hh{observers} to provide their reasons for their choice. 
-\hh{If lineup tests are run in head-to-head comparisons with conventional statistical tests, such as the experiments  in  \cite{majumder:2013}, these questions have to be phrased much more specifically, in order to make the situations more comparable. } 
+\hh{However, if lineup tests are run in head-to-head comparisons with conventional statistical tests, such as the experiments  in  \cite{majumder:2013}, these questions have to be phrased much more specifically, in order to make the situations more comparable. } 
 %In some of the studies, the ones described in  \cite{majumder:2013} very specific questions were asked, because the experiments were being conducted to compare results from the lineup protocol with those of conventional tests. 
 In those experiments, the structure in the data is strictly controlled in the simulation process, which allows for specific questions to be asked. 
 In the election example, observers were asked ``which plot is the most different?''. The type of plot, showing two (modified) stacked bar charts in different colors should suggest to the observer that the interesting feature is the difference between the two heights. 
@@ -140,11 +140,9 @@ In the responses for this lineup we see something that is very typical of respon
 %Most observers got this, but it is possible that some observers might pick plot~4, where the red tower is slightly above the blue as the most different because it is the only plot with this feature \hh{(10 out of 72 observers actually did this)}. 
   %a better question may 
 
- \hh{If we consider this difference to be the main objective of the visualization, a more focused question would}
+ \hh{If we consider this difference to be the main objective of the visualization, a more focused question, that aligns more with a hypothesis test on the difference  in electoral votes  between parties, would}
  have been ``Which plot shows the biggest height difference between the two towers?'' %except that this tailors the inference to a specific feature which does not match the null hypothesis of interest. 
  
-\hh{XXX why do we need the last paragraph? It distracts from the main flow somewhat}
-
 % HH already included:
 % For any evaluation the observer may or may not identify the actual data plot. Under the null hypothesis, the actual data plot should look similar to the null plots making it harder to detect. It is not expected that an observer would be able to detect the data plot in this scenario. But since there are limited number of plots in a lineup, which is 20 in the election example, there is a 1/20 chance that the observer would pick the actual plot. 
 
@@ -226,7 +224,7 @@ A visual test statistic is chosen for a particular task. If it is well-designed 
 %Plots to do: for the same signal strength show the proportion correct for scatterplot and boxplot. eg., qplot(effect, ump-visual power, color= plot-type)
 
 %\subsection{Question Design} 
-\item{\bf Question Design:} A primary purpose of visual inference is to preclude the necessity to pre-specify discoverable features in data that is required by classical statistical inference. Visual inference supports discovery of structure, enabling the unexpected to surprise us.  This is tightly connected to the task that the human observer is asked to perform. For most purposes the observer is asked a very general question, such as to pick the plot that is most different from the others, and explain the reasons why they see it as different. By being general, all possible discoverable structures are included in the significance calculations \citet[see also ][]{buja:2009}.
+\item{\bf Question Design:} A primary purpose of visual inference is to preclude the necessity to pre-specify discoverable features in data that is required by classical statistical inference. Visual inference supports discovery of structure, enabling the unexpected to surprise us.  This is tightly connected to the task that the human observer is asked to perform. For most purposes the observer is asked a very general question, such as to pick the plot that is most different from the others, and explain the reasons why they see it as different. By being general, all possible discoverable structures are included in the significance calculations \citep[see also ][]{buja:2009}.
 
 In the initial Turk experiments (1,2,3) conducted with simulated data to compare the results from visual inference with those obtained by classical inference, the questions posed to the observers were more targeted. This was important \hh{to allow a direct comparison of the results to results from conventional testing. }%in order to make a comparison of the results. 
 For latter studies (4, 7, 10), questions posed to the observer were more general. Table \ref{tbl:visual_stat} lists the questions used for each experiment. 
@@ -244,7 +242,7 @@ For latter studies (4, 7, 10), questions posed to the observer were more general
 %Given this pattern of human eye tracks, it may effect the performance of an observer depending on where the actual plot is placed in the lineup. If the actual plot is on the top left corner and the observer starts from that point it may be easier to detect the actual plot earlier in the exercise and the observer could get plenty of time to make comparison. Thus the position of the actual plot in a lineup may have some impact.
 
 %\subsection{Demographics} 
-\item{\bf Demographics:}  The experiments collected data on age, gender, education level and geographic location. Each observer self-reported gender, age in roughly five year intervals, education level as high school or less, some college courses, an undergraduate degree, some graduate courses or a graduate degree. The IP address of the computer afforded the geographical location of the subject. The purpose of collecting this information with each experiment is to examine the effect that they have on the results of visual inference -- ideally very little. 
+\item{\bf Demographics:}  \hh{During the experiments } data on age, gender, education level and geographic location \hh{was collected}. Each observer self-reported gender, age in roughly five year intervals, education level as high school or less, some college courses, an undergraduate degree, some graduate courses or a graduate degree. The IP address of the computer afforded the geographical location of the subject. The purpose of collecting this information with each experiment is to examine the effect that they have on the results of visual inference -- ideally very little. 
 
 %Some of the demographics of the observer such as age, gender, education level and geographical location may have effect on how an observer would examine the lineup. This may produce some variability in the performance of the observer. For example, a high school student may not respond same as a well educated person while evaluating a lineup. There may be variations in different age groups as well. Investigation on subjects with a well variety of age groups is necessary to study this variability. 
 
@@ -255,7 +253,7 @@ For latter studies (4, 7, 10), questions posed to the observer were more general
 %We don't expect much difference in performances between male and female observers. Gender may have some influence through the education level and geographical locations since some location may have small number of educated female population. We intend to include similar number of male and female subjects in our study so that this can be examined.
 
 %\subsection{Learning Trend} 
-\item{\bf Learning Trend:} One might expect that as an observer evaluates more lineups they may become more skillful in their evaluations. Each participant in  experiments~5, 6 and~7 was asked to evaluate a block of  ten lineups of the same type of data plot. The ten lineups were randomly chosen from the lineups  produced for each study. Before evaluating the first lineup, the observer needs to read instructions and become accustomed to the type of plot used in the lineup. In subsequent lineups  the type of plot is the same. It is possible that the observer becomes more skillful at recognizing the most different plot, either by more often detecting the actual data plot or more quickly reporting their choice. These two ways of measuring learning trend are evaluated on data collected from experiments~5, 6 and~7.
+\item{\bf Learning Trend:} One might expect that as an observer evaluates more lineups they  become more skillful in their evaluations. Each participant in  experiments~5, 6 and~7 was asked to evaluate a block of  ten lineups of the same type of data plot. The ten lineups were randomly chosen from the lineups  produced for each study. Before evaluating the first lineup, the observer needs to read instructions and become accustomed to the type of plot used in the lineup. In subsequent lineups  the type of plot is the same. It is possible that the observer becomes more skillful at recognizing the most different plot, either by more often detecting the actual data plot or more quickly reporting their choice. These two ways of measuring learning trend are evaluated on data collected from experiments~5, 6 and~7.
 
 
 %When an observer evaluates a lineup he or she may learn something from the experiences of the earlier observations. If the same observer is shown another lineup the learning from previous evaluation may help. The more evaluations an observer makes the more skillful the observer may become. This learning trend may or may not be significant overall but it may influence the performance of the observer in some way. 
@@ -265,7 +263,7 @@ For latter studies (4, 7, 10), questions posed to the observer were more general
 %When an observer evaluate a lineup for the first time, he or she has to read through many instructions and become familiar with the environment of the experiment. We expect that this will require much more time compared to the rest of the evaluations. Time taken for the second or successive attempt should be much lower than the time taken for the first lineup. We attribute this to the adaptation to the experiment environment, not a learning of evaluating a lineup.
 
 %\subsection{Location of Actual Data Plot in the Lineup}
-\item{\bf Location of Actual Data Plot in the Lineup} For all of the lineups used in the experiments a $5\times 4$ grid of 20 points is used. A random number generator is used to determine the position where the actual data plot is placed in each lineup. Eye tracking experiments \citep{zhao:2012} suggest that some observers traverse lineups in horizontal direction, while others have a vertical up-and-down approach to their search. Almost universal, observers start at the top left of a lineup. This leads to some concern that observers might be able to more easily identify the actual data plot, if it is placed at the top left of a lineup than when it the actual data is placed at the bottom right.
+\item{\bf Location of Actual Data Plot in the Lineup} For all of the lineups used in the experiments a $5\times 4$ grid of 20 \hh{panels} is used. A random number generator is used to determine the position where the actual data plot is placed in each lineup. Eye tracking experiments \citep{zhao:2012} suggest that some observers traverse lineups in horizontal direction, while others have a vertical up-and-down approach to their search. Almost universally, observers start at the top left of a lineup. This leads to some concern that observers might be able to more easily identify the actual data plot, if it is placed at the top left of a lineup than when it the actual data is placed at the bottom right.
 %With the help of eye-tracking equipment \citet{zhao:2012} tracked the observers' eyes to see their approach in searching the plots in a lineup. The results suggest that many people read lineups from left to right, some read from upward to downward. 
 %There is some concern that if the actual data plot is located in the top left of the lineup, observers may be able to identify it more easily than when the actual data plot is at the bottom right. 
 Ideally, this does not happen. Experiment~9  is designed to allow us to investigate the effects of location on detection. Five different locations in the lineup were used to assess how fast and accurately observers identified the actual data plot.
@@ -282,7 +280,7 @@ Ideally, this does not happen. Experiment~9  is designed to allow us to investig
 %each lineup, there is a sample of draws from a null distribution. A lineup becomes difficult to evaluate if one of the null plots appears to be very similar to the actual plot. When null hypothesis is true it is a common scenario. With alternative hypothesis being true,  it may happen if  we compare actual plot with many null plots. But we have only specific number of null plots in a lineup. So, a different sample of null plots may yield some variation in the difficulty of the lineup with the same actual plot. This may affect the performance of the observer while evaluating a lineup.
 
 %\subsection{Individual Skill or Ability} 
-\item{\bf Individual Skill or Ability:} Each person may have different visual skill sets, and aptitude for reading statistical plots. This can be examined by having the same lineups evaluated by multiple subjects, so that it can be seen if some subjects consistently detect the actual data plot more often than others.  
+\item{\bf Individual Skill or Ability:} Each person may have different  aptitude for reading statistical plots, and their visual skill sets might be differently developed. We \hh{We can evaluate the effect of individuals' skills and abilities}  by letting multiple subjects evaluate the same lineups, which allows us to estimate, if some subjects consistently detect the actual data plot more often than others.  
  %For example, in a controlled experimental study \citet{zhao:2012}  noticed that some people spent a lot of time to decide no matter whether the lineup is difficult or easy while some simply glanced at lineups to make a decision. This influences the response of the observer. Also subject specific variation in the power of visual test is observed in \cite{majumder:2013}. 
 \end{itemize}
 
@@ -298,18 +296,18 @@ Two of the factors, signal in the data and individual abilities, were studied in
 
 \subsection{Demographic Factors}  %In addition to obtain evaluation responses of the lineups, all the 10 experiments shown in Table \ref{tbl:visual_stat} were designed to collect the following demographic information of the subjects participating the experiments:
 
-All the ten experiments shown in Table \ref{tbl:visual_stat}, had demographic information collected from subjects, as follows:
+For all  ten experiments shown in Table \ref{tbl:visual_stat}, the following demographic information was collected from subjects:
 
 \begin{enumerate} \leftmargin 5cm  \itemsep 0in
-\item Age group, with categories set to be 18-25, 26-30, 31-35, 36-40, 41-45, 46-50, 51-55, 56-60, above 60.
-\item Gender, male or female.
-\item Education level, with levels being high school or less, some under grad course, under graduate degree, some graduate courses, and graduate degree.
-\item Geographical location, collected from the IP address of the participants' computer, as latitude, longitude, city and country. 
+\item {\it Age group}, with categories set to be 18-25, 26-30, 31-35, 36-40, 41-45, 46-50, 51-55, 56-60, above 60.
+\item {\it Gender}, male or female.
+\item {\it Education level}, with levels being high school or less, some undergraduate courses, undergraduate degree, some graduate courses, and graduate degree.
+\item {\it Geographical location}, collected from the IP address of the participants' computer, as latitude, longitude, city and country. 
 \end{enumerate}
 
 %Instead of collecting exact age, 9 levels of age were collected. They are 18-25, 26-30, 31-35, 36-40, 41-45, 46-50, 51-55, 56-60, above 60. There were five levels of academic information. They are (1) High school or less , (2) Some under grad course, (3) Under graduate degree, (4) Some graduate courses,  (5) Graduate degree.  Geographical locations were collected using the true public ip addresses of the participants' computer. This provides latitude and longitude of the ip address as well as the city and country information. 
 
-Let $Y_{ij}$ denote the response from observer $i$ on a lineup $j$, with $Y_{ij} =1$ if the actual data plot is chosen, otherwise $Y_{ij} =0$. The factors are examined in association with the observer's response using a logistic regression with random effects terms:
+Let $Y_{ij}$ denote the response from observer $i$ on a lineup $j$, with $Y_{ij} =1$ if the actual data plot is chosen, otherwise $Y_{ij} =0$. The factors are examined in association with the observer's response using a logistic regression with random effect terms:
 \begin{equation} \label{eqn:demographic_response}
 g( \pi_{ij} )= \mu + \alpha_{k(i)} + \gamma_{l(i)} + \tau_{m(i)}+ \kappa_{s(i)} + \ell_j,  
 \end{equation}
@@ -317,10 +315,11 @@ where $\pi_{ij}=  E(Y_{ij})$ is the probability that  observer $i$ picks the act
 %\begin{equation} \label{eqn:demographic_response}
 %g( \pi_{ij} )= \mu + \alpha_{k(i)} + \gamma_{l(i)} + \tau_{m(i)}+ \kappa_{s(i)} + \ell_j,  
 %\end{equation}
- $\mu$ is an overall average probability for picking out the data plot from a lineup, $\alpha$, $\gamma$, $\tau$ and  $\kappa$ are the effects of age group $k(i)$, gender $l(i)$, education level $m(i)$ and country name $s(i)$ respectively for observer $i$. The term $\ell_j$ is a random intercept predicting lineup difficulty level and we assume  $\ell_j \sim N(0, \sigma_\ell^2)$, and $g(.)$ denotes the {\it logit} link function $g(\pi)=\log(\pi) - \log(1-\pi); 0 \le \pi \le 1$.
+ $\mu$ is an overall population average, %probability for picking out the data plot from a lineup HH: mu is not a probability, it is on the scale of the link function
+ $\alpha$, $\gamma$, $\tau$ and  $\kappa$ are the effects of age group $k(i)$, gender $l(i)$, education level $m(i)$ and country name $s(i)$, respectively for observer $i$. The term $\ell_j$ is a random intercept predicting lineup difficulty level and we assume independence and normality of the errors, i.e.\ $\ell_j \sim N(0, \sigma_\ell^2)$.  $g(.)$ denotes the {\it logit} link function $g(\pi)=\log(\pi) - \log(1-\pi); 0 \le \pi \le 1$.
 
 
-In addition, we model the  time  an observer takes to identify a panel from a lineup. Let $Z_{ij}$ denote the logarithm of time taken for  observer $i$ to evaluate  lineup $j$. Let $\mu_{ij}=  E(Z_{ij})$ be the average of the (log) time taken by  observer $i$ to pick a panel from lineup $j$. We model this in a mixed effects model of the same structure as model~(\ref{eqn:demographic_response}) given as:
+Similarly, we model the  time  an observer takes to identify a panel from a lineup. Let $Z_{ij}$ denote the logarithm of time taken for  observer $i$ to evaluate  lineup $j$. Let $\mu_{ij}=  E(Z_{ij})$ be the average of the (log) time taken by  observer $i$ to pick a panel from lineup $j$. We model this in a mixed effects model of the same structure as model~(\ref{eqn:demographic_response}) given as:
 %\hh{
 \begin{equation} \label{eqn:demographic_time}
 Z_{ij} = \mu + \alpha_{k(i)} + \gamma_{l(i)} + \tau_{m(i)}+ \kappa_{s(i)} + \ell_j+ \epsilon_{ij},  

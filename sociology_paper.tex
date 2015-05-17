@@ -209,7 +209,7 @@ of the factors that are expected to have some impact on the performance of visua
 \item{\bf Choice of Visual Test Statistic:}  
 %There are a variety of ways that
 Data can be plotted in a variety of ways and we can enhance plots by axes, legends or representations of models. The choice of plot primarily should be appropriate for the problem being investigated, as the data plot is the visual test statistic. 
-When for example studying the association between two quantitative variables a scatterplot is usually optimal. \hh{XXX do we really want to say optimal? that sounds like we have an underlying criterion to optimize. XXX} Enhancements, such as a line overlaying a scatterplot to represent a fitted model, might be appropriate for studying models for the data.  Some choices of visual test statistics provide better results than others when studying the same problem \citep{heike:2012}, because some plot types make it easier for certain structures to be seen. 
+When for example studying the association between two quantitative variables a scatterplot is usually \hh{considered best practice}. Enhancements, such as a line overlaying a scatterplot to represent a fitted model, might be appropriate for studying models for the data.  Some choices of visual test statistics provide better results than others when studying the same problem \citep{heike:2012}, because some plot types make it easier for certain structures to be seen. 
 
 Table \ref{tbl:visual_stat} shows the large variety of visual test statistics used in the Turk studies completed so far. These experiments were conducted to examine many different visual tasks. Side-by-side boxplots were used in experiment~1 to study the importance of a categorical variable in a regression model. For both experiments~2 and~3, a scatterplot is the visual test statistic, but a regression line fitted through the points is overlaid for experiment~2. The experiments studied slightly different problems, for which the difference in plot type was important. Experiment~4 compared polar coordinates to euclidean coordinates on the reading of structure in a barchart.  Experiment~5 examined the style of plot for a bivariate data problem, by comparing results when using a scatterplot, side-by-side dot plots, overlaid densities or side-by-side boxplots. Experiment~6 studied the difference between variations of boxplots. Experiment~7 studied the effects of high dimension low sample size on the separation of groups in low-dimensional projections. The sine illusion, where people read the strength of differences between curves as different when there is a strong sinusoidal structure, is examined in experiment~8. Experiment~9 was conducted to test if there was any structure in an RNA-seq data set measured on soybeans, and used interaction plots classically constructed to examine interaction effects in $2\times 2$ factorial designs. Experiment~10 used different sorts of residual plots for hierarchical linear models as the visual test statistics. 
 
@@ -242,7 +242,7 @@ For latter studies (4, 7, 10), questions posed to the observer were more general
 %Given this pattern of human eye tracks, it may effect the performance of an observer depending on where the actual plot is placed in the lineup. If the actual plot is on the top left corner and the observer starts from that point it may be easier to detect the actual plot earlier in the exercise and the observer could get plenty of time to make comparison. Thus the position of the actual plot in a lineup may have some impact.
 
 %\subsection{Demographics} 
-\item{\bf Demographics:}  \hh{During the experiments } data on age, gender, education level and geographic location \hh{was collected}. Each observer self-reported gender, age in roughly five year intervals, education level as high school or less, some college courses, an undergraduate degree, some graduate courses or a graduate degree. The IP address of the computer afforded the geographical location of the subject. The purpose of collecting this information with each experiment is to examine the effect that they have on the results of visual inference -- ideally very little. 
+\item{\bf Demographics:}  \hh{During each of the experiments } data on age, gender, education level and geographic location \hh{was collected}. Each observer self-reported gender, age in roughly five year intervals, education level as high school or less, some college courses, an undergraduate degree, some graduate courses or a graduate degree. The IP address of the computer afforded the geographical location of the subject. The purpose of collecting this information with each experiment is to examine the effect that they have on the results of visual inference -- ideally very little. 
 
 %Some of the demographics of the observer such as age, gender, education level and geographical location may have effect on how an observer would examine the lineup. This may produce some variability in the performance of the observer. For example, a high school student may not respond same as a well educated person while evaluating a lineup. There may be variations in different age groups as well. Investigation on subjects with a well variety of age groups is necessary to study this variability. 
 
@@ -598,7 +598,7 @@ Parameter estimates from the model fits are shown in Table \ref{tbl:model_result
 \centering
 \caption{Parameter estimates of models \eqref{eqn:demographic_time} and \eqref{eqn:demographic_response} fitted for average log time taken and detection rate, respectively. For time taken all the demographic factors are significant. For detection rate, age group 36-40, rest of the world and graduate degree are significantly different. For gender no difference in performance is observed. Lineup variability is estimated to be very large for model \eqref{eqn:demographic_response}.
 %
-\hh{XXX -- the way that the random effects are listed is a bit misleading -- the first value is the {\bf variance} component, not the estimate of the standard deviation, while  the second value is its square root value, not the standard error of the estimate. I don't believe that lmer provides a standard error of the variance component estimates.}}
+}
 \scalebox{0.86}{
 \begin{tabular}{rlrrrrrrrrrr}
   \hline
@@ -632,7 +632,7 @@ Gender ($\gamma$)& Female&0.000   &---  &---  &---  &  &--- &--- &---& ---\\
   &Male & 0.078 & 0.009 & 8.26 & $<$0.001 &   & 0.055 & 0.036 & 1.50 & 0.133 \\ 
   \hline
 \multicolumn{2}{l}{Random Effect} &  &  &  &  &  & & && \\ 
-& lineup($\sigma_{\ell}$) & 0.082 & 0.287 &  &  &   & 5.259 & 2.293 &  &  \\ 
+& lineup($\sigma_{\ell}$) & 0.287 &  &  &  &   & 2.293 &  &  &  \\ 
  & Error($\sigma$) & 0.479 & &  &  &  & \mm{? 0.692}&& &\\ 
    \hline
 \end{tabular}
@@ -802,9 +802,9 @@ $\mu$ & -1.304 & 0.179 & -7.28 & $<$0.001 &   & -0.220 & 0.147 & -1.50 & 0.134 &
   $\alpha_9$ & -0.195 & 0.232 & -0.84 & 0.400 &   & 0.378 & 0.160 & 2.36 & 0.018 &   & 0.204 & 0.436 & 0.47 & 0.639 \\ 
   $\alpha_{10}$ & 0.513 & 0.228 & 2.25 & 0.024 &   & 0.192 & 0.163 & 1.18 & 0.238 &   & -0.213 & 0.432 & -0.49 & 0.622 \\ 
 \multicolumn{2}{l}{Random}   &  &  &  &  & & &&& & & &  & \\ 
-  $\sigma^2_a$ & $<$0.001 & 0.017 &  &  &   & 0.001 & 0.034 &  &  &   & 0.027 & 0.163 &  &  \\ 
-  $\sigma^2_u$ & 0.720 & 0.848 &  &  &   & 0.815 & 0.903 &  &  &   & $<$0.001 & $<$0.001 &  &  \\ 
-  $\sigma^2_{\ell}$ & 2.178 & 1.476 &  &  &   & 2.009 & 1.418 &  &  &   & 10.980 & 3.314 &  &  \\ 
+  $\sigma^2_a$ &  0.017 &&  &  &   &  0.034 &&  &  &   &  0.163 &&  &  \\ 
+  $\sigma^2_u$  & 0.848 &&  &  &    & 0.903 &&  &  &   &  $<$0.001 &&  &  \\ 
+  $\sigma^2_{\ell}$  & 1.476 &&  &  &    & 1.418 &&  &  &   &  3.314 &&  &  \\ 
    \hline
 \end{tabular}
 }
@@ -839,7 +839,7 @@ The parameter $\alpha$ for fixed effect covariate attempt is highly significant 
 
 \begin{table}[htbp]
 \centering
-\caption{Parameter estimates of model \eqref{eqn:trend_time} fitted for log time taken to evaluate a lineup. Both fixed effect parameters of Attempt ($\alpha_1$ and $\alpha$) are highly significant for all three experiments 5, 6 and 7. \hh{XXX same problem with the random effects as in tables 4 and 5.}}
+\caption{Parameter estimates of model \eqref{eqn:trend_time} fitted for log time taken to evaluate a lineup. Both fixed effect parameters of Attempt ($\alpha_1$ and $\alpha$) are highly significant for all three experiments 5, 6 and 7. }
 \scalebox{0.81}{
 \begin{tabular}{rrrrccrrrccrrrc}
   \hline
@@ -853,10 +853,10 @@ $\mu$ & 3.817 & 0.039 & 97.38 & $<$0.001 &   & 3.901 & 0.033 & 118.19 & $<$0.001
   $\alpha_1$ & 0.326 & 0.035 & 9.35 & $<$0.001 &   & 0.335 & 0.029 & 11.40 & $<$0.001 &   & 0.280 & 0.050 & 5.63 & $<$0.001 \\ 
   $\alpha$ & -0.038 & 0.004 & -9.30 & $<$0.001 &   & -0.039 & 0.004 & -10.19 & $<$0.001 &   & -0.029 & 0.007 & -4.22 & $<$0.001 \\ 
 \multicolumn{2}{l}{Random}   &  &  &  &  & & &&& & & &  & \\ 
-  $\sigma^2_a$ & 0.001 & 0.027 &  &  &   & 0.002 & 0.045 &  &  &   & 0.002 & 0.049 &  &  \\ 
-  $\sigma^2_u$ & 0.259 & 0.509 &  &  &   & 0.245 & 0.495 &  &  &   & 0.134 & 0.366 &  &  \\ 
-  $\sigma^2_{\ell}$ & 0.008 & 0.091 &  &  &   & 0.040 & 0.199 &  &  &   & 0.055 & 0.235 &  &  \\ 
-  $\sigma^2$ & 0.211 & 0.460 &  &  &   & 0.251 & 0.501 &  &  &   & 0.206 & 0.454 &  &  \\ 
+  $\sigma^2_a$ &   0.027 &  &  &   &  & 0.045 &  &  &   &  & 0.049 &  &  \\ 
+  $\sigma^2_u$ &   0.509 &  &  &   &  & 0.495 &  &  &   &  & 0.366 &  &  \\ 
+  $\sigma^2_{\ell}$ &   0.091 &  &  &   &  & 0.199 &  &  &   &  & 0.235 &  &  \\ 
+  $\sigma^2$ &   0.460 &  &  &   &  & 0.501 &  &  &   &  & 0.454 &  & &  \\ 
    \hline
 \end{tabular}
 }

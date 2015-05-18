@@ -48,8 +48,7 @@
 
 
 \begin{document}
-
-% tableofcontents
+\tableofcontents
 
 % Article top matter
 \title{Human Factors Influencing Visual Statistical Inference }
@@ -359,12 +358,16 @@ Equation~\ref{eqn:trend_time} leads to the estimate of the subject and the lineu
 
 To fit all these mixed effect models the function {\tt lmer()} is used from R package {\tt lme4} by \cite{lme4:2011}. To obtain the $p$-values of fixed effect parameters estimates, normal approximation is used for $Z$ scores computed as the ratio of estimates to the estimated standard errors.  
 
-\subsection{Location Effect} \label{sec:location_design} Experiment~9 studied significant expression in an RNA-seq study, and was designed so that location effect of the actual data plot in a lineup could also be assessed. The data used, documented in \cite{atwood:2013}, measures gene expression of soybean by RNA-seq methods. Two factors were of primary interest: genotype (call them RPA and EV) and the interaction between genotype and iron condition (sufficient or insufficient). The $2\times2$ factorial design provides four treatment conditions. For each gene there were 11 data points, because each treatment contained two or three replicates.  \mm{Di, There are more than 40,000 genes examined for significant expression in \citep{tengfei:2013}. Is that what you wanted to put here?}. 
-In large studies such as this there is a valid question whether the data exhibits any structure at all, or if the small $p$-values are simply occurring by chance, from the massive multiple testing. This overall significance is studied by visual inference. 
+\subsection{Location Effect} \label{sec:location_design} Experiment~9 studied significant expression in an RNA-seq study, and was designed so that location effect of the actual data plot in a lineup could also be assessed. The data used, documented in \cite{atwood:2013}, measures gene expression of soybean by RNA-seq methods. Two factors were of primary interest a main effect for genotype and an interaction effect between genotype and treatment condition.
 
-For the study, the routine processing of the data was conducted to find (1) the gene that exhibited the most significance difference in expression between genotypes, (2) the gene that exhibited the most different expression on RPA, but insignificant expression on EV. Two different types of plots would be made to examine this. For (1) side-by-side dotplots of the expression levels for the one gene by genotype were created. For (2) an interaction plot, with iron sufficiency represented on the horizontal axis, expression vertically, and genotype by color. Colored lines connect the means for the two genotypes over iron treatment. The null plots were created by randomizing the experimental design, and re-doing everything else as done with the actual data. Any genes found under these circumstances had expression differences that can only be considered to by consistent with random differences. Full results are documented in \cite{tengfei:2013}. 
+%Two factors were of primary interest: genotype (call them RPA and EV) and the interaction between genotype and iron condition (sufficient or insufficient). The $2\times2$ factorial design provides four treatment conditions. For each gene there were 11 data points, because each treatment contained two or three replicates.  \mm{Di, There are more than 40,000 genes examined for significant expression in \citep{tengfei:2013}. Is that what you wanted to put here?}. 
+In large studies such as this there is a valid question whether the data exhibits any structure at all, or if the small $p$-values are simply occurring by chance, from the massive multiple testing. This overall significance is studied using visual inference  in \citet{tengfei:2013}. 
 
-Multiple lineups of the data were produced. The actual plot was randomly placed in five different locations in a lineup of size 20. The locations were  1, 8, 12, 17, 20 for genotype effect (1) and 2, 9, 12, 16, 20 for interaction effect (2). Five different sets of null plots were used to produce 5 lineups for each location position, creating a total of 25 lineups for studying the genotype effect, and another 25 lineups for studying the interaction effect. Each observer saw three lineups, one for genotype, one for interaction, and one easy lineup that was used to help clean the data. 
+%For the study, the routine processing of the data was conducted to find (1) the gene that exhibited the most significance difference in expression between genotypes, (2) the gene that exhibited the most different expression on RPA, but insignificant expression on EV. Two different types of plots would be made to examine this. For (1) side-by-side dotplots of the expression levels for the one gene by genotype were created. For (2) an interaction plot, with iron sufficiency represented on the horizontal axis, expression vertically, and genotype by color. Colored lines connect the means for the two genotypes over iron treatment. The null plots were created by randomizing the experimental design, and re-doing everything else as done with the actual data. Any genes found under these circumstances had expression differences that can only be considered to by consistent with random differences. Full results are documented in \cite{tengfei:2013}. 
+
+In order to study the effect that  location has on evaluating lineups, we used multiple lineups for each of the data plots. For each data plot, five sets of null plots were generated and the actual plot was randomly placed in one of five different locations in a lineup of size 20. 
+For the genotype effect, the locations were  1, 8, 12, 17, 20 and locations 2, 9, 12, 16, 20 were used for the interaction effect. %Five different sets of null plots were used to produce 5 lineups for each location position, creating 
+Overall this created a total of 25 lineups for studying the genotype effect, and another 25 lineups for studying the interaction effect. Each observer saw three lineups, one for genotype, one for interaction, and one easy lineup that was used to help clean the data. 
 
 %It is set up based on the gene expression data \citep{atwood:2013} with two groups. One is the Genotype and the other the Empty Vector (EV). For each of the groups, gene expression data were collected in presence or absence of iron sufficiency. Two factors were of primary interest. One is the Genotype main effect and the other is the interaction effect between Genotype and iron sufficiency. 
 
@@ -887,11 +890,15 @@ To visualize how the time taken reduces over the successive attempts, we fitted 
    \label{fig:learning_trend_time}
 \end{figure}
 
-\subsection{Lineup Design}
+\subsection{Location Effect}
 
 A total of 111 subjects was recruited to evaluate lineups designed to investigate the location effect of the actual data plot in the lineup as described in Section~\ref{sec:location_design}. Each subject evaluated two lineups;  one for Interaction effect and the other for Genotype.  In total there were 222 responses for 50 lineups. The data on the test lineup were excluded from the analysis.
 
-The detection rate for each data plot location is shown in Figure~\ref{fig:location_effect} colored by null sets. The overall average detection rate for each location is shown using dashed lines. Size of the points represent the number of responses. For some locations we have as many as 10 responses. For location 1, we did not have any responses for null set 1 in one of the interaction lineups.
+We are investigating location effect in two ways: (1) location effect of each individual plot location, and (2) location effect of inside/outside panel positions.
+
+Figure~\ref{fig:location_effect} shows an overview of detection rates for both of the effects studies in experiment~9. Each dot corresponds to one lineup. The size of each dot gives the number of evaluations. Lineups with  the same set of null plots are connected by lines.  
+%The detection rate for each data plot location is shown in colored by null sets. 
+The overall average detection rate for each location is shown using dashed lines. Size of the points represent the number of responses. For some locations we have as many as 10 responses. For location 1, we did not have any responses for null set 1 in one of the interaction lineups.
 
 We observe some variability in the performance due to different null sets even though the same actual data plot was used for all of  these null sets. The lineup protocol is using a finite and small sample (19 in these experiments) of all possible null sets, so it is possible to see some variability in performance depending on the null set. If null sets come from the ``extremes'' of the sampling distribution they may have structure that is more extreme than the actual data plot, making the lineup more difficult to evaluate. From the plot we can see that null set 3 appeared to be more difficult in the Interaction lineup, because the detection rate was lower regardless of the position of the actual data plot. This null set effect was tested, and a significant difference \hh{was found} for null set 3 of the interaction lineup. The rest of the null sets do not show any differences at  a 1\% significance level. 
 
@@ -908,7 +915,7 @@ We observe some variability in the performance due to different null sets even t
 %The sizes of the dots in  Figure~\ref{fig:location_effect} represents the number of responses obtained for that location and null set. For some locations we have as many as 10 responses. For location 1, we did not have any response for null set 1 in one of the interaction lineups. We observe larger variability for interaction lineups as compared to Genotype lineups. It is because some of the interaction lineups were evaluated only once as we see for null plot 3 and 5 for Interaction effect. This leads to the extreme proportion of correct since one response will either be correct or wrong. The larger variability observed for Interaction lineups can be controlled at some extent by evaluating them multiple times.
 
 
-Model \eqref{manova} was fit to the data to test if the detection rates were significantly different for the different locations. For this we use the {\it manova()} function provided in the {\it stats} package of the software R \citep{R:2012}. The results are shown in Table \ref{tbl:manova}. The $p$-values for both Interaction and Genotype effect are much bigger than the conventional threshold of 0.05 suggesting that location of the actual data plot in the lineup does not significantly affect performance. 
+Model \eqref{manova} was fit to the data to test if  detection rates were significantly different for the different locations. For this we use the {\it manova()} function provided in the {\it stats} package of the software R \citep{R:2012}. The results are shown in Table \ref{tbl:manova}. The $p$-values for both Interaction and Genotype effect are much bigger than the conventional threshold of 0.05 suggesting that location of the actual data plot in the lineup does not significantly affect performance. 
 
 \begin{table}[hbtp]
 \caption{The summary of the results obtained by fitting MANOVA model \eqref{manova} using Wilks test.}
@@ -927,8 +934,11 @@ Model \eqref{manova} was fit to the data to test if the detection rates were sig
 \label{tbl:manova}
 \end{table}
 
-
-We also examined whether the proportion of correct responses differs if the actual plot is on the outer boundary or in the inner locations. The locations 7,8,9,12,13,14 in the lineup are considered inner locations and the rest of the boundary locations are considered to be outer location. As we see in Figure~\ref{fig:location_effect}, location 9, 12 are inside for Interaction effect and location 8, 12 are inside for Genotype. It does not show any differences whether the actual plot is inside or outer border of the lineup. We also fitted model \eqref{manova} with two locations, inner and outer, as covariate and observed no significant differences. 
+For the second approach in investigating the location effect, we distinguish between inner panels 7,8,9,12,13,14 and outer panels (any panel with an outside edge).  
+%We also examined whether the proportion of correct responses differs if the actual plot is on the outer boundary or in the inner locations. The locations 7,8,9,12,13,14 in the lineup are considered inner locations and the rest of the boundary locations are considered to be outer location. 
+From Figure~\ref{fig:location_effect} we see that location 9, 12 are inner panels for Interaction effect and locations 8, 12 are inner panels for Genotype. 
+Model \eqref{manova} fitted with two locations effects, inner and outer, did not result in any significant differences.  
+%It does not show any differences whether the actual plot is inside or outer border of the lineup. 
 
 
 

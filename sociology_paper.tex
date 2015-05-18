@@ -889,11 +889,11 @@ To visualize how the time taken reduces over the successive attempts, we fitted 
 
 \subsection{Lineup Design}
 
-A total of 111 subjects were recruited to evaluate lineups designed to investigate the location effect of the actual data plot in the lineup as described in Section~\ref{sec:location_design}. Each subject evaluated two lineups;  one for Interaction effect and the other for Genotype.  In total there were 222 responses on 50 lineups. The data on the test lineup were excluded from the analysis.
+A total of 111 subjects was recruited to evaluate lineups designed to investigate the location effect of the actual data plot in the lineup as described in Section~\ref{sec:location_design}. Each subject evaluated two lineups;  one for Interaction effect and the other for Genotype.  In total there were 222 responses for 50 lineups. The data on the test lineup were excluded from the analysis.
 
-The detection rate for each data plot location is shown in Figure~\ref{fig:location_effect} colored by null sets. The overall average detection rate for each location are shown using dashed lines. Size of the point represents the number of responses. For some locations we have as many as 10 responses. For location 1, we did not have any response for null set 1 in one of the interaction lineups.
+The detection rate for each data plot location is shown in Figure~\ref{fig:location_effect} colored by null sets. The overall average detection rate for each location is shown using dashed lines. Size of the points represent the number of responses. For some locations we have as many as 10 responses. For location 1, we did not have any responses for null set 1 in one of the interaction lineups.
 
-We observe some variability of performance for different null sets even though the same actual data plot was used for all these null sets. The lineup protocol is using a finite and small sample (19 in these experiments) of all possible null sets, so it is possible to see some variability in performance depending on the null set. If null sets come from the ``extremes'' of the sampling distribution they may have structure that is more extreme than the actual data plot, making the lineup more difficult to evaluate. From the plot we can see that null set 3 appeared more difficult in the Interaction lineup, because the detection rate was lower regardless of the position of the actual data plot. This null set effect was tested, and significant difference \hh{were found} for null set 3 of the interaction lineup. The rest of the null sets don't show any differences at 1\% significance level. 
+We observe some variability in the performance due to different null sets even though the same actual data plot was used for all of  these null sets. The lineup protocol is using a finite and small sample (19 in these experiments) of all possible null sets, so it is possible to see some variability in performance depending on the null set. If null sets come from the ``extremes'' of the sampling distribution they may have structure that is more extreme than the actual data plot, making the lineup more difficult to evaluate. From the plot we can see that null set 3 appeared to be more difficult in the Interaction lineup, because the detection rate was lower regardless of the position of the actual data plot. This null set effect was tested, and a significant difference \hh{was found} for null set 3 of the interaction lineup. The rest of the null sets do not show any differences at  a 1\% significance level. 
 
 %This may happen for some sets of null plots if one or more null plots are very similar to the actual plot. In another set of null plots this may not happen making some lineups easier than others even though the actual data plot is the same. This pattern is evident in the Figure~as we see proportion correct for null plot 5 is consistently above the null plot 1 for each of the locations. 
 
@@ -908,7 +908,7 @@ We observe some variability of performance for different null sets even though t
 %The sizes of the dots in  Figure~\ref{fig:location_effect} represents the number of responses obtained for that location and null set. For some locations we have as many as 10 responses. For location 1, we did not have any response for null set 1 in one of the interaction lineups. We observe larger variability for interaction lineups as compared to Genotype lineups. It is because some of the interaction lineups were evaluated only once as we see for null plot 3 and 5 for Interaction effect. This leads to the extreme proportion of correct since one response will either be correct or wrong. The larger variability observed for Interaction lineups can be controlled at some extent by evaluating them multiple times.
 
 
-Model \eqref{manova} was fit to the data to test if the detection rates were significantly different for the different locations. For this we use the {\it manova()} function provided in the {\it stats} package of the software R \citep{R:2012}. The results are shown in Table \ref{tbl:manova}. The $p$-values for both Interaction and Genotype effect are much bigger than the conventional threshold of 0.05. This suggest that location of the actual data plot in the lineup does not significantly affect performance. 
+Model \eqref{manova} was fit to the data to test if the detection rates were significantly different for the different locations. For this we use the {\it manova()} function provided in the {\it stats} package of the software R \citep{R:2012}. The results are shown in Table \ref{tbl:manova}. The $p$-values for both Interaction and Genotype effect are much bigger than the conventional threshold of 0.05 suggesting that location of the actual data plot in the lineup does not significantly affect performance. 
 
 \begin{table}[hbtp]
 \caption{The summary of the results obtained by fitting MANOVA model \eqref{manova} using Wilks test.}
@@ -917,9 +917,9 @@ Model \eqref{manova} was fit to the data to test if the detection rates were sig
   \hline \hline
  Location & && & \multicolumn{3}{c} {Degrees of Freedom}  & F test \\
  \cline{5-7}
- Effect & DF & Wilks & Approx. F & Numerator& Denumerator &Residual & $p$-value\\
+ Effect & DF & Wilks & Approx. F & Numerator& Denominator &Residual & $p$-value\\
   \hline
-  Interaction& 3&0.07986 & 0.592 &15&5.92 & 6 & 0.8082 \\ 
+  Interaction& 3&0.07986 & 0.592 &15& \phantom{0}5.92 & 6 & 0.8082 \\ 
   Genotype & 4&0.01689 & 1.722 & 20&14.22 & 8 & 0.1488 \\ 
    \hline
 \end{tabular}

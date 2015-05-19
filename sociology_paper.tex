@@ -48,7 +48,7 @@
 
 
 \begin{document}
-\tableofcontents
+%\tableofcontents
 
 % Article top matter
 \title{Human Factors Influencing Visual Statistical Inference }
@@ -61,7 +61,7 @@
 \begin {abstract}  
 Visual statistical inference is a way to determine significance of patterns found while  exploring data with graphics.  Visual inference relies on human observers inspecting a lineup: one  data plot randomly placed among a set of decoy plots. Each individual is different in their cognitive psychology and judiciousness, which can affect the visual inference. The usual way of estimating the effectiveness of a statistical test is its power. The estimate of power of a lineup is controlled by combining evaluations from multiple observers. Factors that may  affect the power of visual inference are the observers' demographics, visual skills, and experience, the sample of null plots taken from the null distribution, the position of the data plot in the lineup, and the signal strength in the data. This paper examines these factors. Results from multiple visual inference studies using Amazon's Mechanical Turk are examined to provide an assessment of these. The experiments suggest that individual skills vary substantially,  but demographics do not have a huge effect on performance. There is evidence that a learning effect exists but only in the sense that observers become faster with repeated evaluations, while accuracy stays the same. The placement of data plot in the lineup does not affect the inference.
 
-{\bf Keywords: \sf statistical graphics, non-parametric test, cognitive \hh{psychology}, data visualization, exploratory data analysis, data mining, visual analytics.} 
+{\bf Keywords: \sf statistical graphics, non-parametric test, cognitive psychology, data visualization, exploratory data analysis, data mining, visual analytics.} 
 \end {abstract}
 
 %\begin{multicols}{2}
@@ -69,7 +69,7 @@ Visual statistical inference is a way to determine significance of patterns foun
 
 \section{Introduction}  
 
-The lineup protocol introduced in \citet{buja:2009} can be used to quantify the significance of \hh{graphical} findings in the exploratory data analysis process. This methodology is  part of what is called visual statistical inference, which has been developed further  and validated by \citet{majumder:2013} in simulation studies of head to head comparisons with conventional inference. One of the major contributions of  \citet{majumder:2013}  is to define the power of the visual test and provide methods to obtain the power for a particular lineup. It was observed that the power can be as good or better than that of a conventional test in some scenarios.
+The lineup protocol introduced in \citet{buja:2009} can be used to quantify the significance of graphical findings in the exploratory data analysis process. This methodology is  part of what is called visual statistical inference, which has been developed further  and validated by \citet{majumder:2013} in simulation studies of head to head comparisons with conventional inference. One of the major contributions of  \citet{majumder:2013}  is to define the power of the visual test and provide methods to obtain the power for a particular lineup. It was observed that the power can be as good or better than that of a conventional test in some scenarios.
 
 In visual inference, the test statistic is a plot of the observed data. To create a lineup, this plot, called the actual data plot, is placed in a layout of null plots. The null plots  are generated from the model specified by a null hypothesis, essentially describing what the plot might look like if the data had no structure. An observer is asked to evaluate the lineup. If the  actual data plot is detected by the observer, the null hypothesis is rejected. This means that the structure in the actual data plot has significant structure, a pattern that is not simply due to randomness. Combining the choices of multiple observers provides more stability in the estimation of significance.
 
@@ -80,17 +80,17 @@ In visual inference, the test statistic is a plot of the observed data. To creat
    \centering
    \includegraphics[width=0.99\textwidth]{electoral-5-13.pdf} 
 %      \includegraphics[width=0.99\textwidth]{electoral-1-1.pdf} 
-   \caption{ \label{fig:elect} Which one of the plots is the most different from the others?}
+   \caption{ \label{fig:elect} Which one of the plots, labelled 1 through 20 from top left to bottom right, is the most different from the others?}
 \end{figure}
 
 Figure~\ref{fig:elect} displays a lineup of 20 plots where one of the plots is observed data, while the remaining 19 plots are showing  data generated under a null model. Which one of the 20 plots is the most different from the others? 
-When asked this question, 12 \hh{out} of 72 observers picked the  plot \hh{of the observed data}, located in panel number $3^2+4$ in the lineup \footnote{The little piece of calculus used for describing the location of the data plot in the lineup provides a small cognitive hurdle that is supposed to enable the interested reader to inspect the lineup without being biased by knowing the location of the data plot.}.  The corresponding $p$-value is \hh{0.0077}, indicating sufficient evidence to reject the null hypothesis. 
+When asked this question, 12 out of 72 observers picked the  plot of the observed data, located in panel number $3^2+4$ in the lineup \footnote{The little piece of calculus used for describing the location of the data plot in the lineup provides a small cognitive hurdle that is supposed to enable the interested reader to inspect the lineup without being biased by knowing the location of the data plot.}.  The corresponding $p$-value is 0.0077, indicating sufficient evidence to reject the null hypothesis. 
 % , with reasons given being 'asymmetry' (36\%), 'trend' (26\%) or `outliers' (16\%).
 
-\hh{How do we interpret this finding, though?} For that, we need to know the context of the data and we need to have more information about \hh{how the null plots were generated}. 
+How do we interpret this finding, though? For that, we need to know the context of the data and we need to have more information about how the null plots were generated. 
 This particular example investigates the results from the 2012 US presidential election in comparison to  poll results just prior to the election. 
-Although this example is more simplistic than most of the tests conducted to date, it will serve the purpose of illustrating the lineup protocol. The data consists of the difference in poll results between the two (major) presidential candidates, Obama and Romney, for all states. Each panel in Figure~\ref{fig:elect} shows an `electoral building' \citep{mosley2010} where each state in the union is represented by a rectangle. This difference is plotted horizontally, and the height of each box corresponds to the state's electoral votes. Color indicates party affiliation.  The null hypothesis is ``that the election results were consistent with the polls''. The polling results provides the null model from which data is simulated. \hh{A normal model with mean and standard deviation based on a poll and its margin of error is used to} simulate different scenarios that might have resulted on election day, if the polls were on target. A null data set is generated as a set of draws from this model. % normal distribution, with mean equal to the difference in poll percentage of the latest state poll results, and standard deviation equal to 2.5, approximating a margin of error of 5\%. 
-These samples are plotted as electoral buildings, and the plot based on the actual election results is placed randomly among the null plots in a lineup of size $5\times 4$. If the null hypothesis is true, the  plot of the actual data should look  like any of the other plots, and not be identifiable by an observer. Figure~\ref{fig:tower} shows the plot of the electoral building with added context information and labels.
+Although this example is more simplistic than most of the tests conducted to date, it will serve the purpose of illustrating the lineup protocol. The data consists of the difference in poll results between the two (major) presidential candidates, Obama and Romney, for all states. Each panel in Figure~\ref{fig:elect} shows an `electoral building' \citep{mosley2010} where each state in the union is represented by a rectangle. This difference is plotted horizontally, and the height of each box corresponds to the state's electoral votes. Color indicates party affiliation.  The null hypothesis is ``that the election results were consistent with the polls''. The polling results provide the null model from which data is simulated. A normal model with mean and standard deviation based on a poll and its margin of error is used to simulate different scenarios that might have resulted on election day, if the polls were on target. A null data set is generated as a set of draws from this model. % normal distribution, with mean equal to the difference in poll percentage of the latest state poll results, and standard deviation equal to 2.5, approximating a margin of error of 5\%. 
+These samples are plotted as electoral buildings, and the plot based on the actual election results is placed randomly among the null plots in a lineup of size $5\times 4$. If the null hypothesis is true, the  plot of the actual data should look  like any of the other plots, and not be identifiable by an observer. Figure~\ref{fig:tower} shows the plot of the electoral building with the additional context information and labels.
  %A party needs 270 electoral votes or more to win the presidential election. 
 %\begin{figure}[htbp] 
 %   \centering
@@ -112,7 +112,7 @@ These samples are plotted as electoral buildings, and the plot based on the actu
    Poll aggregator 2\\
       \includegraphics[width=\textwidth]{rcp-sim.pdf} 
    \end{minipage}
-   \caption{ \label{fig:tower} Electoral building plot of the results of the 2012 U.S. Presidential Election (left). On the right two histograms of 10,000 simulations each based on polling averages from two different sources. For the histogram on the top, the $p$-value of observing results as extreme as  the  2012 U.S. election results based on the bootstrap is 0.0533 (with Bootstrap standard error of 0.002), making the election results almost significantly different from the polls (data source for poll aggregator 1 is Freedom`s Lighthouse Averages). There is no indication of any inconsistency between polls and election results based on the bootstrap simulation below (data source for poll aggregator 2 is RealClearPolitics Averages). The lineups are based on the top source.}
+   \caption{ \label{fig:tower} Electoral building plot of the results of the 2012 U.S. Presidential Election (left). On the right two histograms showing simulated poll results for the Democratic presidential candidate using  polling averages collected at two different sources, Freedom's Lighthouse Averages (top), RealClearPolitics (bottom).  If the polls matched the electoral result the simulated results would be centered at the electoral result. This happens for the RealClearPolitics polls (bottom) but not for Freedom's Lighthouse.  For the latter only 5.33\% of simulated results were as high as the actual election result, which converts to a $p$-value of 0.0533, almost a statistically significant difference. It hints at the polls from this source under-estimating the vote for Obama. This source was used to generate the null plots in the lineup in Figure \ref{fig:elect}. The $p$-value from the lineup protocol, was 0.0077, which more strongly concludes that these polls mismatched the actual result.}
 \end{figure}
 
 %The rest of the 19 plots are generated from the assumption that there is no difference between two groups of data. For this, the group structure of the data is broken by random permutation of the groups. 
@@ -120,17 +120,17 @@ These samples are plotted as electoral buildings, and the plot based on the actu
 %If the null hypothesis is true, the observed data should look similar to the rest of the plots in the lineup making it difficult to detect the observed plot. On the other hand, if the null hypothesis is not true, the observed data should be different from the rest of the plots in the lineup and observers should be able to pick the data plot out from the rest.
 
 
-A lineup can be evaluated by a single person or multiple observers. A distribution \hh{similar to the binomial distribution, but adjusted for dependencies introduced by the lineup scenario,} is used to calculate the $p$-value based on the number of times observers identify the actual data plot, which provides the information needed to make a decision on rejecting or failing to reject the null hypothesis.  In order to avoid expectation errors \citep{meilgaard}, observers should not be aware of the data that constitutes a lineup, and should not have seen the actual data plot before seeing the lineup. This is the reason that in \hh{our first example we explained the context only after presenting the lineup.}%the election example, above, the scenario was explained after the lineup question, in the text. 
+A lineup can be evaluated by a single person or multiple observers. A distribution similar to the binomial distribution, but adjusted for dependencies introduced by the lineup scenario, is used to calculate the $p$-value based on the number of times observers identify the actual data plot, which provides the information needed to make a decision on rejecting or failing to reject the null hypothesis.  To avoid expectation errors \citep{meilgaard}, particularly in emotionally charged areas such as election results, observers should not be aware of the data that constitutes a lineup, and should not have seen the actual data plot before seeing the lineup. This is the reason that we explained the context of the election problem only after you had evaluated the lineup.%the election example, above, the scenario was explained after the lineup question, in the text. 
 
-\hh{When presenting a lineup to an observer we should also phrase the accompanying question in as general a manner as possible, }
+When presenting a lineup to an observer  the accompanying question should be phrased in as general a manner as possible, 
 %The question that is asked of the observer should be as general as possible, 
-effectively asking the observer to pick the plot that is \hh{most} different, and allowing \hh{observers} to provide their reasons for their choice. 
-\hh{However, if lineup tests are run in head-to-head comparisons with conventional statistical tests, such as the experiments  in  \cite{majumder:2013}, these questions have to be phrased much more specifically, in order to make the situations more comparable. } 
+effectively asking the observer to pick the plot that is most different, and allowing observers to provide their reasons for their choice. This effectively allows all possible deviations from the null hypothesis to be detected. 
+However, if lineup tests are run in head-to-head comparisons with conventional statistical tests, such as the experiments  in  \cite{majumder:2013}, these questions have to be phrased much more specifically, in order to make the situations more comparable. 
 %In some of the studies, the ones described in  \cite{majumder:2013} very specific questions were asked, because the experiments were being conducted to compare results from the lineup protocol with those of conventional tests. 
 In those experiments, the structure in the data is strictly controlled in the simulation process, which allows for specific questions to be asked. 
 In the election example, observers were asked ``which plot is the most different?''. The type of plot, showing two (modified) stacked bar charts in different colors should suggest to the observer that the interesting feature is the difference between the two heights. 
-\hh{Most observers based their decision on this -- besides  `asymmetry' between the towers (a reason suggested by us), most free-form responses for the reason of choice describe a comparison between the red and blue towers. 
-In the responses for this lineup we see something that is very typical of responses in lineups: it is only a few panels from the lineup that observers pick, while most panels do not get picked or get picked only a few times. Out of a total of 72~responses, 23 observers picked panel~\#8, 12 observers picked the (data) panel \#13, 10 observers picked panel~\#4, 6 observers picked panel \#7, and all of the remaining panels were picked at most three times. From the panels picked, we see that the top three choices  are all extreme with respect to heights of blue versus red towers:  both panels \#8 and \#13 show a large difference between the height of the towers, while panel \#4 is the only panel, in which the red tower is higher than the blue one. }
+Most observers based their decision on this -- besides  `asymmetry' between the towers (a reason suggested by us), most free-form responses for the reason of choice describe a comparison between the red and blue towers. 
+In the responses for this lineup we see something that is very typical of responses in lineups: it is only a few panels from the lineup that observers pick, while most panels do not get picked or get picked only a few times. Out of a total of 72~responses, 23 observers picked panel~\#8, 12 observers picked the (data) panel \#13, 10 observers picked panel~\#4, 6 observers picked panel \#7, and all of the remaining panels were picked at most three times. From the panels picked, we see that the top three choices  are all extreme with respect to heights of blue versus red towers:  both panels \#8 and \#13 show a large difference between the height of the towers, while panel \#4 is the only panel, in which the red tower is higher than the blue one. 
 % results from the turk study:
 % panel:   1 10 11 12 13 14 15 16 18 19  2 20  3   4  5  6  7  8  9 
 % #picks:  2  1    0  1 12    3  3    1  1   1  2   1  0 10  2  2  6 23  1 
@@ -139,15 +139,14 @@ In the responses for this lineup we see something that is very typical of respon
 %Most observers got this, but it is possible that some observers might pick plot~4, where the red tower is slightly above the blue as the most different because it is the only plot with this feature \hh{(10 out of 72 observers actually did this)}. 
   %a better question may 
 
- \hh{If we consider this difference to be the main objective of the visualization, a more focused question, that aligns more with a hypothesis test on the difference  in electoral votes  between parties, would}
- have been ``Which plot shows the biggest height difference between the two towers?'' %except that this tailors the inference to a specific feature which does not match the null hypothesis of interest. 
+% \hh{If we consider this difference to be the main objective of the visualization, a more focused question, that aligns more with a hypothesis test on the difference  in electoral votes  between parties, would} have been ``Which plot shows the biggest height difference between the two towers?'' %except that this tailors the inference to a specific feature which does not match the null hypothesis of interest. 
  
 % HH already included:
 % For any evaluation the observer may or may not identify the actual data plot. Under the null hypothesis, the actual data plot should look similar to the null plots making it harder to detect. It is not expected that an observer would be able to detect the data plot in this scenario. But since there are limited number of plots in a lineup, which is 20 in the election example, there is a 1/20 chance that the observer would pick the actual plot. 
 
-\hh{The lineup protocols allows us to calculate all relevant properties that we are familiar with from conventional statistical tests. In particular, the power of a lineup is calculated as the {\it detection rate} at which observers identify the actual data plot. Visual power depends unlike power in conventional tests not only on the strength of the signal, but also on individuals' ability. }
+The lineup protocols allows us to calculate all relevant properties that we are familiar with from conventional statistical tests. In particular, the power of a lineup is calculated as the {\it detection rate} at which observers identify the actual data plot. Visual power depends unlike power in conventional tests not only on the strength of the signal, but also on individuals' ability. 
 %This proportion is associated with the Type~I error of the test. On the other hand, if null hypothesis is not true, the observed plot should look different from the null plots, making it easier to be detected. This is the definition of the power of the test. When multiple observers evaluate a lineup, the detection rate can be used to estimate the power. 
-The ability of individual observers varies, and \hh{the effects that might influence ability are the focus} of this paper.
+The ability of individual observers varies, and the effects that might influence this ability are the focus of this paper.
 
 %\dc{*** Am trying to use detection rate rather than correct response. This is harder for this paper because we are evaluating subject's abilities to some extent, but we should try to use this in our vis inference papers.} % \mm{Di, do you suggest that I change ``correct response''  to ``detection rate'' in all the texts here?}
 
@@ -179,14 +178,14 @@ between group A and B? & DF\\
 \label{tbl:visual_stat} 
 \end{table*} 
 
-\hh{We have conducted a series of experiments (see Table \ref{tbl:visual_stat} for an overview)}
+We have conducted a series of experiments (see Table \ref{tbl:visual_stat} for an overview)
 %There have been ten experiments conducted 
-using Amazon's Mechanical Turk~\citep{turk} (MTurk) that \hh{provide a basis for evaluating} 
+using Amazon's Mechanical Turk~\citep{turk} (MTurk) that provide a basis for evaluating
 %are being used to evaluate 
 the effects of different covariates on an individual's ability to evaluate lineups. 
-\hh{In all of the experiments we collected demographic details, such as gender, age bracket, and educational background.  }
+In all of the experiments we collected demographic details, such as gender, age bracket, and educational background.  
  %Each of these experiments collected demographic details of the subjects. 
- Experiments~5, 6 and 7 can be used \hh{to investigate short term learning trends}. Experiment~9 was also designed to check whether the  positioning of the  data plot in the lineup had an effect on detection rate. 
+ Experiments~5, 6 and 7 can be used to investigate short term learning trends. Experiment~9 was also designed to check whether the  positioning of the  data plot in the lineup had an effect on detection rate. 
 
  Section \ref{sec:factor_performance} discusses human factors that may affect the performance of the observer. Section \ref{sec:exp_design} describes the methods used to assess the effects, and Section \ref{sec:result_socio} describes the results.
 

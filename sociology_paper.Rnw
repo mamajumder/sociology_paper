@@ -376,19 +376,22 @@ Overall this created a total of 25 lineups for studying the genotype effect, and
 
 %As per the design of experiment for location effect, the actual data plot is same for each of the null sets of plot. Thus the response data of this experiment constitute a multivariate response. 
 To examine if the difference in detection rate among the locations is statistically significant a one-way multivariate analysis of variance (MANOVA) model is fit to the data.
-Let $\mathbf{Y}=(Y_1,Y_2, ... , Y_p)^\top$ be a vector of random variables with dimension $p (=5)$, the total number of null sets, and let $\mathbf{Y}_{ij}$ represents $j$th vector response for $i$th location with $i=1,2, ..., I(=5)$. Because the same data plot is shown in each lineup, it is assumed that there could be some association between the responses for each null set, which suggests the MANOVA model rather than a univariate ANOVA.  The MANOVA model 
+Let $\mathbf{Y}=(Y_1,Y_2, ... , Y_p)^\top$ be a vector of random variables with dimension $p = 5$, the total number of null sets, and let $\mathbf{Y}_{ij}$ represent the $j$th vector response for  location $i$ with $i=1,2, ..., I$ for $U=5$. Because the same data plot is shown in each lineup, it is assumed that there could be some association between the responses for each null set, which suggests the MANOVA model rather than a univariate ANOVA.  The MANOVA model 
 \begin{equation}\label{manova}
 \mathbf{Y}_{ij} = \mu_{i} + \epsilon_{ij}
 \end{equation}
 where $\mu_{i}= (\mu_{1i},\mu_{2i}, ..., \mu_{pi})^\top$ is the mean vector for location $i$ and $Var(\epsilon_{ij})=\Sigma$, tests for significant difference between the means. 
 
-\subsection{Data Collection Methods}  Human subjects were recruited to evaluate the experimental lineups through MTurk \citep{turk}.  It is an online work place where people from around the world can perform tasks, that computers would have difficulty doing, and get paid. Usually tasks are very simple and no specialized training is required to do them. Tasks are designed for anyone to do but some tasks may require some skills depending on the recruiters' need. Each task is usually planned to completed in a short time.  The amount of money paid for each task is very small, on the order of minimum wage in the USA. 
+\subsection{Data Collection Methods}  Human subjects were recruited to evaluate the experimental lineups through MTurk \citep{turk}.  It is an online work place where people from around the world can sign up for so-called `HIT's, human intelligence tasks, generally short tasks that are humans are typically better at solving than computers. Usually tasks are very simple and no specialized training is required to do them. Tasks are designed for anyone to do but some tasks may require some skills depending on the recruiters' need. %Each task is usually planned to completed in a short time.  
+ For completing a HIT workers are paid a small amount of money, on the order of minimum wage in the USA. 
 
-%It is very fast, cheap and reliable to recruit people from MTurk. Thats why it is getting very popular among the researchers who perform human subject experiment. The another benefit is that a very diverse pool of subjects can be recruited which is otherwise very hard to obtain for a study. The researchers can easily filter the workers based on their experimental design, such as recruiting people only from a specific geographical location or a group of people who satisfy certain criteria etc. The recruiter can decide who they pay or not. Workers have to satisfy the task requirement to ensure payment. But at the end it is the recruiter who has the final say. Usually recruiters pay promptly after the task has been done properly and thats why MTurk is very popular among the online job seeker. At any point of time thousands of tasks are available for the thousands of workers around the world. 
+%It is very fast, cheap and reliable to recruit people from MTurk. Thats why it is getting very popular among the researchers who perform human subject experiment. The another benefit is that a very diverse pool of subjects can be recruited which is otherwise very hard to obtain for a study. 
+%The researchers can easily filter the workers based on their experimental design, such as recruiting people only from a specific geographical location or a group of people who satisfy certain criteria etc. The recruiter can decide who they pay or not. Workers have to satisfy the task requirement to ensure payment. But at the end it is the recruiter who has the final say. Usually recruiters pay promptly after the task has been done properly and thats why MTurk is very popular among the online job seeker. At any point of time thousands of tasks are available for the thousands of workers around the world. 
 
 %Because of its convenience it is getting popular for scientific research study as well. In comparison with a lab study \cite{suri:2010} perform the same study using MTurk and demonstrate that their study results are as good as the lab study results even though MTurk study required less time and cost while provided more convenience. \cite{majumder:2013} recruited people from MTurk for their simulation study in estimating the power of visual statistical inference. They have done numerous pilot studies in lab before doing actual MTurk study and found similar results. \cite{mason:2012} explains various features of MTurk and describes how it can be used as part of human behavioral study.
 
-We designed and developed a web application which enables the display of lineups to the observers as per experimental need. The MTurk workers were redirected to this web application to complete their assigned tasks. The responses were collected, stored automatically into a local database server, along with demographic information, age group, gender and education level. The time taken for each evaluation is computed based on the time the plot was shown and the time the feedback was received. It is measured in seconds. The location of the observer is determined by the ip address of the observer.
+We designed and developed a web application which enables the display of lineups to  observers as per experimental need. The MTurk workers were re-directed to this web application to complete their assigned tasks. Responses were collected, stored automatically into a local database server, along with demographic information, age group, gender and education level. The time taken for each evaluation is computed based on the time the plot was shown and the time the feedback was received. %It is measured in seconds. 
+Location of an observer is determined based on the ip address of the observer.
 
 %\subsection{Model to Estimate Demographic Factor Effect} The feedback provided by each observer on a lineup is a binary response variable. Suppose $Y_{ij}$ denotes the response from observer $i$ on a  lineup $j$. $Y_{ij} =1$ if the response is correct otherwise $Y_{ij} =0$. Let $\pi_{ij}=  E(Y_{ij})$ be the probability that  observer $i$ correctly picks the data panel from lineup $j$. We model this in a generalized mixed effects model of the form
 %\begin{equation} \label{eqn:demographic_response}
@@ -462,10 +465,10 @@ The large number of female participants from all countries was a pleasant surpri
    \label{fig:turker_location}
 \end{figure}
 
-Besides United States and India, countries such as Canada, Romania, United Kingdom and Macedonia have more than 10 participants each. The rest of the 70 countries have fewer than 10 participants. The distribution of participants is similar in all ten experiments. %This may be due to the time of day when the experiment was made available. %For some experiments more people participated from India than the United States and for others numbers were reversed (Figure~\ref{fig:participation_time}). It is also observed in some experiments that number of  participants are similar no matter whether the experiment is run on day time or nigh time. (*** Took out reference to Figure~11 in appendix.)
+Besides the United States and India, countries such as Canada, Romania, the United Kingdom and Macedonia have more than 10 participants each. The remaining 70 countries have fewer than 10 participants each. The distribution of participants is similar in all ten experiments. %This may be due to the time of day when the experiment was made available. %For some experiments more people participated from India than the United States and for others numbers were reversed (Figure~\ref{fig:participation_time}). It is also observed in some experiments that number of  participants are similar no matter whether the experiment is run on day time or nigh time. (*** Took out reference to Figure~11 in appendix.)
 
 \begin{table}[hbtp]
-\caption{Demographic information of the subjects participated the MTurk experiments. Average time taken for evaluating a lineup is shown in seconds.}
+\caption{Demographic information of the subjects participating in the MTurk experiments. Average time taken for evaluating a lineup is shown in seconds.}
 \centering
 \scalebox{.85}{
 \begin{tabular}{rlrrcr}
@@ -544,19 +547,21 @@ Gender & Male & 1348&57.63 & 48.51 & 13493 \\
 %\end{table}
 
 
-The largest number of participants falls within the age group of 18 to 25, with the majority between 18 to 35. Many older participants also took part in the experiments.%Interestingly, there are many participants in the older age groups as well. 
-The United States shows a more uniform participation beyond age 30, Indian participants are primarily younger. 
+The largest number of participants falls within the age group of 18 to 25, with the majority being between 18 to 35. Many older participants also took part in the experiments. %Interestingly, there are many participants in the older age groups as well. 
+The United States shows a more uniform participation beyond age 30,  participants from India are primarily younger. 
 
-In terms of academic background, the majority of participants had a graduate degree (a total of 902 participants, about 38.51\%). Examining the participants' location in conjunction with the academic background reveals that there are more Indian participants that report to have a graduate degree. In retrospect we realized this to be a culturally based misunderstanding, as any university degree in India is considered to be a graduate degree, while the North American the definition of graduate degree refers to a Masters level, or above, education. Most of the USA participants report to have an undergraduate degree or at least have some undergraduate courses. 
+In terms of academic background, the majority of participants had a graduate degree (a total of 902 participants, about 38.51\%). Examining the participants' location in conjunction with the academic background reveals that there is an above average  number of participants from India reporting to have a graduate degree. In retrospect this turned out to be a culturally based misunderstanding, as any university degree in India is considered to be a graduate degree, while the North American definition of a graduate degree refers to a Masters level education or above. Most of the  participants from the U.S. report to have an undergraduate degree or at least have some undergraduate courses. 
 
 The distribution of male and female participants are similar among all age groups except for age group 18-25 in India where the proportion of female participants is lower. The distribution of education levels also differs slightly across countries for this age group. %Most of the participants from India are below age 40 while in United States the distribution of participants are similar beyond age 40. There were not many participants beyond age 50 and hence these age groups are merged to form one age group called above 50. The exploratory analysis and the models fitted in the following sections use this new age group instead of actual age groups beyond age 50. 
 
-A total of 1911 lineups were evaluated in the ten experiments. Each person evaluated at least 10 lineups except for experiment~9 where three lineups were evaluated by each person. 
-In each of the experiments, to ensure quality evaluations, a test plot was shown to each observer, and the performance on this test plot was used for screening purposes.%A test plot was shown to each observer and the feedback received from that plot is used to ensure data quality. 
+A total of 1911 lineups were evaluated in the ten experiments. Each person evaluated at least 10 lineups except for experiment~9 where each participant evaulated three lineups.
+As a measure to ensure a high quality in the evaluations,
+ a test plot was shown to each observer, and the performance on this test plot was used for screening purposes. %A test plot was shown to each observer and the feedback received from that plot is used to ensure data quality. 
 Test plots were chosen in a way that any serious attempt at answering the lineup would result in a correct answer.
-Data from participants who gave the wrong answer on the test plot were considered as gaming the system, and their data were removed.
-Results from test plots were not considered in any of the analyses.
- In some cases the demographic information were not provided by the participants. Also, for some ip address, the actual geographical locations could not be retrieved. This resulted in some missing demographic information.
+Data from participants who gave the wrong answer on the test plot % were considered as gaming the system, and their data were removed.
+led to the removal of all of their answers from the analysis. 
+Results from test plots were also not considered in any of the analyses.
+ In some cases  participants chose to not provide their demographic information. Also, for some ip address, the actual geographical locations could not be retrieved. This resulted in some missing demographic information.
 
 \subsection{Demographic Factors} 
 
@@ -570,32 +575,32 @@ To explore the significance of the demographic factors model \eqref{eqn:demograp
 \scalebox{.9}{
 \begin{tabular}{rlrrrrrr}
   \hline
-Model & & AIC & BIC & logLik & Chisq & Chi.Df & $p$-value \\ 
+\multicolumn{2}{c}{Model}  & AIC & BIC & logLik & Chisq & Chi.Df & $p$-value \\ 
   \hline
-Proportion Correct &Full & 23822.00 &23943.00 &-11896.00  & &  &  \\ 
-& \multicolumn{2}{l}{Reduced}  &  &  &  & \\
-  &Age & 23835.22 & 23907.93 & -11908.61 & 25.50 & 6 & $<$0.001 \\ 
-  &Country  & 24099.57 & 24204.72 & -12036.78 & 281.85 & 2 & $<$0.001 \\ 
-  &Education  & 23837.48 & 23926.34 & -11907.74 & 23.77 & 4 & $<$0.001 \\ 
-  &Gender  & 23821.88 & 23934.98 & -11896.94 & 2.17 & 1 & 0.140 \\ 
+Proportion Correct &Full & 23822.00 &23943.00 &-11896.00  & &  &  \\ [3pt]
+%& \multicolumn{2}{l}{Reduced}  &  &  &  & \\
+{Reduced Models}  &- Age & 23835.22 & 23907.93 & -11908.61 & 25.50 & 6 & $<$0.001 \\ 
+  &- Country  & 24099.57 & 24204.72 & -12036.78 & 281.85 & 2 & $<$0.001 \\ 
+  &- Education  & 23837.48 & 23926.34 & -11907.74 & 23.77 & 4 & $<$0.001 \\ 
+  &- Gender  & 23821.88 & 23934.98 & -11896.94 & 2.17 & 1 & 0.140 \\ 
    \hline
-   Log Time &Full &  51904.00 &52034.00 & -25936.00 & &  &  \\ 
-& \multicolumn{2}{l}{Reduced}  &  &  &  & \\
-&Age  & 52435.63 & 52516.41 & -26207.81 & 543.18 & 6 & $<$0.001 \\ 
- & Country  & 52849.92 & 52963.15 & -26410.96 & 949.47 & 2 & $<$0.001 \\ 
-  &Education  & 52012.68 & 52109.61 & -25994.34 & 116.23 & 4 & $<$0.001 \\ 
-  &Gender  & 51970.57 & 52091.74 & -25970.28 & 68.12 & 1 & $<$0.001 \\ 
+   Log Time Taken &Full &  51904.00 &52034.00 & -25936.00 & &  &  \\ [3pt]
+%& \multicolumn{2}{l}{Reduced}  &  &  &  & \\
+Reduced Models &- Age  & 52435.63 & 52516.41 & -26207.81 & 543.18 & 6 & $<$0.001 \\ 
+ &- Country  & 52849.92 & 52963.15 & -26410.96 & 949.47 & 2 & $<$0.001 \\ 
+  &- Education  & 52012.68 & 52109.61 & -25994.34 & 116.23 & 4 & $<$0.001 \\ 
+  &- Gender  & 51970.57 & 52091.74 & -25970.28 & 68.12 & 1 & $<$0.001 \\ 
 \hline
 \end{tabular}
 }
 \label{tbl:anova_factor}
 \end{table}
 
-Parameter estimates from the model fits are shown in Table~\ref{tbl:model_result_demographics}. The first level of each factor serves as the baseline for the model. The age group 36-40  has a significantly higher detection rate than the 18-25 age group, and to a lesser extent this is also true for age groups 31-35 and above 50. Participants from India have a similar detection rate to those from the USA, but participants from the rest of the world show a significantly higher detection rate. Subjects  reporting to have  a graduate degree had a significantly higher detection rate. For time to respond, all age groups were significantly slower than  18-25 year olds.  Participants from India were slower, while those from the rest of the world were faster than US Americans. A higher degree corresponded to longer time, and males were slower than females.
+Parameter estimates from the model fits are shown in Table~\ref{tbl:model_result_demographics}. The first level of each factor serves as the baseline for the model. The age group 36-40  has a significantly higher detection rate than the 18-25 age group, and to a lesser extent this is also true for age groups 31-35 and above 50. Participants from India have a similar detection rate to those from the USA, but participants from the rest of the world show a significantly higher detection rate. Subjects  reporting to have  a graduate degree had a significantly higher detection rate. For time to respond, all age groups were significantly slower than  18-25 year olds.  Participants from India were slower, while those from the rest of the world were faster than US Americans. A higher degree corresponded to longer time, and males were on average slower than females.
 
 \begin{table}[htbp]
 \centering
-\caption{Parameter estimates of models \eqref{eqn:demographic_time} and \eqref{eqn:demographic_response} fitted for average log time taken and detection rate, respectively. For time taken all the demographic factors are significant. For detection rate, age group 36-40, rest of the world and graduate degree are significantly different. For gender no difference in performance is observed. Lineup variability is estimated to be very large for model \eqref{eqn:demographic_response}.
+\caption{Parameter estimates of models \eqref{eqn:demographic_time} and \eqref{eqn:demographic_response} fitted for average log time taken and detection rate, respectively. For time taken all the demographic factors are significant. For detection rate, age group 36-40, rest of the world and graduate degree are significantly different. For gender no difference in performance is observed. Lineup variability is estimated to be very large for model~\eqref{eqn:demographic_response}.
 %
 }
 \scalebox{0.86}{
@@ -639,7 +644,7 @@ Gender ($\gamma$)& Female&0.000   &---  &---  &---  &  &--- &--- &---& ---\\
 \label{tbl:model_result_demographics}
 \end{table}
 
-Figure~\ref{fig:demographic_effect} supports the model results. The average time taken to respond (natural log) and detection rate are computed by lineup for the different demographic factor levels, and displayed using boxplots. Since the models use the mean values, rather than median, these are represented by a dot inside the boxplots. %There are some small differences across demographic groups. The youngest age group (18-25) took least average time to evaluate a lineup. People from India took more time than others. People who have only a high school degree took less time and this is related to what we have seen for young age group. Averages of log time taken by male and female participants look similar but there are some differences as we see in Table~\ref{tbl:demographics}. 
+Figure~\ref{fig:demographic_effect} supports the model results. The average time taken to respond (natural log) and detection rate are computed by lineup for the different demographic factor levels, and displayed using boxplots. Mean values are shown as dots inside the boxplot, as this statistic rather than the median is used in the models. %There are some small differences across demographic groups. The youngest age group (18-25) took least average time to evaluate a lineup. People from India took more time than others. People who have only a high school degree took less time and this is related to what we have seen for young age group. Averages of log time taken by male and female participants look similar but there are some differences as we see in Table~\ref{tbl:demographics}. 
 The means and medians for response time (top row) are essentially equal. There are some differences between the two in the detection rate plots (bottom row). The differences in these values for different factors, that was tested by the models, can be seen in the plots. However, particularly for detection rate, the variation is huge. A large component of the variation is difficulty of the lineup. In some lineups the actual data plot was distinctively different from the null plots, and we would expect that the detection rate would be close to 100\%. In other lineups there was no difference, making it very difficult to evaluate, with low detection rate and longer time to respond. In Table~\ref{tbl:model_result_demographics} notice that lineup specific variance estimate is 5.259 with a standard error of 2.293 which is much higher than the other significant parameter estimates in model \eqref{eqn:demographic_response}. This indicates that the major and most important factor affecting the detection rate is  lineup difficulty.  So although the demographic factors emerge from the model to be statistically significant, the practical significance is minimal. We illustrate this with the following example of graduate degree.
 
 %Some differences in median detection rate for different demographic factor levels can be seen,  but the variability in responses is huge. This variability is primarily in variability in the lineups -- some very easy and some extremely difficult lineups. Some of the lineups  were not expected to be evaluated correctly as the null plots in those lineups were showing more signal than the actual data plot itself. In those scenarios,  one may not reject the null hypothesis. We call these difficult lineups. Some of the lineups were so easy that data plot is detectable at a first glance. These were expected to be evaluated correctly 100\% of the time. This is why we see the boxes range from 0 to 1 in most of the factor levels. Unlike median, fewer differences are observed in the average proportion of correct responses for different factor levels. 
@@ -716,14 +721,14 @@ The means and medians for response time (top row) are essentially equal. There a
 
 While some of the demographic factors are strongly statistically significant, the main source of variation in detection rate is the lineup difficulty. For example, let's examine the effect of graduate degree. To see just how large the effect is, we examine the change in detection rate for a (hypothetical) 18-25 year old female in the United States, with a graduate degree as compared to a high school degree, for an average difficulty lineup (random effect = 0). Plugging in the relevant quantities to the fitted model gives a difference equal to:
 $$ \frac {\exp(-0.683+0.182)}{1+\exp(-0.683+0.182)}-  \frac {\exp(-0.683)}{1+\exp(-0.683)} = 0.377- 0.336 =0.041.$$ 
-The person with a high school education on average picks the data plot in 33.5\% of lineups having average difficulty, as compare to 37.6\% if they have a graduate degree. This difference is reduced to 2\% for a lineup with one standard deviation order of magnitude difference in difficulty. For two standard deviations it further reduces to 0.3\%. Thus although there is statistically significant difference in proportion correct for some demographic factors, these are not practically significant differences.  Figure~\ref{fig:practical_impact_graduate} illustrates this example showing fitted models for a US 18-25 female with either a high school education or a graduate degree.  Similar calculations show the same negligible impact of age level 36-40 (0.0533 at most)  and country (0.0424 at most) on the probability of correct response. Thus even though some of the demographic factors are statistically significant, practically, demographics do not substantially influence the results. 
+The person with a high school education on average picks the data plot in 33.5\% of lineups having average difficulty, as compared to 37.6\% if they have a graduate degree. This difference is reduced to 2\% for a lineup with one standard deviation order of magnitude difference in difficulty. For two standard deviations it further reduces to 0.3\%. Thus, although there is a statistically significant difference in the proportion at which participants identify the  data plot for some demographic factors, these are not  significant in any practical sense.  Figure~\ref{fig:practical_impact_graduate} illustrates this example showing fitted models for a US 18-25 female with either a high school education or a graduate degree.  Similar calculations show the same negligible impact of age level 36-40 (0.0533 at most)  and country (0.0424 at most) on the probability of a correct response. Thus even though some of the demographic factors are statistically significant, practically, demographics do not substantially influence the results. 
 
 \begin{figure}[htbp] 
    \centering
 %   \includegraphics[width=6.5in]{learning_trend.pdf} 
     \includegraphics[width=3.2in]{practical_impact_graduate.pdf} 
     \includegraphics[width=3.2in]{practical_impact_degree.pdf} 
-   \caption{Proportion of correct responses due to graduate degree as compared to high school degree for an 18-25 year old female in the United States. Even though graduate degree is statistically significant, the largest difference in proportion correct is  0.045 which is very negligible. The difference diminishes as we move away one or two standard deviations ($\sigma_{\ell} =2.293$) 
+   \caption{Proportion of correct responses of an 18-25 year old female in the United States with a graduate degree compared to a high school degree. Even though having a graduate degree leads to  statistically significant increase, the effect size in the dependent variable is  0.045 which is  negligible from a practical point of view. The difference diminishes as we move away one or two standard deviations ($\sigma_{\ell} =2.293$) 
    of lineup variability.}
    \label{fig:practical_impact_graduate}
 \end{figure}
@@ -771,7 +776,7 @@ The person with a high school education on average picks the data plot in 33.5\%
 %
 
 
-\subsection{Learning Trend} Models \eqref{eqn:trend_response} and \eqref{eqn:trend_time} are fitted to the data from experiments 5, 6, and 7 separately. In this model, attempt is fitted as a factor variable to allow for all possible non-linear learning trends.  It should be noted that we also examined an alternative to model \eqref{eqn:trend_response} where attempt was linearly fitted as a continuous covariate, but this also was not significant.
+\subsection{Learning Trend} Models \eqref{eqn:trend_response} and \eqref{eqn:trend_time} are fitted to the data from experiments~5,~6, and~7 separately. In this model, attempt is fitted as a factor variable to allow for all possible non-linear learning trends.  It should be noted that we also examined an alternative to model \eqref{eqn:trend_response} where attempt was linearly fitted as a continuous covariate, but this also was not significant.
 
 Table~\ref{tbl:model_result_response} displays the parameter estimates and $p$-values of fixed effect estimates of model \eqref{eqn:trend_response} examining detection rate. Only for experiment~6 there is some evidence of a learning curve. There are marginally small $p$-values for most of the attempt levels, and positive parameter estimates, suggesting that more attempts increases detection rate. 
 

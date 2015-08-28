@@ -729,7 +729,7 @@ The person with a high school education on average picks the data plot in 33.5\%
 %   \includegraphics[width=6.5in]{learning_trend.pdf} 
     \includegraphics[width=3.2in]{practical_impact_graduate.pdf} 
     \includegraphics[width=3.2in]{practical_impact_degree.pdf} 
-   \caption{Proportion of correct responses of an 18-25 year old female in the United States with a graduate degree compared to a high school degree. Even though having a graduate degree leads to  statistically significant increase, the effect size in the dependent variable is  0.045 which is  negligible from a practical point of view. The difference diminishes as we move away one or two standard deviations ($\sigma_{\ell} =2.293$) 
+   \caption{Proportion of estimated data identifications by an 18-25 year old female in the United States with a graduate degree compared to a high school degree. Even though having a graduate degree leads to  statistically significant increase, the effect size in the dependent variable is  0.045 which is  negligible from a practical point of view. The difference diminishes as we move away one or two standard deviations ($\sigma_{\ell} =2.293$) 
    of lineup variability.}
    \label{fig:practical_impact_graduate}
 \end{figure}

@@ -481,6 +481,18 @@ ggsave("../images/rejected_task.pdf", width=6, height=4)
 
 # Drawing the map of turk participants
 
+map_theme <- list(theme(panel.grid.minor = element_blank(),
+                        panel.grid.major = element_blank(),
+                        panel.background = element_blank(),
+                        panel.border = element_blank(),
+                        axis.line = element_blank(),
+                        axis.text.x = element_blank(),
+                        axis.text.y = element_blank(),
+                        axis.ticks = element_blank(),
+                        axis.title.x = element_blank(),
+                        axis.title.y = element_blank(),
+                        plot.margin=unit(c(0,0,0,0), unit="cm")))
+
 library(maps)
 map.dat <- as.data.frame(map("world",ylim=c(-45,70), plot=FALSE)[c("x","y")])
 map.dat <- map_data("world")
@@ -488,8 +500,8 @@ map.dat <- map_data("world")
 ggplot() +
   geom_polygon(aes(long,lat, group=group), fill="grey65", data=map.dat) +
   geom_point(aes(longitude,latitude, colour=factor("A")), data=ip.details, alpha=.6) +
-  theme_bw()+
-  theme(legend.position="none", axis.text = element_blank(), axis.title=element_blank()) 
+  theme_bw()+ map_theme
+
 ggsave("../images/turker_location.pdf", width=8, height=4)
 
 

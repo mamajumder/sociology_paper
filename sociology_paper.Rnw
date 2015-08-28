@@ -352,7 +352,7 @@ Equation~\ref{eqn:trend_time} leads to the estimate of the subject and the lineu
 \hat \mu_{ijk} =  \hat{\mu} + \hat{\alpha_1}+ \hat{\alpha}k + \hat{u}_i +  \hat{a}_i k + \hat{\ell}_j.
 \end{equation}
 
-To fit all these mixed effect models the function {\tt lmer()} is used from R package {\tt lme4} by \cite{lme4:2011}. To obtain the $p$-values of fixed effect parameters estimates, normal approximation is used for $Z$ scores computed as the ratio of estimates to the estimated standard errors.  
+To fit all these mixed effect models the function {\tt lmer()} is used from R package {\tt lme4} by \cite{lme4:2011, lme4:paper}. To obtain the $p$-values of fixed effect parameters estimates, normal approximation is used for $Z$ scores computed as the ratio of estimates to the estimated standard errors.  
 
 \subsection{Location Effect} \label{sec:location_design} Experiment~9 studied significant expression in an RNA-seq study, and was designed so that location effect of the actual data plot in a lineup could also be assessed. The data used, documented in \cite{atwood:2013}, measures gene expression of soybean by RNA-seq methods. Two factors were of primary interest a main effect for genotype and an interaction effect between genotype and treatment condition.
 

@@ -318,8 +318,8 @@ xtable(anova.reseult)
 
 # Model with demographic factor interaction
 # India:Undergrad course is hghly significant
-fit <- lmer(response~age_level+country+degree+gender_level+country:degree+(1|pic_name), 
-               family="binomial", demographics)
+fit <- glmer(response~age_level+country+degree+gender_level+country:degree+(1|pic_name), 
+               family="binomial", demographics, control=glmerControl(optimizer="bobyqa"))
 
 
 fit
@@ -386,7 +386,7 @@ with(ddat, max(prop_gd-prop_hs))
 
 mddat <- melt(ddat,id=c("difficulty"))
 qplot(difficulty, value, data=mddat, linetype=variable, geom="line")+
-  xlab("Lineup difficulty") + ylab("Proportion of correct response") +
+  xlab("Lineup difficulty") + ylab("Proportion of data identification") +
   scale_x_continuous(breaks=c(-6,-2*2.293,-2.293,0,2.293,2*2.293,6), expand = c(0.02,0),
                      labels=c("Difficult",expression(-2*sigma[l],-sigma[l],0,sigma[l], 
                                                      2*sigma[l],"Easy"))) +
@@ -414,7 +414,7 @@ qplot(variable,value, shape=factor(difficulty), geom=c("point"),data=mddat.all, 
 
 qplot(variable,value, shape=factor(difficulty),data=mddat.all, size=I(3.5)) +
   geom_line(aes(variable,value, group=factor(difficulty)))+
-  ylab("Proportion of correct responses") + xlab("Education")+
+  ylab("Proportion of data identification") + xlab("Education")+
   scale_x_discrete(labels=c("h.school","u.gd.course","u.grad.deg","grad.course","grad.deg"))+
   scale_shape_discrete(name="Lineup difficulty", 
                        labels=c("Difficult", "Medium","Easy")) 

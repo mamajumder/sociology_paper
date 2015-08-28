@@ -221,9 +221,12 @@ cdat <- get_effect(demographics, c("country", "pic_name"))
 adat <- get_effect(demographics, c("age_level", "pic_name"))
 
 mdat <- melt(rbind(gdat,edat,cdat,adat), id=c("variable_level", "pic_name", "variable_name"))
+levels(mdat$variable) <- c("(Log) Time Taken in seconds", "Detection Rate")
+mdat$variable_name <- factor(mdat$variable_name)
+levels(mdat$variable_name) <- c("Age Categories", "Country", "Education", "Gender")
 
 qplot(variable_level, value, geom="boxplot",data=mdat[complete.cases(mdat),]) +
-  facet_grid(variable~variable_name, scales="free") +
+  facet_grid(variable~variable_name, scales="free", space="free_x") +
   stat_summary(fun.y=mean, geom="point") + xlab("Levels of demographic factors")+ylab("")+
   theme(axis.text.x=element_text(angle=90, hjust=1))
 

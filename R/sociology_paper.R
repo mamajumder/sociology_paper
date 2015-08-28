@@ -244,8 +244,9 @@ get_estimates <- function(fit){
   pval <- round(2 * pnorm(abs(zval), lower.tail = FALSE),4)
   pval[pval==0] <- "$<$0.001"
   fe <- data.frame(Est=round(betas,3),SE= round(se,3), Zval=round(zval,2), pvalue=pval)
-  rem <- summary(fit)@REmat
-  re <- data.frame(Est=rem[,3], SE= rem[,4], Zval="",pvalue="")
+#  browser()
+  rem <- as.data.frame(VarCorr(fit))
+  re <- data.frame(Est=rem$vcov, SE= rem$sdcor, Zval="",pvalue="")
   re$Est <- round(as.numeric(as.character(re$Est)),3)
   re$SE <- round(as.numeric(as.character(re$SE)),3)
   rownames(re) <- paste(rem[,1],rem[,2])
@@ -261,8 +262,8 @@ ft <- lmer(log(time_taken)~age_level+country+degree+gender_level+(1|pic_name),
            data=demographics)
 summary(ft)
 
-fp <- lmer(response~age_level+country+degree+gender_level+(1|pic_name), 
-           family="binomial", demographics)
+fp <- glmer(response~age_level+country+degree+gender_level+(1|pic_name), 
+           family="binomial", demographics, control=glmerControl(optimizer="bobyqa"))
 
 summary(fp)
 

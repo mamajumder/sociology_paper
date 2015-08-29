@@ -294,13 +294,13 @@ anova.time <- rbind(data.frame(round(tag[1,1:4],2),round(tag[2,5:7]/1,2)),
                     data.frame(round(tde[1,1:4],2),round(tde[2,5:7]/1,2)),
                     data.frame(round(tge[1,1:4],2),round(tge[2,5:7]/1,2)))
 
-fpa <- lmer(response~country+degree+gender_level+(1|pic_name), 
+fpa <- glmer(response~country+degree+gender_level+(1|pic_name), 
            family="binomial", demographics)
-fpc <- lmer(response~age_level+degree+gender_level+(1|pic_name), 
+fpc <- glmer(response~age_level+degree+gender_level+(1|pic_name), 
            family="binomial", demographics)
-fpd <- lmer(response~age_level+country+gender_level+(1|pic_name), 
+fpd <- glmer(response~age_level+country+gender_level+(1|pic_name), 
            family="binomial", demographics)
-fpg <- lmer(response~age_level+country+degree+(1|pic_name), 
+fpg <- glmer(response~age_level+country+degree+(1|pic_name), 
            family="binomial", demographics)
 
 pag <- anova(fp,fpa)

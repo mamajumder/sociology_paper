@@ -462,7 +462,7 @@ The large number of female participants from all countries was a pleasant surpri
    \centering
    \includegraphics[width=4.5in]{turker_country.pdf} 
    \includegraphics[width=4.5in]{turker_location.pdf}    
-   \caption{Location of  Amazon Mechanical Turk workers participating in the experiments. Most subjects came from India and the United States, but subjects  from countries around the world took part.}
+   \caption{Location of Amazon Mechanical Turk workers participating in the experiments. Most subjects came from India and the United States, but subjects  from countries around the world took part.}
    \label{fig:turker_location}
 \end{figure}
 

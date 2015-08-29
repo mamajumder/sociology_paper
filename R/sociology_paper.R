@@ -689,8 +689,8 @@ ggsave("../images/learning_trend.pdf", width=10.5, height = 3.5)
 trend.dat$Experiment <- trend.dat$experiment
 ggplot() + 
   geom_smooth(aes(attempt,resid, group=id),method="lm", se=F,  data=trend.dat, colour=rgb(0,0,0, alpha=0.05))+
-  geom_point(aes(attempt,mean_resid, group=1), data= ddt) +
   geom_smooth(aes(attempt,mean_resid, group=1), data= ddt, method="lm", se=F, size=I(1.2)) +
+  geom_point(aes(attempt,mean_resid, group=1), data= ddt) +
   facet_grid(.~Experiment, scales="free_y", labeller="label_both") + ylab("Mean residual proportion correct") +
   scale_x_continuous(breaks = 1:10) + xlab("Attempt")
 
@@ -707,19 +707,19 @@ fit3 <- lm(resid ~ attempt, data=subset(trend.dat, experiment==7))
 # Getting results of model with proportion correct
 model <- as.formula(response ~ factor(attempt) + (1|pic_name) + (attempt|id))
 dt5 <- subset(dtrend, experiment==5)
-fp5 <- lmer(model,family="binomial",data=dt5)
+fp5 <- glmer(model,family="binomial",data=dt5)
 res5 <- get_estimates(fp5)
 res5$pvalue <- as.character(res5$pvalue)
 res5$pvalue[2:10] <- round(as.numeric(res5$pvalue[2:10]),3)
 
 dt6 <- subset(dtrend, experiment==6)
-fp6 <- lmer(model,family="binomial",data=dt6)
+fp6 <- glmer(model,family="binomial",data=dt6)
 res6 <- get_estimates(fp6)
 res6$pvalue <- as.character(res6$pvalue)
 res6$pvalue[1:10] <- round(as.numeric(res6$pvalue[1:10]),3)
 
 dt7 <- subset(dtrend, experiment==7)
-fp7 <- lmer(model,family="binomial",data=dt7)
+fp7 <- glmer(model,family="binomial",data=dt7)
 res7 <- get_estimates(fp7)
 res7$pvalue <- as.character(res7$pvalue)
 res7$pvalue[1:10] <- round(as.numeric(res7$pvalue[1:10]),3)

@@ -682,7 +682,7 @@ qplot(attempt,mean_resid, data= ddt) + geom_point(size=2.5) +
 
 ggsave("../images/learning_trend.pdf", width=10.5, height = 3.5)
 
-
+trend.dat$Experiment <- trend.dat$experiment
 ggplot() + 
   geom_smooth(aes(attempt,resid, group=id),method="lm", se=F,  data=trend.dat, colour=rgb(0,0,0, alpha=0.05))+
   geom_point(aes(attempt,mean_resid, group=1), data= ddt) +

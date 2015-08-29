@@ -627,7 +627,7 @@ qplot(attempt,mean_resid, data= dmt) + geom_point(size=2.5) +
 ggplot() + 
   geom_point(aes(attempt,mean_resid), data= dmt) +
   geom_smooth(aes(attempt,mean_resid), data= subset(dmt, attempt>1), method="lm", se=F) +
-  facet_wrap(~experiment, scales="free_y") + ylab("Residual log(time taken)") +
+  facet_grid(.~Experiment,  labeller="label_both") + ylab("Residual log(time taken)") +
   scale_x_continuous(breaks = seq(2,10,by=2))
 
 ggsave("../images/learning_trend_time.pdf", width=10.5, height = 3.5)
@@ -662,7 +662,7 @@ for (i in 5:7){
   d <- subset(dtrend, experiment==i)
   dd <- subset(d, id %in% id[attempt > 9])
   model <- as.formula(response ~ (1|pic_name) + (1|id))
-  fit <- lmer(model,family="binomial",data=dd)
+  fit <- glmer(model,family="binomial",data=dd, control=glmerControl(optimizer="bobyqa"))
   dd$resid <- (dd$response - fitted(fit))
   trend.dat <- rbind(trend.dat ,dd)
 }
@@ -674,9 +674,10 @@ ggplot(trend.dat, aes(attempt,resid, colour=factor(experiment)))+
 ddt <- ddply(trend.dat,.(experiment, attempt), summarise,
              mean_resid = mean(resid))
 
+ddt$Experiment <- ddt$experiment
 qplot(attempt,mean_resid, data= ddt) + geom_point(size=2.5) +
   geom_smooth(method="lm", se=F) + ylab("Mean residual proportion correct") +
-  facet_wrap(~experiment, scales="free_y") +
+  facet_grid(.~Experiment, scales="free_y", labeller="label_both") +
   scale_x_continuous(breaks = seq(2,10,by=2)) 
 
 ggsave("../images/learning_trend.pdf", width=10.5, height = 3.5)
@@ -686,8 +687,8 @@ ggplot() +
   geom_smooth(aes(attempt,resid, group=id),method="lm", se=F,  data=trend.dat, colour=rgb(0,0,0, alpha=0.05))+
   geom_point(aes(attempt,mean_resid, group=1), data= ddt) +
   geom_smooth(aes(attempt,mean_resid, group=1), data= ddt, method="lm", se=F, size=I(1.2)) +
-  facet_wrap(~experiment, scales="free_y") + ylab("Mean residual proportion correct") +
-  scale_x_continuous(breaks = seq(2,10,by=2))
+  facet_grid(.~Experiment, scales="free_y", labeller="label_both") + ylab("Mean residual proportion correct") +
+  scale_x_continuous(breaks = 1:10)
 
 ggsave("../images/learning_trend_subject.pdf", width=10.5, height = 3.5)
 

@@ -262,8 +262,8 @@ ft <- lmer(log(time_taken)~age_level+country+degree+gender_level+(1|pic_name),
            data=demographics)
 summary(ft)
 
-fp <- glmer(response~age_level+country+degree+gender_level+(1|pic_name), 
-           family="binomial", demographics, control=glmerControl(optimizer="bobyqa"))
+fp <- glmer(response~age_level+factor(country, ordered=FALSE)+factor(degree, ordered=FALSE)+gender_level+(1|pic_name), 
+           family="binomial", data=demographics, control=glmerControl(optimizer="bobyqa"))
 
 summary(fp)
 
@@ -484,14 +484,13 @@ ggsave("../images/rejected_task.pdf", width=6, height=4)
 map_theme <- list(theme(panel.grid.minor = element_blank(),
                         panel.grid.major = element_blank(),
                         panel.background = element_blank(),
-                        panel.border = element_blank(),
                         axis.line = element_blank(),
                         axis.text.x = element_blank(),
                         axis.text.y = element_blank(),
                         axis.ticks = element_blank(),
                         axis.title.x = element_blank(),
                         axis.title.y = element_blank(),
-                        plot.margin=unit(c(0,0,0,0), unit="cm")))
+                        plot.margin=unit(c(0,0,-1,-1), unit="line")))
 
 library(maps)
 map.dat <- as.data.frame(map("world",ylim=c(-45,70), plot=FALSE)[c("x","y")])
@@ -500,7 +499,8 @@ map.dat <- map_data("world")
 ggplot() +
   geom_polygon(aes(long,lat, group=group), fill="grey65", data=map.dat) +
   geom_point(aes(longitude,latitude, colour=factor("A")), data=ip.details, alpha=.6) +
-  theme_bw()+ map_theme
+  theme_bw()+ map_theme +
+  theme(legend.position="none")
 
 ggsave("../images/turker_location.pdf", width=8, height=4)
 
@@ -516,7 +516,7 @@ ggsave("../images/turker_location_experiment.pdf", width=8, height=10)
 # country-wise participants counts
 qplot(factor(country, levels=names(table(country))[order(table(country))]), 
       geom="bar", fill="A", data=subset(turker,complete.cases(turker)))+ 
-  coord_flip() +ylab("Number of turk worker") + xlab("Country") +
+  coord_flip() +ylab("Number of participants") + xlab("Country") +
   theme(legend.position="none")
 ggsave("../images/turker_country.pdf", width=7, height=2) 
 
@@ -607,12 +607,14 @@ ggplot() +
   facet_wrap(~experiment, scales="free_y")+
   scale_x_continuous(breaks = seq(2,10,by=2)) 
 
+dpt$Experiment <- dpt$experiment
+dmt$Experiment <- dmt$experiment
 ggplot() + 
   geom_smooth(aes(attempt,resid, group=id),method="lm", se=F, data=subset(dpt, attempt>1), colour=rgb(0,0,0, alpha=.05))+
-  geom_point(aes(attempt,mean_resid), data= dmt) +
   geom_smooth(aes(attempt,mean_resid), data= subset(dmt, attempt>1), method="lm", se=F, size=I(1.2)) +
-  facet_wrap(~experiment, scales="free_y") + ylab("Residual log(time taken)") +
-  scale_x_continuous(breaks = seq(2,10,by=2))  
+  geom_point(aes(attempt,mean_resid), data= dmt) +
+  facet_grid(.~Experiment,  labeller="label_both") + ylab("Residual log(time taken)") +
+  scale_x_continuous(breaks = 1:10) + xlab("Attempt")
 #  coord_cartesian(ylim=c(-0.5,0.5))
 
 ggsave("../images/learning_trend_time_subject.pdf", width=10.5, height = 3.5)

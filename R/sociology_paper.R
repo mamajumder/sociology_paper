@@ -688,7 +688,7 @@ ggplot() +
   geom_point(aes(attempt,mean_resid, group=1), data= ddt) +
   geom_smooth(aes(attempt,mean_resid, group=1), data= ddt, method="lm", se=F, size=I(1.2)) +
   facet_grid(.~Experiment, scales="free_y", labeller="label_both") + ylab("Mean residual proportion correct") +
-  scale_x_continuous(breaks = 1:10)
+  scale_x_continuous(breaks = 1:10) + xlab("Attempt")
 
 ggsave("../images/learning_trend_subject.pdf", width=10.5, height = 3.5)
 

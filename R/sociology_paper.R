@@ -262,10 +262,13 @@ ft <- lmer(log(time_taken)~age_level+country+degree+gender_level+(1|pic_name),
            data=demographics)
 summary(ft)
 
-fp <- glmer(response~age_level+factor(country, ordered=FALSE)+factor(degree, ordered=FALSE)+gender_level+(1|pic_name), 
+fp <- glmer(response~age_level+country+degree+gender_level+(1|pic_name), 
            family="binomial", data=demographics, control=glmerControl(optimizer="bobyqa"))
 
 summary(fp)
+resid <- residuals(fp)
+# residual error
+sqrt(sum(resid^2)/(length(resid)-length(fixef(fp))))
 
 est.factor <- cbind(get_estimates(ft)[-16,],g1=" ",get_estimates(fp))
 rownames(est.factor) <- c("$mu$",substr(rownames(est.factor)[2:7],10,nchar(rownames(est.factor)[2:7])),
@@ -295,13 +298,13 @@ anova.time <- rbind(data.frame(round(tag[1,1:4],2),round(tag[2,5:7]/1,2)),
                     data.frame(round(tge[1,1:4],2),round(tge[2,5:7]/1,2)))
 
 fpa <- glmer(response~country+degree+gender_level+(1|pic_name), 
-           family="binomial", demographics)
+           family="binomial", demographics, control=glmerControl(optimizer="bobyqa"))
 fpc <- glmer(response~age_level+degree+gender_level+(1|pic_name), 
-           family="binomial", demographics)
+           family="binomial", demographics, control=glmerControl(optimizer="bobyqa"))
 fpd <- glmer(response~age_level+country+gender_level+(1|pic_name), 
-           family="binomial", demographics)
+           family="binomial", demographics, control=glmerControl(optimizer="bobyqa"))
 fpg <- glmer(response~age_level+country+degree+(1|pic_name), 
-           family="binomial", demographics)
+           family="binomial", demographics, control=glmerControl(optimizer="bobyqa"))
 
 pag <- anova(fp,fpa)
 pcn <- anova(fp,fpc)
@@ -675,8 +678,9 @@ ddt <- ddply(trend.dat,.(experiment, attempt), summarise,
              mean_resid = mean(resid))
 
 ddt$Experiment <- ddt$experiment
-qplot(attempt,mean_resid, data= ddt) + geom_point(size=2.5) +
-  geom_smooth(method="lm", se=F) + ylab("Mean residual proportion correct") +
+qplot(attempt,mean_resid, data= ddt) + 
+  geom_smooth(method="lm", se=F) + geom_point(size=2.5) +
+  ylab("Mean residual proportion correct") +
   facet_grid(.~Experiment, scales="free_y", labeller="label_both") +
   scale_x_continuous(breaks = seq(2,10,by=2)) 
 

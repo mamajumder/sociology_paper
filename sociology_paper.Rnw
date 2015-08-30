@@ -633,7 +633,9 @@ Parameter estimates from the model fits are shown in Table~\ref{tbl:model_result
 \cline{3-6} \cline{8-11}
 \bf Random Effects &  lineup $(\sigma_\ell)$& \multicolumn{5}{l}{0.29} & \multicolumn{4}{l}{\phantom{-}2.29} \\ 
                    &  Error $(\sigma)$& \multicolumn{5}{l}{0.69} & \multicolumn{4}{l}{\phantom{-}0.89}  \\ 
-\cline{3-6} \cline{8-11}
+\cline{3-6} \cline{8-11}\\
+\hline
+\multicolumn{10}{l}{Signif. codes:  *** $<$ 0.001 $\le$ ** $<$ 0.01 $\le$ * $<$ 0.05 $\le$ . $<$ 0.1 $\le$ ` ' $<$ 1}
 \end{tabular}}
 \end{table}
 

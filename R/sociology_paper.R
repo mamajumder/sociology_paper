@@ -121,7 +121,7 @@ for (i in 1:10){
   degree <- factor(c("High school or less", "Under grad courses",
                   "Under grad degree","Graduate courses",
                   "Graduate degree")[di$academic_study])
-  di$degree <- factor(degree, levels=levels(degree)[order(c(4,5,1,2,3))], ordered=T)
+  di$degree <- factor(degree, levels=levels(degree)[order(c(4,5,1,2,3))])
   di$age_level <- factor(c("below 18","18-25","26-30","31-35","36-40",
                   "41-45","46-50","51-55","56-60","above 60")[di$age])
   di$gender_level <- factor(c("Male","Female")[di$gender])
@@ -138,7 +138,7 @@ demographics$country[(demographics$country_code != "IN") & (demographics$country
 demographics$country[demographics$country=="Namibia"] <- "Rest of the world"
 demographics$country[demographics$country==NA] <- "Rest of the world"
 country <- factor(demographics$country)
-demographics$country <- factor(country,levels=levels(country)[c(3,1,2)], ordered=T)
+demographics$country <- factor(country,levels=levels(country)[c(3,1,2)])
 
 levels(demographics$age_level)[7:9] <- 7
 levels(demographics$age_level)[1:7] <- c(levels(demographics$age_level)[1:6], "above 50")
@@ -236,7 +236,7 @@ ggsave("../images/demographic_effect.pdf", width=6.5, height=6)
 # Function to obtain estimates of fitted model for latex xtable
 # Getting results of mixed effect model with log(time_taken)
 #----------------------------------------------------------------
-get_estimates <- function(fit){
+get_estimates0 <- function(fit){
   Vcov <- vcov(fit, useScale = FALSE)
   betas <- fixef(fit)
   se <- sqrt(diag(Vcov))
@@ -253,6 +253,37 @@ get_estimates <- function(fit){
   return(rbind(fe,re[order(rownames(re)),]))
 }
 
+# switch to confidence levels ...
+
+get_estimates <- function(fit){
+  stars <- function(pval) {
+    res <- rep("", length(pval))
+    idx <- which(pval < 0.05)
+    if (length(idx) > 0) res[idx] <- paste(res[idx],"*", sep="")
+    idx <- which(pval < 0.01)
+    if (length(idx) > 0) res[idx] <- paste(res[idx],"*", sep="")
+    idx <- which(pval < 0.001)
+    if (length(idx) > 0) res[idx] <- paste(res[idx],"*", sep="")
+    idx <- which((pval < 0.1) & (pval > 0.05))
+    if (length(idx) > 0) res[idx] <- "."
+    return(res)
+  }
+  cis <- na.omit(data.frame(confint(fit, method="Wald")))
+  betas <- fixef(fit)
+  
+  Vcov <- vcov(fit, useScale = FALSE)
+  se <- sqrt(diag(Vcov))
+  zval <- betas / se
+  pval <- round(2 * pnorm(abs(zval), lower.tail = FALSE),4)
+  pval <- stars(pval)
+  fe <- data.frame(Est=round(betas,3),LB= round(cis[,1],3), UB= round(cis[,2],3), pvalue=pval)
+  #  browser()
+  rem <- as.data.frame(VarCorr(fit))
+  re <- data.frame(Est=rem$sdcor, LB=NA, UB=NA, pvalue=NA)
+  re$Est <- round(as.numeric(as.character(re$Est)),3)
+  rownames(re) <- rem[,1]
+  return(rbind(fe,re[order(rownames(re)),]))
+}
 
 # --------------------------------------------------------------
 # Model fitting with demographic factors
@@ -274,7 +305,7 @@ est.factor <- cbind(get_estimates(ft)[-16,],g1=" ",get_estimates(fp))
 rownames(est.factor) <- c("$mu$",substr(rownames(est.factor)[2:7],10,nchar(rownames(est.factor)[2:7])),
                           levels(demographics$country)[-1], levels(demographics$degree)[-1],
                           "Male", "lineup")
-dgt <- c(rep(0,15), rep(3,30), rep(2,15),rep(0,15))
+dgt <- c(rep(0,15), rep(2,45), rep(0,15))
 dgts <- matrix(rep(dgt,2), ncol=10)
 print(xtable(est.factor, digits=dgts),  sanitize.text.function = function(x){x})
 

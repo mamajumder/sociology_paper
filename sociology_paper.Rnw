@@ -320,7 +320,7 @@ Similarly, we model the  time  an observer takes to identify a panel from a line
 \begin{equation} \label{eqn:demographic_time}
 Z_{ij} = \mu + \alpha_{k(i)} + \gamma_{l(i)} + \tau_{m(i)}+ \kappa_{s(i)} + \ell_j+ \epsilon_{ij},  
 \end{equation}
-where $\mu$ represents overall average of log time taken by an observer to evaluate a lineup, $\alpha$, $\gamma$, $\tau$ and  $\kappa$ are as described in model \eqref{eqn:demographic_response}, $\ell_j$ is a lineup-specific random effect for the time needed to evaluate a lineup, with $\ell_j \sim N(0, \sigma_\ell^2)$ and the overall error $\epsilon_{ij} \sim N(0, \sigma^2)$.  
+where $\mu$ represents overall average of log time taken by an observer to evaluate a lineup, $\alpha$, $\gamma$, $\tau$ and  $\kappa$ are as described in model~\eqref{eqn:demographic_response}, $\ell_j$ is a lineup-specific random effect for the time needed to evaluate a lineup, with $\ell_j \sim N(0, \sigma_\ell^2)$ and the overall error $\epsilon_{ij} \sim N(0, \sigma^2)$.  
 
 \subsection{Learning Trend} Learning trend of a subject can be observed in terms of performance over successive responses when multiple lineups are shown for evaluation. Experiments 5, 6 and 7 were used for this. Each subject was shown a total of 10 lineups randomly selected from a pool of lineups. The lineups are not necessarily of the same difficulty level, but the order of lineups was randomized. The responses of the lineups were recorded by attempt 1 through 10. Attempt 1 means that the response is for the first lineup the observer evaluates and attempt 10 refers to the response for the 10th lineup. The goal is to estimate whether performance of the observer improves, or changes, from attempt 1 to attempt 10. 
 
@@ -406,7 +406,7 @@ Location of an observer is determined based on the ip address of the observer.
 %\begin{equation} \label{eqn:demographic_time}
 %Z_{ij} = \mu + \alpha_{k(i)} + \gamma_{l(i)} + \tau_{m(i)}+ \kappa_{s(i)} + \ell_j+ \epsilon_{ij},  
 %\end{equation}
-%where $\mu$ represents overall average of log time taken by an observer to evaluate a lineup. $\alpha$, $\gamma$, $\tau$ and  $\kappa$ are as described in Model \eqref{eqn:demographic_response}. $\ell_j$ is a lineup-specific random effect for the time needed to evaluate a lineup; $\ell_j \sim N(0, \sigma_\ell^2)$ and the overall error $\epsilon_{ijk} \sim N(0, \sigma^2)$.
+%where $\mu$ represents overall average of log time taken by an observer to evaluate a lineup. $\alpha$, $\gamma$, $\tau$ and  $\kappa$ are as described in Model~\eqref{eqn:demographic_response}. $\ell_j$ is a lineup-specific random effect for the time needed to evaluate a lineup; $\ell_j \sim N(0, \sigma_\ell^2)$ and the overall error $\epsilon_{ijk} \sim N(0, \sigma^2)$.
 
 
 
@@ -568,7 +568,7 @@ Results from test plots were also not considered in any of the analyses.
 
 %\dc{*** It seems repetitive to start with a description of what we learn from the plot, so start with the model summary and use the plot to support the model findings.}
 
-To explore the significance of the demographic factors model \eqref{eqn:demographic_response} is fit to the data, with age, country, education and gender as fixed effects. To estimate the significance of each of the factors, reduced models are fit with that factor removed from the model. Table~\ref{tbl:anova_factor} summarizes the results. Except for gender, all of the demographic factors show significant differences in  detection rates.  With respect to time taken, all of the demographic factors are significant. 
+To explore the significance of the demographic factors model~\eqref{eqn:demographic_response} is fit to the data, with age, country, education and gender as fixed effects. To estimate the significance of each of the factors, reduced models are fit with that factor removed from the model. Table~\ref{tbl:anova_factor} summarizes the results. Except for gender, all of the demographic factors show significant differences in  detection rates.  With respect to time taken, all of the demographic factors are significant. 
 
 \begin{table}[htbp]
 \centering
@@ -603,7 +603,7 @@ Parameter estimates from the model fits are shown in Table~\ref{tbl:model_result
 % latex table generated in R 3.2.2 by xtable 1.7-4 package
 % Sat Aug 29 14:17:22 2015
 \begin{table}[hbtp]
-\caption{Parameter estimates of models~\eqref{eqn:demographic_time} and~\eqref{eqn:demographic_response} fitted for average log time taken and detection rate, respectively. For time taken all the demographic factors are significant. For detection rate, age group 36-40, rest of the world and graduate degree are significantly different. For gender no difference in performance is observed. Lineup variability is estimated to be very large for model~\eqref{eqn:demographic_response}.}
+\caption{\label{tbl:model_result_demographics}Parameter estimates of models~\eqref{eqn:demographic_time} and~\eqref{eqn:demographic_response} fitted for average log time taken and detection rate, respectively. For time taken all the demographic factors are significant. For detection rate, age group 36-40, rest of the world and graduate degree are significantly different. For gender no difference in performance is observed. Lineup variability is estimated to be very large for model~\eqref{eqn:demographic_response}.}
 \centering
 \scalebox{.85}{
 \begin{tabular}{rrr>{( }r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}cr>{( }r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}}
@@ -637,54 +637,54 @@ Parameter estimates from the model fits are shown in Table~\ref{tbl:model_result
 \end{tabular}}
 \end{table}
 
-\begin{table}[htbp]
-\centering
-\caption{Parameter estimates of models \eqref{eqn:demographic_time} and \eqref{eqn:demographic_response} fitted for average log time taken and detection rate, respectively. For time taken all the demographic factors are significant. For detection rate, age group 36-40, rest of the world and graduate degree are significantly different. For gender no difference in performance is observed. Lineup variability is estimated to be very large for model~\eqref{eqn:demographic_response}.
-%
-}
-\scalebox{0.86}{
-\begin{tabular}{rlrrrrrrrrrr}
-  \hline
-Demographic&& \multicolumn{4}{c} {Log Time (model~\ref{eqn:demographic_time})} & &\multicolumn{4}{c} {Detection rate (model~\ref{eqn:demographic_response})} \\
-
-\cline{3-6} \cline{8-11} 
-Factor & Level& Est & SE & Zval & $p$-value && Est & SE & Zval & $p$-value  \\ 
-  \hline
-\multicolumn{2}{l}{Fixed Effect} &  &  &  &  &  & & && \\ 
-&$\mu$ & 3.360 & 0.013 & 249.21 & $<$0.001 &   & -0.683 & 0.071 & -9.64 & $<$0.001 \\ 
-\hline
-Age ($\alpha$)& 18-25&0.000   &---  &---  &---  &  &--- &--- &---& ---\\   
- &26-30 & 0.058 & 0.013 & 4.50 & $<$0.001 &   & 0.062 & 0.049 & 1.27 & 0.206 \\ 
-  &31-35 & 0.068 & 0.014 & 4.72 & $<$0.001 &   & 0.115 & 0.055 & 2.08 & 0.038 \\ 
-  &36-40 & 0.231 & 0.016 & 14.05 & $<$0.001 &   & 0.310 & 0.063 & 4.93 & $<$0.001 \\ 
-  &41-45 & 0.176 & 0.021 & 8.56 & $<$0.001 &   & 0.158 & 0.081 & 1.96 & 0.050 \\ 
-  &46-50 & 0.272 & 0.024 & 11.29 & $<$0.001 &   & 0.141 & 0.096 & 1.47 & 0.143 \\ 
-  &above 50 & 0.352 & 0.018 & 19.19 & $<$0.001 &   & 0.147 & 0.071 & 2.06 & 0.039 \\ 
-  \hline
-Country($\kappa$)& United States&0.000   &---  &---  &---  &  &--- &--- &---& ---\\  
-  &India & 0.101 & 0.011 & 9.11 & $<$0.001 &   & 0.058 & 0.043 & 1.33 & 0.183 \\ 
-  &Rest of world & -0.129 & 0.009 & -13.82 & $<$0.001 &   & 0.185 & 0.035 & 5.22 & $<$0.001 \\ 
-  \hline
-Education($\tau$) &High school or less&0.000   &---  &---  &---  &  &--- &--- &---& ---\\     
- &Under grad courses & 0.042 & 0.013 & 3.25 & 0.0011 &   & -0.083 & 0.050 & -1.65 & 0.098 \\ 
-  &Under grad degree & -0.037 & 0.012 & -3.21 & 0.0013 &   & -0.044 & 0.045 & -0.97 & 0.331 \\ 
-  &Graduate courses & 0.117 & 0.013 & 9.12 & $<$0.001 &   & 0.070 & 0.050 & 1.42 & 0.157 \\ 
-  &Graduate degree & 0.046 & 0.011 & 4.12 & $<$0.001 &   & 0.182 & 0.043 & 4.22 & $<$0.001 \\ 
-  \hline
-Gender ($\gamma$)& Female&0.000   &---  &---  &---  &  &--- &--- &---& ---\\      
-  &Male & 0.078 & 0.009 & 8.26 & $<$0.001 &   & 0.055 & 0.036 & 1.50 & 0.133 \\ 
-  \hline
-\multicolumn{2}{l}{Random Effect} &  &  &  &  &  & & && \\ 
-& lineup($\sigma_{\ell}$) & 0.287 &  &  &  &   & 2.293 &  &  &  \\ 
- & Error($\sigma$) & 0.692 & &  &  &  & \mm{? 0.893} && &\\ 
-   \hline
-\end{tabular}
-}
-\label{tbl:model_result_demographics}
-\end{table}
+% \begin{table}[htbp]
+% \centering
+% \caption{Parameter estimates of models \eqref{eqn:demographic_time} and \eqref{eqn:demographic_response} fitted for average log time taken and detection rate, respectively. For time taken all the demographic factors are significant. For detection rate, age group 36-40, rest of the world and graduate degree are significantly different. For gender no difference in performance is observed. Lineup variability is estimated to be very large for model~\eqref{eqn:demographic_response}.
+% %
+% }
+% \scalebox{0.86}{
+% \begin{tabular}{rlrrrrrrrrrr}
+%   \hline
+% Demographic&& \multicolumn{4}{c} {Log Time (model~\ref{eqn:demographic_time})} & &\multicolumn{4}{c} {Detection rate (model~\ref{eqn:demographic_response})} \\
+% 
+% \cline{3-6} \cline{8-11} 
+% Factor & Level& Est & SE & Zval & $p$-value && Est & SE & Zval & $p$-value  \\ 
+%   \hline
+% \multicolumn{2}{l}{Fixed Effect} &  &  &  &  &  & & && \\ 
+% &$\mu$ & 3.360 & 0.013 & 249.21 & $<$0.001 &   & -0.683 & 0.071 & -9.64 & $<$0.001 \\ 
+% \hline
+% Age ($\alpha$)& 18-25&0.000   &---  &---  &---  &  &--- &--- &---& ---\\   
+%  &26-30 & 0.058 & 0.013 & 4.50 & $<$0.001 &   & 0.062 & 0.049 & 1.27 & 0.206 \\ 
+%   &31-35 & 0.068 & 0.014 & 4.72 & $<$0.001 &   & 0.115 & 0.055 & 2.08 & 0.038 \\ 
+%   &36-40 & 0.231 & 0.016 & 14.05 & $<$0.001 &   & 0.310 & 0.063 & 4.93 & $<$0.001 \\ 
+%   &41-45 & 0.176 & 0.021 & 8.56 & $<$0.001 &   & 0.158 & 0.081 & 1.96 & 0.050 \\ 
+%   &46-50 & 0.272 & 0.024 & 11.29 & $<$0.001 &   & 0.141 & 0.096 & 1.47 & 0.143 \\ 
+%   &above 50 & 0.352 & 0.018 & 19.19 & $<$0.001 &   & 0.147 & 0.071 & 2.06 & 0.039 \\ 
+%   \hline
+% Country($\kappa$)& United States&0.000   &---  &---  &---  &  &--- &--- &---& ---\\  
+%   &India & 0.101 & 0.011 & 9.11 & $<$0.001 &   & 0.058 & 0.043 & 1.33 & 0.183 \\ 
+%   &Rest of world & -0.129 & 0.009 & -13.82 & $<$0.001 &   & 0.185 & 0.035 & 5.22 & $<$0.001 \\ 
+%   \hline
+% Education($\tau$) &High school or less&0.000   &---  &---  &---  &  &--- &--- &---& ---\\     
+%  &Under grad courses & 0.042 & 0.013 & 3.25 & 0.0011 &   & -0.083 & 0.050 & -1.65 & 0.098 \\ 
+%   &Under grad degree & -0.037 & 0.012 & -3.21 & 0.0013 &   & -0.044 & 0.045 & -0.97 & 0.331 \\ 
+%   &Graduate courses & 0.117 & 0.013 & 9.12 & $<$0.001 &   & 0.070 & 0.050 & 1.42 & 0.157 \\ 
+%   &Graduate degree & 0.046 & 0.011 & 4.12 & $<$0.001 &   & 0.182 & 0.043 & 4.22 & $<$0.001 \\ 
+%   \hline
+% Gender ($\gamma$)& Female&0.000   &---  &---  &---  &  &--- &--- &---& ---\\      
+%   &Male & 0.078 & 0.009 & 8.26 & $<$0.001 &   & 0.055 & 0.036 & 1.50 & 0.133 \\ 
+%   \hline
+% \multicolumn{2}{l}{Random Effect} &  &  &  &  &  & & && \\ 
+% & lineup($\sigma_{\ell}$) & 0.287 &  &  &  &   & 2.293 &  &  &  \\ 
+%  & Error($\sigma$) & 0.692 & &  &  &  & 0.893 && &\\ 
+%    \hline
+% \end{tabular}
+% }
+% \label{tbl:model_result_demographics}
+% \end{table}
 
 Figure~\ref{fig:demographic_effect} supports the model results. The average time taken to respond (natural log) and detection rate are computed by lineup for the different demographic factor levels, and displayed using boxplots. Mean values are shown as dots inside the boxplot, as this statistic rather than the median is used in the models. %There are some small differences across demographic groups. The youngest age group (18-25) took least average time to evaluate a lineup. People from India took more time than others. People who have only a high school degree took less time and this is related to what we have seen for young age group. Averages of log time taken by male and female participants look similar but there are some differences as we see in Table~\ref{tbl:demographics}. 
-The means and medians for response time (top row) are essentially equal. There are some differences between the two in the detection rate plots (bottom row). The differences in these values for different factors, that was tested by the models, can be seen in the plots. However, particularly for detection rate, the variation is huge. A large component of the variation is difficulty of the lineup. In some lineups the actual data plot was distinctively different from the null plots, and we would expect that the detection rate would be close to 100\%. In other lineups there was no difference, making it very difficult to evaluate, with low detection rate and longer time to respond. In Table~\ref{tbl:model_result_demographics} notice that lineup specific variance estimate is 5.259 with a standard error of 2.293 which is much higher than the other significant parameter estimates in model \eqref{eqn:demographic_response}. This indicates that the major and most important factor affecting the detection rate is  lineup difficulty.  So although the demographic factors emerge from the model to be statistically significant, the practical significance is minimal. We illustrate this with the following example of graduate degree.
+The means and medians for response time (top row) are essentially equal. There are some differences between the two in the detection rate plots (bottom row). The differences in these values for different factors, that was tested by the models, can be seen in the plots. However, particularly for detection rate, the variation is huge. A large component of the variation is difficulty of the lineup. In some lineups the actual data plot was distinctively different from the null plots, and we would expect that the detection rate would be close to 100\%. In other lineups there was no difference, making it very difficult to evaluate, with low detection rate and longer time to respond. In Table~\ref{tbl:model_result_demographics} notice that lineup specific error is estimated as 2.29 which is much higher than any of the other parameter estimates in the model. This indicates that the major and most important factor affecting the detection rate is  lineup difficulty.  So although the demographic factors emerge from the model to be statistically significant, the practical significance is minimal. We illustrate this with the following example of graduate degree.
 
 %Some differences in median detection rate for different demographic factor levels can be seen,  but the variability in responses is huge. This variability is primarily in variability in the lineups -- some very easy and some extremely difficult lineups. Some of the lineups  were not expected to be evaluated correctly as the null plots in those lineups were showing more signal than the actual data plot itself. In those scenarios,  one may not reject the null hypothesis. We call these difficult lineups. Some of the lineups were so easy that data plot is detectable at a first glance. These were expected to be evaluated correctly 100\% of the time. This is why we see the boxes range from 0 to 1 in most of the factor levels. Unlike median, fewer differences are observed in the average proportion of correct responses for different factor levels. 
 
@@ -710,11 +710,11 @@ The means and medians for response time (top row) are essentially equal. There a
 % This table had 4 digits $p$-value for last column
 %\begin{table}[htbp]
 %\centering
-%\caption{Parameter estimates of Models \eqref{eqn:demographic_time} and \eqref{eqn:demographic_response} fitted for average log time taken and probability of correct lineup evaluations respectively. For time taken all the demographic factors are significant. For probability of correct response age group 36-40, rest of the world and graduate degree are significantly different. For gender no difference in performance is observed. Lineup variability is estimated to be very large for Model \eqref{eqn:demographic_response}.}
+%\caption{Parameter estimates of Models \eqref{eqn:demographic_time} and \eqref{eqn:demographic_response} fitted for average log time taken and probability of correct lineup evaluations respectively. For time taken all the demographic factors are significant. For probability of correct response age group 36-40, rest of the world and graduate degree are significantly different. For gender no difference in performance is observed. Lineup variability is estimated to be very large for model~\eqref{eqn:demographic_response}.}
 %\scalebox{0.86}{
 %\begin{tabular}{rlrrrrrrrrrr}
 %  \hline
-%Demographic&& \multicolumn{4}{c} {Model \eqref{eqn:demographic_time} Log Time} & &\multicolumn{4}{c} {Model \eqref{eqn:demographic_response} Proportion Correct} \\
+%Demographic&& \multicolumn{4}{c} {Model~\eqref{eqn:demographic_time} Log Time} & &\multicolumn{4}{c} {Model~\eqref{eqn:demographic_response} Proportion Correct} \\
 %
 %\cline{3-6} \cline{8-11} 
 %Factor & Level& Est & SE & Zval & $p$-value && Est & SE & Zval & $p$-value  \\ 
@@ -756,18 +756,18 @@ The means and medians for response time (top row) are essentially equal. There a
 
 %The graduate degree holders are significantly different as well. The positive parameter estimate indicates that they perform better and the probability of correct response is higher than other education levels. There is no significant difference between male and female performances. 
 
-%In Table~\ref{tbl:model_result_demographics} notice that lineup specific variance estimate is 5.259 with a standard error of 2.293 which is much higher than the other significant parameter estimates in model \eqref{eqn:demographic_response}. This indicates that the major and most important factor affecting the detection rate is  lineup difficulty.  Because of the huge impact of lineup variance, the practical impact of other factor variables on the probability of correct response is in fact very small. We illustrate this with the following example of graduate degree.
+%In Table~\ref{tbl:model_result_demographics} notice that lineup specific variance estimate is 5.259 with a standard error of 2.293 which is much higher than the other significant parameter estimates in model~\eqref{eqn:demographic_response}. This indicates that the major and most important factor affecting the detection rate is  lineup difficulty.  Because of the huge impact of lineup variance, the practical impact of other factor variables on the probability of correct response is in fact very small. We illustrate this with the following example of graduate degree.
 
-While some of the demographic factors are strongly statistically significant, the main source of variation in detection rate is the lineup difficulty. For example, let's examine the effect of graduate degree. To see just how large the effect is, we examine the change in detection rate for a (hypothetical) 18-25 year old female in the United States, with a graduate degree as compared to a high school degree, for an average difficulty lineup (random effect = 0). Plugging in the relevant quantities to the fitted model gives a difference equal to:
-$$ \frac {\exp(-0.683+0.182)}{1+\exp(-0.683+0.182)}-  \frac {\exp(-0.683)}{1+\exp(-0.683)} = 0.377- 0.336 =0.041.$$ 
-The person with a high school education on average picks the data plot in 33.5\% of lineups having average difficulty, as compared to 37.6\% if they have a graduate degree. This difference is reduced to 2\% for a lineup with one standard deviation order of magnitude difference in difficulty. For two standard deviations it further reduces to 0.3\%. Thus, although there is a statistically significant difference in the proportion at which participants identify the  data plot for some demographic factors, these are not  significant in any practical sense.  Figure~\ref{fig:practical_impact_graduate} illustrates this example showing fitted models for a US 18-25 female with either a high school education or a graduate degree.  Similar calculations show the same negligible impact of age level 36-40 (0.0533 at most)  and country (0.0424 at most) on the probability of a correct response. Thus even though some of the demographic factors are statistically significant, practically, demographics do not substantially influence the results. 
+While some of the demographic factors are strongly statistically significant, the main source of variation in detection rate is the lineup difficulty. For example, let's examine the effect of graduate degree. To see just how large the effect is, we examine the change in detection rate for a (hypothetical) 18-25 year old female in the United States, with some graduate course work as compared to an undergraduate degree, for an average difficulty lineup (random effect of zero). Plugging in the relevant quantities to the fitted model gives a difference equal to:
+$$ \frac {\exp(-0.61-0.17)}{1+\exp(-0.61-0.17)}-  \frac {\exp(-0.61+0.12)}{1+\exp(-0.61+0.12)} = 0.314- 0.379 =-0.065.$$ 
+The person with some graduate course work picks the data plot  on average in 33.5\% of lineups of average difficulty, as compared to 37.9\% if they have an undergraduate degree. This difference is reduced to 2\% for a lineup with one standard deviation order of magnitude difference in difficulty. For two standard deviations it further reduces to 0.3\%. Thus, although there is a statistically significant difference in the proportion at which participants identify the  data plot for some demographic factors, these are not  significant in any practical sense.  Figure~\ref{fig:practical_impact_graduate} illustrates this example showing fitted models for a US 18-25 female with either a high school education or a graduate degree.  Similar calculations show the same negligible impact of age level 36-40 (\Sexpr{round(exp(-0.61+0.31)/(1+ exp(-0.61+0.31)) - exp(-0.61)/(1 + exp(-0.61)),3)} at most)  and country (\Sexpr{round(exp(-0.61+0.08)/(1+ exp(-0.61+0.08)) - exp(-0.61-0.18)/(1 + exp(-0.61-0.18)), 3)} at most) on the probability of a correct response. Thus even though some of the demographic factors are statistically significant, practically, demographics do not substantially influence the results. 
 
 \begin{figure}[htbp] 
    \centering
 %   \includegraphics[width=6.5in]{learning_trend.pdf} 
     \includegraphics[width=3.2in]{practical_impact_graduate.pdf} 
     \includegraphics[width=3.2in]{practical_impact_degree.pdf} 
-   \caption{Proportion of estimated data identifications by an 18-25 year old female in the United States with a graduate degree compared to a high school degree. Even though having a graduate degree leads to  statistically significant increase, the effect size in the dependent variable is  0.045 which is  negligible from a practical point of view. The difference diminishes as we move away one or two standard deviations ($\sigma_{\ell} =2.293$) 
+   \caption{Proportion of estimated data identifications by an 18-25 year old female in the United States with a graduate degree compared to a high school degree. Even though having a graduate degree leads to  statistically significant increase, the effect size in the dependent variable is  0.045 which is  negligible from a practical point of view. The difference diminishes as we move away one or two standard deviations ($\sigma_{\ell} =2.29$) 
    of lineup variability.}
    \label{fig:practical_impact_graduate}
 \end{figure}
@@ -784,7 +784,7 @@ The person with a high school education on average picks the data plot in 33.5\%
 
 
 
-%Model \eqref{eqn:demographic_time} is fitted for the log time taken to evaluate a lineup and the results are also shown in  Table~\ref{tbl:model_result_demographics}.  The effect of all the demographic factors on log time taken to evaluate a lineup appears to be significant. 
+%Model~\eqref{eqn:demographic_time} is fitted for the log time taken to evaluate a lineup and the results are also shown in  Table~\ref{tbl:model_result_demographics}.  The effect of all the demographic factors on log time taken to evaluate a lineup appears to be significant. 
 
 
 
@@ -815,9 +815,9 @@ The person with a high school education on average picks the data plot in 33.5\%
 %
 
 
-\subsection{Learning Trend} Models \eqref{eqn:trend_response} and \eqref{eqn:trend_time} are fitted to the data from experiments~5,~6, and~7 separately. In this model, attempt is fitted as a factor variable to allow for all possible non-linear learning trends.  It should be noted that we also examined an alternative to model \eqref{eqn:trend_response} where attempt was linearly fitted as a continuous covariate, but this also was not significant.
+\subsection{Learning Trend} Models \eqref{eqn:trend_response} and \eqref{eqn:trend_time} are fitted to the data from experiments~5,~6, and~7 separately. In this model, attempt is fitted as a factor variable to allow for all possible non-linear learning trends.  It should be noted that we also examined an alternative to model~\eqref{eqn:trend_response} where attempt was linearly fitted as a continuous covariate, but this also was not significant.
 
-Table~\ref{tbl:model_result_response} displays the parameter estimates and $p$-values of fixed effect estimates of model \eqref{eqn:trend_response} examining detection rate. Only for experiment~6 there is some evidence of a learning curve. There are marginally small $p$-values for most of the attempt levels, and positive parameter estimates, suggesting that more attempts increases detection rate. 
+Table~\ref{tbl:model_result_response} displays the parameter estimates and $p$-values of fixed effect estimates of model~\eqref{eqn:trend_response} examining detection rate. Only for experiment~6 there is some evidence of a learning curve. There are marginally small $p$-values for most of the attempt levels, and positive parameter estimates, suggesting that more attempts increases detection rate. 
 
 %The large $p$-values suggest that none of the levels of attempt ($\alpha_2$ through $\alpha_{10}$) are significant at \%1 significance level. Moreover, some of the estimates are positive and some are negative and they show up seemingly in random order suggesting later attempts not necessarily have improved. This indicates that there may be no learning effect on the probability of correct evaluations.  
 
@@ -860,29 +860,29 @@ $\mu$ & -1.304 & 0.179 & -7.28 & $<$0.001 &   & -0.220 & 0.147 & -1.50 & 0.134 &
 %The results are shown in Tables~\ref{tbl:model_result_response}~\ref{tbl:model_result_time}.
 
 
-%Model \eqref{eqn:trend_time} is fitted to the data from experiment~5, 6, and 7 separately.   For this the function $lmer()$ is used from R package $lme4$ by \cite{lme4:2011}. To obtain the $p$-values of fixed effect parameters estimates, normal approximation is used for $Z$ scores computed as the ratio of estimates to the estimated standard errors. The results are shown in Table~\ref{tbl:model_result_time}. Both fixed effect parameters of covariate Attempt ($\alpha_1$ and $\alpha$) are highly significant.
+%Model~\eqref{eqn:trend_time} is fitted to the data from experiment~5, 6, and 7 separately.   For this the function $lmer()$ is used from R package $lme4$ by \cite{lme4:2011}. To obtain the $p$-values of fixed effect parameters estimates, normal approximation is used for $Z$ scores computed as the ratio of estimates to the estimated standard errors. The results are shown in Table~\ref{tbl:model_result_time}. Both fixed effect parameters of covariate Attempt ($\alpha_1$ and $\alpha$) are highly significant.
 
 %Each subject participating the experiment has seen multiple number of lineups for evaluations. Suppose $K$ be the number of lineups evaluated by a subject and $A_k$ be the $k$th attempt, $k=1,2, ..., K$. Subjects may have a chance for self learning and do better on lineups shown later in the sequence. They may learn from their previous mistake or they may learn about the features of the plots being evaluated as they progress. Thus if there is any learning trend that should be apparent in proportion correct over $A_k$. But to obtain this we have to adjust for lineup difficulty and individual performances.
 
-To visualize how  detection rates change over successive attempts, we fitted model \eqref{eqn:trend_response} excluding the covariates related to attempt from the model and computed the residuals. Least square regression lines were fitted through the subject specific residuals as shown in Figure~\ref{fig:learning_trend_response}. The averages of these residuals for each of the attempts are shown as dots. Two important features were observed; one is subject specific variability and the other is random slope with attempts which indicates subjects specific learning trend. Some subjects show improvement over time and some show the decrease in performance. Although, the model fit experiment~6 suggested a statistically significant learning curve the plots indicates that it is minimal. 
+To visualize how  detection rates change over successive attempts, we fitted model~\eqref{eqn:trend_response} excluding the covariates related to attempt from the model and computed the residuals. Least square regression lines were fitted through the subject specific residuals as shown in Figure~\ref{fig:learning_trend_response}. The averages of these residuals for each of the attempts are shown as dots. Two important features were observed; one is subject specific variability and the other is random slope with attempts which indicates subjects specific learning trend. Some subjects show improvement over time and some show the decrease in performance. Although, the model fit experiment~6 suggested a statistically significant learning curve the plots indicates that it is minimal. 
 
 \begin{figure}[htbp] 
    \centering
 %   \includegraphics[width=6.5in]{learning_trend.pdf} 
     \includegraphics[width=6.3in]{learning_trend_subject.pdf} 
-   \caption{ Least square lines fitted through the subject specific residual proportion correct obtained from model \eqref{eqn:trend_response} fitted without attempt are plotted against attempt. Subject specific positive and negative slopes are observed. Mean residuals are shown as dots and least square regression lines fitted through the points show no overall learning trend in each of the three experiments.}
+   \caption{ Least square lines fitted through the subject specific residual proportion correct obtained from model~\eqref{eqn:trend_response} fitted without attempt are plotted against attempt. Subject specific positive and negative slopes are observed. Mean residuals are shown as dots and least square regression lines fitted through the points show no overall learning trend in each of the three experiments.}
    \label{fig:learning_trend_response}
 \end{figure}
 
 %The averages of these residuals for each of the attempts are shown as dots in Figure~\ref{fig:learning_trend_response}. Least square linear regression lines are fitted through the points for each of the experiments. Positive slopes over the attempts are observed but none of them is statistically significant. 
 
-Table~\ref{tbl:model_result_time} presents the results of model \eqref{eqn:trend_time} where response time is examined with respect to attempt. Attempt is modeled as a linear covariate here, with a shift factor used to adjust for additional time on the first lineup evaluated. Interestingly, time to respond significantly decreases as number of attempts increases, for all three experiments. 
+Table~\ref{tbl:model_result_time} presents the results of model~\eqref{eqn:trend_time} where response time is examined with respect to attempt. Attempt is modeled as a linear covariate here, with a shift factor used to adjust for additional time on the first lineup evaluated. Interestingly, time to respond significantly decreases as number of attempts increases, for all three experiments. 
 The parameter $\alpha$ for fixed effect covariate attempt is highly significant in all the experiments. The negative estimates suggest that on average later attempts took less time. Even though observers did not improve in their performance in successive attempts, they became more efficient in their response. The parameter $\alpha_1$ for first attempt is also highly significant. The positive estimates of $\alpha_1$ indicates that first attempt made by an observer required much more time than any of the other attempts. One explanation might be that participants take the chance to  carefully read through instructions and familiarize themselves  with the types of plots used in the experiment before evaluating their first lineup, which would inflate the time taken on the first lineup. Each of the experiments asks observers to give a reason for their choice (out of a list of pre-defined answers. For each lineup evaluation, participants are also asked to state how confident in their choice they are (on a scale of 1 to 5).  Later pages of the web site were identical  except for the lineup. %Thus in the later attempts an observer does not need to spend any time for reading instructions. The model reflects that fact.
 
 
 \begin{table}[htbp]
 \centering
-\caption{Parameter estimates of model \eqref{eqn:trend_time} fitted for log time taken to evaluate a lineup. Both fixed effects parameters of Attempt ($\alpha_1$ and $\alpha$) are highly significant for all three experiments 5, 6 and 7. }
+\caption{Parameter estimates of model~\eqref{eqn:trend_time} fitted for log time taken to evaluate a lineup. Both fixed effects parameters of Attempt ($\alpha_1$ and $\alpha$) are highly significant for all three experiments 5, 6 and 7. }
 \scalebox{0.81}{
 \begin{tabular}{rrrrccrrrccrrrc}
   \hline
@@ -906,17 +906,17 @@ $\mu$ & 3.817 & 0.039 & 97.38 & $<$0.001 &   & 3.901 & 0.033 & 118.19 & $<$0.001
 \label{tbl:model_result_time}
 \end{table}
 
-%The lineup variance of experiment~7 is estimated as $\hat{\sigma}^2_{\ell} = 10.98$ from model \eqref{eqn:trend_response}. But from model \eqref{eqn:trend_time} it is estimated to be much smaller in all these experiments. This suggests that the harder lineups not necessarily took more time than easier lineups. The observers spent enough times to evaluate a easy lineup and for difficult lineup they might just give up at some point and provided the feedback.
+%The lineup variance of experiment~7 is estimated as $\hat{\sigma}^2_{\ell} = 10.98$ from model~\eqref{eqn:trend_response}. But from model~\eqref{eqn:trend_time} it is estimated to be much smaller in all these experiments. This suggests that the harder lineups not necessarily took more time than easier lineups. The observers spent enough times to evaluate a easy lineup and for difficult lineup they might just give up at some point and provided the feedback.
 
-%Model \eqref{eqn:trend_time} was compared to couple of other alternatives. A bigger model with attempt as a factor was considered but it was not significantly different with $p$ value 0.236. A reduced model without the first attempt was also considered but it was significantly different with $p$-value $<0.001$. 
+%Model~\eqref{eqn:trend_time} was compared to couple of other alternatives. A bigger model with attempt as a factor was considered but it was not significantly different with $p$ value 0.236. A reduced model without the first attempt was also considered but it was significantly different with $p$-value $<0.001$. 
 
-To visualize how the time taken reduces over the successive attempts, we fitted model \eqref{eqn:trend_time} excluding the covariate attempt from the model and computed the residuals. Least square regression lines are fitted through the subject specific residuals. Subject specific slopes are much different in each of the three experiments as we see in Figure~\ref{fig:learning_trend_time}. Some subjects improved over attempts by taking less time in the later attempts while others got worse. The averages of these residuals for each attempt are plotted as dots. Least square regression lines are fitted to these points excluding the first attempt since for first attempt we fitted an indicator covariate. The downward trends are evident in the plots. All the slopes are highly significant. As expected we observed large positive residuals for each of the experiments for first attempt. 
+To visualize how the time taken reduces over the successive attempts, we fitted model~\eqref{eqn:trend_time} excluding the covariate attempt from the model and computed the residuals. Least square regression lines are fitted through the subject specific residuals. Subject specific slopes are much different in each of the three experiments as we see in Figure~\ref{fig:learning_trend_time}. Some subjects improved over attempts by taking less time in the later attempts while others got worse. The averages of these residuals for each attempt are plotted as dots. Least square regression lines are fitted to these points excluding the first attempt since for first attempt we fitted an indicator covariate. The downward trends are evident in the plots. All the slopes are highly significant. As expected we observed large positive residuals for each of the experiments for first attempt. 
 
 %These results indicate that after working with the multiple tasks each observer became efficient which helped them finish the task faster in later attempts. Subject specific least square lines show variations in slopes and overall time taken. Even though overall skill improved, there are some subjects who took more times in later attempts.
 
 
 
-%To accomplish this we fit generalized mixed effect model \eqref{eqn:trend_response} with lineups and subjects as random effect and no fixed effect. This gives the estimation of proportion correct responses  and we obtain residuals of the fitted model. The residuals give variations in proportion correct adjusted for lineup difficulties and individual skills. If there is any learning trend over different attempt $A_k$, the residuals should have that information since $A_k$ was not included as a covariate in the model. %At this point we focus on absolute residuals over different attempts to study the deviations due to attempts. An smaller absolute residual at attempt $A_k$ should indicate learning from all other attempts less than $k$. 
+%To accomplish this we fit generalized mixed effect model~\eqref{eqn:trend_response} with lineups and subjects as random effect and no fixed effect. This gives the estimation of proportion correct responses  and we obtain residuals of the fitted model. The residuals give variations in proportion correct adjusted for lineup difficulties and individual skills. If there is any learning trend over different attempt $A_k$, the residuals should have that information since $A_k$ was not included as a covariate in the model. %At this point we focus on absolute residuals over different attempts to study the deviations due to attempts. An smaller absolute residual at attempt $A_k$ should indicate learning from all other attempts less than $k$. 
 
 %A plot of residuals against the attempts $A_k$ should reveal the trend if there is any. Figure~\ref{fig:learning_trend} shows such plots for three experiments naming experiment~5, 6 and 7. For all the experiments we see some increasing trend of the residuals. This could be attributed to the exhaustion of subjects' attempt after some earlier evaluations are made.  But none of apparent trend are statistically significant. 
 
@@ -926,7 +926,7 @@ To visualize how the time taken reduces over the successive attempts, we fitted 
    \centering
 %   \includegraphics[width=6.5in]{learning_trend_time.pdf}    
  \includegraphics[width=6.3in]{learning_trend_time_subject.pdf}    
-   \caption{Least square regression lines fitted through the subject specific residuals obtained by  fitting model \eqref{eqn:trend_time} without covariate attempt. Differences in subject specific slopes are observed. Some of the subjects did worse over successive attempts while others did better. Averages of these residuals are plotted as dots and least square regression lines are fitted to obtain overall trends. For all the three experiments the overall downward slopes are statistically significant which indicates that MTurk workers become more efficient as they progress through their attempts.}
+   \caption{Least square regression lines fitted through the subject specific residuals obtained by  fitting model~\eqref{eqn:trend_time} without covariate attempt. Differences in subject specific slopes are observed. Some of the subjects did worse over successive attempts while others did better. Averages of these residuals are plotted as dots and least square regression lines are fitted to obtain overall trends. For all the three experiments the overall downward slopes are statistically significant which indicates that MTurk workers become more efficient as they progress through their attempts.}
    \label{fig:learning_trend_time}
 \end{figure}
 
@@ -958,7 +958,7 @@ We observe some variability in the performance due to different null sets even t
 Model~\eqref{manova} was fit to the data to test, if  detection rates were significantly different for the different locations. For this we use the {\it manova()} function provided in the {\it stats} package of the software R \citep{R}. The results are shown in Table~\ref{tbl:manova}. The $p$-values for both the Interaction and the Genotype effect are much bigger than the conventional threshold of 0.05 suggesting that location of the actual data plot in the lineup does not significantly affect performance. 
 
 \begin{table}[hbtp]
-\caption{The summary of the results obtained by fitting MANOVA model \eqref{manova} using Wilks test.}
+\caption{The summary of the results obtained by fitting MANOVA model~\eqref{manova} using Wilks test.}
 \begin{center}
 \begin{tabular}{ccccccccc}
   \hline \hline
@@ -977,7 +977,7 @@ Model~\eqref{manova} was fit to the data to test, if  detection rates were signi
 For the second approach in investigating the location effect, we distinguish between inner panels 7, 8, 9, 12, 13, 14 and outer panels (any panel with an outside edge).  
 %We also examined whether the proportion of correct responses differs if the actual plot is on the outer boundary or in the inner locations. The locations 7,8,9,12,13,14 in the lineup are considered inner locations and the rest of the boundary locations are considered to be outer location. 
 From Figure~\ref{fig:location_effect} we see that location 9, 12 are inner panels for Interaction effect and locations 8, 12 are inner panels for Genotype. 
-Model \eqref{manova} fitted with two locations effects, inner and outer, did not result in any significant differences.  
+Model~\eqref{manova} fitted with two locations effects, inner and outer, did not result in any significant differences.  
 %It does not show any differences whether the actual plot is inside or outer border of the lineup. 
 
 

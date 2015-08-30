@@ -759,10 +759,12 @@ fp7 <- glmer(model,family="binomial",data=dt7, control=glmerControl(optimizer="o
 res7 <- get_estimates(fp7)
 
 results <- data.frame(res5,g1=" ",res6,g2=" ", res7)
+# remove covariance term
+results <- results[-11, ]
 rownames(results) <- c("$\\mu$", paste("$\\alpha", 2:10, "$",sep=""),
-                         "$\\sigma^2_a$","$\\sigma^2_u$","$\\sigma^2_l$")
+                         "$\\sigma^2_u$","$\\sigma^2_a$","$\\sigma^2_l$")
 
-print(xtable(results, digits=3),  sanitize.text.function = function(x){x})
+print(xtable(results, digits=2),  sanitize.text.function = function(x){x})
 
 
 

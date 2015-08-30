@@ -291,6 +291,7 @@ Two of the factors, signal in the data and individual abilities, were studied in
 %\dc{Learning trend and location effect need to be separate sections, cannot be simply bolded.}
 
 \subsection{Demographic Factors}  %In addition to obtain evaluation responses of the lineups, all the 10 experiments shown in Table~\ref{tbl:visual_stat} were designed to collect the following demographic information of the subjects participating the experiments:
+\hh{XXX compare demographics to US Census data - we see relatively young, relatively highly educated participants compared to general population. Being amazon turkers implicitly assures a relatively high level of technological fluency. }
 \noindent
 For all  ten experiments shown in Table~\ref{tbl:visual_stat}, the following demographic information was collected from subjects:
 
@@ -823,39 +824,69 @@ Table~\ref{tbl:model_result_response} displays the parameter estimates and $p$-v
 
 %The large $p$-values suggest that none of the levels of attempt ($\alpha_2$ through $\alpha_{10}$) are significant at \%1 significance level. Moreover, some of the estimates are positive and some are negative and they show up seemingly in random order suggesting later attempts not necessarily have improved. This indicates that there may be no learning effect on the probability of correct evaluations.  
 
-\begin{table}[htbp]
+% \begin{table}[htbp]
+% \centering
+% \caption{Parameter estimates of models \eqref{eqn:trend_response} fitted to data from three different experiments using detection rate as the response to assess learning trend. Attempt number is fitted as a factor to enable modeling any sort of non-linear learning trend. Only experiment~6 shows evidence of a learning trend, with detection rate essentially increasing as attempts increase.}
+% \scalebox{0.81}{
+% \begin{tabular}{rrrrccrrrccrrrc}
+%   \hline
+% & \multicolumn{4}{c} {Experiment~5} & &\multicolumn{4}{c} {Experiment~6} && \multicolumn{4}{c} {Experiment~7}\\
+% 
+% \cline{2-5} \cline{7-10} \cline{12-15} 
+%  Effect& Est & SE & Zval & $p$-value && Est & SE & Zval & $p$-value && Est & SE & Zval & $p$-value \\ 
+%   \hline
+% Fixed &  &  &  & && &  & & & & & &  & \\ 
+% $\mu$ & -1.304 & 0.179 & -7.28 & $<$0.001 &   & -0.220 & 0.147 & -1.50 & 0.134 &   & -1.737 & 0.481 & -3.61 & $<$0.001 \\ 
+%   $\alpha_1$ & 0.000 & --- & --- & --- &   & 0.000 & --- & --- & --- &  & 0.000 & --- & --- & ---  \\ 
+%   $\alpha_2$ & 0.270 & 0.219 & 1.24 & 0.217 &   & 0.262 & 0.158 & 1.66 & 0.098 &   & -0.456 & 0.385 & -1.18 & 0.237 \\ 
+%   $\alpha_3$ & -0.178 & 0.226 & -0.79 & 0.432 &   & 0.342 & 0.157 & 2.18 & 0.029 &   & -0.105 & 0.386 & -0.27 & 0.786 \\ 
+%   $\alpha_4$ & 0.083 & 0.224 & 0.37 & 0.712 &   & 0.358 & 0.159 & 2.26 & 0.024 &   & -0.378 & 0.381 & -0.99 & 0.322 \\ 
+%   $\alpha_5$ & 0.298 & 0.224 & 1.33 & 0.183 &   & 0.376 & 0.159 & 2.36 & 0.018 &   & -0.107 & 0.385 & -0.28 & 0.781 \\ 
+%   $\alpha_6$ & 0.042 & 0.231 & 0.18 & 0.857 &   & 0.246 & 0.158 & 1.56 & 0.120 &   & 0.026 & 0.407 & 0.06 & 0.949 \\ 
+%   $\alpha_7$ & 0.283 & 0.230 & 1.23 & 0.217 &   & 0.160 & 0.159 & 1.01 & 0.314 &   & 0.057 & 0.401 & 0.14 & 0.886 \\ 
+%   $\alpha_8$ & -0.045 & 0.233 & -0.19 & 0.847 &   & 0.341 & 0.160 & 2.13 & 0.033 &   & -0.003 & 0.394 & -0.01 & 0.994 \\ 
+%   $\alpha_9$ & -0.195 & 0.232 & -0.84 & 0.400 &   & 0.378 & 0.160 & 2.36 & 0.018 &   & 0.204 & 0.436 & 0.47 & 0.639 \\ 
+%   $\alpha_{10}$ & 0.513 & 0.228 & 2.25 & 0.024 &   & 0.192 & 0.163 & 1.18 & 0.238 &   & -0.213 & 0.432 & -0.49 & 0.622 \\ 
+% \multicolumn{2}{l}{Random}   &  &  &  &  & & &&& & & &  & \\ 
+%   $\sigma^2_a$ &  0.017 &&  &  &   &  0.034 &&  &  &   &  0.163 &&  &  \\ 
+%   $\sigma^2_u$  & 0.848 &&  &  &    & 0.903 &&  &  &   &  $<$0.001 &&  &  \\ 
+%   $\sigma^2_{\ell}$  & 1.476 &&  &  &    & 1.418 &&  &  &   &  3.314 &&  &  \\ 
+%    \hline
+% \end{tabular}
+% }
+% \label{tbl:model_result_response}
+% \end{table}
+
+% latex table generated in R 3.2.2 by xtable 1.7-4 package
+% Sun Aug 30 11:15:41 2015
+\begin{table}[hbtp]
 \centering
-\caption{Parameter estimates of models \eqref{eqn:trend_response} fitted to data from three different experiments using detection rate as the response to assess learning trend. Attempt number is fitted as a factor to enable modeling any sort of non-linear learning trend. Only experiment~6 shows evidence of a learning trend, with detection rate essentially increasing as attempts increase.}
-\scalebox{0.81}{
-\begin{tabular}{rrrrccrrrccrrrc}
-  \hline
-& \multicolumn{4}{c} {Experiment~5} & &\multicolumn{4}{c} {Experiment~6} && \multicolumn{4}{c} {Experiment~7}\\
-
+\caption{\label{tbl:model_result_response}Parameter estimates of models \eqref{eqn:trend_response} fitted to data from three different experiments using detection rate as the response to assess learning trend. Attempt number is fitted as a factor to enable modeling any sort of non-linear learning trend. Only experiment~6 shows some evidence of a learning trend, with detection rate essentially increasing as attempts increase.}
+\scalebox{.81}{
+\begin{tabular}{rr>{( }r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}cr>{( }r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}cr>{( }r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}}
 \cline{2-5} \cline{7-10} \cline{12-15} 
- Effect& Est & SE & Zval & $p$-value && Est & SE & Zval & $p$-value && Est & SE & Zval & $p$-value \\ 
-  \hline
-Fixed &  &  &  & && &  & & & & & &  & \\ 
-$\mu$ & -1.304 & 0.179 & -7.28 & $<$0.001 &   & -0.220 & 0.147 & -1.50 & 0.134 &   & -1.737 & 0.481 & -3.61 & $<$0.001 \\ 
-  $\alpha_1$ & 0.000 & --- & --- & --- &   & 0.000 & --- & --- & --- &  & 0.000 & --- & --- & ---  \\ 
-  $\alpha_2$ & 0.270 & 0.219 & 1.24 & 0.217 &   & 0.262 & 0.158 & 1.66 & 0.098 &   & -0.456 & 0.385 & -1.18 & 0.237 \\ 
-  $\alpha_3$ & -0.178 & 0.226 & -0.79 & 0.432 &   & 0.342 & 0.157 & 2.18 & 0.029 &   & -0.105 & 0.386 & -0.27 & 0.786 \\ 
-  $\alpha_4$ & 0.083 & 0.224 & 0.37 & 0.712 &   & 0.358 & 0.159 & 2.26 & 0.024 &   & -0.378 & 0.381 & -0.99 & 0.322 \\ 
-  $\alpha_5$ & 0.298 & 0.224 & 1.33 & 0.183 &   & 0.376 & 0.159 & 2.36 & 0.018 &   & -0.107 & 0.385 & -0.28 & 0.781 \\ 
-  $\alpha_6$ & 0.042 & 0.231 & 0.18 & 0.857 &   & 0.246 & 0.158 & 1.56 & 0.120 &   & 0.026 & 0.407 & 0.06 & 0.949 \\ 
-  $\alpha_7$ & 0.283 & 0.230 & 1.23 & 0.217 &   & 0.160 & 0.159 & 1.01 & 0.314 &   & 0.057 & 0.401 & 0.14 & 0.886 \\ 
-  $\alpha_8$ & -0.045 & 0.233 & -0.19 & 0.847 &   & 0.341 & 0.160 & 2.13 & 0.033 &   & -0.003 & 0.394 & -0.01 & 0.994 \\ 
-  $\alpha_9$ & -0.195 & 0.232 & -0.84 & 0.400 &   & 0.378 & 0.160 & 2.36 & 0.018 &   & 0.204 & 0.436 & 0.47 & 0.639 \\ 
-  $\alpha_{10}$ & 0.513 & 0.228 & 2.25 & 0.024 &   & 0.192 & 0.163 & 1.18 & 0.238 &   & -0.213 & 0.432 & -0.49 & 0.622 \\ 
-\multicolumn{2}{l}{Random}   &  &  &  &  & & &&& & & &  & \\ 
-  $\sigma^2_a$ &  0.017 &&  &  &   &  0.034 &&  &  &   &  0.163 &&  &  \\ 
-  $\sigma^2_u$  & 0.848 &&  &  &    & 0.903 &&  &  &   &  $<$0.001 &&  &  \\ 
-  $\sigma^2_{\ell}$  & 1.476 &&  &  &    & 1.418 &&  &  &   &  3.314 &&  &  \\ 
-   \hline
-\end{tabular}
-}
-\label{tbl:model_result_response}
+& \multicolumn{4}{c} {Experiment~5} & &\multicolumn{4}{c} {Experiment~6} && \multicolumn{4}{c} {Experiment~7}\\
+\cline{2-5} \cline{7-10} \cline{12-15} 
+Effect & Est & 2.5\% & 97.5\% &  & \hspace{1cm} & Est & 2.5\% & 97.5\% &  & \hspace{1cm} & Est & 2.5\% & 97.5\% &  \\ 
+\cline{2-5} \cline{7-10} \cline{12-15} 
+Fixed \\
+$\mu$ & -1.30 & -1.69 & -0.92 & *** &   & -0.22 & -0.51 & 0.07 &  &   & -1.71 & -2.77 & -0.65 & ** \\ [3pt]
+  $\alpha_2$ & 0.27 & -0.19 & 0.73 &  &   & 0.26 & -0.06 & 0.58 &  &   & -0.49 & -1.31 & 0.32 &  \\ 
+  $\alpha_3$ & -0.18 & -0.65 & 0.29 &  &   & 0.34 & 0.02 & 0.66 & * &   & -0.19 & -1.01 & 0.63 &  \\ 
+  $\alpha_4$ & 0.08 & -0.39 & 0.55 &  &   & 0.36 & 0.04 & 0.68 & * &   & -0.47 & -1.28 & 0.35 &  \\ 
+  $\alpha_5$ & 0.30 & -0.17 & 0.77 &  &   & 0.37 & 0.05 & 0.70 & * &   & -0.16 & -0.96 & 0.65 &  \\ 
+  $\alpha_6$ & 0.04 & -0.44 & 0.53 &  &   & 0.24 & -0.07 & 0.56 &  &   & -0.03 & -0.87 & 0.82 &  \\ 
+  $\alpha_7$ & 0.28 & -0.20 & 0.77 &  &   & 0.16 & -0.16 & 0.48 &  &   & 0.02 & -0.81 & 0.84 &  \\ 
+  $\alpha_8$ & -0.04 & -0.54 & 0.45 &  &   & 0.34 & 0.02 & 0.66 & * &   & -0.08 & -0.89 & 0.73 &  \\ 
+  $\alpha_9$ & -0.20 & -0.69 & 0.30 &  &   & 0.38 & 0.05 & 0.70 & * &   & 0.15 & -0.71 & 1.02 &  \\ 
+  $\alpha_{10}$ & 0.51 & 0.03 & 1.00 & * &   & 0.19 & -0.14 & 0.52 &  &   & -0.28 & -1.14 & 0.58 &  \\ 
+  Random \\
+  $\sigma^2_u$ & \multicolumn{5}{l}{\phantom{-}0.85}  & \multicolumn{5}{l}{\phantom{-}0.90} & 0.76   \\ 
+  $\sigma^2_a$ & \multicolumn{5}{l}{\phantom{-}0.02}  & \multicolumn{5}{l}{\phantom{-}0.03} & 0.06   \\ 
+  $\sigma^2_l$ & \multicolumn{5}{l}{\phantom{-}1.48}  & \multicolumn{5}{l}{\phantom{-}1.42} & 3.37   \\ 
+\cline{2-5} \cline{7-10} \cline{12-15} 
+\end{tabular}}
 \end{table}
-
 
 %The variance of random slope for attempt ($\sigma^2_a$) is estimated to be very small compared to other random effects except for subject variability ($\sigma^2_u$) for experiment~7. This suggests that most of the variability for attempt is accounted for by the fixed effect factor attempt. For all three experiments the lineup variabilities ($\sigma^2_l$) were estimated to be very large making the practical impact of other factor levels even more negligible. Some of the lineups were very easy and some were really difficult in experiment~7. The overall average probability for picking out the data plot from a lineup ($\mu$) is significant for both experiments 5 and 7. But for experiment~6 it is not significant suggesting that experiment~6 lineups were difficult compared to the other experimental lineups. This shows a feature of the experimental designs where a mixture of difficult and easy lineups were included within the experiments as well as between the experiments.  For easy lineups there may be small chance to improve performances. But for harder lineups, the scope to improve performances is large.  Since for none of these experiments improvement in performances is observed, it is important in the sense that performances did not improve over attempts in both difficult and easy lineup situations.
 

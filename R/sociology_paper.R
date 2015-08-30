@@ -686,9 +686,10 @@ f7 <- lmer(model, data=dt7)
 estimates7 <- get_estimates(f7)
 
 estimates <- data.frame(estimates5,g1=" ",estimates6,g2=" ", estimates7)
-rownames(estimates) <- c("$\\mu$","$\\alpha_1$","$\\alpha$", "$\\sigma^2_a$",
-                         "$\\sigma^2_u$","$\\sigma^2_l$","$\\sigma^2$")
-dgt <- c(rep(0,7), rep(3,14), rep(2,7), rep(0,7))
+estimates <- estimates[-4,]
+rownames(estimates) <- c("$\\mu$","$\\alpha_1$","$\\alpha$", 
+                         "$\\sigma^2_u$","$\\sigma^2_a$", "$\\sigma^2_l$","$\\sigma^2$")
+dgt <- c(rep(0,7), rep(2,14), rep(2,7), rep(0,7))
 dgts <- matrix(rep(dgt,3), ncol=15)
 print(xtable(estimates, digits=dgts),  sanitize.text.function = function(x){x})
 

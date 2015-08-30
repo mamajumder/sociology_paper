@@ -277,11 +277,16 @@ get_estimates <- function(fit){
   pval <- round(2 * pnorm(abs(zval), lower.tail = FALSE),4)
   pval <- stars(pval)
   fe <- data.frame(Est=round(betas,3),LB= round(cis[,1],3), UB= round(cis[,2],3), pvalue=pval)
-  #  browser()
+#    browser()
   rem <- as.data.frame(VarCorr(fit))
   re <- data.frame(Est=rem$sdcor, LB=NA, UB=NA, pvalue=NA)
   re$Est <- round(as.numeric(as.character(re$Est)),3)
-  rownames(re) <- rem[,1]
+  nvars <- ncol(rem) - 2
+  nms <- rem[,1]
+  if (nvars > 2) {
+    for (i in 2:nvars) nms <- paste(nms, rem[,i], sep="|")
+  }
+  rownames(re) <- nms
   return(rbind(fe,re[order(rownames(re)),]))
 }
 

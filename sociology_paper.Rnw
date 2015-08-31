@@ -291,7 +291,6 @@ Two of the factors, signal in the data and individual abilities, were studied in
 %\dc{Learning trend and location effect need to be separate sections, cannot be simply bolded.}
 
 \subsection{Demographic Factors}  %In addition to obtain evaluation responses of the lineups, all the 10 experiments shown in Table~\ref{tbl:visual_stat} were designed to collect the following demographic information of the subjects participating the experiments:
-\hh{XXX compare demographics to US Census data - we see relatively young, relatively highly educated participants compared to general population. Being amazon turkers implicitly assures a relatively high level of technological fluency. }
 \noindent
 For all  ten experiments shown in Table~\ref{tbl:visual_stat}, the following demographic information was collected from subjects:
 
@@ -554,7 +553,14 @@ The United States shows a more uniform participation beyond age 30,  participant
 
 In terms of academic background, the majority of participants had a graduate degree (a total of 902 participants, about 38.51\%). Examining the participants' location in conjunction with the academic background reveals that there is an above average  number of participants from India reporting to have a graduate degree. In retrospect this turned out to be a culturally based misunderstanding, as any university degree in India is considered to be a graduate degree, while the North American definition of a graduate degree refers to a Masters level education or above. Most of the  participants from the U.S. report to have an undergraduate degree or at least have some undergraduate courses. 
 
+Compared to data from the 2010 US Census \cite{census}, participants were both relatively younger, and more highly educated than the general US population. 
+Being turkers implicitly assures that the participants in these experiments have a relatively high level of technological fluency. In fact, the demographics of participants align somewhat better with demographics of internet users published by
+\citet{pew}.
+
 The distribution of male and female participants are similar among all age groups except for age group 18-25 in India where the proportion of female participants is lower. The distribution of education levels also differs slightly across countries for this age group. %Most of the participants from India are below age 40 while in United States the distribution of participants are similar beyond age 40. There were not many participants beyond age 50 and hence these age groups are merged to form one age group called above 50. The exploratory analysis and the models fitted in the following sections use this new age group instead of actual age groups beyond age 50. 
+
+
+
 
 A total of 1911 lineups were evaluated in the ten experiments. Each person evaluated at least 10 lineups except for experiment~9 where each participant evaulated three lineups.
 As a measure to ensure a high quality in the evaluations,

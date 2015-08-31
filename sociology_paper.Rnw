@@ -625,7 +625,7 @@ Parameter estimates from the model fits are shown in Table~\ref{tbl:model_result
 \begin{table}[hbtp]
 \caption{\label{tbl:model_result_demographics}Parameter estimates of models~\eqref{eqn:demographic_time} and~\eqref{eqn:demographic_response} fitted for average log time taken and detection rate, respectively. For time taken all the demographic factors are significant. For detection rate, age group 36-40, rest of the world and graduate degree are significantly different. For gender no difference in performance is observed. Lineup variability is estimated to be very large for model~\eqref{eqn:demographic_response}.}
 \centering
-\scalebox{.85}{
+\scalebox{.9}{
 \begin{tabular}{rrr>{( }r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}cr>{( }r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}}
  && \multicolumn{4}{c} {Log Time (model~\ref{eqn:demographic_time})} & &\multicolumn{4}{c} {Detection rate (model~\ref{eqn:demographic_response})}  \\
 
@@ -881,7 +881,7 @@ Table~\ref{tbl:model_result_response} displays the parameter estimates and $p$-v
 \begin{table}[hbtp]
 \centering
 \caption{\label{tbl:model_result_response}Parameter estimates of models \eqref{eqn:trend_response} fitted to data from three different experiments using detection rate as the response to assess learning trend. Attempt number is fitted as a factor to enable modeling any sort of non-linear learning trend. Only experiment~6 shows some evidence of a learning trend, with detection rate essentially increasing as attempts increase.}
-\scalebox{.81}{
+\scalebox{.9}{
 \begin{tabular}{rr>{( }r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}cr>{( }r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}cr>{( }r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}}
 \cline{2-5} \cline{7-10} \cline{12-15} 
 & \multicolumn{4}{c} {Experiment~5} & &\multicolumn{4}{c} {Experiment~6} && \multicolumn{4}{c} {Experiment~7}\\

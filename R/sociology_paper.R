@@ -136,7 +136,7 @@ demographics <- merge(demographics,ip.details,all.x=TRUE, by="ip_address")
 demographics$country <- as.character(demographics$country_name)
 demographics$country[(demographics$country_code != "IN") & (demographics$country_code != "US")] <- "Rest of the world"
 demographics$country[demographics$country=="Namibia"] <- "Rest of the world"
-demographics$country[demographics$country==NA] <- "Rest of the world"
+demographics$country[is.na(demographics$country)] <- "Rest of the world"
 country <- factor(demographics$country)
 demographics$country <- factor(country,levels=levels(country)[c(3,1,2)])
 
@@ -314,45 +314,52 @@ dgt <- c(rep(0,15), rep(2,45), rep(0,15))
 dgts <- matrix(rep(dgt,2), ncol=10)
 print(xtable(est.factor, digits=dgts),  sanitize.text.function = function(x){x})
 
-fta <- lmer(log(time_taken)~country+degree+gender_level+(1|pic_name), 
-           data=demographics)
-ftc <- lmer(log(time_taken)~age_level+degree+gender_level+(1|pic_name), 
-           data=demographics)
-ftd <- lmer(log(time_taken)~age_level+country+gender_level+(1|pic_name), 
-           data=demographics)
-ftg <- lmer(log(time_taken)~age_level+country+degree+(1|pic_name), 
-           data=demographics)
+ftdata <- ft@frame
+names(ftdata)[1] <- "time_taken"
+ftdata$time_taken <- exp(ftdata$time_taken)
+
+ft <- update(ft, data=ftdata)
+fta <- update(ft, .~.-age_level, data=ftdata)
+ftc <- update(ft, .~.-country, data=ftdata)
+ftd <- update(ft, .~.-degree, data=ftdata)
+ftg <- update(ft, .~.-gender_level, data=ftdata)
 
 tag <- anova(ft,fta)
 tcn <- anova(ft,ftc)
 tde <- anova(ft,ftd)
 tge <- anova(ft,ftg)
 
-anova.time <- rbind(data.frame(round(tag[1,1:4],2),round(tag[2,5:7]/1,2)),
-                    data.frame(round(tcn[1,1:4],2),round(tcn[2,5:7]/1,2)),
-                    data.frame(round(tde[1,1:4],2),round(tde[2,5:7]/1,2)),
-                    data.frame(round(tge[1,1:4],2),round(tge[2,5:7]/1,2)))
+anova.time <- data.frame(rbind(round(tag[2,5:8]/1,2),
+                    round(tcn[2,5:8]/1,2),
+                    round(tde[2,5:8]/1,2),
+                    round(tge[2,5:8]/1,2)))
+anova.time <- rbind(anova.time[1,], anova.time)
+rownames(anova.time) <- c("Full", "Age", "Country", "Degree", "Gender")
+anova.time$Chisq[1] <- 0
+anova.time$deviance <- anova.time$deviance - anova.time$Chisq
 
-fpa <- glmer(response~country+degree+gender_level+(1|pic_name), 
-           family="binomial", demographics, control=glmerControl(optimizer="bobyqa"))
-fpc <- glmer(response~age_level+degree+gender_level+(1|pic_name), 
-           family="binomial", demographics, control=glmerControl(optimizer="bobyqa"))
-fpd <- glmer(response~age_level+country+gender_level+(1|pic_name), 
-           family="binomial", demographics, control=glmerControl(optimizer="bobyqa"))
-fpg <- glmer(response~age_level+country+degree+(1|pic_name), 
-           family="binomial", demographics, control=glmerControl(optimizer="bobyqa"))
+fpdata <- fp@frame
+fp <- update(fp, data=fpdata)
+fpa <- update(fp, .~.-age_level, data=fpdata)
+fpc <- update(fp, .~.-country, data=fpdata)
+fpd <- update(fp, .~.-degree, data=fpdata)
+fpg <- update(fp, .~.-gender_level, data=fpdata)
 
 pag <- anova(fp,fpa)
 pcn <- anova(fp,fpc)
 pde <- anova(fp,fpd)
 pge <- anova(fp,fpg)
-anova.prop <- rbind(data.frame(round(pag[1,1:4],2),round(pag[2,5:7]/1,2)),
-                    data.frame(round(pcn[1,1:4],2),round(pcn[2,5:7]/1,2)),
-                    data.frame(round(pde[1,1:4],2),round(pde[2,5:7]/1,2)),
-                    data.frame(round(pge[1,1:4],2),round(pge[2,5:7]/1,2)))
+anova.prop <- data.frame(rbind(round(pag[2,5:8]/1,2),
+                    round(pcn[2,5:8]/1,2),
+                    round(pde[2,5:8]/1,2),
+                    round(pge[2,5:8]/1,2)))
+anova.prop <- rbind(anova.prop[1,], anova.prop)
+rownames(anova.prop) <- c("Full", "Age", "Country", "Degree", "Gender")
+anova.prop$Chisq[1] <- 0
+anova.prop$deviance <- anova.prop$deviance - anova.prop$Chisq
 
 
-anova.reseult <- rbind(anova.time, anova.prop)
+anova.reseult <- cbind(anova.time,g1="", anova.prop)
 xtable(anova.reseult)
 
 # Model with demographic factor interaction

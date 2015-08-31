@@ -900,8 +900,10 @@ $\mu$ & -1.30 & -1.69 & -0.92 & *** &   & -0.22 & -0.51 & 0.07 &  &   & -1.71 & 
   Random \\
   $\sigma^2_u$ & \multicolumn{5}{l}{\phantom{-}0.85}  & \multicolumn{5}{l}{\phantom{-}0.90} & 0.76   \\ 
   $\sigma^2_a$ & \multicolumn{5}{l}{\phantom{-}0.02}  & \multicolumn{5}{l}{\phantom{-}0.03} & 0.06   \\ 
-  $\sigma^2_l$ & \multicolumn{5}{l}{\phantom{-}1.48}  & \multicolumn{5}{l}{\phantom{-}1.42} & 3.37   \\ 
-\cline{2-5} \cline{7-10} \cline{12-15} 
+  $\sigma^2_l$ & \multicolumn{5}{l}{\phantom{-}1.48}  & \multicolumn{5}{l}{\phantom{-}1.42} & 3.37   \\ \cline{2-5} \cline{7-10} \cline{12-15} 
+\\
+\hline
+\multicolumn{10}{l}{Signif. codes:  *** $<$ 0.001 $\le$ ** $<$ 0.01 $\le$ * $<$ 0.05 $\le$ . $<$ 0.1 $\le$ ` ' $<$ 1}
 \end{tabular}}
 \end{table}
 

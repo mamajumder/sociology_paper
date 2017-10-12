@@ -887,7 +887,7 @@ ggplot(subset(dd, plot_type=="Interaction")) +
   facet_wrap(~plot_type)
 
 
-# proportion of correct evaluation by location and null
+# proportion of correct evaluation (Detection Rate) by location and null
 
 nulls <- strsplit(as.character(dat9$param_value),split="_")
 dat9$nulls <- paste("null_",sapply(nulls, function(x) return(x[2])), sep="")
@@ -912,6 +912,10 @@ p_prop <- ggplot(p.dat, aes(plot_loc, prop_correct,  group=nulls))+
 
 ggsave(p_prop,file= "../images/proportion_nulls.pdf", width=9, height=4)
 
+# ----------------------------------------------------------------
+# Generating figure 8 of the paper
+# ----------------------------------------------------------------
+
 l.dat <- data.frame(plot_location=1:20, plot_int=0, plot_gen=0)
 plot_int <- unique(subset(dat9, plot_type=="Interaction")$plot_location)
 plot_gen <- unique(subset(dat9, plot_type=="Genotype")$plot_location)
@@ -933,7 +937,10 @@ print(p_int,vp = vp1)
 print(p_gen,vp = vp2)
 dev.off()
 
+# ----------------------------------------------------------------
 # Fitting MANOVA model
+# This produces results table 7
+# ----------------------------------------------------------------
 df <- ddply(subset(dat9, plot_type != "Filter"), 
             .(plot_type, plot_location, nulls, pic_name),summarise,
             prop_correct = mean(response))

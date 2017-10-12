@@ -293,6 +293,7 @@ get_estimates <- function(fit){
 # --------------------------------------------------------------
 # Model fitting with demographic factors
 # testing significance of demographic factor main effects
+# Finally it will generate results table 4 in the paper
 # --------------------------------------------------------------
 ft <- lmer(log(time_taken)~age_level+country+degree+gender_level+(1|pic_name), 
            data=demographics)
@@ -526,9 +527,10 @@ ggplot(turk.summary, aes(x = factor(plot, levels=plot[order(percent_rejected)]),
 ggsave("../images/rejected_task.pdf", width=6, height=4)
 
 
-
+# ----------------------------------------------------------------
 # Drawing the map of turk participants
-
+# This will create the map of figure 3 in the paper
+# ----------------------------------------------------------------
 map_theme <- list(theme(panel.grid.minor = element_blank(),
                         panel.grid.major = element_blank(),
                         panel.background = element_blank(),
@@ -561,7 +563,10 @@ p<- ggplot() +
   theme(legend.position="none", axis.text = element_blank(), axis.title=element_blank()) 
 ggsave("../images/turker_location_experiment.pdf", width=8, height=10)
 
+# ----------------------------------------------------------------
 # country-wise participants counts
+# This will produce figure 3 bar chart
+# ----------------------------------------------------------------
 qplot(factor(country, levels=names(table(country))[order(table(country))]), 
       geom="bar", fill="A", data=subset(turker,complete.cases(turker)))+ 
   coord_flip() +ylab("Number of participants") + xlab("Country") +
@@ -657,6 +662,10 @@ ggplot() +
 
 dpt$Experiment <- dpt$experiment
 dmt$Experiment <- dmt$experiment
+
+# ----------------------------------------------------------------
+# Generating figure 7 of the paper
+# ----------------------------------------------------------------
 ggplot() + 
   geom_smooth(aes(attempt,resid, group=id),method="lm", se=F, data=subset(dpt, attempt>1), colour=rgb(0,0,0, alpha=.05))+
   geom_smooth(aes(attempt,mean_resid), data= subset(dmt, attempt>1), method="lm", se=F, size=I(1.2)) +
@@ -680,6 +689,10 @@ ggplot() +
 
 ggsave("../images/learning_trend_time.pdf", width=10.5, height = 3.5)
 
+# ----------------------------------------------------------------
+# Fitting mixed effect model 5 with log time taken
+# Generating results table 6 of the paper
+# ----------------------------------------------------------------
 
 model <- as.formula(log(time_taken) ~I(attempt==1)+ attempt + (attempt|id) + (1|pic_id))
 dt5 <- subset(dtrend, experiment==5)
@@ -733,6 +746,10 @@ qplot(attempt,mean_resid, data= ddt) +
 ggsave("../images/learning_trend.pdf", width=10.5, height = 3.5)
 
 trend.dat$Experiment <- trend.dat$experiment
+
+# ----------------------------------------------------------------
+# Generating figure 6 of the paper
+# ----------------------------------------------------------------
 ggplot() + 
   geom_smooth(aes(attempt,resid, group=id),method="lm", se=F,  data=trend.dat, colour=rgb(0,0,0, alpha=0.05))+
   geom_smooth(aes(attempt,mean_resid, group=1), data= ddt, method="lm", se=F, size=I(1.2)) +
@@ -746,11 +763,16 @@ ggsave("../images/learning_trend_subject.pdf", width=10.5, height = 3.5)
 # Checking if the trend shown in the plot is significant or not
 # For all experiments 5,6,7 slope is not statistically significant
 # It appears that none of them are significant
+
 fit1 <- lm(resid ~ attempt, data=subset(trend.dat, experiment==5))
 fit2 <- lm(resid ~ attempt, data=subset(trend.dat, experiment==6))
 fit3 <- lm(resid ~ attempt, data=subset(trend.dat, experiment==7))
 
-# Getting results of model with proportion correct
+# ----------------------------------------------------------------
+# Getting results of model with proportion correct (model 3)
+# This may take awhile to execute.
+# This is the result table 5 of the paper
+# ----------------------------------------------------------------
 model <- as.formula(response ~ factor(attempt) + (1|pic_name) + (attempt|id))
 dt5 <- subset(dtrend, experiment==5)
 fp5 <- glmer(model,family="binomial",data=dt5, control=glmerControl(optimizer="bobyqa"))
@@ -1014,7 +1036,7 @@ pic_dat[1,c("pic_id","pic_name","plot_location","p_value")]
 xtabs(data=pic_dat, ~choice_reason+response_no)
 
 
-# ================== Effect og age and education =================
+# ================== Effect of age and education =================
 
 dat.age <- ddply(dat2, .(age), summarise,
                  percent_correct = mean(response))

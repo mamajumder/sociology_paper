@@ -455,7 +455,7 @@ Location of an observer is determined based on the ip address of the observer.
 
 \section{Results}\label{sec:result_socio}
 
-\subsection{Overview of the Data} A total of 2321 participants provided feedback data on the lineups in ten different experimental studies. Figure~\ref{fig:turker_location} displays the locations of participants around the world.  Most of the participants were from the United States and India. There were 76 other different countries represented. This provides a diverse pool of participants. The diversity in not only  geographic but also in gender, age group and education level as can be seen in Table~\ref{tbl:demographics}. % It is interesting that there were large number of female participants even though there were a lot of participants  from developing countries.
+\subsection{Overview of the Data} A total of 2340 participants provided feedback data on the lineups in ten different experimental studies. Figure~\ref{fig:turker_location} displays the locations of participants around the world.  Most of the participants were from the United States and India. There were 70 other different countries represented. This provides a diverse pool of participants. The diversity in not only  geographic but also in gender, age group and education level as can be seen in Table~\ref{tbl:demographics}. % It is interesting that there were large number of female participants even though there were a lot of participants  from developing countries.
 The large number of female participants from all countries was a pleasant surprise to us.
 
 \begin{figure}[htbp] 
@@ -466,7 +466,7 @@ The large number of female participants from all countries was a pleasant surpri
    \label{fig:turker_location}
 \end{figure}
 
-Besides the United States and India, countries such as Canada, Romania, the United Kingdom and Macedonia have more than 10 participants each. The remaining 70 countries have fewer than 10 participants each. The distribution of participants is similar in all ten experiments. %This may be due to the time of day when the experiment was made available. %For some experiments more people participated from India than the United States and for others numbers were reversed (Figure~\ref{fig:participation_time}). It is also observed in some experiments that number of  participants are similar no matter whether the experiment is run on day time or nigh time. (*** Took out reference to Figure~11 in appendix.)
+Besides the United States and India, countries such as Canada, Romania, the United Kingdom and Macedonia have more than 10 participants each. The remaining 64 countries have fewer than 10 participants each. The distribution of participants is similar in all ten experiments. %This may be due to the time of day when the experiment was made available. %For some experiments more people participated from India than the United States and for others numbers were reversed (Figure~\ref{fig:participation_time}). It is also observed in some experiments that number of  participants are similar no matter whether the experiment is run on day time or nigh time. (*** Took out reference to Figure~11 in appendix.)
 
 \begin{table}[hbtp]
 \caption{Demographic information of the subjects participating in the MTurk experiments. Average time taken for evaluating a lineup is shown in seconds.}
@@ -547,7 +547,7 @@ Gender & Male & 1351 & 57.74 & 48.75 & 13542 \\
 The largest number of participants falls within the age group of 18 to 25, with the majority being between 18 to 35. Many older participants also took part in the experiments. %Interestingly, there are many participants in the older age groups as well. 
 The United States shows a more uniform participation beyond age 30,  participants from India are primarily younger. 
 
-In terms of academic background, the majority of participants had a graduate degree (a total of 902 participants, about 38.51\%). Examining the participants' location in conjunction with the academic background reveals that there is an above average  number of participants from India reporting to have a graduate degree. In retrospect this turned out to be a culturally based misunderstanding, as any university degree in India is considered to be a graduate degree, while the North American definition of a graduate degree refers to a Masters level education or above. Most of the  participants from the U.S. report to have an undergraduate degree or at least have some undergraduate courses. 
+In terms of academic background, the majority of participants had a graduate degree (a total of 899 participants, about 38.42\%). Examining the participants' location in conjunction with the academic background reveals that there is an above average  number of participants from India reporting to have a graduate degree. In retrospect this turned out to be a culturally based misunderstanding, as any university degree in India is considered to be a graduate degree, while the North American definition of a graduate degree refers to a Masters level education or above. Most of the  participants from the U.S. report to have an undergraduate degree or at least have some undergraduate courses. 
 
 Compared to data from the 2010 US Census \cite{census}, participants were both relatively younger, and more highly educated than the general US population. 
 Being turkers implicitly assures that the participants in these experiments have a relatively high level of technological fluency. In fact, the demographics of participants align somewhat better with demographics of internet users published by
@@ -556,16 +556,14 @@ Being turkers implicitly assures that the participants in these experiments have
 The distribution of male and female participants are similar among all age groups except for age group 18-25 in India where the proportion of female participants is lower. The distribution of education levels also differs slightly across countries for this age group. %Most of the participants from India are below age 40 while in United States the distribution of participants are similar beyond age 40. There were not many participants beyond age 50 and hence these age groups are merged to form one age group called above 50. The exploratory analysis and the models fitted in the following sections use this new age group instead of actual age groups beyond age 50. 
 
 
-
-
-A total of 1911 lineups were evaluated in the ten experiments. Each person evaluated at least 10 lineups except for experiment~9 where each participant evaulated three lineups.
+A total of 1912 lineups were evaluated in the ten experiments. Each person evaluated at least 10 lineups except for experiment~9 where each participant evaulated three lineups.
 As a measure to ensure a high quality in the evaluations,
  a test plot was shown to each observer, and the performance on this test plot was used for screening purposes. %A test plot was shown to each observer and the feedback received from that plot is used to ensure data quality. 
 Test plots were chosen in a way that any serious attempt at answering the lineup would result in a correct answer.
 Data from participants who gave the wrong answer on the test plot % were considered as gaming the system, and their data were removed.
 led to the removal of all of their answers from the analysis. 
 Results from test plots were also not considered in any of the analyses.
- In some cases  participants chose to not provide their demographic information. Also, for some ip address, the actual geographical locations could not be retrieved. This resulted in some missing demographic information.
+ In some cases  participants chose to not provide their demographic information. Also, for some ip address, the actual geographical locations could not be retrieved. This resulted in some missing geographic information.
 
 \subsection{Demographic Factors} 
 

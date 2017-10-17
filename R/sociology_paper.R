@@ -7,6 +7,7 @@ library(lme4)
 library(xtable)
 library(grid)
 library(lubridate)
+library(dplyr)
 
 # ===================================================
 # Loading the data and some common functions
@@ -161,6 +162,18 @@ turker$exp <- factor(turker$experiment, levels=names(table(turker$experiment))[o
 #   coord_flip() + xlab("Academic Study") + labs(title="Gender") +
 #   scale_x_discrete( aes(breaks=academic_study,labels=as.charater(study)))
 
+# ------------------------------------------------------------------
+# generating statistics for section 4.1 "Overview of the Data"
+# showing number of countries the subjects are coming from
+length(unique(demographics$country_code))
+# showing countries with more than 10 participants
+countryCount <- demographics %>% 
+  group_by(country_name) %>%
+  summarise(counts = length(unique(id))) %>%
+  arrange(desc(counts))
+# showing number of linesups (pic_name) evaluated
+length(unique(demographics$pic_name))
+# ------------------------------------------------------------------
 
 # Plotting age, gender and country together
 p1 <- qplot(degree, facets=age_level~gender_level, data=turker) +
@@ -234,7 +247,8 @@ ggplot(data=mdat[complete.cases(mdat),], aes(variable_level, value)) +
   theme(axis.text.x=element_text(angle=90, hjust=1))
 
 # ------------------------------------------------------------------
-# saving figure 4
+# saving figure 4 showing effect of demographic factors and their
+# effects on log(time taken) and detection rate
 ggsave("../images/demographic_effect.pdf", width=6.5, height=6)
 # ------------------------------------------------------------------
 

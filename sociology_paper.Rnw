@@ -295,7 +295,7 @@ Two of the factors, signal in the data and individual abilities, were studied in
 For all  ten experiments shown in Table~\ref{tbl:visual_stat}, the following demographic information was collected from subjects:
 
 \begin{enumerate} \leftmargin 5cm  \itemsep 0in
-\item {\it Age group}, with categories set to be 18-25, 26-30, 31-35, 36-40, 41-45, 46-50, 51-55, 56-60, above 60.
+\item {\it Age group}, with categories set to be 18-25, 26-30, 31-35, 36-40, 41-45, 46-50, above 50.
 \item {\it Gender}, male or female.
 \item {\it Education level}, with levels being high school or less, some undergraduate courses, undergraduate degree, some graduate courses, and graduate degree.
 \item {\it Geographical location}, collected from the IP address of the participants' computer, as latitude, longitude, city and country. 
@@ -478,36 +478,32 @@ Besides the United States and India, countries such as Canada, Romania, the Unit
   \cline{3-4}
  Factor & Levels & Total &\% & Time & Responses \\ 
   \hline
-Gender & Male & 1348&57.63 & 48.51 & 13493 \\ 
-   & Female & 991&42.37 & 43.75 & 10564 \\ 
+Gender & Male & 1351 & 57.74 & 48.75 & 13542 \\ 
+   & Female & 989 & 42.26 & 43.69 & 10538 \\ 
 \hline
-  Education & High school or less & 193 &8.24& 37.21 & 2241 \\ 
-   & Some under graduate courses & 418 & 17.85&42.84 & 4070 \\ 
-   & Under graduate degree & 584 &24.93& 44.29 & 5775 \\ 
-   & Some graduate courses & 245 &10.46& 43.43 & 2460 \\ 
-   & Graduate degree & 902 &38.51& 52.18 & 9511 \\ 
+  Education & High school or less & 194 & 8.29 & 37.13 & 2253 \\ 
+   & Under grad courses & 418 & 17.86 & 42.85 & 4068 \\ 
+   & Under grad degree & 585 & 25.00 & 44.53 & 5792 \\ 
+   & Graduate courses & 247 & 10.56 & 44.63 & 2471 \\ 
+   & Graduate degree & 899 & 38.42 & 52.07 & 9496 \\ 
 \hline
-  Age & 18-25 & 740 &31.61& 42.97 & 7311 \\ 
-   & 26-30 & 547 &23.36& 46.27 & 5585 \\ 
-   & 31-35 & 376 &16.06& 44.27 & 3923 \\ 
-   & 36-40 & 257 &10.98& 55.03 & 2714 \\ 
-   & 41-45 & 141 &6.02& 43.90 & 1519 \\ 
-   & 46-50 &  95 &4.05& 49.29 & 1003 \\ 
-   & 51-55 &  83 &3.54& 48.67 & 867 \\ 
-   & 56-60 &  64 & 2.73& 59.73 & 678 \\ 
-   & above 60 & 38 &1.62& 48.67 & 457 \\ 
+  Age & 18-25 & 743 & 31.75 & 43.50 & 7340 \\ 
+   & 26-30 & 549 & 23.46 & 46.19 & 5610 \\ 
+   & 31-35 & 375 & 16.03 & 44.19 & 3912 \\ 
+   & 36-40 & 257 & 10.98 & 54.97 & 2714 \\ 
+   & 41-45 & 140 & 5.98 & 43.89 & 1510 \\ 
+   & 46-50 &  94 & 4.02 & 49.54 & 994 \\ 
+   & above 50 & 184 & 7.86 & 52.32 & 2000 \\ 
 \hline   
-  Country  & United States & 1087 &46.83& 39.64 & 10769 \\  
-  & India & 980 &42.22& 52.63 & 10227 \\ 
-  & Rest of the world & 254&10.94 & 46.86 & 2819 \\ 
+  Country & United States & 1086 & 46.41 & 39.65 & 10763 \\ 
+   & India & 980 & 41.88 & 52.63 & 10238 \\ 
+   & Rest of the world & 279 & 11.92 & 50.38 & 3079 \\ 
   
    \hline
 \end{tabular}
 }
 \label{tbl:demographics}
 \end{table}
-
-
 
 % This table contains the demographic information without factor wise percentages.
 %\begin{table}[hbtp]

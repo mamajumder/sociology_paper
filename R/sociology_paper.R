@@ -192,13 +192,15 @@ ggsave("../images/age_gender_within_country_bar.pdf", width=10, height=8)
 pdat <- ddply(demographics, .(country,gender_level, age_level,degree), summarize,
               per_correct = mean(response),
               avg_time = mean(time_taken))
-qplot(degree, avg_time, geom="bar", stat="identity", data=pdat[complete.cases(pdat),]) +
+ggplot(data=pdat[complete.cases(pdat),], aes(degree, avg_time)) +
+  geom_bar(stat="identity") +
   facet_grid(age_level~country+gender_level) + coord_flip() + 
   xlab("Academic Study") + ylab("Average time taken")
 
 ggsave("../images/age_gender_within_country_time.pdf", width=10, height=8)
 
-qplot(degree, per_correct*100, geom="bar", stat="identity", data=pdat[complete.cases(pdat),]) +
+ggplot(data=pdat[complete.cases(pdat),], aes(degree, per_correct*100)) +
+  geom_bar(stat="identity") +
   facet_grid(age_level~country+gender_level) + coord_flip() + 
   xlab("Academic Study") + ylab("Percent correct") +
   scale_y_continuous(breaks=c(25,50,75,100)) 
@@ -225,12 +227,17 @@ levels(mdat$variable) <- c("(Log) Time Taken in seconds", "Detection Rate")
 mdat$variable_name <- factor(mdat$variable_name)
 levels(mdat$variable_name) <- c("Age Categories", "Country", "Education", "Gender")
 
-qplot(variable_level, value, geom="boxplot",data=mdat[complete.cases(mdat),]) +
+ggplot(data=mdat[complete.cases(mdat),], aes(variable_level, value)) +
+  geom_boxplot() +
   facet_grid(variable~variable_name, scales="free", space="free_x") +
   stat_summary(fun.y=mean, geom="point") + xlab("Levels of demographic factors")+ylab("")+
   theme(axis.text.x=element_text(angle=90, hjust=1))
 
+# ------------------------------------------------------------------
+# saving figure 4
 ggsave("../images/demographic_effect.pdf", width=6.5, height=6)
+# ------------------------------------------------------------------
+
 
 #----------------------------------------------------------------
 # Function to obtain estimates of fitted model for latex xtable
@@ -314,6 +321,13 @@ rownames(est.factor) <- c("$mu$",substr(rownames(est.factor)[2:7],10,nchar(rowna
 dgt <- c(rep(0,15), rep(2,45), rep(0,15))
 dgts <- matrix(rep(dgt,2), ncol=10)
 print(xtable(est.factor, digits=dgts),  sanitize.text.function = function(x){x})
+
+
+# --------------------------------------------------------------
+# ANOVA Model fitting with demographic factors
+# testing significance of demographic factor main effects
+# Finally it will generate results table 3 in the paper
+# --------------------------------------------------------------
 
 ftdata <- ft@frame
 names(ftdata)[1] <- "time_taken"
@@ -479,11 +493,14 @@ qplot(hours, data=subset(turker, complete.cases(turker))) +
   xlab("Hour of the day") + ylab("Number of subjects")
 ggsave("../images/participation_time.pdf", width=10, height=12)
 
-
-# getting demographic summary table
+# ------------------------------------------------------------
+# getting demographic summary table 2 in the paper
+# ------------------------------------------------------------
 get_summary <- function(dat, var){
+  dat$totSubject <- length(unique(dat$id))
   res <- ddply(dat,c(var), summarize,
                subsjects = length(unique(id)),
+               percents = length(unique(id))* 100 /totSubject[1],
                avg_time = round(mean(time_taken),2),
                response = length(response),
                prop_correct = mean(response)
@@ -499,9 +516,10 @@ sa <- get_summary(demographics, "age_level")
 sl <- get_summary(demographics, "country")
 
 sdat <- rbind(sg,se,sa,sl)
-xtable(sdat[,-1])
+print(xtable(sdat[,-7]), include.rownames=FALSE)
 
-qplot(lbls, avg_time, geom="bar", stat="identity", data=sdat) + coord_flip()
+ggplot(data=sdat, aes(lbls, avg_time)) +
+  geom_bar(stat="identity") + coord_flip()
   facet_wrap(var~.)
 
 # Turk experiment summary including payments and duration

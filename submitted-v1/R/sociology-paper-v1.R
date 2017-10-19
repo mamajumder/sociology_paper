@@ -14,7 +14,7 @@ library(maps)
 # Loading the data 
 # ------------------------------------------------------------------
 
-demographics <- readRDS("../data/experiment-data-all.rds")
+expDat <- readRDS("../data/experiment-data-all.rds")
 dat9 <- readRDS("../data/exp9-extra.RDS")
 
 
@@ -23,14 +23,14 @@ dat9 <- readRDS("../data/exp9-extra.RDS")
 # ------------------------------------------------------------------
 
 # showing number of countries the subjects are coming from
-length(unique(demographics$country_code))
+length(unique(expDat$country_code))
 # showing countries with more than 10 participants
-countryCount <- demographics %>% 
+countryCount <- expDat %>% 
   group_by(country_name) %>%
   summarise(counts = length(unique(id))) %>%
   arrange(desc(counts))
 # showing number of linesups evaluated
-length(unique(demographics$lineup_id))
+length(unique(expDat$lineup_id))
 
 
 
@@ -39,7 +39,7 @@ length(unique(demographics$lineup_id))
 # ----------------------------------------------------------------
 # getting unique participants information
 # Since each participant has multiple responses in demographics data
-turker <- demographics[!duplicated(demographics$id),]
+turker <- expDat[!duplicated(expDat$id),]
 turker$country <- factor(turker$country, 
                          levels=names(table(turker$country))[order(table(turker$country))])
 
@@ -94,10 +94,10 @@ get_summary <- function(dat, var){
   return(data.frame(var=var,lbls=res[,1], res[,-1]))
 }
 
-sg <- get_summary(demographics, "gender_level")
-se <- get_summary(demographics, "degree")
-sa <- get_summary(demographics, "age_level")
-sl <- get_summary(demographics, "country")
+sg <- get_summary(expDat, "gender_level")
+se <- get_summary(expDat, "degree")
+sa <- get_summary(expDat, "age_level")
+sl <- get_summary(expDat, "country")
 
 sdat <- rbind(sg,se,sa,sl)
 print(xtable(sdat[,-7]), include.rownames=FALSE)
@@ -108,11 +108,11 @@ print(xtable(sdat[,-7]), include.rownames=FALSE)
 # ----------------------------------------------------------------
 
 ft <- lmer(log(time_taken)~age_level+country+degree+gender_level+(1|lineup_id), 
-           data=demographics)
+           data=expDat)
 summary(ft)
 
 fp <- glmer(response~age_level+country+degree+gender_level+(1|lineup_id), 
-            family="binomial", data=demographics, control=glmerControl(optimizer="bobyqa"))
+            family="binomial", data=expDat, control=glmerControl(optimizer="bobyqa"))
 
 summary(fp)
 resid <- residuals(fp)
@@ -158,7 +158,7 @@ get_estimates <- function(fit){
 
 est.factor <- cbind(get_estimates(ft)[-16,],g1=" ",get_estimates(fp))
 rownames(est.factor) <- c("$\\mu$",substr(rownames(est.factor)[2:7],10,nchar(rownames(est.factor)[2:7])),
-                          levels(demographics$country)[-1], levels(demographics$degree)[-1],
+                          levels(expDat$country)[-1], levels(expDat$degree)[-1],
                           "Male", "lineup")
 dgt <- c(rep(0,15), rep(2,45), rep(0,15))
 dgts <- matrix(rep(dgt,2), ncol=10)
@@ -230,10 +230,10 @@ get_effect <- function(dat, var){
   colnames(res) <- c("variable_level", colnames(res)[-1])
   return(res)
 }
-gdat <- get_effect(demographics, c("gender_level", "lineup_id"))
-edat <- get_effect(demographics, c("degree", "lineup_id"))
-cdat <- get_effect(demographics, c("country", "lineup_id"))
-adat <- get_effect(demographics, c("age_level", "lineup_id"))
+gdat <- get_effect(expDat, c("gender_level", "lineup_id"))
+edat <- get_effect(expDat, c("degree", "lineup_id"))
+cdat <- get_effect(expDat, c("country", "lineup_id"))
+adat <- get_effect(expDat, c("age_level", "lineup_id"))
 
 mdat <- melt(rbind(gdat,edat,cdat,adat), id=c("variable_level", "lineup_id", "variable_name"))
 levels(mdat$variable) <- c("(Log) Time Taken in seconds", "Detection Rate")
@@ -326,7 +326,7 @@ px(est.mu - 0.13 + 2*s1) - px(est.mu + 0.16 + 2*s1)
 # learning trend analysis
 # ------------------------------------------------------------------
 
-dtrend <- demographics %>%
+dtrend <- expDat %>%
   filter(experiment < 8) %>%
   group_by(experiment, id) %>%
   mutate(

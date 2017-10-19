@@ -455,7 +455,7 @@ Location of an observer is determined based on the ip address of the observer.
 
 \section{Results}\label{sec:result_socio}
 
-\subsection{Overview of the Data} A total of 2321 participants provided feedback data on the lineups in ten different experimental studies. Figure~\ref{fig:turker_location} displays the locations of participants around the world.  Most of the participants were from the United States and India. There were 76 other different countries represented. This provides a diverse pool of participants. The diversity in not only  geographic but also in gender, age group and education level as can be seen in Table~\ref{tbl:demographics}. % It is interesting that there were large number of female participants even though there were a lot of participants  from developing countries.
+\subsection{Overview of the Data} A total of 2340 participants provided feedback data on the lineups in ten different experimental studies. Figure~\ref{fig:turker_location} displays the locations of participants around the world.  Most of the participants were from the United States and India. There were 70 other different countries represented. This provides a diverse pool of participants. The diversity in not only  geographic but also in gender, age group and education level as can be seen in Table~\ref{tbl:demographics}. % It is interesting that there were large number of female participants even though there were a lot of participants  from developing countries.
 The large number of female participants from all countries was a pleasant surprise to us.
 
 \begin{figure}[htbp] 
@@ -466,7 +466,7 @@ The large number of female participants from all countries was a pleasant surpri
    \label{fig:turker_location}
 \end{figure}
 
-Besides the United States and India, countries such as Canada, Romania, the United Kingdom and Macedonia have more than 10 participants each. The remaining 70 countries have fewer than 10 participants each. The distribution of participants is similar in all ten experiments. %This may be due to the time of day when the experiment was made available. %For some experiments more people participated from India than the United States and for others numbers were reversed (Figure~\ref{fig:participation_time}). It is also observed in some experiments that number of  participants are similar no matter whether the experiment is run on day time or nigh time. (*** Took out reference to Figure~11 in appendix.)
+Besides the United States and India, countries such as Canada, Romania, the United Kingdom and Macedonia have more than 10 participants each. The remaining 64 countries have fewer than 10 participants each. The distribution of participants is similar in all ten experiments. %This may be due to the time of day when the experiment was made available. %For some experiments more people participated from India than the United States and for others numbers were reversed (Figure~\ref{fig:participation_time}). It is also observed in some experiments that number of  participants are similar no matter whether the experiment is run on day time or nigh time. (*** Took out reference to Figure~11 in appendix.)
 
 \begin{table}[hbtp]
 \caption{Demographic information of the subjects participating in the MTurk experiments. Average time taken for evaluating a lineup is shown in seconds.}
@@ -478,8 +478,8 @@ Besides the United States and India, countries such as Canada, Romania, the Unit
   \cline{3-4}
  Factor & Levels & Total &\% & Time & Responses \\ 
   \hline
-Gender & Male & 1351 & 57.74 & 48.75 & 13542 \\ 
-   & Female & 989 & 42.26 & 43.69 & 10538 \\ 
+Gender & Female & 989 & 42.26 & 43.69 & 10538 \\ 
+   & Male & 1351 & 57.74 & 48.75 & 13542 \\  
 \hline
   Education & High school or less & 194 & 8.29 & 37.13 & 2253 \\ 
    & Under grad courses & 418 & 17.86 & 42.85 & 4068 \\ 
@@ -504,6 +504,42 @@ Gender & Male & 1351 & 57.74 & 48.75 & 13542 \\
 }
 \label{tbl:demographics}
 \end{table}
+
+
+% 
+% % latex table generated in R 3.4.1 by xtable 1.8-2 package
+% % Wed Oct 18 16:56:32 2017
+% \begin{table}[ht]
+% \centering
+% \begin{tabular}{llrrrr}
+%   \hline
+% var & lbls & subsjects & percents & avg\_time & response \\ 
+%   \hline
+% gender\_level & Female & 989 & 42.26 & 43.69 & 10538 \\ 
+%   gender\_level & Male & 1351 & 57.74 & 48.75 & 13542 \\ 
+%   degree & High school or less & 194 & 8.29 & 37.13 & 2253 \\ 
+%   degree & Under grad courses & 418 & 17.86 & 42.85 & 4068 \\ 
+%   degree & Under grad degree & 585 & 25.00 & 44.53 & 5792 \\ 
+%   degree & Graduate courses & 247 & 10.56 & 44.63 & 2471 \\ 
+%   degree & Graduate degree & 899 & 38.42 & 52.07 & 9496 \\ 
+%   age\_level & 18-25 & 743 & 31.75 & 43.50 & 7340 \\ 
+%   age\_level & 26-30 & 549 & 23.46 & 46.19 & 5610 \\ 
+%   age\_level & 31-35 & 375 & 16.03 & 44.19 & 3912 \\ 
+%   age\_level & 36-40 & 257 & 10.98 & 54.97 & 2714 \\ 
+%   age\_level & 41-45 & 140 & 5.98 & 43.89 & 1510 \\ 
+%   age\_level & 46-50 &  94 & 4.02 & 49.54 & 994 \\ 
+%   age\_level & above 50 & 184 & 7.86 & 52.32 & 2000 \\ 
+%   country & United States & 1086 & 46.41 & 39.65 & 10763 \\ 
+%   country & India & 980 & 41.88 & 52.63 & 10238 \\ 
+%   country & Rest of the world & 279 & 11.92 & 50.38 & 3079 \\ 
+%    \hline
+% \end{tabular}
+% \end{table}
+
+
+
+
+
 
 % This table contains the demographic information without factor wise percentages.
 %\begin{table}[hbtp]
@@ -547,7 +583,7 @@ Gender & Male & 1351 & 57.74 & 48.75 & 13542 \\
 The largest number of participants falls within the age group of 18 to 25, with the majority being between 18 to 35. Many older participants also took part in the experiments. %Interestingly, there are many participants in the older age groups as well. 
 The United States shows a more uniform participation beyond age 30,  participants from India are primarily younger. 
 
-In terms of academic background, the majority of participants had a graduate degree (a total of 902 participants, about 38.51\%). Examining the participants' location in conjunction with the academic background reveals that there is an above average  number of participants from India reporting to have a graduate degree. In retrospect this turned out to be a culturally based misunderstanding, as any university degree in India is considered to be a graduate degree, while the North American definition of a graduate degree refers to a Masters level education or above. Most of the  participants from the U.S. report to have an undergraduate degree or at least have some undergraduate courses. 
+In terms of academic background, the majority of participants had a graduate degree (a total of 899 participants, about 38.42\%). Examining the participants' location in conjunction with the academic background reveals that there is an above average  number of participants from India reporting to have a graduate degree. In retrospect this turned out to be a culturally based misunderstanding, as any university degree in India is considered to be a graduate degree, while the North American definition of a graduate degree refers to a Masters level education or above. Most of the  participants from the U.S. report to have an undergraduate degree or at least have some undergraduate courses. 
 
 Compared to data from the 2010 US Census \cite{census}, participants were both relatively younger, and more highly educated than the general US population. 
 Being turkers implicitly assures that the participants in these experiments have a relatively high level of technological fluency. In fact, the demographics of participants align somewhat better with demographics of internet users published by
@@ -556,16 +592,14 @@ Being turkers implicitly assures that the participants in these experiments have
 The distribution of male and female participants are similar among all age groups except for age group 18-25 in India where the proportion of female participants is lower. The distribution of education levels also differs slightly across countries for this age group. %Most of the participants from India are below age 40 while in United States the distribution of participants are similar beyond age 40. There were not many participants beyond age 50 and hence these age groups are merged to form one age group called above 50. The exploratory analysis and the models fitted in the following sections use this new age group instead of actual age groups beyond age 50. 
 
 
-
-
-A total of 1911 lineups were evaluated in the ten experiments. Each person evaluated at least 10 lineups except for experiment~9 where each participant evaulated three lineups.
+A total of 1912 lineups were evaluated in the ten experiments. Each person evaluated at least 10 lineups except for experiment~9 where each participant evaulated three lineups.
 As a measure to ensure a high quality in the evaluations,
  a test plot was shown to each observer, and the performance on this test plot was used for screening purposes. %A test plot was shown to each observer and the feedback received from that plot is used to ensure data quality. 
 Test plots were chosen in a way that any serious attempt at answering the lineup would result in a correct answer.
 Data from participants who gave the wrong answer on the test plot % were considered as gaming the system, and their data were removed.
 led to the removal of all of their answers from the analysis. 
 Results from test plots were also not considered in any of the analyses.
- In some cases  participants chose to not provide their demographic information. Also, for some ip address, the actual geographical locations could not be retrieved. This resulted in some missing demographic information.
+ In some cases  participants chose to not provide their demographic information. Also, for some ip address, the actual geographical locations could not be retrieved. This resulted in some missing geographic information.
 
 \subsection{Demographic Factors} 
 
@@ -600,8 +634,8 @@ To explore the significance of the demographic factors model~\eqref{eqn:demograp
 % \label{tbl:anova_factor}
 % \end{table}
 
-% latex table generated in R 3.2.2 by xtable 1.7-4 package
-% Sun Aug 30 22:43:05 2015
+% latex table generated in R 3.4.1 by xtable 1.8-2 package
+% Wed Oct 18 17:43:02 2017
 \begin{table}[ht]
 \caption{\label{tbl:anova_factor}Analysis of variance (ANOVA) table comparing full model, all the demographic factors, with the reduced models, obtained by removing respective factor variable. Gender does not have a significant effect on detection rate, but does on time to respond. All factors significantly affect time to respond.}
 \centering
@@ -610,56 +644,111 @@ To explore the significance of the demographic factors model~\eqref{eqn:demograp
 & \multicolumn{4}{c} {Log Time (model~\ref{eqn:demographic_time})} & &\multicolumn{4}{c} {Detection rate (model~\ref{eqn:demographic_response})}  \\
 \cline{2-5} \cline{7-10} 
  & Deviance & $\chi^2$ & df & $p$-value && Deviance & $\chi^2$ & df & $p$-value \\ \cline{2-5} \cline{7-10}
-Full  & 51872.4 & \multicolumn{1}{c}{---} & \multicolumn{1}{c}{---} & \multicolumn{1}{c}{---} &  & 23792.0 & \multicolumn{1}{c}{---} & \multicolumn{1}{c}{---} & \multicolumn{1}{c}{---} \\ 
- - Age & 51329.3 & 543.2 & 6 & $<$0.001 & \hspace{0.5cm} & 23766.4 & 26.0 & 6 & $<$0.001 \\ 
- - Country & 51496.4 & 376.1 & 2 & $<$0.001 &  & 23765.9 & 26.0 & 2 & $<$0.001 \\ 
- - Degree & 51756.2 & 116.2 & 4 & $<$0.001 &  & 23768.2 & 23.8 & 4 & $<$0.001 \\ 
- - Gender & 51804.3 & 68.1 & 1 & $<$0.001 &  & 23789.7 & 2.2 & 1 & 0.140 \\ 
+Full  & 52609.1 & \multicolumn{1}{c}{---} & \multicolumn{1}{c}{---} & \multicolumn{1}{c}{---} &  & 24140.5 & \multicolumn{1}{c}{---} & \multicolumn{1}{c}{---} & \multicolumn{1}{c}{---} \\ 
+ - Age & 52081.3 & 527.8 & 6 & $<$0.001 & \hspace{0.5cm} & 24113.2 & 27.3 & 6 & $<$0.001 \\ 
+ - Country & 52245.5 & 363.6 & 2 & $<$0.001 &  & 24114.8 & 25.7 & 2 & $<$0.001 \\ 
+ - Degree & 52498.7 & 110.4 & 4 & $<$0.001 &  & 24116.0 & 24.5 & 4 & $<$0.001 \\ 
+ - Gender & 52540.3 & 68.8 & 1 & $<$0.001 &  & 24138.9 & 1.6 & 1 & 0.200 \\ 
 \cline{2-5} \cline{7-10}
 \end{tabular}}
 \end{table}
 
+
+% % latex table generated in R 3.4.1 by xtable 1.8-2 package
+% % Wed Oct 18 17:43:02 2017
+% \begin{table}[ht]
+% \centering
+% \begin{tabular}{rrrrrlrrrr}
+%   \hline
+%  & deviance & Chisq & Chi.Df & Pr..Chisq. & g1 & deviance & Chisq & Chi.Df & Pr..Chisq. \\ 
+%   \hline
+% Full & 52609.06 & 0.00 & 6.00 & 0.00 &  & 24140.49 & 0.00 & 6.00 & 0.00 \\ 
+%   Age & 52081.29 & 527.77 & 6.00 & 0.00 &  & 24113.24 & 27.25 & 6.00 & 0.00 \\ 
+%   Country & 52245.46 & 363.60 & 2.00 & 0.00 &  & 24114.79 & 25.70 & 2.00 & 0.00 \\ 
+%   Degree & 52498.65 & 110.41 & 4.00 & 0.00 &  & 24116.02 & 24.47 & 4.00 & 0.00 \\ 
+%   Gender & 52540.30 & 68.76 & 1.00 & 0.00 &  & 24138.85 & 1.64 & 1.00 & 0.20 \\ 
+%    \hline
+% \end{tabular}
+% \end{table}
+
+
+
 Parameter estimates from the model fits are shown in Table~\ref{tbl:model_result_demographics}. The first level of each factor serves as the baseline for the model. The age group 36-40  has a significantly higher detection rate than the 18-25 age group, and to a lesser extent this is also true for age groups 31-35 and above 50. Participants from India have a similar detection rate to those from the USA, but participants from the rest of the world show a significantly higher detection rate. Subjects  reporting to have  a graduate degree had a significantly higher detection rate. For time to respond, all age groups were significantly slower than  18-25 year olds.  Participants from India were slower, while those from the rest of the world were faster than US Americans. A higher degree corresponded to longer time, and males were on average slower than females.
 
 
-% latex table generated in R 3.2.2 by xtable 1.7-4 package
-% Sat Aug 29 14:17:22 2015
+% latex table generated in R 3.4.1 by xtable 1.8-2 package
+% Wed Oct 18 17:22:24 2017
 \begin{table}[hbtp]
 \caption{\label{tbl:model_result_demographics}Parameter estimates of models~\eqref{eqn:demographic_time} and~\eqref{eqn:demographic_response} fitted for average log time taken and detection rate, respectively. For time taken all the demographic factors are significant. For detection rate, age group 36-40, rest of the world and graduate degree are significantly different. For gender no difference in performance is observed. Lineup variability is estimated to be very large for model~\eqref{eqn:demographic_response}.}
 \centering
 \scalebox{.9}{
-\begin{tabular}{rrr>{( }r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}cr>{( }r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}}
+\begin{tabular}{rrr>{(}r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}cr>{(}r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}}
  && \multicolumn{4}{c} {Log Time (model~\ref{eqn:demographic_time})} & &\multicolumn{4}{c} {Detection rate (model~\ref{eqn:demographic_response})}  \\
 
 \cline{3-6} \cline{8-11} 
 \multicolumn{2}{c}{{Demographic Factor} \hfill Level} & Est & 2.5\% & 97.5\% &   && Est & 2.5\% & 97.5\% &   \\ 
 \cline{3-6} \cline{8-11}
-\bf Fixed Effects & Average $\mu$ & 3.16 & 3.12 & 3.20 & *** &   & -0.61 & -0.79 & -0.43 & *** \\ [3pt]
+\bf Fixed Effects & Average $\mu$ & 3.16 & 3.12 & 3.20 & *** &   & -0.63 & -0.81 & -0.45 & *** \\ [3pt]
 \bf Age Category $(\alpha)$ & 18-25 & \multicolumn{5}{l}{0.00} & \multicolumn{4}{l}{\phantom{-}0.00} \\
-&  26-30 & 0.06 & 0.03 & 0.08 & *** &   & 0.06 & -0.03 & 0.16 &  \\ 
-&  31-35 & 0.07 & 0.04 & 0.10 & *** &   & 0.11 & 0.01 & 0.22 & * \\ 
-&  36-40 & 0.23 & 0.20 & 0.26 & *** &   & 0.31 & 0.19 & 0.43 & *** \\ 
-&  41-45 & 0.18 & 0.14 & 0.22 & *** &   & 0.16 & 0.00 & 0.31 & * \\ 
-&  46-50 & 0.27 & 0.22 & 0.32 & *** &   & 0.14 & -0.05 & 0.33 &  \\ 
-&  above 50 & 0.35 & 0.32 & 0.39 & *** &   & 0.15 & 0.01 & 0.28 & * \\ [3pt]
+&  26-30 & 0.05 & 0.03 & 0.07 & *** &   & 0.03 & -0.06 & 0.13 &  \\ 
+&  31-35 & 0.06 & 0.03 & 0.09 & *** &   & 0.12 & 0.02 & 0.23 & * \\ 
+&  36-40 & 0.22 & 0.19 & 0.25 & *** &   & 0.29 & 0.17 & 0.41 & *** \\ 
+&  41-45 & 0.17 & 0.13 & 0.21 & *** &   & 0.19 & 0.03 & 0.34 & * \\ 
+&  46-50 & 0.28 & 0.23 & 0.32 & *** &   & 0.20 & 0.01 & 0.39 & * \\ 
+&  above 50 & 0.34 & 0.31 & 0.38 & *** &   & 0.16 & 0.02 & 0.29 & * \\ [3pt]
 \bf Country $(\kappa)$& U.S. & \multicolumn{5}{l}{0.00} & \multicolumn{4}{l}{\phantom{-}0.00} \\
-&  India & 0.23 & 0.21 & 0.25 & *** &   & -0.18 & -0.27 & -0.10 & *** \\ 
-&  Rest of the world & 0.14 & 0.11 & 0.17 & *** &   & 0.08 & -0.04 & 0.20 &  \\ [3pt]
+&  India & 0.23 & 0.20 & 0.25 & *** &   & -0.19 & -0.28 & -0.10 & *** \\ 
+&  Rest of the world & 0.14 & 0.11 & 0.17 & *** &   & 0.06 & -0.05 & 0.18 &  \\ [3pt]
 \bf Education $(\tau)$& High School & \multicolumn{5}{l}{0.00} & \multicolumn{4}{l}{\phantom{-}0.00} \\
-&  Under grad courses & 0.13 & 0.09 & 0.16 & *** &   & -0.03 & -0.18 & 0.11 &  \\ 
-&  Under grad degree & 0.13 & 0.10 & 0.17 & *** &   & 0.12 & -0.01 & 0.26 & . \\ 
-&  Graduate courses & 0.01 & -0.04 & 0.05 &  &   & -0.17 & -0.33 & -0.01 & * \\ 
-&  Graduate degree & 0.13 & 0.09 & 0.16 & *** &   & -0.06 & -0.19 & 0.07 &  \\ [3pt]
+&  Under grad courses & 0.13 & 0.09 & 0.16 & *** &   & 0.00 & -0.14 & 0.14 &  \\ 
+&  Under grad degree & 0.14 & 0.10 & 0.17 & *** &   & 0.16 & 0.03 & 0.29 & * \\ 
+&  Graduate courses & 0.02 & -0.02 & 0.06 &  &   & -0.13 & -0.29 & 0.03 &  \\ 
+&  Graduate degree & 0.13 & 0.10 & 0.16 & *** &   & -0.04 & -0.17 & 0.09 &  \\ [3pt]
 \bf Gender $(\gamma)$& Female & \multicolumn{5}{l}{0.00} & \multicolumn{4}{l}{\phantom{-}0.00} \\
-&  Male & 0.08 & 0.06 & 0.10 & *** &   & 0.06 & -0.02 & 0.13 &  \\
+&  Male & 0.08 & 0.06 & 0.10 & *** &   & 0.05 & -0.02 & 0.12 &  \\
 \cline{3-6} \cline{8-11}
-\bf Random Effects &  lineup $(\sigma_\ell)$& \multicolumn{5}{l}{0.29} & \multicolumn{4}{l}{\phantom{-}2.29} \\ 
+\bf Random Effects &  lineup $(\sigma_\ell)$& \multicolumn{5}{l}{0.29} & \multicolumn{4}{l}{\phantom{-}2.27} \\ 
                    &  Error $(\sigma)$& \multicolumn{5}{l}{0.69} & \multicolumn{4}{l}{\phantom{-}0.89}  \\ 
 \cline{3-6} \cline{8-11}\\
 \hline
 \multicolumn{10}{l}{Signif. codes:  *** $<$ 0.001 $\le$ ** $<$ 0.01 $\le$ * $<$ 0.05 $\le$ . $<$ 0.1 $\le$ ` ' $<$ 1}
 \end{tabular}}
 \end{table}
+
+
+% % latex table generated in R 3.4.1 by xtable 1.8-2 package
+% % Wed Oct 18 17:22:24 2017
+% \begin{table}[ht]
+% \centering
+% \begin{tabular}{rrrrllrrrl}
+%   \hline
+%  & Est & LB & UB & pvalue & g1 & Est & LB & UB & pvalue \\ 
+%   \hline
+% $\mu$ & 3.16 & 3.12 & 3.20 & *** &   & -0.63 & -0.81 & -0.45 & *** \\ 
+%   26-30 & 0.05 & 0.03 & 0.07 & *** &   & 0.03 & -0.06 & 0.13 &  \\ 
+%   31-35 & 0.06 & 0.03 & 0.09 & *** &   & 0.12 & 0.02 & 0.23 & * \\ 
+%   36-40 & 0.22 & 0.19 & 0.25 & *** &   & 0.29 & 0.17 & 0.41 & *** \\ 
+%   41-45 & 0.17 & 0.13 & 0.21 & *** &   & 0.19 & 0.03 & 0.34 & * \\ 
+%   46-50 & 0.28 & 0.23 & 0.32 & *** &   & 0.20 & 0.01 & 0.39 & * \\ 
+%   above 50 & 0.34 & 0.31 & 0.38 & *** &   & 0.16 & 0.02 & 0.29 & * \\ 
+%   India & 0.23 & 0.20 & 0.25 & *** &   & -0.19 & -0.28 & -0.10 & *** \\ 
+%   Rest of the world & 0.14 & 0.11 & 0.17 & *** &   & 0.06 & -0.05 & 0.18 &  \\ 
+%   Under grad courses & 0.13 & 0.09 & 0.16 & *** &   & 0.00 & -0.14 & 0.14 &  \\ 
+%   Under grad degree & 0.14 & 0.10 & 0.17 & *** &   & 0.16 & 0.03 & 0.29 & * \\ 
+%   Graduate courses & 0.02 & -0.02 & 0.06 &  &   & -0.13 & -0.29 & 0.03 &  \\ 
+%   Graduate degree & 0.13 & 0.10 & 0.16 & *** &   & -0.04 & -0.17 & 0.09 &  \\ 
+%   Male & 0.08 & 0.06 & 0.10 & *** &   & 0.05 & -0.02 & 0.12 &  \\ 
+%   lineup & 0.29 &  &  &  &   & 2.27 &  &  &  \\ 
+%    \hline
+% \end{tabular}
+% \end{table}
+
+
+
+
+
+
+
 
 % \begin{table}[htbp]
 % \centering
@@ -708,7 +797,7 @@ Parameter estimates from the model fits are shown in Table~\ref{tbl:model_result
 % \end{table}
 
 Figure~\ref{fig:demographic_effect} supports the model results. The average time taken to respond (natural log) and detection rate are computed by lineup for the different demographic factor levels, and displayed using boxplots. Mean values are shown as dots inside the boxplot, as this statistic rather than the median is used in the models. %There are some small differences across demographic groups. The youngest age group (18-25) took least average time to evaluate a lineup. People from India took more time than others. People who have only a high school degree took less time and this is related to what we have seen for young age group. Averages of log time taken by male and female participants look similar but there are some differences as we see in Table~\ref{tbl:demographics}. 
-The means and medians for response time (top row) are essentially equal. There are some differences between the two in the detection rate plots (bottom row). The differences in these values for different factors, that was tested by the models, can be seen in the plots. However, particularly for detection rate, the variation is huge. A large component of the variation is difficulty of the lineup. In some lineups the actual data plot was distinctively different from the null plots, and we would expect that the detection rate would be close to 100\%. In other lineups there was no difference, making it very difficult to evaluate, with low detection rate and longer time to respond. In Table~\ref{tbl:model_result_demographics} notice that lineup specific error is estimated as 2.29 which is much higher than any of the other parameter estimates in the model. This indicates that the major and most important factor affecting the detection rate is  lineup difficulty.  So although the demographic factors emerge from the model to be statistically significant, the practical significance is minimal. We illustrate this with the following example of graduate degree.
+The means and medians for response time (top row) are essentially equal. There are some differences between the two in the detection rate plots (bottom row). The differences in these values for different factors, that was tested by the models, can be seen in the plots. However, particularly for detection rate, the variation is huge. A large component of the variation is difficulty of the lineup. In some lineups the actual data plot was distinctively different from the null plots, and we would expect that the detection rate would be close to 100\%. In other lineups there was no difference, making it very difficult to evaluate, with low detection rate and longer time to respond. In Table~\ref{tbl:model_result_demographics} notice that lineup specific error is estimated as 2.27 which is much higher than any of the other parameter estimates in the model. This indicates that the major and most important factor affecting the detection rate is  lineup difficulty.  So although the demographic factors emerge from the model to be statistically significant, the practical significance is minimal. We illustrate this with the following example of graduate degree.
 
 %Some differences in median detection rate for different demographic factor levels can be seen,  but the variability in responses is huge. This variability is primarily in variability in the lineups -- some very easy and some extremely difficult lineups. Some of the lineups  were not expected to be evaluated correctly as the null plots in those lineups were showing more signal than the actual data plot itself. In those scenarios,  one may not reject the null hypothesis. We call these difficult lineups. Some of the lineups were so easy that data plot is detectable at a first glance. These were expected to be evaluated correctly 100\% of the time. This is why we see the boxes range from 0 to 1 in most of the factor levels. Unlike median, fewer differences are observed in the average proportion of correct responses for different factor levels. 
 
@@ -791,7 +880,7 @@ The person with some graduate course work picks the data plot  on average in 33.
 %   \includegraphics[width=6.5in]{learning_trend.pdf} 
     \includegraphics[width=3.2in]{practical_impact_graduate.pdf} 
     \includegraphics[width=3.2in]{practical_impact_degree.pdf} 
-   \caption{Proportion of estimated data identifications by an 18-25 year old female in the United States with a graduate degree compared to a high school degree. Even though having a graduate degree leads to  statistically significant increase, the effect size in the dependent variable is  0.045 which is  negligible from a practical point of view. The difference diminishes as we move away one or two standard deviations ($\sigma_{\ell} =2.29$) 
+   \caption{Proportion of estimated data identifications by an 18-25 year old female in the United States with a graduate degree compared to a high school degree. Even though having a graduate degree leads to  statistically significant increase, the effect size in the dependent variable is  0.045 which is  negligible from a practical point of view. The difference diminishes as we move away one or two standard deviations ($\sigma_{\ell} =2.27$) 
    of lineup variability.}
    \label{fig:practical_impact_graduate}
 \end{figure}
@@ -1029,7 +1118,7 @@ We observe some variability in the performance due to different null sets even t
 \begin{figure}[htbp] 
    \centering
     \includegraphics[width=6.5in]{proportion_nulls_guide.pdf} 
-   \caption{Location of data plot in the lineup and proportion correct for both Interaction and Genotype effect. Each colored line represents a null set and the size of the dots represents number of responses. The overall average proportions are shown by dashed lines. The actual data plot locations are shaded grey on the top panels to demonstrate their relative positions on a lineup.}
+   \caption{Location of data plot in the lineup and proportion correct (detection rate) for both Interaction and Genotype effect. Each colored line represents a null set and the size of the dots represents number of responses. The overall average proportions are shown by dashed lines. The actual data plot locations are shaded grey on the top panels to demonstrate their relative positions on a lineup.}
    \label{fig:location_effect}
 \end{figure}
 

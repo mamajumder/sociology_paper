@@ -156,7 +156,7 @@ levels(demographics$age_level)[1:7] <- c(levels(demographics$age_level)[1:6], "a
 sociology_data <- demographics %>%
   select(id, response, start_time, time_taken, lineup_id, gender_level, age_level, 
          degree, country_code, country_name, country, longitude, latitude, experiment)
-saveRDS(sociology_data, file = "../submitted-v1/data/sociology-data.RDS")
+saveRDS(sociology_data, file = "../submitted-v1/data/experiment-data-all.RDS")
 
 exp9 <- dat9 %>% 
   mutate(lineup_name = pic_name,
@@ -164,7 +164,7 @@ exp9 <- dat9 %>%
          lineup_type = plot_type) %>%
   select(id, lineup_type, lineup_name, plot_location, nulls, response)
 
-saveRDS(exp9, file = "../submitted-v1/data/exp9.RDS")
+saveRDS(exp9, file = "../submitted-v1/data/exp9-extra.RDS")
 
 # getting unique participants information
 # Since each participant has multiple responses in demographics data

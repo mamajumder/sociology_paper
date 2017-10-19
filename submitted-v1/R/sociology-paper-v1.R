@@ -14,8 +14,8 @@ library(maps)
 # Loading the data 
 # ------------------------------------------------------------------
 
-demographics <- readRDS("../data/sociology-data.rds")
-dat9 <- readRDS("../data/exp9.RDS")
+demographics <- readRDS("../data/experiment-data-all.rds")
+dat9 <- readRDS("../data/exp9-extra.RDS")
 
 
 # ==================================================================

@@ -13,19 +13,19 @@ library(dplyr)
 # Loading the data and some common functions
 # ---------------------------------------------------
 
-raw.dat1 <- read.csv("../data/raw_data_turk1.csv")
-raw.dat2 <- read.csv("../data/raw_data_turk2.csv")
-raw.dat3 <- read.csv("../data/raw_data_turk3.csv")
-raw.dat4 <- read.csv("../data/raw_data_turk4.csv")
-raw.dat5 <- read.csv("../data/raw_data_turk5.csv")
-raw.dat6 <- read.csv("../data/raw_data_turk6.csv")
-raw.dat7 <- read.csv("../data/raw_data_turk7.csv")
-raw.dat8 <- read.csv("../data/raw_data_turk8.csv")
-raw.dat9 <- read.csv("../data/raw_data_turk9.csv")
-raw.dat10 <- read.csv("../data/raw_data_turk10.csv")
+raw.dat1 <- read.csv("../data/raw_data_turk1.csv", stringsAsFactors = FALSE)
+raw.dat2 <- read.csv("../data/raw_data_turk2.csv", stringsAsFactors = FALSE)
+raw.dat3 <- read.csv("../data/raw_data_turk3.csv", stringsAsFactors = FALSE)
+raw.dat4 <- read.csv("../data/raw_data_turk4.csv", stringsAsFactors = FALSE)
+raw.dat5 <- read.csv("../data/raw_data_turk5.csv", stringsAsFactors = FALSE)
+raw.dat6 <- read.csv("../data/raw_data_turk6.csv", stringsAsFactors = FALSE)
+raw.dat7 <- read.csv("../data/raw_data_turk7.csv", stringsAsFactors = FALSE)
+raw.dat8 <- read.csv("../data/raw_data_turk8.csv", stringsAsFactors = FALSE)
+raw.dat9 <- read.csv("../data/raw_data_turk9.csv", stringsAsFactors = FALSE)
+raw.dat10 <- read.csv("../data/raw_data_turk10.csv", stringsAsFactors = FALSE)
 
-ip.details <- read.csv("../data/ip_details.csv")
-turk.summary <- read.csv("../data/turk_summary.csv")
+ip.details <- read.csv("../data/ip_details.csv", stringsAsFactors = FALSE)
+turk.summary <- read.csv("../data/turk_summary.csv", stringsAsFactors = FALSE)
 
 source("calculate_ump_power.R") # functions to compute power
 
@@ -89,6 +89,10 @@ dat9$response_all <- apply(subset(dat9, select=c(plot_location,response_no)), 1,
                     res_no <- as.numeric(unlist(strsplit(x[2],split=",")))
                     return(plot %in% res_no)
                   })
+# bull plot information of experiment 9
+nulls <- strsplit(as.character(dat9$param_value),split="_")
+dat9$nulls <- paste("null_",sapply(nulls, function(x) return(x[2])), sep="")
+
 # responses on the plot used for defense talk
 subset(dat9, pic_name=="plot_turk9_interaction_1_3.svg")
 
@@ -113,11 +117,11 @@ get_real_ip <- function(ip) {
 demographics <- NULL
 for (i in 1:10){
   di <- subset(get(paste("dat",i, sep="")), age > 1,
-                 select = c(id, response, start_time, time_taken, pic_name,
+                 select = c(id, response, start_time, time_taken, pic_name, pic_id,
                             ip_address, gender, academic_study, age))
   di$age[di$age==0] <- NA # for experiment 1, age=0 means NA
   di$academic_study[di$academic_study==0] <- NA
-  di$experiment = paste("experiment_",i, sep="")
+  di$experiment = i
   di$id = paste("exp",i,"_",di$id, sep="")
   degree <- factor(c("High school or less", "Under grad courses",
                   "Under grad degree","Graduate courses",
@@ -127,6 +131,7 @@ for (i in 1:10){
                   "41-45","46-50","51-55","56-60","above 60")[di$age])
   di$gender_level <- factor(c("Male","Female")[di$gender])
   di$ip_address <- sapply(di$ip_address, get_real_ip)
+  di$lineup_id <- di$pic_id
   demographics <- rbind(demographics, di[complete.cases(di),])
 }
 
@@ -144,10 +149,22 @@ demographics$country <- factor(country,levels=levels(country)[c(3,1,2)])
 levels(demographics$age_level)[7:9] <- 7
 levels(demographics$age_level)[1:7] <- c(levels(demographics$age_level)[1:6], "above 50")
 
+# ==================================================================
+# saving data for submission
+# ------------------------------------------------------------------
+# write.csv(demographics, "../submitted-v1/data/sociology-data.csv", row.names = FALSE)
+sociology_data <- demographics %>%
+  select(id, response, start_time, time_taken, lineup_id, gender_level, age_level, 
+         degree, country_code, country_name, country, longitude, latitude, experiment)
+saveRDS(sociology_data, file = "../submitted-v1/data/sociology-data.RDS")
 
+exp9 <- dat9 %>% 
+  mutate(lineup_name = pic_name) %>%
+  select(plot_type, plot_location, nulls, lineup_name, response)
 
+saveRDS(exp9, file = "../submitted-v1/data/exp9.RDS")
 
-# getting unique participants for plotting purpose only
+# getting unique participants information
 # Since each participant has multiple responses in demographics data
 turker <- demographics[!duplicated(demographics$id),]
 turker$study <- turker$academic_study

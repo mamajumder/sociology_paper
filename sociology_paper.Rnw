@@ -673,7 +673,7 @@ Full  & 52609.1 & \multicolumn{1}{c}{---} & \multicolumn{1}{c}{---} & \multicolu
 
 
 
-Parameter estimates from the model fits are shown in Table~\ref{tbl:model_result_demographics}. The first level of each factor serves as the baseline for the model. The age group 36-40  has a significantly higher detection rate than the 18-25 age group, and to a lesser extent this is also true for age groups 31-35 and above 50. Participants from India have a similar detection rate to those from the USA, but participants from the rest of the world show a significantly higher detection rate. Subjects  reporting to have  a graduate degree had a significantly higher detection rate. For time to respond, all age groups were significantly slower than  18-25 year olds.  Participants from India were slower, while those from the rest of the world were faster than US Americans. A higher degree corresponded to longer time, and males were on average slower than females.
+Parameter estimates from the model fits are shown in Table~\ref{tbl:model_result_demographics}. The first level of each factor serves as the baseline for the model. The age group 36-40  has a significantly higher detection rate than the 18-25 age group, and to a lesser extent this is also true for other age groups except for 26-30. Participants from the rest of the world have a similar detection rate to those from the USA, but participants from India show a significantly lower detection rate. Subjects reporting to have  an undergraduate degree had a significantly higher detection rate. For time to respond, all age groups were significantly faster than  18-25 year olds.  Participants from India as well as the rest of the world were faster than US Americans. A higher degree corresponded to longer time, and males were on average faster than females.
 
 
 % latex table generated in R 3.4.1 by xtable 1.8-2 package
@@ -871,18 +871,18 @@ The means and medians for response time (top row) are essentially equal. There a
 
 %In Table~\ref{tbl:model_result_demographics} notice that lineup specific variance estimate is 5.259 with a standard error of 2.293 which is much higher than the other significant parameter estimates in model~\eqref{eqn:demographic_response}. This indicates that the major and most important factor affecting the detection rate is  lineup difficulty.  Because of the huge impact of lineup variance, the practical impact of other factor variables on the probability of correct response is in fact very small. We illustrate this with the following example of graduate degree.
 
-While some of the demographic factors are strongly statistically significant, the main source of variation in detection rate is the lineup difficulty. For example, let's examine the effect of graduate degree. To see just how large the effect is, we examine the change in detection rate for a (hypothetical) 18-25 year old female in the United States, with some graduate course work as compared to an undergraduate degree, for an average difficulty lineup (random effect of zero). Plugging in the relevant quantities to the fitted model gives a difference equal to:
-$$ \frac {\exp(-0.61-0.17)}{1+\exp(-0.61-0.17)}-  \frac {\exp(-0.61+0.12)}{1+\exp(-0.61+0.12)} = 0.314- 0.379 =-0.065.$$ 
-The person with some graduate course work picks the data plot  on average in 33.5\% of lineups of average difficulty, as compared to 37.9\% if they have an undergraduate degree. This difference is reduced to 2\% for a lineup with one standard deviation order of magnitude difference in difficulty. For two standard deviations it further reduces to 0.3\%. Thus, although there is a statistically significant difference in the proportion at which participants identify the  data plot for some demographic factors, these are not  significant in any practical sense.  Figure~\ref{fig:practical_impact_graduate} illustrates this example showing fitted models for a US 18-25 female with either a high school education or a graduate degree.  Similar calculations show the same negligible impact of age level 36-40 (\Sexpr{round(exp(-0.61+0.31)/(1+ exp(-0.61+0.31)) - exp(-0.61)/(1 + exp(-0.61)),3)} at most)  and country (\Sexpr{round(exp(-0.61+0.08)/(1+ exp(-0.61+0.08)) - exp(-0.61-0.18)/(1 + exp(-0.61-0.18)), 3)} at most) on the probability of a correct response. Thus even though some of the demographic factors are statistically significant, practically, demographics do not substantially influence the results. 
+While some of the demographic factors are strongly statistically significant, the main source of variation in detection rate is the lineup difficulty. For example, let's examine the effect of an undergraduate degree. To see just how large the effect is, we examine the change in detection rate for a (hypothetical) 18-25 year old female in the United States, with some graduate course work as compared to an undergraduate degree, for an average difficulty lineup (random effect of zero). Plugging in the relevant quantities to the fitted model gives a difference equal to:
+$$ \frac {\exp(-0.63-0.13)}{1+\exp(-0.63-0.13)}-  \frac {\exp(-0.63+0.16)}{1+\exp(-0.63+0.16)} = 0.319- 0.385 =-0.066.$$ 
+The person with some graduate course work picks the data plot  on average in 31.9\% of lineups of average difficulty, as compared to 38.5\% if they have an undergraduate degree. This difference is reduced to 4\% for a lineup with one standard deviation order of magnitude difference in difficulty. For two standard deviations it further reduces to 0.6\%. Thus, although there is a statistically significant difference in the proportion at which participants identify the  data plot for some demographic factors, these are not  significant in any practical sense.  Figure~\ref{practical_impact_und_und_graduate.pdf} illustrates this example showing fitted models for a US 18-25 female with either a high school education or an undergraduate degree.  Similar calculations show the same negligible impact of age level 36-40 (\Sexpr{round(exp(-0.63+0.29)/(1+ exp(-0.63+0.29)) - exp(-0.63)/(1 + exp(-0.63)),3)} at most)  and country India (\Sexpr{round(exp(-0.63-0.19)/(1+ exp(-0.63-0.19)) - exp(-0.63)/(1 + exp(-0.63)), 3)} at most) on the probability of a correct response. Thus even though some of the demographic factors are statistically significant, practically, demographics do not substantially influence the results. 
 
 \begin{figure}[htbp] 
    \centering
 %   \includegraphics[width=6.5in]{learning_trend.pdf} 
-    \includegraphics[width=3.2in]{practical_impact_graduate.pdf} 
+    \includegraphics[width=3.2in]{practical_impact_und_graduate.pdf} 
     \includegraphics[width=3.2in]{practical_impact_degree.pdf} 
-   \caption{Proportion of estimated data identifications by an 18-25 year old female in the United States with a graduate degree compared to a high school degree. Even though having a graduate degree leads to  statistically significant increase, the effect size in the dependent variable is  0.045 which is  negligible from a practical point of view. The difference diminishes as we move away one or two standard deviations ($\sigma_{\ell} =2.27$) 
+   \caption{Proportion of estimated data identifications by an 18-25 year old female in the United States with an under graduate degree compared to a high school degree. Even though having an under graduate degree leads to  statistically significant increase, the effect size in the dependent variable is  0.04 which is  negligible from a practical point of view. The difference diminishes as we move away one or two standard deviations ($\sigma_{\ell} = 2.27$) 
    of lineup variability.}
-   \label{fig:practical_impact_graduate}
+   \label{practical_impact_und_und_graduate.pdf}
 \end{figure}
 
 
@@ -967,38 +967,70 @@ Table~\ref{tbl:model_result_response} displays the parameter estimates and $p$-v
 % \label{tbl:model_result_response}
 % \end{table}
 
-% latex table generated in R 3.2.2 by xtable 1.7-4 package
-% Sun Aug 30 11:15:41 2015
+% latex table generated in R 3.4.1 by xtable 1.8-2 package
+% Wed Oct 18 23:54:25 2017
 \begin{table}[hbtp]
 \centering
 \caption{\label{tbl:model_result_response}Parameter estimates of models \eqref{eqn:trend_response} fitted to data from three different experiments using detection rate as the response to assess learning trend. Attempt number is fitted as a factor to enable modeling any sort of non-linear learning trend. Only experiment~6 shows some evidence of a learning trend, with detection rate essentially increasing as attempts increase.}
 \scalebox{.9}{
-\begin{tabular}{rr>{( }r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}cr>{( }r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}cr>{( }r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}}
+\begin{tabular}{rr>{(}r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}cr>{(}r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}cr>{(}r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}}
 \cline{2-5} \cline{7-10} \cline{12-15} 
 & \multicolumn{4}{c} {Experiment~5} & &\multicolumn{4}{c} {Experiment~6} && \multicolumn{4}{c} {Experiment~7}\\
 \cline{2-5} \cline{7-10} \cline{12-15} 
 Effect & Est & 2.5\% & 97.5\% &  & \hspace{1cm} & Est & 2.5\% & 97.5\% &  & \hspace{1cm} & Est & 2.5\% & 97.5\% &  \\ 
 \cline{2-5} \cline{7-10} \cline{12-15} 
 Fixed \\
-$\mu$ & -1.30 & -1.69 & -0.92 & *** &   & -0.22 & -0.51 & 0.07 &  &   & -1.71 & -2.77 & -0.65 & ** \\ [3pt]
-  $\alpha_2$ & 0.27 & -0.19 & 0.73 &  &   & 0.26 & -0.06 & 0.58 &  &   & -0.49 & -1.31 & 0.32 &  \\ 
-  $\alpha_3$ & -0.18 & -0.65 & 0.29 &  &   & 0.34 & 0.02 & 0.66 & * &   & -0.19 & -1.01 & 0.63 &  \\ 
-  $\alpha_4$ & 0.08 & -0.39 & 0.55 &  &   & 0.36 & 0.04 & 0.68 & * &   & -0.47 & -1.28 & 0.35 &  \\ 
-  $\alpha_5$ & 0.30 & -0.17 & 0.77 &  &   & 0.37 & 0.05 & 0.70 & * &   & -0.16 & -0.96 & 0.65 &  \\ 
-  $\alpha_6$ & 0.04 & -0.44 & 0.53 &  &   & 0.24 & -0.07 & 0.56 &  &   & -0.03 & -0.87 & 0.82 &  \\ 
-  $\alpha_7$ & 0.28 & -0.20 & 0.77 &  &   & 0.16 & -0.16 & 0.48 &  &   & 0.02 & -0.81 & 0.84 &  \\ 
-  $\alpha_8$ & -0.04 & -0.54 & 0.45 &  &   & 0.34 & 0.02 & 0.66 & * &   & -0.08 & -0.89 & 0.73 &  \\ 
-  $\alpha_9$ & -0.20 & -0.69 & 0.30 &  &   & 0.38 & 0.05 & 0.70 & * &   & 0.15 & -0.71 & 1.02 &  \\ 
-  $\alpha_{10}$ & 0.51 & 0.03 & 1.00 & * &   & 0.19 & -0.14 & 0.52 &  &   & -0.28 & -1.14 & 0.58 &  \\ 
+$\mu$ & -1.32 & -1.73 & -0.92 & *** &   & -0.16 & -0.46 & 0.13 &  &   & -1.73 & -2.81 & -0.66 & ** \\ [3pt]
+  $\alpha2$ & 0.30 & -0.17 & 0.78 &  &   & 0.26 & -0.07 & 0.58 &  &   & -0.40 & -1.23 & 0.44 &  \\ 
+  $\alpha3$ & -0.20 & -0.68 & 0.29 &  &   & 0.31 & -0.02 & 0.63 & . &   & -0.15 & -0.99 & 0.68 &  \\ 
+  $\alpha4$ & 0.13 & -0.35 & 0.61 &  &   & 0.34 & 0.01 & 0.66 & * &   & -0.41 & -1.24 & 0.42 &  \\ 
+  $\alpha5$ & 0.35 & -0.14 & 0.83 &  &   & 0.34 & 0.02 & 0.67 & * &   & -0.10 & -0.92 & 0.73 &  \\ 
+  $\alpha6$ & 0.10 & -0.40 & 0.60 &  &   & 0.20 & -0.12 & 0.53 &  &   & 0.03 & -0.84 & 0.89 &  \\ 
+  $\alpha7$ & 0.33 & -0.17 & 0.82 &  &   & 0.11 & -0.22 & 0.43 &  &   & -0.00 & -0.84 & 0.84 &  \\ 
+  $\alpha8$ & -0.01 & -0.51 & 0.50 &  &   & 0.31 & -0.01 & 0.64 & . &   & -0.06 & -0.88 & 0.76 &  \\ 
+  $\alpha9$ & -0.20 & -0.70 & 0.30 &  &   & 0.34 & 0.01 & 0.67 & * &   & 0.21 & -0.67 & 1.08 &  \\ 
+  $\alpha10$ & 0.51 & 0.02 & 1.01 & * &   & 0.19 & -0.14 & 0.53 &  &   & -0.20 & -1.07 & 0.67 &  \\ 
   Random \\
-  $\sigma^2_u$ & \multicolumn{5}{l}{\phantom{-}0.85}  & \multicolumn{5}{l}{\phantom{-}0.90} & 0.76   \\ 
-  $\sigma^2_a$ & \multicolumn{5}{l}{\phantom{-}0.02}  & \multicolumn{5}{l}{\phantom{-}0.03} & 0.06   \\ 
-  $\sigma^2_l$ & \multicolumn{5}{l}{\phantom{-}1.48}  & \multicolumn{5}{l}{\phantom{-}1.42} & 3.37   \\ \cline{2-5} \cline{7-10} \cline{12-15} 
+  $\sigma^2_u$ & \multicolumn{5}{l}{\phantom{-}0.91}  & \multicolumn{5}{l}{\phantom{-}0.89} & 0.82   \\ 
+  $\sigma^2_a$ & \multicolumn{5}{l}{\phantom{-}0.04}  & \multicolumn{5}{l}{\phantom{-}0.04} & 0.05   \\ 
+  $\sigma^2_l$ & \multicolumn{5}{l}{\phantom{-}1.47}  & \multicolumn{5}{l}{\phantom{-}1.43} & 3.38   \\ \cline{2-5} \cline{7-10} \cline{12-15} 
 \\
 \hline
 \multicolumn{10}{l}{Signif. codes:  *** $<$ 0.001 $\le$ ** $<$ 0.01 $\le$ * $<$ 0.05 $\le$ . $<$ 0.1 $\le$ ` ' $<$ 1}
 \end{tabular}}
 \end{table}
+
+% 
+% 
+% % latex table generated in R 3.4.1 by xtable 1.8-2 package
+% % Wed Oct 18 23:54:25 2017
+% \begin{table}[ht]
+% \centering
+% \begin{tabular}{rrrrllrrrllrrrl}
+%   \hline
+%  & Est & LB & UB & pvalue & g1 & Est.1 & LB.1 & UB.1 & pvalue.1 & g2 & Est.2 & LB.2 & UB.2 & pvalue.2 \\ 
+%   \hline
+% $\mu$ & -1.32 & -1.73 & -0.92 & *** &   & -0.16 & -0.46 & 0.13 &  &   & -1.73 & -2.81 & -0.66 & ** \\ 
+%   $\alpha2$ & 0.30 & -0.17 & 0.78 &  &   & 0.26 & -0.07 & 0.58 &  &   & -0.40 & -1.23 & 0.44 &  \\ 
+%   $\alpha3$ & -0.20 & -0.68 & 0.29 &  &   & 0.31 & -0.02 & 0.63 & . &   & -0.15 & -0.99 & 0.68 &  \\ 
+%   $\alpha4$ & 0.13 & -0.35 & 0.61 &  &   & 0.34 & 0.01 & 0.66 & * &   & -0.41 & -1.24 & 0.42 &  \\ 
+%   $\alpha5$ & 0.35 & -0.14 & 0.83 &  &   & 0.34 & 0.02 & 0.67 & * &   & -0.10 & -0.92 & 0.73 &  \\ 
+%   $\alpha6$ & 0.10 & -0.40 & 0.60 &  &   & 0.20 & -0.12 & 0.53 &  &   & 0.03 & -0.84 & 0.89 &  \\ 
+%   $\alpha7$ & 0.33 & -0.17 & 0.82 &  &   & 0.11 & -0.22 & 0.43 &  &   & -0.00 & -0.84 & 0.84 &  \\ 
+%   $\alpha8$ & -0.01 & -0.51 & 0.50 &  &   & 0.31 & -0.01 & 0.64 & . &   & -0.06 & -0.88 & 0.76 &  \\ 
+%   $\alpha9$ & -0.20 & -0.70 & 0.30 &  &   & 0.34 & 0.01 & 0.67 & * &   & 0.21 & -0.67 & 1.08 &  \\ 
+%   $\alpha10$ & 0.51 & 0.02 & 1.01 & * &   & 0.19 & -0.14 & 0.53 &  &   & -0.20 & -1.07 & 0.67 &  \\ 
+%   $\sigma^2_u$ & 0.91 &  &  &  &   & 0.89 &  &  &  &   & 0.82 &  &  &  \\ 
+%   $\sigma^2_a$ & 0.04 &  &  &  &   & 0.04 &  &  &  &   & 0.05 &  &  &  \\ 
+%   $\sigma^2_l$ & 1.47 &  &  &  &   & 1.43 &  &  &  &   & 3.38 &  &  &  \\ 
+%    \hline
+% \end{tabular}
+% \end{table}
+% 
+% 
+
+
+
 
 %The variance of random slope for attempt ($\sigma^2_a$) is estimated to be very small compared to other random effects except for subject variability ($\sigma^2_u$) for experiment~7. This suggests that most of the variability for attempt is accounted for by the fixed effect factor attempt. For all three experiments the lineup variabilities ($\sigma^2_l$) were estimated to be very large making the practical impact of other factor levels even more negligible. Some of the lineups were very easy and some were really difficult in experiment~7. The overall average probability for picking out the data plot from a lineup ($\mu$) is significant for both experiments 5 and 7. But for experiment~6 it is not significant suggesting that experiment~6 lineups were difficult compared to the other experimental lineups. This shows a feature of the experimental designs where a mixture of difficult and easy lineups were included within the experiments as well as between the experiments.  For easy lineups there may be small chance to improve performances. But for harder lineups, the scope to improve performances is large.  Since for none of these experiments improvement in performances is observed, it is important in the sense that performances did not improve over attempts in both difficult and easy lineup situations.
 
@@ -1051,13 +1083,13 @@ The parameter $\alpha$ for fixed effect covariate attempt is highly significant 
 % \label{tbl:model_result_time}
 % \end{table}
 
-% latex table generated in R 3.2.2 by xtable 1.7-4 package
-% Sun Aug 30 11:42:08 2015
+% latex table generated in R 3.4.1 by xtable 1.8-2 package
+% Wed Oct 18 23:37:55 2017
 \begin{table}[bhtp]
 \caption{\label{tbl:model_result_time}Parameter estimates of model~\eqref{eqn:trend_time} fitted for log time taken to evaluate a lineup. Both fixed effects parameters of Attempt ($\alpha_1$ and $\alpha$) are highly significant for all three experiments~5,~6 and~7.}
 \centering
 \scalebox{0.9}{
-\begin{tabular}{lr>{( }r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}cr>{( }r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}cr>{( }r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}}
+\begin{tabular}{lr>{(}r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}cr>{( }r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}cr>{(}r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}}
 \cline{2-5} \cline{7-10} \cline{12-15} 
 & \multicolumn{4}{c} {Experiment~5} & &\multicolumn{4}{c} {Experiment~6} && \multicolumn{4}{c} {Experiment~7}\\
 
@@ -1065,17 +1097,44 @@ The parameter $\alpha$ for fixed effect covariate attempt is highly significant 
 \multicolumn{2}{c}{Effect \hfill Est} & 2.5\% & 97.5\% &  &  & Est & 2.5\% & 97.5\% & &  & Est & 2.5\% & 97.5\% & \\ 
   \cline{2-5} \cline{7-10} \cline{12-15}
 \multicolumn{2}{l}{Fixed}\\
-$\mu$ & 3.82 & 3.74 & 3.89 & *** &   & 3.90 & 3.84 & 3.97 & *** &   & 3.73 & 3.62 & 3.84 & *** \\ 
-  $\alpha_1$ & 0.33 & 0.26 & 0.39 & *** &   & 0.34 & 0.28 & 0.39 & *** &   & 0.28 & 0.18 & 0.38 & *** \\ 
+$\mu$ & 3.80 & 3.72 & 3.88 & *** &   & 3.89 & 3.83 & 3.96 & *** &   & 3.75 & 3.64 & 3.85 & *** \\ 
+  $\alpha_1$ & 0.32 & 0.25 & 0.39 & *** &   & 0.34 & 0.28 & 0.40 & *** &   & 0.28 & 0.18 & 0.38 & *** \\ 
   $\alpha$ & -0.04 & -0.05 & -0.03 & *** &   & -0.04 & -0.05 & -0.03 & *** &   & -0.03 & -0.04 & -0.02 & *** \\ 
 \multicolumn{2}{l}{Random}\\
-  $\sigma^2_u$ & \multicolumn{5}{l}{\phantom{-}0.51}   & \multicolumn{5}{l}{\phantom{-}0.49}  & 0.37   \\ 
-  $\sigma^2_a$ & \multicolumn{5}{l}{\phantom{-}0.03}  & \multicolumn{5}{l}{\phantom{-}0.04}   & 0.05   \\ 
-  $\sigma^2_l$ & \multicolumn{5}{l}{\phantom{-}0.09}   & \multicolumn{5}{l}{\phantom{-}0.20}   & 0.23   \\ 
+  $\sigma^2_u$ & \multicolumn{5}{l}{\phantom{-}0.52}   & \multicolumn{5}{l}{\phantom{-}0.49}  & 0.37   \\ 
+  $\sigma^2_a$ & \multicolumn{5}{l}{\phantom{-}0.03}  & \multicolumn{5}{l}{\phantom{-}0.05}   & 0.05   \\ 
+  $\sigma^2_l$ & \multicolumn{5}{l}{\phantom{-}0.09}   & \multicolumn{5}{l}{\phantom{-}0.20}   & 0.24   \\
   $\sigma^2$ & \multicolumn{5}{l}{\phantom{-}0.46}   & \multicolumn{5}{l}{\phantom{-}0.50}  & 0.45  \\ 
    \cline{2-5} \cline{7-10} \cline{12-15}
 \end{tabular}}
 \end{table}
+
+
+
+% 
+% % latex table generated in R 3.4.1 by xtable 1.8-2 package
+% % Wed Oct 18 23:37:55 2017
+% \begin{table}[ht]
+% \centering
+% \begin{tabular}{rrrrllrrrllrrrl}
+%   \hline
+%  & Est & LB & UB & pvalue & g1 & Est.1 & LB.1 & UB.1 & pvalue.1 & g2 & Est.2 & LB.2 & UB.2 & pvalue.2 \\ 
+%   \hline
+% $\mu$ & 3.80 & 3.72 & 3.88 & *** &   & 3.89 & 3.83 & 3.96 & *** &   & 3.75 & 3.64 & 3.85 & *** \\ 
+%   $\alpha_1$ & 0.32 & 0.25 & 0.39 & *** &   & 0.34 & 0.28 & 0.40 & *** &   & 0.28 & 0.18 & 0.38 & *** \\ 
+%   $\alpha$ & -0.04 & -0.05 & -0.03 & *** &   & -0.04 & -0.05 & -0.03 & *** &   & -0.03 & -0.04 & -0.02 & *** \\ 
+%   $\sigma^2_u$ & 0.52 &  &  &  &   & 0.49 &  &  &  &   & 0.37 &  &  &  \\ 
+%   $\sigma^2_a$ & 0.03 &  &  &  &   & 0.05 &  &  &  &   & 0.05 &  &  &  \\ 
+%   $\sigma^2_l$ & 0.09 &  &  &  &   & 0.20 &  &  &  &   & 0.24 &  &  &  \\ 
+%   $\sigma^2$ & 0.46 &  &  &  &   & 0.50 &  &  &  &   & 0.45 &  &  &  \\ 
+%    \hline
+% \end{tabular}
+% \end{table}
+
+
+
+
+
 %The lineup variance of experiment~7 is estimated as $\hat{\sigma}^2_{\ell} = 10.98$ from model~\eqref{eqn:trend_response}. But from model~\eqref{eqn:trend_time} it is estimated to be much smaller in all these experiments. This suggests that the harder lineups not necessarily took more time than easier lineups. The observers spent enough times to evaluate a easy lineup and for difficult lineup they might just give up at some point and provided the feedback.
 
 %Model~\eqref{eqn:trend_time} was compared to couple of other alternatives. A bigger model with attempt as a factor was considered but it was not significantly different with $p$ value 0.236. A reduced model without the first attempt was also considered but it was significantly different with $p$-value $<0.001$. 

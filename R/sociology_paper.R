@@ -159,8 +159,10 @@ sociology_data <- demographics %>%
 saveRDS(sociology_data, file = "../submitted-v1/data/sociology-data.RDS")
 
 exp9 <- dat9 %>% 
-  mutate(lineup_name = pic_name) %>%
-  select(plot_type, plot_location, nulls, lineup_name, response)
+  mutate(lineup_name = pic_name,
+         id = paste0("exp9_",id),
+         lineup_type = plot_type) %>%
+  select(id, lineup_type, lineup_name, plot_location, nulls, response)
 
 saveRDS(exp9, file = "../submitted-v1/data/exp9.RDS")
 

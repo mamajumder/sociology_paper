@@ -252,84 +252,46 @@ ggsave("../images/demographic_effect.pdf", width=6.5, height=6)
 # ==================================================================
 # figure 5 practical significance of demographics
 # ------------------------------------------------------------------
-
-et <- 6
-xb <- seq(-et,et, by=.1)
+# function to compute estimated proportion
 px <- function(xb){exp(xb)/(1+exp(xb))}
-pdat <- data.frame(xb,px=px(xb))
 
-s1 <- 2.293
-s2 <- s1*2
-xx <- c(0,0.182)
-
-ldat <- data.frame(x =c(xx,-et,-et,xx+s1,-et,-et,xx+s2,-et,-et),
-                   xend = c(xx,xx,xx+s1,xx+s1,xx+s2,xx+s2 ),
-                   y = c(0,0,px(xx),0,0,px(xx+s1),0,0,px(xx+s2)),
-                   yend= px(c(xx,xx,xx+s1,xx+s1,xx+s2,xx+s2 )))
-
-ggplot()+geom_line(aes(xb,px), data=pdat)+
-  geom_segment(aes(x=x,xend=xend,y=y,yend=yend), data=ldat, linetype="dashed") + 
-  theme_bw() + xlab(expression(eta)) + ylab("Prability of detection") +
-  theme(panel.grid = element_blank())+
-  scale_y_continuous(expand = c(0.01,0)) +
-  scale_x_continuous(expand = c(0.01,0))
-
-
-get_change <- function(s){
-  xb0 <- -0.683 + s
-  xb1 <- xb0 + 0.182 
-  px(xb1) - px(xb0)
-}
-
-get_change(c(0,s1,s2))
-get_change(2.293)
-
-xx <- (1:2)*s1
-ldat <- data.frame(x=c(xx,0,0), xend=c(xx,xx),y=c(0,0,get_change(xx)), yend=get_change(c(xx,xx)))
-
-ss <- seq(0,6.5, by=.1)
-qplot(ss,get_change(ss), geom="line") + 
-  geom_segment(aes(x=x,xend=xend,y=y,yend=yend), data=ldat, linetype="dashed") +
-  ylab("Change in probability of detection \n due to graduate degree") +
-  xlab("Lineup variability") +
-  scale_y_continuous(breaks =c(0,.003237246,.01,.02,.02376092,.03,.04), expand = c(0.02,0),
-                     labels =c(0,0.003,.01,.02,.024,.03,.04)) +
-  scale_x_continuous(breaks=c(0,2,2.293,4,4.586,6), expand = c(0.02,0),
-                     labels=c(0,2, expression(sigma[l],4,2*sigma[l],6)))+
-  theme_bw() +theme(panel.grid = element_blank())
-
-ggsave("../images/practical_impact_demographics.pdf", width=5.5, height=5)
-
+# Following estimates are taken from table 4
+s1 <- 2.27  #estimated sigma1
+est.mu <- -0.63 # estimated mu
+est.uc <- 0.00 # estimate undergraduate course
+est.ugrad <- 0.16 # estimate und. graduate degree
+est.gc <- -0.13 # estimate graduate course
+est.grad <- -0.04 # estimate graduate degree
 
 difficulty <- seq(-6,6, by=.1)
-hs_xb <- -0.61335621 + difficulty
-gd_xb <- hs_xb + -0.17436466
-ugd_xb <- hs_xb + 0.12496329 
+hs_xb <- est.mu + difficulty
+gd_xb <- hs_xb + est.grad
+ugd_xb <- hs_xb + est.ugrad 
 
-ddat <- data.frame(difficulty=difficulty, prop_hs = px(ugd_xb),prop_gd=px(gd_xb))
+ddat <- data.frame(difficulty=difficulty, prop_hs = px(hs_xb),prop_ugd=px(ugd_xb))
 
-# Maximum difference in prop correct is 0.045
-qplot(difficulty, prop_gd-prop_hs, data=ddat, geom="line")
-with(ddat, max(prop_gd-prop_hs))
+# Maximum difference in prop correct is 0.04
+qplot(difficulty, prop_ugd-prop_hs, data=ddat, geom="line")
+with(ddat, max(prop_ugd-prop_hs))
 
 mddat <- melt(ddat,id=c("difficulty"))
 qplot(difficulty, value, data=mddat, linetype=variable, geom="line")+
   xlab("Lineup difficulty") + ylab("Proportion of data identification") +
-  scale_x_continuous(breaks=c(-6,-2*2.293,-2.293,0,2.293,2*2.293,6), expand = c(0.02,0),
+  scale_x_continuous(breaks=c(-6,-2*s1,-s1,0,s1,2*s1,6), expand = c(0.02,0),
                      labels=c("Difficult",expression(-2*sigma[l],-sigma[l],0,sigma[l], 
                                                      2*sigma[l],"Easy"))) +
   scale_linetype_discrete(name="Education",
-                          labels=c("U.Grad degree", "Grad. courses")) 
+                          labels=c("High school", "U.Grad degree")) 
 # saving figure 6 proportion vs lineup difficulty
-ggsave("../images/practical_impact_graduate.pdf", width=6.5, height=4.5)
+ggsave("../images/practical_impact_und_graduate.pdf", width=6.5, height=4.5)
 
 
-diff <- c(-2*2.293, -0.683, 2*2.293)
-hs_xb <- -0.683 + diff
-uc_xb <- hs_xb -0.083
-ud_xb <- hs_xb -0.044
-gc_xb <- hs_xb + 0.070
-gd_xb <- hs_xb + 0.182
+diff <- c(-2*s1, est.mu, 2*s1)
+hs_xb <- est.mu + diff
+uc_xb <- hs_xb + est.uc
+ud_xb <- hs_xb + est.ugrad
+gc_xb <- hs_xb + est.gc
+gd_xb <- hs_xb + est.grad
 ddat.all <- data.frame(difficulty=diff, high.school = px(hs_xb),u.grad.course = px(uc_xb),
                        u.grad.degree=px(ud_xb), grad.course=px(gc_xb), grad.degree=px(gd_xb))
 mddat.all <- melt(ddat.all,id=c("difficulty"))
@@ -346,6 +308,21 @@ ggsave("../images/practical_impact_degree.pdf", width=6.5, height=4.5)
 
 
 # ==================================================================
+# Some calculations added in section 4.2, demographic factors
+# ------------------------------------------------------------------
+# grad course vs undergrad degree
+exp(-0.63-0.13)/(1+exp(-0.63-0.13)) - exp(-0.63+0.16)/(1+exp(-0.63+0.16))
+# proportion grad course
+px(est.mu - 0.13)
+# proportion undergrad degree
+px(est.mu + 0.16)
+# difference reduced for one sd (s1)
+px(est.mu - 0.13 +s1) - px(est.mu + 0.16+s1)
+px(est.mu - 0.13 + 2*s1) - px(est.mu + 0.16 + 2*s1)
+
+
+
+# ==================================================================
 # learning trend analysis
 # ------------------------------------------------------------------
 
@@ -356,15 +333,10 @@ dtrend <- demographics %>%
     attempt = rank(start_time),
     start_time = start_time,
     response = as.numeric(response),
-    pic_name = pic_name,
-    pic_id = pic_id,
+    lineup_id = lineup_id,
     time_taken = time_taken,
     uid = paste(experiment,"_",id, sep="")) %>%
   filter(attempt <= 10)
-
-# Attempt vs mean time taken for each lineup
-qplot(attempt, log(time_taken), data=dtrend,colour=factor(experiment)) +
-  stat_smooth(method="loess")
 
 # Log time taken appears to be normal
 qplot(log(time_taken), geom="density",
@@ -381,7 +353,7 @@ dpt <- NULL
 for (i in 5:7){
   d <- subset(dtrend, experiment==i)
   dd <- subset(d, id %in% id[attempt > 9])
-  model <- as.formula(log(time_taken) ~ (1|pic_name) + (1|id))
+  model <- as.formula(log(time_taken) ~ (1|lineup_id) + (1|id))
   fit <- lmer(model,data=dd)
   dd$resid <- (log(dd$time_taken) - fitted(fit))
   dpt <- rbind(dpt ,dd)
@@ -414,7 +386,7 @@ ggsave("../images/learning_trend_time_subject.pdf", width=10.5, height = 3.5)
 # table 6 results of mixed effect model 5, log time taken vs attempt
 # ------------------------------------------------------------------
 
-model <- as.formula(log(time_taken) ~I(attempt==1)+ attempt + (attempt|id) + (1|pic_id))
+model <- as.formula(log(time_taken) ~I(attempt==1)+ attempt + (attempt|id) + (1|lineup_id))
 dt5 <- subset(dtrend, experiment==5)
 f5 <- lmer(model, data=dt5) 
 estimates5 <- get_estimates(f5)
@@ -444,7 +416,7 @@ trend.dat <- NULL
 for (i in 5:7){
   d <- subset(dtrend, experiment==i)
   dd <- subset(d, id %in% id[attempt > 9])
-  model <- as.formula(response ~ (1|pic_name) + (1|id))
+  model <- as.formula(response ~ (1|lineup_id) + (1|id))
   fit <- glmer(model,family="binomial",data=dd, control=glmerControl(optimizer="bobyqa"))
   dd$resid <- (dd$response - fitted(fit))
   trend.dat <- rbind(trend.dat ,dd)
@@ -465,7 +437,8 @@ ggplot() +
   geom_smooth(aes(attempt,mean_resid, group=1), 
               data= ddt, method="lm", se=F, size=I(1.2)) +
   geom_point(aes(attempt,mean_resid, group=1), data= ddt) +
-  facet_grid(.~Experiment, scales="free_y", labeller="label_both") + ylab("Mean residual proportion correct") +
+  facet_grid(.~Experiment, scales="free_y", labeller="label_both") + 
+  ylab("Mean residual proportion correct") +
   scale_x_continuous(breaks = 1:10) + xlab("Attempt")
 
 ggsave("../images/learning_trend_subject.pdf", width=10.5, height = 3.5)
@@ -483,7 +456,7 @@ fit3 <- lm(resid ~ attempt, data=subset(trend.dat, experiment==7))
 # table 5 results of model 3 with detection rate vs attempt
 # This may take awhile to execute.
 # ------------------------------------------------------------------
-model <- as.formula(response ~ factor(attempt) + (1|pic_name) + (attempt|id))
+model <- as.formula(response ~ factor(attempt) + (1|lineup_id) + (attempt|id))
 dt5 <- subset(dtrend, experiment==5)
 fp5 <- glmer(model,family="binomial",data=dt5, control=glmerControl(optimizer="bobyqa"))
 res5 <- get_estimates(fp5)
@@ -509,21 +482,21 @@ print(xtable(results, digits=2),  sanitize.text.function = function(x){x})
 
 
 # ==================================================================
-# table 7 MANOVA model results with experiment 9
+# table 7 MANOVA model results with experiment 9 to check location effect
 # ----------------------------------------------------------------
 
-df <- ddply(subset(dat9, plot_type != "Filter"), 
-            .(plot_type, plot_location, nulls, pic_name),transform,
+df <- ddply(subset(dat9, lineup_type != "Filter"), 
+            .(lineup_type, plot_location, nulls, lineup_name),transform,
             replicates = 1:length(response))
 
-model.dat <- dcast(df,plot_type+plot_location+replicates~nulls, value.var="response", fun=mean)
+model.dat <- dcast(df,lineup_type+plot_location+replicates~nulls, value.var="response", fun=mean)
 
 model <- as.formula(cbind(null_1,null_2,null_3,null_4,null_5)~factor(plot_location))
-int.dat <- subset(model.dat, plot_type=="Interaction")
+int.dat <- subset(model.dat, lineup_type=="Interaction")
 fit1 <- manova(model, data=int.dat )
 summary(fit1, test="W")
 
-fit2 <- manova(model, data=subset(model.dat, plot_type=="Genotype") )
+fit2 <- manova(model, data=subset(model.dat, lineup_type=="Genotype") )
 summary(fit2, test="W")
 
 int.dat$locs <- "out"
@@ -534,11 +507,11 @@ summary(manova(cbind(null_1,null_2,null_3,null_4,null_5)~factor(locs), data=int.
 # figure 8 proportion correct (detection rate) vs null plot location
 # ------------------------------------------------------------------
 
-p.dat <- ddply(subset(dat9, plot_type != "Filter"), 
-               .(plot_type, plot_location, nulls),summarise,
+p.dat <- ddply(subset(dat9, lineup_type != "Filter"), 
+               .(lineup_type, plot_location, nulls),summarise,
                prop_correct = mean(response), n = length(response))
-m.dat <- ddply(subset(dat9, plot_type != "Filter"), 
-               .(plot_type, plot_location),summarise,
+m.dat <- ddply(subset(dat9, lineup_type != "Filter"), 
+               .(lineup_type, plot_location),summarise,
                prop_correct = mean(response),
                nulls="Average")
 p.dat$plot_loc <- factor(p.dat$plot_location)
@@ -547,14 +520,14 @@ m.dat$plot_loc <- factor(m.dat$plot_location)
 p_prop <- ggplot(p.dat, aes(plot_loc, prop_correct,  group=nulls))+
   geom_point(aes(color=nulls, size=n)) + 
   geom_line(aes(color=nulls)) + 
-  facet_wrap(~plot_type, scales = "free_x") + 
+  facet_wrap(~lineup_type, scales = "free_x") + 
   geom_line(data=m.dat, linetype=5)+
   xlab("Actual plot location in the lineup")+
   ylab("Proportion correct") + theme(plot.margin=unit(c(5,1,1,1), "cm"))
 
 l.dat <- data.frame(plot_location=1:20, plot_int=0, plot_gen=0)
-plot_int <- unique(subset(dat9, plot_type=="Interaction")$plot_location)
-plot_gen <- unique(subset(dat9, plot_type=="Genotype")$plot_location)
+plot_int <- unique(subset(dat9, lineup_type=="Interaction")$plot_location)
+plot_gen <- unique(subset(dat9, lineup_type=="Genotype")$plot_location)
 l.dat$plot_int[plot_int] <- 1
 l.dat$plot_gen[plot_gen] <- 1
 p_int <- qplot(1,0, data=l.dat, geom="blank")+ facet_wrap(~plot_location)+ 

@@ -1,27 +1,20 @@
-\documentclass[10pt]{article}
+\documentclass[12pt]{article}
+
 \usepackage{times}
-%\usepackage{natbib}
-%\usepackage{multicol}
 \RequirePackage{natbib}
 \usepackage[colorlinks=true, citecolor=blue, linkcolor=blue]{hyperref}
 \usepackage{amsmath, amssymb, fullpage, amsthm, array, graphicx, asa, url}
-%\usepackage[dvips]{graphics}
-
-%\usepackage{hyperref} % for hyper reference
 
 \graphicspath{{images/}}
 
-% \usepackage{pifont} % this package is used to print check mark \checkmark
-% \linespread{1.6} % factor 1.6 = double space
-
-
-%\usepackage{setspace}
-%\doublespacing
+% JASA guideline to have double spaced fonts
+\usepackage{setspace}
+\doublespacing
 
 
 \usepackage{color}
 \definecolor{mahbub}{rgb}{1.0, 0.6, 0.4}
-%\usepackage[usenames,dvipsnames]{color}
+
 \newcommand{\hh}[1]{{\color{magenta} #1}}
 \newcommand{\dc}[1]{{\color{green} #1}}
 \newcommand{\mm}[1]{{\color{mahbub} #1}}
@@ -34,70 +27,69 @@
 \evensidemargin 
 \oddsidemargin
 
-%\newtheorem{thm}{Theorem}[section]
-%\newtheorem{dfn}{Definition}[section]
-%\newtheorem{cor}{Corollary}[thm]
-%\newtheorem{con}{Conjecture}[thm]
-%\newtheorem{lemma}[thm]{Lemma}
-
-%\topmargin -0.10in   % when making pdf
-%\textheight 9.15in  % when making pdf
-
 \pdfminorversion=4 % as instructed by JASA file upload
-
+% NOTE: To produce blinded version, replace "1" with "0" below. 
+% Blinded version will also remove acknowledgement at the bottom.
+\newcommand{\blindDoc}{1}
 
 \begin{document}
-%\tableofcontents
 
-% Article top matter
-\title{Human Factors Influencing Visual Statistical Inference }
-\author{{Mahbubul Majumder, Heike Hofmann, Dianne Cook}
+% ===================================================================================
+%Article top matter 
+%------------------------------------------------------------------------------------
+
+\if1\blindDoc
+{
+  \title{Human Factors Influencing Visual Statistical Inference}
+  \author{{Mahbubul Majumder, Heike Hofmann, Dianne Cook}
 \thanks{Mahbubul Majumder is an Assistant Professor in the Department of Mathematics, University of Nebraska at Omaha, NE 68182 (e-mail: mmajumder@unomaha.edu), Heike Hofmann is Professor in the Department of Statistics and Statistical Laboratory, Iowa State University, Ames, IA 50011-1210, and  Dianne Cook is Professor in the Department of Econometrics and Business Statistics, Monash University, Australia. This research is supported in part by the National Science Foundation Grant \# DMS 1007697.}}
 \date{\vspace{-.5in}}
-%\date{\today}  %\today is replaced with the current date
-\maketitle
+  \maketitle
+} \fi
 
-\begin {abstract}  
+\if0\blindDoc
+{
+  \bigskip
+  \bigskip
+  \bigskip
+  \begin{center}
+    {\bf \LARGE Human Factors Influencing Visual Statistical Inference}
+\end{center}
+  \medskip
+} \fi
+
+
+% ===================================================================================
+\begin {abstract} 
+%------------------------------------------------------------------------------------
+
 Visual statistical inference is a way to determine significance of patterns found while  exploring data with graphics.  It relies on human observers inspecting a lineup: one  data plot randomly placed among a set of decoy plots. Each individual is different in their cognitive psychology and judiciousness, which can affect the visual inference. The usual way of estimating the effectiveness of a statistical test is its power. The estimate of power of a lineup is controlled by combining evaluations from multiple observers. Factors that may  affect the power of visual inference are the observers' demographics, visual skills, and experience, the sample of null plots taken from the null distribution, the position of the data plot in the lineup, and the signal strength in the data. This paper examines these factors. Results from multiple visual inference studies using Amazon's Mechanical Turk are examined to provide an assessment of these. The experiments suggest that individual skills vary substantially,  but demographics do not have a huge effect on performance. There is evidence that a learning effect exists but only in the sense that observers become faster with repeated evaluations, while accuracy stays the same. The placement of data plot in the lineup does not affect inferential results.
 
 {\bf Keywords: \sf statistical graphics, non-parametric test, cognitive psychology, data visualization, exploratory data analysis, data mining, visual analytics.} 
 \end {abstract}
 
-%\begin{multicols}{2}
-%\twocolumn
-
+% ===================================================================================
 \section{Introduction}  
+%------------------------------------------------------------------------------------
 
 The lineup protocol introduced in \citet{buja:2009} can be used to quantify the significance of graphical findings in the exploratory data analysis process. This methodology is  part of what is called visual statistical inference, which has been developed further  and validated by \citet{majumder:2013} in simulation studies of head to head comparisons with conventional inference. One of their major contributions   is to define the power of  visual tests and to provide a method for obtaining the power for a particular lineup. In some scenarios, the power of a visual test  was seen to outperform that of a conventional test.
 
-In visual inference, the test statistic is a plot of the observed data, called the {\it (actual) data plot}. To create a lineup the data plot is placed randomly in a grid of null plots. Null plots  are rendered from data generated as  specified by a null hypothesis. Often, this null hypothesis assumes independence or no structure in the data. An observer is then asked to evaluate the lineup. If the  actual data plot is detected by the observer, this counts as evidence against the null hypothesis. Based on the number of evaluations by independent observers and the number of times that the data plot is identified, we are  able to evaluate the significance of the graphical relationship in the same way and the same rigor as a conventional hypothesis test. % is rejected. This means that the structure in the actual data plot has significant structure, a pattern that is not simply due to randomness. Combining the choices of multiple observers provides more stability in the estimation of significance.
-
-%\subsection{Visual inference example}
+In visual inference, the test statistic is a plot of the observed data, called the {\it (actual) data plot}. To create a lineup the data plot is placed randomly in a grid of null plots. Null plots  are rendered from data generated as  specified by a null hypothesis. Often, this null hypothesis assumes independence or no structure in the data. An observer is then asked to evaluate the lineup. If the  actual data plot is detected by the observer, this counts as evidence against the null hypothesis. Based on the number of evaluations by independent observers and the number of times that the data plot is identified, we are  able to evaluate the significance of the graphical relationship in the same way and the same rigor as a conventional hypothesis test. 
 
 
 \begin{figure}[hbtp] 
    \centering
    \includegraphics[width=0.99\textwidth]{electoral-5-13.pdf} 
-%      \includegraphics[width=0.99\textwidth]{electoral-1-1.pdf} 
    \caption{ \label{fig:elect} Which one of the plots, labelled 1 through 20 from top left to bottom right, is the most different from the others?}
 \end{figure}
 
 Figure~\ref{fig:elect} displays an example lineup, one of the plots is based on the observed data, while the remaining 19 plots show  data generated from a null model. Which one of the 20 plots is the most different from the others? 
 When asked this question, 12 out of 72 observers picked the  data plot located in panel number $4^2-3$ in the lineup\footnote{The little piece of calculus used for describing the location of the data plot in the lineup provides a small cognitive hurdle that is supposed to enable the interested reader to inspect the lineup without being biased by knowing the location of the data plot.}.  The corresponding $p$-value is 0.0077, indicating sufficient evidence to reject the null hypothesis. 
-% , with reasons given being 'asymmetry' (36\%), 'trend' (26\%) or `outliers' (16\%).
 
 How do we interpret this finding, though? For that, we need to know the context of the data and we need to have more information about how the null plots were generated. 
 This particular example investigates the results from the 2012 US presidential election in comparison to  poll results just prior to the election. 
 Although this example is more simplistic than most of the tests conducted to date, it serves the purpose of illustrating the lineup protocol. The data consists of the difference in poll results between the two (major) presidential candidates, Obama and Romney, for all states. Each panel in Figure~\ref{fig:elect} shows an `electoral building' \citep{mosley2010} where each state in the union is represented by a rectangle. The difference in poll results is plotted horizontally, while the height of each box corresponds to the number of that state's electoral votes. Color indicates party affiliation.  The null hypothesis is that ``the election results are consistent with the polls''. Therefore the polling results provide the null model from which data is simulated. A normal model with mean and standard deviation based on a poll and its margin of error is used to simulate different scenarios that might have resulted on election day, if the polls were on target. Each null data set is generated as a set of draws from this model. % normal distribution, with mean equal to the difference in poll percentage of the latest state poll results, and standard deviation equal to 2.5, approximating a margin of error of 5\%. 
 These samples are plotted as electoral buildings, and the plot based on the actual election results is placed randomly among the null plots in a lineup of size $5\times 4$. If the null hypothesis is true, the  data plot should look  like any of the other plots, and not be identifiable by an observer. Figure~\ref{fig:tower} shows the plot of the electoral building with the additional context information and labels.
- %A party needs 270 electoral votes or more to win the presidential election. 
-%\begin{figure}[htbp] 
-%   \centering
-%   \includegraphics[width=0.8\linewidth]{electoral-5-13.pdf} 
-%   \caption{Which plot looks the most different from the other plots?  Lineup \#1 - electoral building; another set of four lineups can be found in figs.~{fig:elect.2} through~{fig:elect.5}}
-%   \label{fig:elect.1}
-%\end{figure}
-
 
 \begin{figure}[hbtp] 
    \centering
@@ -115,44 +107,13 @@ These samples are plotted as electoral buildings, and the plot based on the actu
 \end{figure}
 The lineup of Figure~\ref{fig:elect}, as well as the other lineups in the manuscript are created using the nullabor package by \citep{nullabor}.
 
-%The rest of the 19 plots are generated from the assumption that there is no difference between two groups of data. For this, the group structure of the data is broken by random permutation of the groups. 
+A lineup can be evaluated by a single person or multiple observers. A distribution similar to the binomial distribution, but adjusted for dependencies introduced by the lineup scenario, is used to calculate the $p$-value based on the number of times observers identify the actual data plot, which provides the information needed to make a decision on rejecting or failing to reject the null hypothesis \citep{vinference}.  To avoid expectation errors \citep{meilgaard}, particularly in emotionally charged areas such as election results, observers should not be aware of the data that constitutes a lineup, and should therefore not have seen the actual data plot before inspecting the lineup. This is the reason that we revealed the context of the election problem only after the interested reader had a chance to evaluate the lineup. 
 
-%If the null hypothesis is true, the observed data should look similar to the rest of the plots in the lineup making it difficult to detect the observed plot. On the other hand, if the null hypothesis is not true, the observed data should be different from the rest of the plots in the lineup and observers should be able to pick the data plot out from the rest.
+When presenting a lineup to an observer the accompanying question should be phrased in as general a manner as possible, effectively asking the observer to pick the plot that is most different, and allowing observers to provide their own reasons for their choice. This ensures all possible deviations from the null hypothesis to be detected. However, if lineup tests are run in head-to-head comparisons with conventional statistical tests, such as the experiments in \cite{majumder:2013} or \cite{tengfei:2013}, these questions have to be phrased much more specifically, in order to avoid  type III errors \citep{mosteller:48} consisting of correctly rejecting the null hypothesis for a wrong reason. In those experiments, the structure in the data is strictly controlled in the simulation process, which allows for specific questions to be asked. 
 
+In the election example, observers were asked ``which plot is the most different?''. The type of plot, showing two (modified) stacked bar charts in different colors should suggest to the observer that the interesting feature is the difference between the two heights. Most observers based their decision on this -- besides  `asymmetry' between the towers (a reason suggested by us), most free-form responses for the reason of choice describe a comparison between the red and blue towers. In the responses for this lineup we see something that is very typical of responses in lineups: it is only a few panels from the lineup that observers pick, while most panels do not get picked or get picked only a few times. Out of a total of 72~responses, 23 observers picked panel~\#8, 12 observers picked the (data) panel \#13, 10 observers picked panel~\#4, 6 observers picked panel \#7, and all of the remaining panels were picked at most three times. From the panels picked, we see that the top three choices  are all extreme with respect to heights of blue versus red towers:  both panels \#8 and \#13 show a large difference between the height of the towers, while panel \#4 is the only panel, in which the red tower is higher than the blue one. 
 
-A lineup can be evaluated by a single person or multiple observers. A distribution similar to the binomial distribution, but adjusted for dependencies introduced by the lineup scenario, is used to calculate the $p$-value based on the number of times observers identify the actual data plot, which provides the information needed to make a decision on rejecting or failing to reject the null hypothesis \citep{vinference}.  To avoid expectation errors \citep{meilgaard}, particularly in emotionally charged areas such as election results, observers should not be aware of the data that constitutes a lineup, and should therefore not have seen the actual data plot before inspecting the lineup. This is the reason that we revealed the context of the election problem only after the interested reader had a chance to evaluate the lineup.%the election example, above, the scenario was explained after the lineup question, in the text. 
-
-When presenting a lineup to an observer  the accompanying question should be phrased in as general a manner as possible, 
-%The question that is asked of the observer should be as general as possible, 
-effectively asking the observer to pick the plot that is most different, and allowing observers to provide their own reasons for their choice. This ensures all possible deviations from the null hypothesis to be detected. 
-However, if lineup tests are run in head-to-head comparisons with conventional statistical tests, such as the experiments  in  \cite{majumder:2013} or \cite{tengfei:2013}, these questions have to be phrased much more specifically, in order to avoid  type III errors \citep{mosteller:48} consisting of correctly rejecting the null hypothesis for a wrong reason. 
-%In some of the studies, the ones described in  \cite{majumder:2013} very specific questions were asked, because the experiments were being conducted to compare results from the lineup protocol with those of conventional tests. 
-In those experiments, the structure in the data is strictly controlled in the simulation process, which allows for specific questions to be asked. 
-In the election example, observers were asked ``which plot is the most different?''. The type of plot, showing two (modified) stacked bar charts in different colors should suggest to the observer that the interesting feature is the difference between the two heights. 
-Most observers based their decision on this -- besides  `asymmetry' between the towers (a reason suggested by us), most free-form responses for the reason of choice describe a comparison between the red and blue towers. 
-In the responses for this lineup we see something that is very typical of responses in lineups: it is only a few panels from the lineup that observers pick, while most panels do not get picked or get picked only a few times. Out of a total of 72~responses, 23 observers picked panel~\#8, 12 observers picked the (data) panel \#13, 10 observers picked panel~\#4, 6 observers picked panel \#7, and all of the remaining panels were picked at most three times. From the panels picked, we see that the top three choices  are all extreme with respect to heights of blue versus red towers:  both panels \#8 and \#13 show a large difference between the height of the towers, while panel \#4 is the only panel, in which the red tower is higher than the blue one. 
-% results from the turk study:
-% panel:   1 10 11 12 13 14 15 16 18 19  2 20  3   4  5  6  7  8  9 
-% #picks:  2  1    0  1 12    3  3    1  1   1  2   1  0 10  2  2  6 23  1 
-
-
-%Most observers got this, but it is possible that some observers might pick plot~4, where the red tower is slightly above the blue as the most different because it is the only plot with this feature \hh{(10 out of 72 observers actually did this)}. 
-  %a better question may 
-
-% \hh{If we consider this difference to be the main objective of the visualization, a more focused question, that aligns more with a hypothesis test on the difference  in electoral votes  between parties, would} have been ``Which plot shows the biggest height difference between the two towers?'' %except that this tailors the inference to a specific feature which does not match the null hypothesis of interest. 
- 
-% HH already included:
-% For any evaluation the observer may or may not identify the actual data plot. Under the null hypothesis, the actual data plot should look similar to the null plots making it harder to detect. It is not expected that an observer would be able to detect the data plot in this scenario. But since there are limited number of plots in a lineup, which is 20 in the election example, there is a 1/20 chance that the observer would pick the actual plot. 
-
-The lineup protocols allows us to calculate all relevant properties that we are familiar with from conventional statistical tests. In particular, the power of a lineup is calculated as the {\it detection rate} at which observers identify the actual data plot. Visual power depends unlike power in conventional tests not only on the strength of the signal, but also on individuals' ability. 
-%This proportion is associated with the Type~I error of the test. On the other hand, if null hypothesis is not true, the observed plot should look different from the null plots, making it easier to be detected. This is the definition of the power of the test. When multiple observers evaluate a lineup, the detection rate can be used to estimate the power. 
-The ability of individual observers varies, and the effects that might influence this ability are the focus of this paper.
-
-%\dc{*** Am trying to use detection rate rather than correct response. This is harder for this paper because we are evaluating subject's abilities to some extent, but we should try to use this in our vis inference papers.} % \mm{Di, do you suggest that I change ``correct response''  to ``detection rate'' in all the texts here?}
-
-%For a lineup with fixed difficulty, the proportion correct responses may vary for different observers. If an observer evaluates multiple lineups, the proportion of correct evaluations by the observer could be used as a measure of performance by an observer. The another way of measuring the performance of the observer could be the time taken by an observer to evaluate a lineup. Since performance would also depend on the lineup difficulty it is essential to adjust for lineup difficulty before estimating the performance of the observer.
-
-%Some of the factors that may affect the performance of the observer are discussed in Section~\ref{sec:factor_performance}. In this paper we focus on estimating the learning effect of the observer in terms of both proportion correct and time taken to evaluate a lineup through the attempts made during the evaluation of multiple plots. We also estimate the location effect of the observed data plot in a lineup. The other factors are controlled in simulation experiments so that learning effect and location effect can be estimated.
+The lineup protocols allows us to calculate all relevant properties that we are familiar with from conventional statistical tests. In particular, the power of a lineup is calculated as the {\it detection rate} at which observers identify the actual data plot. Visual power depends unlike power in conventional tests not only on the strength of the signal, but also on individuals' ability. The ability of individual observers varies, and the effects that might influence this ability are the focus of this paper.
 
 \begin{table*}[hbtp] 
 \centering 
@@ -186,18 +147,13 @@ the effects of different covariates on an individual's ability to evaluate lineu
  %Each of these experiments collected demographic details of the subjects. 
 Section~\ref{sec:factor_performance} discusses human factors that we expect to be influential on the performance of the observer. Section~\ref{sec:exp_design} describes the methods used to assess the effects, and Section~\ref{sec:result_socio} summarizes the results of what we have learned about human factors affecting lineup evaluation.
 
-%\subsection{Experiments pooled}
-
-
-
+% ===================================================================================
 \section{Factors Potentially Affecting Visual Inference} \label{sec:factor_performance} 
+%------------------------------------------------------------------------------------
 
 Visual statistical inference relies not only on the strength of the signal in the data, but also on how this information is presented in the plot, on the lineup design and on the abilities of human observers. It is important to understand how these factors might affect results.  Here, we provide a brief discussion %This section provides a brief description 
 of the factors that are expected to have some impact on the performance of visual statistical inference.  
 
-%ased on human evaluation on a lineup a decision is made in visual statistical inference. While the visual test statistic is defined to have a direct influence on the observer to pick a plot based on the signal in the data, there are other human factors that may affect the observer performance. It is important to study the effect of those factors and examine the extent of their influence. This section presents a brief description of the factors that may affect the power of visual inference.   
-
-%\dc{You need to have more than one sentence to open this section, it needs a paragraph overviewing the factors.}
 
 \begin{itemize} \itemsep 0in \parsep-10pt %\parskip0pt 
 %\subsection{Choice of Visual Test Statistic}  
@@ -214,48 +170,15 @@ In experiments~4,~5 and~6, different visual test statistics were used on the sam
 \item{\bf Signal in the Data:}
 A visual test statistic is chosen for a particular task. If it is well-designed  departures from the null hypothesis will be visible in the plot, especially if the signal is strong. An important factor that helps an observer to identify the actual data plot in a lineup is the strength of the signal in the data. Simulated data was generated for all of the experiments, except exps.~4 and~9, enabling the study of signal strength and actual data plot detection. In experiment~4 we took a different approach by varying the sampling size, which also allowed us to investigate the effect a design had on detection rate while varying signal/noise ratio. Primarily the results were as expected, that as the signal strength increased observers more frequently picked the actual data plot as different from the null plots. 
 
-%On the other hand, if the null hypothesis is not true, visual test statistic should not display any distinguishable pattern. In fact, some of the null plots may appear to be the most different plot in a lineup influencing the observer to chose a plot different than actual data plot. This is an elegant feature of the lineup. It force the observer to chose a wrong plot when the null hypothesis should not be rejected.
-
-%Plots to do: for the same signal strength show the proportion correct for scatterplot and boxplot. eg., qplot(effect, ump-visual power, color= plot-type)
-
-%\subsection{Question Design} 
 \item{\bf Question Design:} A primary purpose of visual inference is to preclude the necessity to pre-specify discoverable features in data that is required by classical statistical inference. Visual inference supports discovery of structure, enabling the unexpected to surprise us.  This is tightly connected to the task that the human observer is asked to perform. For most purposes the observer is asked a very general question, such as to pick the plot that is most different from the others, and explain the reasons why they see it as different. By being general, all possible discoverable structures are included in the significance calculations \citep[see also ][]{buja:2009}.
 
 In the initial Turk experiments (1,2,3) conducted with simulated data to compare the results from visual inference with those obtained by classical inference, the questions posed to the observers were more targeted. This was important to allow a direct comparison of the results to those from conventional testing. %in order to make a comparison of the results. 
 For latter studies (4, 7, 10), questions posed to the observer were more general. Table~\ref{tbl:visual_stat} lists the questions used for each experiment. 
 
-% The researcher knows about the underlying hypothesis but the observer does not necessarily know the underlying details of the lineup. So, the researcher needs to ask a question to the observer to answer while evaluating the lineup. This question should provide the observer a little clue so that the answer reflects the hypothesized patterns in the actual plot. For example Table~\ref{tbl:visual_stat} shows the questions asked for the simulation experiments considered for this study. Notice that for case 1 if the observer can identify the actual plot in the lineup that should indicate that the plot chosen has the most vertical difference between groups A and B which is exactly what the researchers intend to examine. Similarly for case 2, a correct evaluation would indicate that the slope is different than the slope that may show up just from randomness.
-
-%These questions are very crucial for the power of visual test. They help observer think in a meaningful direction. Notice that there may be unnecessary patterns in the actual data plot which may not necessarily indicate the existence of the significant signal in the plot. These questions help observer not to be misguided by those patterns. To follow up further on this \citet{majumder:2013} also collected reasons of choice made by the observers and noticed that Type-III error may occur where the hypothesis may be correctly rejected but for a wrong reason. 
-
-
-
-%\subsection{Observer Personality} 
-
-%\subsection{Visual Perception of Human Eye} Different people observe the lineup in different ways.  With the help of eye-tracking equipment \citet{zhao:2012} track the observers' eyes to see how they go through the plots in a lineup to come to their answers. The result suggest that people have particular methods of reading lineups. Some people read lineups from left to write direction while some read from upward to downward. Some people start looking from the center of the lineup while others start from the top left corner. In the earlier phase of the exercise, the observer tend to scan the plots and then start comparing plots to make a final decision. Beside right-left or up-down directions observer show some diagonal movement too. 
-%
-%Given this pattern of human eye tracks, it may effect the performance of an observer depending on where the actual plot is placed in the lineup. If the actual plot is on the top left corner and the observer starts from that point it may be easier to detect the actual plot earlier in the exercise and the observer could get plenty of time to make comparison. Thus the position of the actual plot in a lineup may have some impact.
-
 %\subsection{Demographics} 
 \item{\bf Demographics:}  During each of the experiments, data on age, gender, education level and geographic location was collected. Each observer self-reported gender, age in roughly five year intervals, education level as high school or less, some college courses, an undergraduate degree, some graduate courses or a graduate degree. The IP address of the computer afforded the geographical location of the subject. The purpose of collecting this information with each experiment is to examine the effect that they have on the results of visual inference -- ideally very little. 
 
-%Some of the demographics of the observer such as age, gender, education level and geographical location may have effect on how an observer would examine the lineup. This may produce some variability in the performance of the observer. For example, a high school student may not respond same as a well educated person while evaluating a lineup. There may be variations in different age groups as well. Investigation on subjects with a well variety of age groups is necessary to study this variability. 
-
-%To meet the Institutional Review Board (IRB) requirement, it is necessary to exclude any subject less than 18 years of old to participate human subject experiment. Thus we intend to only focus on the performance of observer with age 18 years or older. We don't expect many older people to participate our study and we are interested of age from 18 to 65 years.
-
-%Education level has some relation with age. Younger observer may not have higher degree. Thus some of the variability in performance for different education level may be confounded with age. On the other hand, it could be possible to have undergrad degree with higher age. Specially for any geographical location where not many certain gender group have higher education, this may occur. Thus the effect of all these demographical factors may be confounded at certain level. 
-
-%We don't expect much difference in performances between male and female observers. Gender may have some influence through the education level and geographical locations since some location may have small number of educated female population. We intend to include similar number of male and female subjects in our study so that this can be examined.
-
-%\subsection{Learning Trend} 
 \item{\bf Learning Trend:} One might expect that as an observer evaluates more lineups they  become more skillful in their evaluations. Each participant in  experiments~5, 6 and~7 was asked to evaluate a block of  ten lineups of the same type of data plot. The ten lineups were randomly chosen from the lineups  produced for each study. Before evaluating the first lineup, the observer needs to read instructions and become accustomed to the type of plot used in the lineup. In subsequent lineups  the type of plot is the same. It is possible that the observer becomes more skillful at recognizing the most different plot, either by more often detecting the actual data plot or more quickly reporting their choice. These two ways of measuring learning trend are evaluated on data collected from experiments~5, 6 and~7.
-
-
-%When an observer evaluates a lineup he or she may learn something from the experiences of the earlier observations. If the same observer is shown another lineup the learning from previous evaluation may help. The more evaluations an observer makes the more skillful the observer may become. This learning trend may or may not be significant overall but it may influence the performance of the observer in some way. 
-
-%Learning may occur in two different ways. An observer can become more trained on the lineup structure and the pattern in the plots shown. This can be learning in proportion of correct evaluation. Or, he or she may become efficient in responding faster in the later evaluations. This can be observed as the time taken for evaluating a lineup. This paper investigates both of these learning trends with multiple simulation experiments.
-
-%When an observer evaluate a lineup for the first time, he or she has to read through many instructions and become familiar with the environment of the experiment. We expect that this will require much more time compared to the rest of the evaluations. Time taken for the second or successive attempt should be much lower than the time taken for the first lineup. We attribute this to the adaptation to the experiment environment, not a learning of evaluating a lineup.
 
 %\subsection{Location of Actual Data Plot in the Lineup}
 \item{\bf Location of Actual Data Plot in the Lineup} For all of the lineups used in the experiments a $5\times 4$ grid of 20 panels is used. A random number generator is used to determine the position where the actual data plot is placed in each lineup. Eye tracking experiments \citep{zhao:2012} suggest that some observers traverse lineups in horizontal direction, while others have a vertical up-and-down approach to their search. Almost universally, observers start at the top left of a lineup. This leads to some concern that observers might be able to more easily identify the actual data plot, if it is placed at the top left of a lineup than when it the actual data is placed at the bottom right.
@@ -263,33 +186,23 @@ For latter studies (4, 7, 10), questions posed to the observer were more general
 %There is some concern that if the actual data plot is located in the top left of the lineup, observers may be able to identify it more easily than when the actual data plot is at the bottom right. 
 Ideally, this does not happen. Experiment~9  is designed to allow us to investigate the effects of location on detection. Five different locations in the lineup were used to assess how fast and accurately observers identified the actual data plot.
 
-%While evaluating the lineup some people may start looking from some specific part of the lineup.  In the earlier phase of the exercise, the observer tend to scan the plots and start comparing plots to make a final decision. Beside right-left or up-down directions observers show some diagonal movement too. 
 
-%Given a specific pattern of eye movement of the observer in examining the lineup, the location of actual plot in the lineup may have some effect. Those who start exploring from the left top corner may get first glance of the actual plot if it is on that location. This should give the observer more time to compare it with the rest of the null plots. Those who start looking from the center may scan towards right or left direction and thus don't have the chance to scan the null plots continuously as they could if they would start from a corner. Thus they should scan the center plot over and over again while scanning the left or right side plots. If the data plot is in the center location it may have multiple chance to be examined and hence be identified. 
-
-%It may be possible that some part of the lineup is less explored or even never scanned by the observer if he or she feels that the actual plot is found before even seriously scanning the whole lineup. In those scenarios the location where the observer first start scanning is important. Placing the actual data plot in that location may yield different results.
-
-%\subsection{Sample of Null Plots} 
 \item{\bf Sample of Null Plots:} In classical inference, the test statistic is compared to the full null distribution, to decide if it is extreme or not. In visual inference the actual plot is compared to plots of a finite number of samples from the null distribution. In the lineups used in the Turk experiments, the actual data plot is compared on 19 null plots. These null samples are random draws, and there is a chance that one or more null plots in the lineup may be similar or even more extreme than the actual data plot. The sample of null plots can affect the observer's decision. This is tested with the data from experiment~9, where the experiment was set up with lineups made from different null plots.
-
-%each lineup, there is a sample of draws from a null distribution. A lineup becomes difficult to evaluate if one of the null plots appears to be very similar to the actual plot. When null hypothesis is true it is a common scenario. With alternative hypothesis being true,  it may happen if  we compare actual plot with many null plots. But we have only specific number of null plots in a lineup. So, a different sample of null plots may yield some variation in the difficulty of the lineup with the same actual plot. This may affect the performance of the observer while evaluating a lineup.
 
 %\subsection{Individual Skill or Ability} 
 \item{\bf Individual Skill or Ability:} Each person may have different  aptitude for reading statistical plots, and their visual skill sets might be differently developed.  We can examine the effect of individuals' skills and abilities because multiple subjects evaluated the same lineups, which allows us to estimate, if some subjects consistently detect the actual data plot more often than others.  
  %For example, in a controlled experimental study \citet{zhao:2012}  noticed that some people spent a lot of time to decide no matter whether the lineup is difficult or easy while some simply glanced at lineups to make a decision. This influences the response of the observer. Also subject specific variation in the power of visual test is observed in \cite{majumder:2013}. 
 \end{itemize}
 
+
+
+% ===================================================================================
 \section{Experimental Methods}\label{sec:exp_design}
+%------------------------------------------------------------------------------------
 
-
-%While evaluating a lineup, the performance of the observer may depend on the factors described in Section~\ref{sec:factor_performance}. 
 Two of the factors, signal in the data and individual abilities, were studied in \cite{majumder:2013}. The choice of visual test statistic was examined in \cite{heike:2012}. In each of these analyses demographic factors were given a cursory glance, to ensure that they did not have large effects on the results. The design of experiments 5, 6 and 7 enables the examination of learning trend, which is studied in this paper. Experiment~9 was a real test case for visual statistical inference, and in order to understand the significance of the structure in the genomic data, multiple lineups were made in which location of the actual data plot, and the sample of nulls, were randomized. This enables the assessment of the effect of these factors on the results. This section describes the experimental methods used to examine the effects of demography, placement of the actual data plot, sample of null plots and the existence of a learning trend. 
 
-% but for the most part data collected to examine demographic effects . In this paper we intend to study effect of the factors such as human demographics, learning trend, actual plot locations and selection of null plots. This section presents the simulation experiment setup, data collection methods and data analysis plans with models to asses the influence of those factors on visual statistical inference. 
-
-%\dc{Learning trend and location effect need to be separate sections, cannot be simply bolded.}
-
-\subsection{Demographic Factors}  %In addition to obtain evaluation responses of the lineups, all the 10 experiments shown in Table~\ref{tbl:visual_stat} were designed to collect the following demographic information of the subjects participating the experiments:
+\subsection{Demographic Factors}
 \noindent
 For all  ten experiments shown in Table~\ref{tbl:visual_stat}, the following demographic information was collected from subjects:
 
@@ -299,19 +212,15 @@ For all  ten experiments shown in Table~\ref{tbl:visual_stat}, the following dem
 \item {\it Education level}, with levels being high school or less, some undergraduate courses, undergraduate degree, some graduate courses, and graduate degree.
 \item {\it Geographical location}, collected from the IP address of the participants' computer, as latitude, longitude, city and country. 
 \end{enumerate}
-%
-%Instead of collecting exact age, 9 levels of age were collected. They are 18-25, 26-30, 31-35, 36-40, 41-45, 46-50, 51-55, 56-60, above 60. There were five levels of academic information. They are (1) High school or less , (2) Some under grad course, (3) Under graduate degree, (4) Some graduate courses,  (5) Graduate degree.  Geographical locations were collected using the true public ip addresses of the participants' computer. This provides latitude and longitude of the ip address as well as the city and country information. 
-%
+
+
 Let $Y_{ij}$ denote the response from observer $i$ on a lineup $j$, with $Y_{ij} =1$ if the actual data plot is chosen, otherwise $Y_{ij} =0$. The factors are examined in association with the observer's response using a logistic regression with random effect terms:
+
 \begin{equation} \label{eqn:demographic_response}
 g( \pi_{ij} )= \mu + \alpha_{k(i)} + \gamma_{l(i)} + \tau_{m(i)}+ \kappa_{s(i)} + \ell_j,  
 \end{equation}
-where $\pi_{ij}=  E(Y_{ij})$ is the probability that  observer $i$ picks the actual data plot from lineup $j$, %We model this in a generalized mixed effects model of the form
-%\begin{equation} \label{eqn:demographic_response}
-%g( \pi_{ij} )= \mu + \alpha_{k(i)} + \gamma_{l(i)} + \tau_{m(i)}+ \kappa_{s(i)} + \ell_j,  
-%\end{equation}
- $\mu$ is an overall population average, %probability for picking out the data plot from a lineup HH: mu is not a probability, it is on the scale of the link function
- $\alpha$, $\gamma$, $\tau$ and  $\kappa$ are the effects of age group $k(i)$, gender $l(i)$, education level $m(i)$ and country name $s(i)$, respectively, for observer $i$. The term $\ell_j$ is a random intercept predicting lineup difficulty level and we assume independence and normality of the errors, i.e.\ $\ell_j \sim N(0, \sigma_\ell^2)$.  $g(.)$ denotes the {\it logit} link function $g(\pi)=\log(\pi) - \log(1-\pi); 0 \le \pi \le 1$.
+
+where $\pi_{ij}=  E(Y_{ij})$ is the probability that  observer $i$ picks the actual data plot from lineup $j$, $\mu$ is an overall population average, $\alpha$, $\gamma$, $\tau$ and  $\kappa$ are the effects of age group $k(i)$, gender $l(i)$, education level $m(i)$ and country name $s(i)$, respectively, for observer $i$. The term $\ell_j$ is a random intercept predicting lineup difficulty level and we assume independence and normality of the errors, i.e.\ $\ell_j \sim N(0, \sigma_\ell^2)$.  $g(.)$ denotes the {\it logit} link function $g(\pi)=\log(\pi) - \log(1-\pi); 0 \le \pi \le 1$.
 
 
 Similarly, we model the  time  an observer takes to identify a panel from a lineup. Let $Z_{ij}$ denote the logarithm of time taken for  observer $i$ to evaluate  lineup $j$. Let $\mu_{ij}=  E(Z_{ij})$ be the average of the (log) time taken by  observer $i$ to pick a panel from lineup $j$. We model this in a mixed effects model of the same structure as model~(\ref{eqn:demographic_response}) given as:
@@ -323,18 +232,13 @@ where $\mu$ represents overall average of log time taken by an observer to evalu
 
 \subsection{Learning Trend} Learning trend of a subject can be observed in terms of performance over successive responses when multiple lineups are shown for evaluation. Experiments 5, 6 and 7 were used for this. Each subject was shown a total of 10 lineups randomly selected from a pool of lineups. The lineups are not necessarily of the same difficulty level, but the order of lineups was randomized. The responses of the lineups were recorded by attempt 1 through 10. Attempt 1 means that the response is for the first lineup the observer evaluates and attempt 10 refers to the response for the 10th lineup. The goal is to estimate whether performance of the observer improves, or changes, from attempt 1 to attempt 10. 
 
-It should be noted that we are examining the observer's performance, when we model response as detected or not, but this is not the goal of visual inference. Visual inference is constructed to measure the significance of structure discovered in data. It is expected that some observers will be more skilled at reading data plots, and hence, more readily detect the plot that is different. It is also expected that as observers gain experience in evaluating lineups that they become more proficient in reading data plots, particularly if feedback is given on whether the actual data plot was chosen or not. Choosing the actual data plot will be more difficult in some lineups than others, and indeed should happen purely by chance in some lineups. %, so ``correct'' is more of a convenient rather than ideal word to use for this analysis. 
-So in this context, detected, or not, is used as a response to examine individual differences. 
+It should be noted that we are examining the observer's performance, when we model response as detected or not, but this is not the goal of visual inference. Visual inference is constructed to measure the significance of structure discovered in data. It is expected that some observers will be more skilled at reading data plots, and hence, more readily detect the plot that is different. It is also expected that as observers gain experience in evaluating lineups that they become more proficient in reading data plots, particularly if feedback is given on whether the actual data plot was chosen or not. Choosing the actual data plot will be more difficult in some lineups than others, and indeed should happen purely by chance in some lineups. So in this context, detected, or not, is used as a response to examine individual differences. 
 
-%\subsection{Model to Estimate Learning Trend}
-
-%Multiple lineups were sequentially shown to each observer for evaluation. 
 Let $Y_{ijk}$ denote the response from observer $i$ on lineup $j$ at their $k$th evaluation attempt, where $Y_{ijk}=1$ if the observer detected the actual data plot otherwise  $Y_{ijk}=0$. Let $\pi_{ijk}=  E(Y_{ijk})$ be the probability that  observer $i$ picks the actual data plot from lineup $j$ in their $k$th attempt. Learning trend is assessed using a generalized mixed effects model of the form
 \begin{equation} \label{eqn:trend_response}
 g( \pi_{ijk} )= \mu + \alpha_k + u_i +  a_{i} k + \ell_j,  
 \end{equation}
-where $\mu$ is an overall population average, %probability for picking out the data plot from a lineup, 
-$\alpha_k$ is the effect of the $k$th attempt on the probability, using the first attempt as reference, $\alpha_1 = 0$, and $k = 1, ..., K$, $u_i$ and $a_i$ are observer specific random effects, $i = 1, ..., I$. The term, $u_i$ is a random intercept, describing a basic subject-specific ability, with $u_i \sim N(0, \sigma_u^2)$. 
+where $\mu$ is an overall population average, $\alpha_k$ is the effect of the $k$th attempt on the probability, using the first attempt as reference, $\alpha_1 = 0$, and $k = 1, ..., K$, $u_i$ and $a_i$ are observer specific random effects, $i = 1, ..., I$. The term, $u_i$ is a random intercept, describing a basic subject-specific ability, with $u_i \sim N(0, \sigma_u^2)$. 
 The term $a_i$ is a random slope capturing an individual's specific learning effect over the course of $K$ attempts, where $a_i \sim N(0, \sigma_a^2)$. 
 For $\ell_j$ a normal distribution, $N(0, \sigma_\ell^2)$, is assumed, and $\ell_j$ is a random intercept predicting lineup difficulty level. $g(.)$ denotes the {\it logit} link function $g(\pi)=\log(\pi) - \log(1-\pi); 0 \le \pi \le 1$. The inverse link function, $g^{-1}(.)$, from equation~\ref{eqn:trend_response} leads to the estimate of the subject and the lineup specific probability of successful evaluation in the $k$th attempt by a single observer as 
 \begin{equation} \label{eqn:trend_power}
@@ -342,7 +246,7 @@ For $\ell_j$ a normal distribution, $N(0, \sigma_\ell^2)$, is assumed, and $\ell
 \end{equation}
 
 When time taken to evaluate a lineup is used as the response, let $Z_{ijk}$ denote the logarithm of time taken for an observer $i$ to evaluate a  lineup $j$ in his/her $k$th attempt. Let $\mu_{ijk}=  E(Z_{ijk})$ be the average of the (log) of time taken by  observer $i$ to choosing a  panel from lineup $j$ in his/her $k$th attempt. We evaluate this in a mixed effects model of the form
-%\hh{
+
 \begin{equation} \label{eqn:trend_time}
 Z_{ijk} = \mu + \alpha_1 + \alpha k + u_i +  a_{i} k + \ell_j + \epsilon_{ijk},  
 \end{equation}
@@ -352,29 +256,16 @@ Equation~\ref{eqn:trend_time} leads to the estimate of the subject and the lineu
 \hat \mu_{ijk} =  \hat{\mu} + \hat{\alpha_1}+ \hat{\alpha}k + \hat{u}_i +  \hat{a}_i k + \hat{\ell}_j.
 \end{equation}
 
-To fit all these mixed effect models the function {\tt lmer()} is used from R package {\tt lme4} by \cite{lme4:2015, lme4:paper}. We employ a normal approximation to obtain $p$-values corresponding to fixed effect parameters estimates. % normal approximation is used to compute $Z$ scores  as the ratio of estimates to  estimated standard errors.  
+To fit all these mixed effect models the function {\tt lmer()} is used from R package {\tt lme4} by \cite{lme4:2015, lme4:paper}. We employ a normal approximation to obtain $p$-values corresponding to fixed effect parameters estimates.  
 
 \subsection{Location Effect} \label{sec:location_design} Experiment~9 studied significant expression in an RNA-seq study, and was designed so that location effect of the actual data plot in a lineup could also be assessed. The data used, documented in \cite{atwood:2013}, measures gene expression of soybean by RNA-seq methods. Two factors were of primary interest a main effect for genotype and an interaction effect between genotype and treatment condition.
 
-%Two factors were of primary interest: genotype (call them RPA and EV) and the interaction between genotype and iron condition (sufficient or insufficient). The $2\times2$ factorial design provides four treatment conditions. For each gene there were 11 data points, because each treatment contained two or three replicates.  \mm{Di, There are more than 40,000 genes examined for significant expression in \citep{tengfei:2013}. Is that what you wanted to put here?}. 
 In large studies such as this there is a valid question whether the data exhibits any structure at all, or if the small $p$-values are simply occurring by chance, from the massive multiple testing. This overall significance is studied using visual inference  in \citet{tengfei:2013}. 
-
-%For the study, the routine processing of the data was conducted to find (1) the gene that exhibited the most significance difference in expression between genotypes, (2) the gene that exhibited the most different expression on RPA, but insignificant expression on EV. Two different types of plots would be made to examine this. For (1) side-by-side dotplots of the expression levels for the one gene by genotype were created. For (2) an interaction plot, with iron sufficiency represented on the horizontal axis, expression vertically, and genotype by color. Colored lines connect the means for the two genotypes over iron treatment. The null plots were created by randomizing the experimental design, and re-doing everything else as done with the actual data. Any genes found under these circumstances had expression differences that can only be considered to by consistent with random differences. Full results are documented in \cite{tengfei:2013}. 
 
 In order to study the effect that  location has on evaluating lineups, we used multiple lineups for each of the data plots. For each data plot, five sets of null plots were generated and the actual plot was randomly placed in one of five different locations in a lineup of size 20. 
 For the genotype effect, the locations were  1, 8, 12, 17, 20 and locations 2, 9, 12, 16, 20 were used for the interaction effect. %Five different sets of null plots were used to produce 5 lineups for each location position, creating 
 Overall this created a total of 25 lineups for studying the genotype effect, and another 25 lineups for studying the interaction effect. Each observer saw three lineups, one for genotype, one for interaction, and one easy lineup that was used to help clean the data. 
 
-%It is set up based on the gene expression data \citep{atwood:2013} with two groups. One is the Genotype and the other the Empty Vector (EV). For each of the groups, gene expression data were collected in presence or absence of iron sufficiency. Two factors were of primary interest. One is the Genotype main effect and the other is the interaction effect between Genotype and iron sufficiency. 
-
-%For Genotype main effect side by side dot plots of two groups are used as the visual test statistics. For interaction effect the same plot type is used except that the means of iron sufficiency or insufficiency were connected by lines colored by the groups. One of the interaction test statistics is shown in Table~\ref{tbl:visual_stat} for experiment 9. For no interaction, the visual test statistic shows two parallel lines representing two groups and for significant interaction the lines are not parallel. Null plots were generated by randomizing the group structure of the data. The actual plot was randomly placed in five different locations in a lineup of size 20. The locations are 2,9,12,16,20 for Interaction effect and 1,8,12,17,20 for Genotype effect. For a lineup with specific data plot location, five different sets of null plots were used to produce 5 lineups for each location. In total we have 25 lineups for Interaction effect and 25 lineups for Genotype effect. 
-
-
-%Each observer saw three lineups, first an Interaction lineup then a Genotype lineup. Finally a test lineup was shown to screen out unusual evaluation. The subjects did not know which one was the test lineup but they were informed before accepting the task that there would be one. The test lineup was very easy and everyone should detect the data plot. The MTurk workers were paid based on whether they could correctly evaluate the test lineup. But the data on the test plot are excluded from the analysis.
-
-%\subsection{Model to Estimate Location Effect}
-
-%As per the design of experiment for location effect, the actual data plot is same for each of the null sets of plot. Thus the response data of this experiment constitute a multivariate response. 
 To examine if the difference in detection rate among the locations is statistically significant a one-way multivariate analysis of variance (MANOVA) model is fit to the data.
 Let $\mathbf{Y}=(Y_1,Y_2, ... , Y_p)^\top$ be a vector of random variables with dimension $p = 5$, the total number of null sets, and let $\mathbf{Y}_{ij}$ represent the $j$th vector response for  location $i$ with $i=1,2, ..., I$ for $U=5$. Because the same data plot is shown in each lineup, it is assumed that there could be some association between the responses for each null set, which suggests the MANOVA model rather than a univariate ANOVA.  The MANOVA model 
 \begin{equation}\label{manova}
@@ -385,77 +276,15 @@ where $\mu_{i}= (\mu_{1i},\mu_{2i}, ..., \mu_{pi})^\top$ is the mean vector for 
 \subsection{Data Collection Methods}  Human subjects were recruited to evaluate the experimental lineups through MTurk \citep{turk}.  It is an online work place where people from around the world can sign up for so-called `HIT's, human intelligence tasks, generally short tasks that are humans are typically better at solving than computers. Usually tasks are very simple and no specialized training is required to do them. Tasks are designed for anyone to do but some tasks may require some skills depending on the recruiters' need. %Each task is usually planned to completed in a short time.  
  For completing a HIT workers are paid a small amount of money, on the order of minimum wage in the USA. 
 
-%It is very fast, cheap and reliable to recruit people from MTurk. Thats why it is getting very popular among the researchers who perform human subject experiment. The another benefit is that a very diverse pool of subjects can be recruited which is otherwise very hard to obtain for a study. 
-%The researchers can easily filter the workers based on their experimental design, such as recruiting people only from a specific geographical location or a group of people who satisfy certain criteria etc. The recruiter can decide who they pay or not. Workers have to satisfy the task requirement to ensure payment. But at the end it is the recruiter who has the final say. Usually recruiters pay promptly after the task has been done properly and thats why MTurk is very popular among the online job seeker. At any point of time thousands of tasks are available for the thousands of workers around the world. 
 
-%Because of its convenience it is getting popular for scientific research study as well. In comparison with a lab study \cite{suri:2010} perform the same study using MTurk and demonstrate that their study results are as good as the lab study results even though MTurk study required less time and cost while provided more convenience. \cite{majumder:2013} recruited people from MTurk for their simulation study in estimating the power of visual statistical inference. They have done numerous pilot studies in lab before doing actual MTurk study and found similar results. \cite{mason:2012} explains various features of MTurk and describes how it can be used as part of human behavioral study.
-
-We designed and developed a web application which enables the display of lineups to  observers as per experimental need. The MTurk workers were re-directed to this web application to complete their assigned tasks. Responses were collected, stored automatically into a local database server, along with demographic information, age group, gender and education level. The time taken for each evaluation is computed based on the time the plot was shown and the time the feedback was received. %It is measured in seconds. 
-Location of an observer is determined based on the ip address of the observer.
-
-%\subsection{Model to Estimate Demographic Factor Effect} The feedback provided by each observer on a lineup is a binary response variable. Suppose $Y_{ij}$ denotes the response from observer $i$ on a  lineup $j$. $Y_{ij} =1$ if the response is correct otherwise $Y_{ij} =0$. Let $\pi_{ij}=  E(Y_{ij})$ be the probability that  observer $i$ correctly picks the data panel from lineup $j$. We model this in a generalized mixed effects model of the form
-%\begin{equation} \label{eqn:demographic_response}
-%g( \pi_{ij} )= \mu + \alpha_{k(i)} + \gamma_{l(i)} + \tau_{m(i)}+ \kappa_{s(i)} + \ell_j,  
-%\end{equation}
-%where $\mu$ is an overall average probability for picking out the data plot from a lineup. $\alpha$, $\gamma$, $\tau$ and  $\kappa$ are the effects of age group $k(i)$, gender category $l(i)$, education level $m(i)$ and country name $s(i)$ respectively for observer $i$. $\ell_j$ is a random intercept predicting lineup difficulty level and we assume  $\ell_j \sim N(0, \sigma_\ell^2)$. $g(.)$ denotes the {\it logit} link function $g(\pi)=\log(\pi) - \log(1-\pi); 0 \le \pi \le 1$.
-%
-%
-%The effect of demographic factors can be observed as time taken for each evaluation by an observer. Suppose $Z_{ij}$ denotes the logarithm of time taken for an observer $i$ to evaluate a  lineup $j$. Let $\mu_{ij}=  E(Z_{ij})$ be the average of log(time taken) by  observer $i$ to pick the data panel from lineup $j$. We model this in a mixed effects model of the form
-%%\hh{
-%\begin{equation} \label{eqn:demographic_time}
-%Z_{ij} = \mu + \alpha_{k(i)} + \gamma_{l(i)} + \tau_{m(i)}+ \kappa_{s(i)} + \ell_j+ \epsilon_{ij},  
-%\end{equation}
-%where $\mu$ represents overall average of log time taken by an observer to evaluate a lineup. $\alpha$, $\gamma$, $\tau$ and  $\kappa$ are as described in Model~\eqref{eqn:demographic_response}. $\ell_j$ is a lineup-specific random effect for the time needed to evaluate a lineup; $\ell_j \sim N(0, \sigma_\ell^2)$ and the overall error $\epsilon_{ijk} \sim N(0, \sigma^2)$.
+We designed and developed a web application which enables the display of lineups to  observers as per experimental need. The MTurk workers were re-directed to this web application to complete their assigned tasks. Responses were collected, stored automatically into a local database server, along with demographic information, age group, gender and education level. The time taken for each evaluation is computed based on the time the plot was shown and the time the feedback was received. Location of an observer is determined based on the ip address of the observer.
 
 
-
-%\subsection{Model to Estimate Learning Trend}
-%
-%Multiple lineups were sequentially shown to each observer for evaluation. Suppose $Y_{ijk}$ denotes the response from observer $i$ on a  lineup $j$ in his/her $k$th attempt.  $Y_{ijk}=1$ if the response is correct otherwise  $Y_{ijk}=0$. Let $\pi_{ijk}=  E(Y_{ijk})$ be the probability that  observer $i$ correctly picks the data panel from lineup $j$ in his/her $k$th attempt. We model this in a generalized mixed effects model of the form
-%\begin{equation} \label{eqn:trend_response}
-%g( \pi_{ijk} )= \mu + \alpha_k + u_i +  a_{i} k + \ell_j,  
-%\end{equation}
-%where $\mu$ is an overall average probability for picking out the data plot from a lineup, $\alpha_k$ is the effect of the $k$th attempt on the probability, with $\alpha_1 = 0$ and $k = 1, ..., K$.
-%$u_i$ and $a_i$ are observer specific random effects, $i = 1, ..., I$. $u_i$ is a random intercept, describing a basic subject-specific ability. We assume $u_i \sim N(0, \sigma_u^2)$. 
-%$a_i$ is a random slope capturing an individual's specific learning effect over the course of $K$ attempts. We assume $a_i \sim N(0, \sigma_a^2)$. 
-%For $\ell_j$ we again assume a normal distribution, $N(0, \sigma_\ell^2)$. $\ell_j$ is a random intercept predicting lineup difficulty level. $g(.)$ denotes the {\it logit} link function $g(\pi)=\log(\pi) - \log(1-\pi); 0 \le \pi \le 1$ . 
-%
-%The inverse link function, $g^{-1}(.)$, from  Equation~\ref{eqn:trend_response} leads to the estimate of the subject and the lineup specific probability of successful evaluation in $k$th attempt by a single observer as 
-%\begin{equation} \label{eqn:trend_power}
-%\hat p_{ijk} =  g^{-1}(\hat{\mu} + \hat{\alpha}_k + \hat{u}_i +  \hat{a}_i k + \hat{\ell}_j).
-%\end{equation}
-%
-%The learning of each observer over a course of $K$ evaluations may be observed as the improvement of the time taken to evaluate a lineup in the later attempts. Suppose $Z_{ijk}$ denotes the logarithm of time taken for an observer $i$ to evaluate a  lineup $j$ in his/her $k$th attempt. Let $\mu_{ijk}=  E(Z_{ijk})$ be the average of log(time taken) by  observer $i$ to pick the data panel from lineup $j$ in his/her $k$th attempt. We model this in a mixed effects model of the form
-%%\hh{
-%\begin{equation} \label{eqn:trend_time}
-%Z_{ijk} = \mu + \alpha_1 + \alpha k + u_i +  a_{i} k + \ell_j + \epsilon_{ijk},  
-%\end{equation}
-%where $\mu$ represents overall average of log time taken by an observer to evaluate a lineup. $\alpha$ is the average change in log time taken for each additional attempt.  $\alpha_1$ is an offset in log time taken for the first attempt. All other effects are random effects: as before, $u_i$ is a subject-specific intercept representing  individual speed of an observer with $u_i \sim N(0, \sigma_u^2)$. $a_i$ is a subject-specific slope representing the deviation of the speed-up (or -down) by attempt $k$. We assume $a_i \sim N(0, \sigma_a^2)$. $\ell_j$ is a lineup-specific random effect for the time needed to evaluate a lineup; $\ell_j \sim N(0, \sigma_\ell^2)$ and the overall error $\epsilon_{ijk} \sim N(0, \sigma^2)$.
-%
-%
-%Equation~\ref{eqn:trend_time} leads to the estimate of the subject and the lineup specific time taken for an evaluation in $k$th attempt by a single observer as 
-%\begin{equation} \label{eqn:trend_time_est}
-%\hat \mu_{ijk} =  \hat{\mu} + \hat{\alpha_1}+ \hat{\alpha}k + \hat{u}_i +  \hat{a}_i k + \hat{\ell}_j.
-%\end{equation}
-%
-%To fit all these mixed effect models the function $lmer()$ is used from R package $lme4$ by \cite{lme4:2011}. To obtain the $p$-values of fixed effect parameters estimates, normal approximation is used for $Z$ scores computed as the ratio of estimates to the estimated standard errors. 
-
-%\subsection{Model to Estimate Location Effect}
-%
-%
-%As per the design of experiment for location effect, the actual data plot is same for each of the null sets of plot. Thus the response data of this experiment constitute a multivariate response. To examine if the difference in proportion correct among the locations is statistically significant we fit a one way multi variate analysis of variance (MANOVA) model to the data.
-%
-%Suppose $\mathbf{Y}=(Y_1,Y_2, ... , Y_p)^\top$ be a vector of random variable with dimension $p$, the total number of null sets. let $\mathbf{Y}_{ij}$ represents $j$th vector response for $i$th location with $i=1,2, ..., I$. We fit the following MANOVA model 
-%\begin{equation}\label{manova}
-%\mathbf{Y}_{ij} = \mu_{i} + \epsilon_{ij}
-%\end{equation}
-%where $\mu_{i}= (\mu_{1i},\mu_{2i}, ..., \mu_{pi})^\top$ is the mean vector for location $i$ and $Var(\epsilon_{ij})=\Sigma$. 
-
-
+% ===================================================================================
 \section{Results}\label{sec:result_socio}
+%------------------------------------------------------------------------------------
 
-\subsection{Overview of the Data} A total of 2340 participants provided feedback data on the lineups in ten different experimental studies. Figure~\ref{fig:turker_location} displays the locations of participants around the world.  Most of the participants were from the United States and India. There were 70 other different countries represented. This provides a diverse pool of participants. The diversity in not only  geographic but also in gender, age group and education level as can be seen in Table~\ref{tbl:demographics}. % It is interesting that there were large number of female participants even though there were a lot of participants  from developing countries.
-The large number of female participants from all countries was a pleasant surprise to us.
+\subsection{Overview of the Data} A total of 2340 participants provided feedback data on the lineups in ten different experimental studies. Figure~\ref{fig:turker_location} displays the locations of participants around the world.  Most of the participants were from the United States and India. There were 70 other different countries represented. This provides a diverse pool of participants. The diversity in not only  geographic but also in gender, age group and education level as can be seen in Table~\ref{tbl:demographics}. The large number of female participants from all countries was a pleasant surprise to us.
 
 \begin{figure}[htbp] 
    \centering
@@ -465,7 +294,7 @@ The large number of female participants from all countries was a pleasant surpri
    \label{fig:turker_location}
 \end{figure}
 
-Besides the United States and India, countries such as Canada, Romania, the United Kingdom and Macedonia have more than 10 participants each. The remaining 64 countries have fewer than 10 participants each. The distribution of participants is similar in all ten experiments. %This may be due to the time of day when the experiment was made available. %For some experiments more people participated from India than the United States and for others numbers were reversed (Figure~\ref{fig:participation_time}). It is also observed in some experiments that number of  participants are similar no matter whether the experiment is run on day time or nigh time. (*** Took out reference to Figure~11 in appendix.)
+Besides the United States and India, countries such as Canada, Romania, the United Kingdom and Macedonia have more than 10 participants each. The remaining 64 countries have fewer than 10 participants each. The distribution of participants is similar in all ten experiments. 
 
 \begin{table}[hbtp]
 \caption{Demographic information of the subjects participating in the MTurk experiments. Average time taken for evaluating a lineup is shown in seconds.}
@@ -536,49 +365,6 @@ Gender & Female & 989 & 42.26 & 43.69 & 10538 \\
 % \end{table}
 
 
-
-
-
-
-% This table contains the demographic information without factor wise percentages.
-%\begin{table}[hbtp]
-%\caption{Demographic information of the subjects participated the MTurk experiments. Average time taken for evaluating a lineup is shown in seconds.}
-%\centering
-%\scalebox{.9}{
-%\begin{tabular}{rlrrr}
-%  \hline
-% Factor & levels & subjects & avg\_time & response \\ 
-%  \hline
-%Gender & Male & 1348 & 48.51 & 13493 \\ 
-%   & Female & 991 & 43.75 & 10564 \\ 
-%\hline
-%  Education & High school or less & 193 & 37.21 & 2241 \\ 
-%   & Some under graduate courses & 418 & 42.84 & 4070 \\ 
-%   & Under graduate degree & 584 & 44.29 & 5775 \\ 
-%   & Some graduate courses & 245 & 43.43 & 2460 \\ 
-%   & Graduate degree & 902 & 52.18 & 9511 \\ 
-%\hline
-%  Age & 18-25 & 740 & 42.97 & 7311 \\ 
-%   & 26-30 & 547 & 46.27 & 5585 \\ 
-%   & 31-35 & 376 & 44.27 & 3923 \\ 
-%   & 36-40 & 257 & 55.03 & 2714 \\ 
-%   & 41-45 & 141 & 43.90 & 1519 \\ 
-%   & 46-50 &  95 & 49.29 & 1003 \\ 
-%   & 51-55 &  83 & 48.67 & 867 \\ 
-%   & 56-60 &  64 & 59.73 & 678 \\ 
-%   & above 60 &  38 & 48.67 & 457 \\ 
-%\hline   
-%  Country  & United States & 1087 & 39.64 & 10769 \\  
-%  & India & 980 & 52.63 & 10227 \\ 
-%  & Rest of the world & 254 & 46.86 & 2819 \\ 
-%  
-%   \hline
-%\end{tabular}
-%}
-%\label{tbl:demographics}
-%\end{table}
-
-
 The largest number of participants falls within the age group of 18 to 25, with the majority being between 18 to 35. Many older participants also took part in the experiments. %Interestingly, there are many participants in the older age groups as well. 
 The United States shows a more uniform participation beyond age 30,  participants from India are primarily younger. 
 
@@ -588,7 +374,7 @@ Compared to data from the 2010 US Census \cite{census}, participants were both r
 Being turkers implicitly assures that the participants in these experiments have a relatively high level of technological fluency. In fact, the demographics of participants align somewhat better with demographics of internet users published by
 \citet{pew}.
 
-The distribution of male and female participants are similar among all age groups except for age group 18-25 in India where the proportion of female participants is lower. The distribution of education levels also differs slightly across countries for this age group. %Most of the participants from India are below age 40 while in United States the distribution of participants are similar beyond age 40. There were not many participants beyond age 50 and hence these age groups are merged to form one age group called above 50. The exploratory analysis and the models fitted in the following sections use this new age group instead of actual age groups beyond age 50. 
+The distribution of male and female participants are similar among all age groups except for age group 18-25 in India where the proportion of female participants is lower. The distribution of education levels also differs slightly across countries for this age group. 
 
 
 A total of 1912 lineups were evaluated in the ten experiments. Each person evaluated at least 10 lineups except for experiment~9 where each participant evaluated three lineups.
@@ -602,36 +388,8 @@ Results from test plots were also not considered in any of the analyses.
 
 \subsection{Demographic Factors} 
 
-%\dc{*** It seems repetitive to start with a description of what we learn from the plot, so start with the model summary and use the plot to support the model findings.}
-
 To explore the significance of the demographic factors model~\eqref{eqn:demographic_response} is fit to the data, with age, country, education and gender as fixed effects. To estimate the significance of each of the factors, reduced models are fit with that factor removed from the model. Table~\ref{tbl:anova_factor} summarizes the results. Except for gender, all of the demographic factors show significant differences in  detection rates.  With respect to time taken, all of the demographic factors are significant. 
 
-% \begin{table}[htbp]
-% \centering
-% \caption{Analysis of variance (ANOVA) table comparing full model, all the demographic factors, with the reduced models, obtained by removing respective factor variable. Gender does not have a significant effect on detection rate, but does on time to respond. All factors significantly affect time to respond.}
-% \scalebox{.9}{
-% \begin{tabular}{rlrrrrrr}
-%   \hline
-% \multicolumn{2}{c}{Model}  & AIC & BIC & logLik & Chisq & Chi.Df & $p$-value \\ 
-%   \hline
-% Proportion Correct &Full & 23822.00 &23943.00 &-11896.00  & &  &  \\ [3pt]
-% %& \multicolumn{2}{l}{Reduced}  &  &  &  & \\
-% {Reduced Models}  &- Age & 23835.22 & 23907.93 & -11908.61 & 25.50 & 6 & $<$0.001 \\ 
-%   &- Country  & 24099.57 & 24204.72 & -12036.78 & 281.85 & 2 & $<$0.001 \\ 
-%   &- Education  & 23837.48 & 23926.34 & -11907.74 & 23.77 & 4 & $<$0.001 \\ 
-%   &- Gender  & 23821.88 & 23934.98 & -11896.94 & 2.17 & 1 & 0.140 \\ 
-%    \hline
-%    Log Time Taken &Full &  51904.00 &52034.00 & -25936.00 & &  &  \\ [3pt]
-% %& \multicolumn{2}{l}{Reduced}  &  &  &  & \\
-% Reduced Models &- Age  & 52435.63 & 52516.41 & -26207.81 & 543.18 & 6 & $<$0.001 \\ 
-%  &- Country  & 52849.92 & 52963.15 & -26410.96 & 949.47 & 2 & $<$0.001 \\ 
-%   &- Education  & 52012.68 & 52109.61 & -25994.34 & 116.23 & 4 & $<$0.001 \\ 
-%   &- Gender  & 51970.57 & 52091.74 & -25970.28 & 68.12 & 1 & $<$0.001 \\ 
-% \hline
-% \end{tabular}
-% }
-% \label{tbl:anova_factor}
-% \end{table}
 
 % latex table generated in R 3.4.1 by xtable 1.8-2 package
 % Wed Oct 18 17:43:02 2017
@@ -746,63 +504,9 @@ Parameter estimates from the model fits are shown in Table~\ref{tbl:model_result
 
 
 
+Figure~\ref{fig:demographic_effect} supports the model results. The average time taken to respond (natural log) and detection rate are computed by lineup for the different demographic factor levels, and displayed using boxplots. Mean values are shown as dots inside the boxplot, as this statistic rather than the median is used in the models. The means and medians for response time (top row) are essentially equal. There are some differences between the two in the detection rate plots (bottom row). The differences in these values for different factors, that was tested by the models, can be seen in the plots. However, particularly for detection rate, the variation is huge. A large component of the variation is difficulty of the lineup. In some lineups the actual data plot was distinctively different from the null plots, and we would expect that the detection rate would be close to 100\%. In other lineups there was no difference, making it very difficult to evaluate, with low detection rate and longer time to respond. In Table~\ref{tbl:model_result_demographics} notice that lineup specific error is estimated as 2.27 which is much higher than any of the other parameter estimates in the model. This indicates that the major and most important factor affecting the detection rate is  lineup difficulty.  So although the demographic factors emerge from the model to be statistically significant, the practical significance is minimal. We illustrate this with the following example of graduate degree.
 
 
-
-% \begin{table}[htbp]
-% \centering
-% \caption{Parameter estimates of models \eqref{eqn:demographic_time} and \eqref{eqn:demographic_response} fitted for average log time taken and detection rate, respectively. For time taken all the demographic factors are significant. For detection rate, age group 36-40, rest of the world and graduate degree are significantly different. For gender no difference in performance is observed. Lineup variability is estimated to be very large for model~\eqref{eqn:demographic_response}.
-% %
-% }
-% \scalebox{0.86}{
-% \begin{tabular}{rlrrrrrrrrrr}
-%   \hline
-% Demographic&& \multicolumn{4}{c} {Log Time (model~\ref{eqn:demographic_time})} & &\multicolumn{4}{c} {Detection rate (model~\ref{eqn:demographic_response})} \\
-% 
-% \cline{3-6} \cline{8-11} 
-% Factor & Level& Est & SE & Zval & $p$-value && Est & SE & Zval & $p$-value  \\ 
-%   \hline
-% \multicolumn{2}{l}{Fixed Effect} &  &  &  &  &  & & && \\ 
-% &$\mu$ & 3.360 & 0.013 & 249.21 & $<$0.001 &   & -0.683 & 0.071 & -9.64 & $<$0.001 \\ 
-% \hline
-% Age ($\alpha$)& 18-25&0.000   &---  &---  &---  &  &--- &--- &---& ---\\   
-%  &26-30 & 0.058 & 0.013 & 4.50 & $<$0.001 &   & 0.062 & 0.049 & 1.27 & 0.206 \\ 
-%   &31-35 & 0.068 & 0.014 & 4.72 & $<$0.001 &   & 0.115 & 0.055 & 2.08 & 0.038 \\ 
-%   &36-40 & 0.231 & 0.016 & 14.05 & $<$0.001 &   & 0.310 & 0.063 & 4.93 & $<$0.001 \\ 
-%   &41-45 & 0.176 & 0.021 & 8.56 & $<$0.001 &   & 0.158 & 0.081 & 1.96 & 0.050 \\ 
-%   &46-50 & 0.272 & 0.024 & 11.29 & $<$0.001 &   & 0.141 & 0.096 & 1.47 & 0.143 \\ 
-%   &above 50 & 0.352 & 0.018 & 19.19 & $<$0.001 &   & 0.147 & 0.071 & 2.06 & 0.039 \\ 
-%   \hline
-% Country($\kappa$)& United States&0.000   &---  &---  &---  &  &--- &--- &---& ---\\  
-%   &India & 0.101 & 0.011 & 9.11 & $<$0.001 &   & 0.058 & 0.043 & 1.33 & 0.183 \\ 
-%   &Rest of world & -0.129 & 0.009 & -13.82 & $<$0.001 &   & 0.185 & 0.035 & 5.22 & $<$0.001 \\ 
-%   \hline
-% Education($\tau$) &High school or less&0.000   &---  &---  &---  &  &--- &--- &---& ---\\     
-%  &Under grad courses & 0.042 & 0.013 & 3.25 & 0.0011 &   & -0.083 & 0.050 & -1.65 & 0.098 \\ 
-%   &Under grad degree & -0.037 & 0.012 & -3.21 & 0.0013 &   & -0.044 & 0.045 & -0.97 & 0.331 \\ 
-%   &Graduate courses & 0.117 & 0.013 & 9.12 & $<$0.001 &   & 0.070 & 0.050 & 1.42 & 0.157 \\ 
-%   &Graduate degree & 0.046 & 0.011 & 4.12 & $<$0.001 &   & 0.182 & 0.043 & 4.22 & $<$0.001 \\ 
-%   \hline
-% Gender ($\gamma$)& Female&0.000   &---  &---  &---  &  &--- &--- &---& ---\\      
-%   &Male & 0.078 & 0.009 & 8.26 & $<$0.001 &   & 0.055 & 0.036 & 1.50 & 0.133 \\ 
-%   \hline
-% \multicolumn{2}{l}{Random Effect} &  &  &  &  &  & & && \\ 
-% & lineup($\sigma_{\ell}$) & 0.287 &  &  &  &   & 2.293 &  &  &  \\ 
-%  & Error($\sigma$) & 0.692 & &  &  &  & 0.893 && &\\ 
-%    \hline
-% \end{tabular}
-% }
-% \label{tbl:model_result_demographics}
-% \end{table}
-
-Figure~\ref{fig:demographic_effect} supports the model results. The average time taken to respond (natural log) and detection rate are computed by lineup for the different demographic factor levels, and displayed using boxplots. Mean values are shown as dots inside the boxplot, as this statistic rather than the median is used in the models. %There are some small differences across demographic groups. The youngest age group (18-25) took least average time to evaluate a lineup. People from India took more time than others. People who have only a high school degree took less time and this is related to what we have seen for young age group. Averages of log time taken by male and female participants look similar but there are some differences as we see in Table~\ref{tbl:demographics}. 
-The means and medians for response time (top row) are essentially equal. There are some differences between the two in the detection rate plots (bottom row). The differences in these values for different factors, that was tested by the models, can be seen in the plots. However, particularly for detection rate, the variation is huge. A large component of the variation is difficulty of the lineup. In some lineups the actual data plot was distinctively different from the null plots, and we would expect that the detection rate would be close to 100\%. In other lineups there was no difference, making it very difficult to evaluate, with low detection rate and longer time to respond. In Table~\ref{tbl:model_result_demographics} notice that lineup specific error is estimated as 2.27 which is much higher than any of the other parameter estimates in the model. This indicates that the major and most important factor affecting the detection rate is  lineup difficulty.  So although the demographic factors emerge from the model to be statistically significant, the practical significance is minimal. We illustrate this with the following example of graduate degree.
-
-%Some differences in median detection rate for different demographic factor levels can be seen,  but the variability in responses is huge. This variability is primarily in variability in the lineups -- some very easy and some extremely difficult lineups. Some of the lineups  were not expected to be evaluated correctly as the null plots in those lineups were showing more signal than the actual data plot itself. In those scenarios,  one may not reject the null hypothesis. We call these difficult lineups. Some of the lineups were so easy that data plot is detectable at a first glance. These were expected to be evaluated correctly 100\% of the time. This is why we see the boxes range from 0 to 1 in most of the factor levels. Unlike median, fewer differences are observed in the average proportion of correct responses for different factor levels. 
-
-
-
-%All of the factors are significant in describing time taken to evaluate a lineup.
 
 \begin{figure}[htbp] 
    \centering
@@ -811,64 +515,6 @@ The means and medians for response time (top row) are essentially equal. There a
    \label{fig:demographic_effect}
 \end{figure}
 
-%\dc{*** Vertical axis needs to be labelled ``detection rate'' for bottom row, and ``value'' needs to be removed.}
-
-%The distribution of time taken to evaluate a lineup is positively skewed. But in log scale it appears to be symmetric for all the demographic factor variables as we see in Figure~\ref{fig:demographic_effect}. Mean and medians are very similar as well. This allows us to fit linear mixed model to the log time taken with normal error structure.
-
-%To further illustrate how the individual factor levels differ from each other  the detailed results of models \eqref{eqn:demographic_response} and \eqref{eqn:demographic_time} are shown in Table~\ref{tbl:model_result_demographics}. For parameter estimation the first factor levels shown in the Table are  used as the base line. Demographic factor levels have significant effects on log time taken to evaluate a lineup. But not all the levels are significant for the probability of correct responses.
-
-
-
-% This table had 4 digits $p$-value for last column
-%\begin{table}[htbp]
-%\centering
-%\caption{Parameter estimates of Models \eqref{eqn:demographic_time} and \eqref{eqn:demographic_response} fitted for average log time taken and probability of correct lineup evaluations respectively. For time taken all the demographic factors are significant. For probability of correct response age group 36-40, rest of the world and graduate degree are significantly different. For gender no difference in performance is observed. Lineup variability is estimated to be very large for model~\eqref{eqn:demographic_response}.}
-%\scalebox{0.86}{
-%\begin{tabular}{rlrrrrrrrrrr}
-%  \hline
-%Demographic&& \multicolumn{4}{c} {Model~\eqref{eqn:demographic_time} Log Time} & &\multicolumn{4}{c} {Model~\eqref{eqn:demographic_response} Proportion Correct} \\
-%
-%\cline{3-6} \cline{8-11} 
-%Factor & Level& Est & SE & Zval & $p$-value && Est & SE & Zval & $p$-value  \\ 
-%  \hline
-%\multicolumn{2}{l}{Fixed Effect} &  &  &  &  &  & & && \\ 
-%&$\mu$ & 3.360 & 0.013 & 249.21 & $<$0.001 &   & -0.683 & 0.071 & -9.64 & $<$0.001 \\ 
-%\hline
-%Age ($\alpha$)& 18-25&0.000   &---  &---  &---  &  &--- &--- &---& ---\\   
-% &26-30 & 0.058 & 0.013 & 4.50 & $<$0.001 &   & 0.062 & 0.049 & 1.27 & 0.2058 \\ 
-%  &31-35 & 0.068 & 0.014 & 4.72 & $<$0.001 &   & 0.115 & 0.055 & 2.08 & 0.0376 \\ 
-%  &36-40 & 0.231 & 0.016 & 14.05 & $<$0.001 &   & 0.310 & 0.063 & 4.93 & $<$0.001 \\ 
-%  &41-45 & 0.176 & 0.021 & 8.56 & $<$0.001 &   & 0.158 & 0.081 & 1.96 & 0.0501 \\ 
-%  &46-50 & 0.272 & 0.024 & 11.29 & $<$0.001 &   & 0.141 & 0.096 & 1.47 & 0.1425 \\ 
-%  &above 50 & 0.352 & 0.018 & 19.19 & $<$0.001 &   & 0.147 & 0.071 & 2.06 & 0.0394 \\ 
-%  \hline
-%Country($\kappa$)& United States&0.000   &---  &---  &---  &  &--- &--- &---& ---\\  
-%  &India & 0.101 & 0.011 & 9.11 & $<$0.001 &   & 0.058 & 0.043 & 1.33 & 0.183 \\ 
-%  &Rest of world & -0.129 & 0.009 & -13.82 & $<$0.001 &   & 0.185 & 0.035 & 5.22 & $<$0.001 \\ 
-%  \hline
-%Education($\tau$) &High school or less&0.000   &---  &---  &---  &  &--- &--- &---& ---\\     
-% &Under grad courses & 0.042 & 0.013 & 3.25 & 0.0011 &   & -0.083 & 0.050 & -1.65 & 0.098 \\ 
-%  &Under grad degree & -0.037 & 0.012 & -3.21 & 0.0013 &   & -0.044 & 0.045 & -0.97 & 0.3307 \\ 
-%  &Graduate courses & 0.117 & 0.013 & 9.12 & $<$0.001 &   & 0.070 & 0.050 & 1.42 & 0.1566 \\ 
-%  &Graduate degree & 0.046 & 0.011 & 4.12 & $<$0.001 &   & 0.182 & 0.043 & 4.22 & $<$0.001 \\ 
-%  \hline
-%Gender ($\gamma$)& Female&0.000   &---  &---  &---  &  &--- &--- &---& ---\\      
-%  &Male & 0.078 & 0.009 & 8.26 & $<$0.001 &   & 0.055 & 0.036 & 1.50 & 0.1331 \\ 
-%  \hline
-%\multicolumn{2}{l}{Random Effect} &  &  &  &  &  & & && \\ 
-%& lineup($\sigma_{\ell}$) & 0.082 & 0.287 &  &  &   & 5.259 & 2.293 &  &  \\ 
-% & Error($\sigma$) & 0.479 & 0.692 &  &  & & && &\\ 
-%   \hline
-%\end{tabular}
-%}
-%\label{tbl:model_result_demographics}
-%\end{table}
-
-%Age group 36-40 is significantly different than the base line age group of 18-25 year olds. The other age levels are similar in explaining the probability of correct response. For country, the rest of the world is different from USA but India appears to be similar to USA. We see from Table~\ref{tbl:demographics} that most of the participants (about 90\%) are from India and USA. The rest of the 10\% data are from 76 different countries. This diversity in the rest of the world may make it different from India and USA.
-
-%The graduate degree holders are significantly different as well. The positive parameter estimate indicates that they perform better and the probability of correct response is higher than other education levels. There is no significant difference between male and female performances. 
-
-%In Table~\ref{tbl:model_result_demographics} notice that lineup specific variance estimate is 5.259 with a standard error of 2.293 which is much higher than the other significant parameter estimates in model~\eqref{eqn:demographic_response}. This indicates that the major and most important factor affecting the detection rate is  lineup difficulty.  Because of the huge impact of lineup variance, the practical impact of other factor variables on the probability of correct response is in fact very small. We illustrate this with the following example of graduate degree.
 
 While some of the demographic factors are strongly statistically significant, the main source of variation in detection rate is the lineup difficulty. For example, let's examine the effect of an undergraduate degree. To see just how large the effect is, we examine the change in detection rate for a (hypothetical) 18-25 year old female in the United States, with some graduate course work as compared to an undergraduate degree, for an average difficulty lineup (random effect of zero). Plugging in the relevant quantities to the fitted model gives a difference equal to:
 $$ \frac {\exp(-0.63-0.13)}{1+\exp(-0.63-0.13)}-  \frac {\exp(-0.63+0.16)}{1+\exp(-0.63+0.16)} = 0.319- 0.385 =-0.066.$$ 
@@ -876,7 +522,6 @@ The person with some graduate course work picks the data plot  on average in 31.
 
 \begin{figure}[htbp] 
    \centering
-%   \includegraphics[width=6.5in]{learning_trend.pdf} 
     \includegraphics[width=3.2in]{practical_impact_und_graduate.pdf} 
     \includegraphics[width=3.2in]{practical_impact_degree.pdf} 
    \caption{Proportion of estimated data identifications by an 18-25 year old female in the United States with an under graduate degree compared to a high school degree. Even though having an under graduate degree leads to  statistically significant increase, the effect size in the dependent variable is  0.04 which is  negligible from a practical point of view. The difference diminishes as we move away one or two standard deviations ($\sigma_{\ell} = 2.27$) 
@@ -885,86 +530,12 @@ The person with some graduate course work picks the data plot  on average in 31.
 \end{figure}
 
 
-%\begin{figure}[htbp] 
-%   \centering
-%%   \includegraphics[width=6.5in]{learning_trend.pdf} 
-%    \includegraphics[width=3in]{practical_impact_demographics.pdf} 
-%   \caption{ Change in probability of correct response due to graduate degree as compared to high school degree diminishes rapidly as the variability in lineup difficulty $\sigma_{\ell}$ increases.}
-%   \label{fig:practical_impact_demographics}
-%\end{figure}
-
-
-
-
-%Model~\eqref{eqn:demographic_time} is fitted for the log time taken to evaluate a lineup and the results are also shown in  Table~\ref{tbl:model_result_demographics}.  The effect of all the demographic factors on log time taken to evaluate a lineup appears to be significant. 
-
-
-
-%
-%\begin{table}[htbp]
-%\centering
-%\caption{Anova of full model with all the demographic factors vs reduced model with removing respective factor.}
-%\begin{tabular}{lrrrrrrrr}
-%  \hline
-%Model && Df & AIC & BIC & logLik & Chisq & Chi.Df & $p$-value \\ 
-%  \hline
-%Log Time &Full& 16 &  51904.00 &52034.00 & -25936.00 & &  &  \\ 
-%& \multicolumn{2}{l}{Reduced} &  &  &  &  & \\
-%&Age & 10 & 52435.63 & 52516.41 & -26207.81 & 543.18 & 6 & $<$0.001 \\ 
-% & Country & 14 & 52849.92 & 52963.15 & -26410.96 & 949.47 & 2 & $<$0.001 \\ 
-%  &Education & 12 & 52012.68 & 52109.61 & -25994.34 & 116.23 & 4 & $<$0.001 \\ 
-%  &Gender & 15 & 51970.57 & 52091.74 & -25970.28 & 68.12 & 1 & $<$0.001 \\ 
-%\hline
-%Proportion Correct &Full& 15 & 23822.00 &23943.00 &-11896.00  & &  &  \\ 
-%& \multicolumn{2}{l}{Reduced} &  &  &  &  & \\
-%  &Age & 9 & 23835.22 & 23907.93 & -11908.61 & 25.50 & 6 & $<$0.001 \\ 
-%  &Country & 13 & 24099.57 & 24204.72 & -12036.78 & 281.85 & 2 & $<$0.001 \\ 
-%  &Education & 11 & 23837.48 & 23926.34 & -11907.74 & 23.77 & 4 & $<$0.001 \\ 
-%  &Gender & 14 & 23821.88 & 23934.98 & -11896.94 & 2.17 & 1 & 0.140 \\ 
-%   \hline
-%\end{tabular}
-%\end{table}
-%
 
 
 \subsection{Learning Trend} Models \eqref{eqn:trend_response} and \eqref{eqn:trend_time} are fitted to the data from experiments~5,~6, and~7 separately. In this model, attempt is fitted as a factor variable to allow for all possible non-linear learning trends.  It should be noted that we also examined an alternative to model~\eqref{eqn:trend_response} where attempt was linearly fitted as a continuous covariate, but this also was not significant.
 
 Table~\ref{tbl:model_result_response} displays the parameter estimates and $p$-values of fixed effect estimates of model~\eqref{eqn:trend_response} examining detection rate. Only for experiment~6 there is some evidence of a learning curve. There are marginally small $p$-values for most of the attempt levels, and positive parameter estimates, suggesting that more attempts increases detection rate. 
 
-%The large $p$-values suggest that none of the levels of attempt ($\alpha_2$ through $\alpha_{10}$) are significant at \%1 significance level. Moreover, some of the estimates are positive and some are negative and they show up seemingly in random order suggesting later attempts not necessarily have improved. This indicates that there may be no learning effect on the probability of correct evaluations.  
-
-% \begin{table}[htbp]
-% \centering
-% \caption{Parameter estimates of models \eqref{eqn:trend_response} fitted to data from three different experiments using detection rate as the response to assess learning trend. Attempt number is fitted as a factor to enable modeling any sort of non-linear learning trend. Only experiment~6 shows evidence of a learning trend, with detection rate essentially increasing as attempts increase.}
-% \scalebox{0.81}{
-% \begin{tabular}{rrrrccrrrccrrrc}
-%   \hline
-% & \multicolumn{4}{c} {Experiment~5} & &\multicolumn{4}{c} {Experiment~6} && \multicolumn{4}{c} {Experiment~7}\\
-% 
-% \cline{2-5} \cline{7-10} \cline{12-15} 
-%  Effect& Est & SE & Zval & $p$-value && Est & SE & Zval & $p$-value && Est & SE & Zval & $p$-value \\ 
-%   \hline
-% Fixed &  &  &  & && &  & & & & & &  & \\ 
-% $\mu$ & -1.304 & 0.179 & -7.28 & $<$0.001 &   & -0.220 & 0.147 & -1.50 & 0.134 &   & -1.737 & 0.481 & -3.61 & $<$0.001 \\ 
-%   $\alpha_1$ & 0.000 & --- & --- & --- &   & 0.000 & --- & --- & --- &  & 0.000 & --- & --- & ---  \\ 
-%   $\alpha_2$ & 0.270 & 0.219 & 1.24 & 0.217 &   & 0.262 & 0.158 & 1.66 & 0.098 &   & -0.456 & 0.385 & -1.18 & 0.237 \\ 
-%   $\alpha_3$ & -0.178 & 0.226 & -0.79 & 0.432 &   & 0.342 & 0.157 & 2.18 & 0.029 &   & -0.105 & 0.386 & -0.27 & 0.786 \\ 
-%   $\alpha_4$ & 0.083 & 0.224 & 0.37 & 0.712 &   & 0.358 & 0.159 & 2.26 & 0.024 &   & -0.378 & 0.381 & -0.99 & 0.322 \\ 
-%   $\alpha_5$ & 0.298 & 0.224 & 1.33 & 0.183 &   & 0.376 & 0.159 & 2.36 & 0.018 &   & -0.107 & 0.385 & -0.28 & 0.781 \\ 
-%   $\alpha_6$ & 0.042 & 0.231 & 0.18 & 0.857 &   & 0.246 & 0.158 & 1.56 & 0.120 &   & 0.026 & 0.407 & 0.06 & 0.949 \\ 
-%   $\alpha_7$ & 0.283 & 0.230 & 1.23 & 0.217 &   & 0.160 & 0.159 & 1.01 & 0.314 &   & 0.057 & 0.401 & 0.14 & 0.886 \\ 
-%   $\alpha_8$ & -0.045 & 0.233 & -0.19 & 0.847 &   & 0.341 & 0.160 & 2.13 & 0.033 &   & -0.003 & 0.394 & -0.01 & 0.994 \\ 
-%   $\alpha_9$ & -0.195 & 0.232 & -0.84 & 0.400 &   & 0.378 & 0.160 & 2.36 & 0.018 &   & 0.204 & 0.436 & 0.47 & 0.639 \\ 
-%   $\alpha_{10}$ & 0.513 & 0.228 & 2.25 & 0.024 &   & 0.192 & 0.163 & 1.18 & 0.238 &   & -0.213 & 0.432 & -0.49 & 0.622 \\ 
-% \multicolumn{2}{l}{Random}   &  &  &  &  & & &&& & & &  & \\ 
-%   $\sigma^2_a$ &  0.017 &&  &  &   &  0.034 &&  &  &   &  0.163 &&  &  \\ 
-%   $\sigma^2_u$  & 0.848 &&  &  &    & 0.903 &&  &  &   &  $<$0.001 &&  &  \\ 
-%   $\sigma^2_{\ell}$  & 1.476 &&  &  &    & 1.418 &&  &  &   &  3.314 &&  &  \\ 
-%    \hline
-% \end{tabular}
-% }
-% \label{tbl:model_result_response}
-% \end{table}
 
 % latex table generated in R 3.4.1 by xtable 1.8-2 package
 % Wed Oct 18 23:54:25 2017
@@ -1029,58 +600,18 @@ $\mu$ & -1.32 & -1.73 & -0.92 & *** &   & -0.16 & -0.46 & 0.13 &  &   & -1.73 & 
 % 
 
 
-
-
-%The variance of random slope for attempt ($\sigma^2_a$) is estimated to be very small compared to other random effects except for subject variability ($\sigma^2_u$) for experiment~7. This suggests that most of the variability for attempt is accounted for by the fixed effect factor attempt. For all three experiments the lineup variabilities ($\sigma^2_l$) were estimated to be very large making the practical impact of other factor levels even more negligible. Some of the lineups were very easy and some were really difficult in experiment~7. The overall average probability for picking out the data plot from a lineup ($\mu$) is significant for both experiments 5 and 7. But for experiment~6 it is not significant suggesting that experiment~6 lineups were difficult compared to the other experimental lineups. This shows a feature of the experimental designs where a mixture of difficult and easy lineups were included within the experiments as well as between the experiments.  For easy lineups there may be small chance to improve performances. But for harder lineups, the scope to improve performances is large.  Since for none of these experiments improvement in performances is observed, it is important in the sense that performances did not improve over attempts in both difficult and easy lineup situations.
-
-%The results are shown in Tables~\ref{tbl:model_result_response}~\ref{tbl:model_result_time}.
-
-
-%Model~\eqref{eqn:trend_time} is fitted to the data from experiment~5, 6, and 7 separately.   For this the function $lmer()$ is used from R package $lme4$ by \cite{lme4:2011}. To obtain the $p$-values of fixed effect parameters estimates, normal approximation is used for $Z$ scores computed as the ratio of estimates to the estimated standard errors. The results are shown in Table~\ref{tbl:model_result_time}. Both fixed effect parameters of covariate Attempt ($\alpha_1$ and $\alpha$) are highly significant.
-
-%Each subject participating the experiment has seen multiple number of lineups for evaluations. Suppose $K$ be the number of lineups evaluated by a subject and $A_k$ be the $k$th attempt, $k=1,2, ..., K$. Subjects may have a chance for self learning and do better on lineups shown later in the sequence. They may learn from their previous mistake or they may learn about the features of the plots being evaluated as they progress. Thus if there is any learning trend that should be apparent in proportion correct over $A_k$. But to obtain this we have to adjust for lineup difficulty and individual performances.
-
 To visualize how  detection rates change over successive attempts, we fitted model~\eqref{eqn:trend_response} excluding the covariates related to attempt from the model and computed the residuals. Least square regression lines were fitted through the subject specific residuals as shown in Figure~\ref{fig:learning_trend_response}. The averages of these residuals for each of the attempts are shown as dots. Two important features were observed; one is subject specific variability and the other is random slope with attempts which indicates subjects specific learning trend. Some subjects show improvement over time and some show the decrease in performance. Although, the model fit experiment~6 suggested a statistically significant learning curve the plots indicates that it is minimal. 
 
 \begin{figure}[htbp] 
    \centering
-%   \includegraphics[width=6.5in]{learning_trend.pdf} 
     \includegraphics[width=6.3in]{learning_trend_subject.pdf} 
    \caption{ Least square lines fitted through the subject specific residual proportion correct obtained from model~\eqref{eqn:trend_response} fitted without attempt are plotted against attempt. Subject specific positive and negative slopes are observed. Mean residuals are shown as dots and least square regression lines fitted through the points show no overall learning trend in each of the three experiments.}
    \label{fig:learning_trend_response}
 \end{figure}
 
-%The averages of these residuals for each of the attempts are shown as dots in Figure~\ref{fig:learning_trend_response}. Least square linear regression lines are fitted through the points for each of the experiments. Positive slopes over the attempts are observed but none of them is statistically significant. 
 
 Table~\ref{tbl:model_result_time} presents the results of model~\eqref{eqn:trend_time} where response time is examined with respect to attempt. Attempt is modeled as a linear covariate here, with a shift factor used to adjust for additional time on the first lineup evaluated. Interestingly, time to respond significantly decreases as number of attempts increases, for all three experiments. 
-The parameter $\alpha$ for fixed effect covariate attempt is highly significant in all the experiments. The negative estimates suggest that on average later attempts took less time. Even though observers did not improve in their performance in successive attempts, they became more efficient in their response. The parameter $\alpha_1$ for first attempt is also highly significant. The positive estimates of $\alpha_1$ indicates that first attempt made by an observer required much more time than any of the other attempts. One explanation might be that participants take the chance to  carefully read through instructions and familiarize themselves  with the types of plots used in the experiment before evaluating their first lineup, which would inflate the time taken on the first lineup. Each of the experiments asks observers to give a reason for their choice (out of a list of pre-defined answers. For each lineup evaluation, participants are also asked to state how confident in their choice they are (on a scale of 1 to 5).  Later pages of the web site were identical  except for the lineup. %Thus in the later attempts an observer does not need to spend any time for reading instructions. The model reflects that fact.
-
-
-% \begin{table}[htbp]
-% \centering
-% \caption{Parameter estimates of model~\eqref{eqn:trend_time} fitted for log time taken to evaluate a lineup. Both fixed effects parameters of Attempt ($\alpha_1$ and $\alpha$) are highly significant for all three experiments 5, 6 and 7. }
-% \scalebox{0.81}{
-% \begin{tabular}{rrrrccrrrccrrrc}
-%   \hline
-% & \multicolumn{4}{c} {Experiment~5} & &\multicolumn{4}{c} {Experiment~6} && \multicolumn{4}{c} {Experiment~7}\\
-% 
-% \cline{2-5} \cline{7-10} \cline{12-15} 
-%  Effect& Est & SE & Zval & $p$-value && Est & SE & Zval & $p$-value && Est & SE & Zval & $p$-value \\ 
-%   \hline
-% Fixed &  &  &  & && &  & & & & & &  & \\ 
-% $\mu$ & 3.817 & 0.039 & 97.38 & $<$0.001 &   & 3.901 & 0.033 & 118.19 & $<$0.001 &   & 3.731 & 0.054 & 69.04 & $<$0.001 \\ 
-%   $\alpha_1$ & 0.326 & 0.035 & 9.35 & $<$0.001 &   & 0.335 & 0.029 & 11.40 & $<$0.001 &   & 0.280 & 0.050 & 5.63 & $<$0.001 \\ 
-%   $\alpha$ & -0.038 & 0.004 & -9.30 & $<$0.001 &   & -0.039 & 0.004 & -10.19 & $<$0.001 &   & -0.029 & 0.007 & -4.22 & $<$0.001 \\ 
-% \multicolumn{2}{l}{Random}   &  &  &  &  & & &&& & & &  & \\ 
-%   $\sigma^2_a$ &   0.027 &  &  &   &  & 0.045 &  &  &   &  & 0.049 &  &  \\ 
-%   $\sigma^2_u$ &   0.509 &  &  &   &  & 0.495 &  &  &   &  & 0.366 &  &  \\ 
-%   $\sigma^2_{\ell}$ &   0.091 &  &  &   &  & 0.199 &  &  &   &  & 0.235 &  &  \\ 
-%   $\sigma^2$ &   0.460 &  &  &   &  & 0.501 &  &  &   &  & 0.454 &  & &  \\ 
-%    \hline
-% \end{tabular}
-% }
-% \label{tbl:model_result_time}
-% \end{table}
+The parameter $\alpha$ for fixed effect covariate attempt is highly significant in all the experiments. The negative estimates suggest that on average later attempts took less time. Even though observers did not improve in their performance in successive attempts, they became more efficient in their response. The parameter $\alpha_1$ for first attempt is also highly significant. The positive estimates of $\alpha_1$ indicates that first attempt made by an observer required much more time than any of the other attempts. One explanation might be that participants take the chance to  carefully read through instructions and familiarize themselves  with the types of plots used in the experiment before evaluating their first lineup, which would inflate the time taken on the first lineup. Each of the experiments asks observers to give a reason for their choice (out of a list of pre-defined answers. For each lineup evaluation, participants are also asked to state how confident in their choice they are (on a scale of 1 to 5).  Later pages of the web site were identical  except for the lineup. 
 
 % latex table generated in R 3.4.1 by xtable 1.8-2 package
 % Wed Oct 18 23:37:55 2017
@@ -1131,24 +662,8 @@ $\mu$ & 3.80 & 3.72 & 3.88 & *** &   & 3.89 & 3.83 & 3.96 & *** &   & 3.75 & 3.6
 % \end{table}
 
 
-
-
-
-%The lineup variance of experiment~7 is estimated as $\hat{\sigma}^2_{\ell} = 10.98$ from model~\eqref{eqn:trend_response}. But from model~\eqref{eqn:trend_time} it is estimated to be much smaller in all these experiments. This suggests that the harder lineups not necessarily took more time than easier lineups. The observers spent enough times to evaluate a easy lineup and for difficult lineup they might just give up at some point and provided the feedback.
-
-%Model~\eqref{eqn:trend_time} was compared to couple of other alternatives. A bigger model with attempt as a factor was considered but it was not significantly different with $p$ value 0.236. A reduced model without the first attempt was also considered but it was significantly different with $p$-value $<0.001$. 
-
 To visualize how the time taken reduces over the successive attempts, we fitted model~\eqref{eqn:trend_time} excluding the covariate attempt from the model and computed the residuals. Least square regression lines are fitted through the subject specific residuals. Subject specific slopes are much different in each of the three experiments as we see in Figure~\ref{fig:learning_trend_time}. Some subjects improved over attempts by taking less time in the later attempts while others got worse. The averages of these residuals for each attempt are plotted as dots. Least square regression lines are fitted to these points excluding the first attempt since for first attempt we fitted an indicator covariate. The downward trends are evident in the plots. All the slopes are highly significant. As expected we observed large positive residuals for each of the experiments for first attempt. 
 
-%These results indicate that after working with the multiple tasks each observer became efficient which helped them finish the task faster in later attempts. Subject specific least square lines show variations in slopes and overall time taken. Even though overall skill improved, there are some subjects who took more times in later attempts.
-
-
-
-%To accomplish this we fit generalized mixed effect model~\eqref{eqn:trend_response} with lineups and subjects as random effect and no fixed effect. This gives the estimation of proportion correct responses  and we obtain residuals of the fitted model. The residuals give variations in proportion correct adjusted for lineup difficulties and individual skills. If there is any learning trend over different attempt $A_k$, the residuals should have that information since $A_k$ was not included as a covariate in the model. %At this point we focus on absolute residuals over different attempts to study the deviations due to attempts. An smaller absolute residual at attempt $A_k$ should indicate learning from all other attempts less than $k$. 
-
-%A plot of residuals against the attempts $A_k$ should reveal the trend if there is any. Figure~\ref{fig:learning_trend} shows such plots for three experiments naming experiment~5, 6 and 7. For all the experiments we see some increasing trend of the residuals. This could be attributed to the exhaustion of subjects' attempt after some earlier evaluations are made.  But none of apparent trend are statistically significant. 
-
-%Learning trend is not only related to the proportion correct responses. It may be possible that people learn to answer fast. We examine this by the time taken for each evaluation. We fit a mixed effect linear model with time taken considering lineup and subjects as random effect. The resulting residuals are plotted in Figure~\ref{fig:learning_trend_time}. It appears that in the later attempts observers take less time to evaluate a lineup. Even though it does not tell much about improving their performance over attempts, but it does indicate the improvement of their evaluation skill. Adding this information with what we observe in Figure~\ref{fig:learning_trend}, we can say that the observers' improved skills could not contribute to their performance. It only help them finish the task faster in later attempts.
 
 \begin{figure}[htbp] 
    \centering
@@ -1170,8 +685,6 @@ The overall average detection rate for each location is shown using dashed lines
 
 We observe some variability in the performance due to different null sets even though the same actual data plot was used for all of  these null sets. The lineup protocol is using a finite, small sample (19 in these experiments) of all possible null sets, so it is possible to see some variability in performance depending on the null set. If null sets come from the ``extremes'' of the sampling distribution they may have structure that is more extreme than the actual data plot, making the lineup more difficult to evaluate. From the plot we can see that null set 3 appeared to be more difficult in the Interaction lineup, because the detection rate was lower regardless of the position of the actual data plot. This null set effect was tested, and a significant difference was found for null set 3 of the interaction lineup. The rest of the null sets do not show any differences at  a 1\% significance level. 
 
-%This may happen for some sets of null plots if one or more null plots are very similar to the actual plot. In another set of null plots this may not happen making some lineups easier than others even though the actual data plot is the same. This pattern is evident in the Figure~as we see proportion correct for null plot 5 is consistently above the null plot 1 for each of the locations. 
-
 
 \begin{figure}[htbp] 
    \centering
@@ -1179,8 +692,6 @@ We observe some variability in the performance due to different null sets even t
    \caption{Location of data plot in the lineup and proportion correct (detection rate) for both Interaction and Genotype effect. Each colored line represents a null set and the size of the dots represents number of responses. The overall average proportions are shown by dashed lines. The actual data plot locations are shaded grey on the top panels to demonstrate their relative positions on a lineup.}
    \label{fig:location_effect}
 \end{figure}
-
-%The sizes of the dots in  Figure~\ref{fig:location_effect} represents the number of responses obtained for that location and null set. For some locations we have as many as 10 responses. For location 1, we did not have any response for null set 1 in one of the interaction lineups. We observe larger variability for interaction lineups as compared to Genotype lineups. It is because some of the interaction lineups were evaluated only once as we see for null plot 3 and 5 for Interaction effect. This leads to the extreme proportion of correct since one response will either be correct or wrong. The larger variability observed for Interaction lineups can be controlled at some extent by evaluating them multiple times.
 
 
 Model~\eqref{manova} was fit to the data to test, if  detection rates were significantly different for the different locations. For this we use the {\it manova()} function provided in the {\it stats} package of the software R \citep{R}. The results are shown in Table~\ref{tbl:manova}. The $p$-values for both the Interaction and the Genotype effect are much bigger than the conventional threshold of 0.05 suggesting that location of the actual data plot in the lineup does not significantly affect performance. 
@@ -1202,71 +713,29 @@ Model~\eqref{manova} was fit to the data to test, if  detection rates were signi
 \label{tbl:manova}
 \end{table}
 
-For the second approach in investigating the location effect, we distinguish between inner panels 7, 8, 9, 12, 13, 14 and outer panels (any panel with an outside edge).  
-%We also examined whether the proportion of correct responses differs if the actual plot is on the outer boundary or in the inner locations. The locations 7,8,9,12,13,14 in the lineup are considered inner locations and the rest of the boundary locations are considered to be outer location. 
-From Figure~\ref{fig:location_effect} we see that location 9, 12 are inner panels for Interaction effect and locations 8, 12 are inner panels for Genotype. 
-Model~\eqref{manova} fitted with two locations effects, inner and outer, did not result in any significant differences.  
-%It does not show any differences whether the actual plot is inside or outer border of the lineup. 
+For the second approach in investigating the location effect, we distinguish between inner panels 7, 8, 9, 12, 13, 14 and outer panels (any panel with an outside edge). From Figure~\ref{fig:location_effect} we see that location 9, 12 are inner panels for Interaction effect and locations 8, 12 are inner panels for Genotype. Model~\eqref{manova} fitted with two locations effects, inner and outer, did not result in any significant differences.  
+ 
 
-
-
-%
-%% latex table generated in R 2.15.0 by xtable 1.7-0 package
-%% Fri Sep  7 10:28:47 2012
-%\begin{table}[hbtp]
-%\caption{Fixed effect parameter estimates of generalized mixed model. Note that attempt is not significant for experiment~2. The continuous covariate, lineup difficulty, was measured by the $p$-value of the actual plot in the lineup.}
-%\begin{center}
-%\begin{tabular}{llrrrrl}
-%  \hline
-%& Parameters & Estimate & Std..Error & z.value & P-value  & \\ 
-%  \hline
-%\multicolumn{2}{l}{\bf{Experiment~1} } &&&& &\\
-%&(Intercept) & -0.30 & 0.10 & -2.89 & 0.00 & ***\\ 
-% & attempt & 0.08 & 0.02 & 4.21 & 0.00 & ***\\ 
-% & lineup difficulty & -11.32 & 1.01 & -11.19 & 0.00 & ***\\ 
-%\multicolumn{2}{l}{\bf{Experiment~2} } &&&&& \\
-% & (Intercept) & 2.36 & 0.15 & 16.09 & 0.00 & ***\\ 
-% & attempt & 0.01 & 0.03 & 0.35 & 0.72 \\ 
-% & lineup difficulty & -55.03 & 2.20 & -25.00 & 0.00 & ***\\ 
-%\multicolumn{2}{l}{\bf{Experiment~3} } &&&& \\
-% & (Intercept) & 0.25 & 0.16 & 1.58 & 0.11 & .\\ 
-% & attempt & 0.10 & 0.03 & 3.34 & 0.00 & ***\\ 
-% & lineup difficulty & 3.00 & 0.56 & 5.36 & 0.00 & ***\\ 
-%   \hline
-%\end{tabular}
-%\end{center}
-%\label{tbl:model_par}
-%\end{table}
-%
-% \footnote{Signif. codes: 0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1}
-
-
-
-
+% ===================================================================================
 \section{Conclusion}
+%------------------------------------------------------------------------------------
 
 Human demographics have the potential to influence performance when the lineup protocol is used for statistical inference. In our study of the demographic effects on performance across a set of different experiments we found some statistically significant effects. Age group 36-40, people who have a graduate degree have a significantly higher detection rate. India shows significantly lower detection rate compared to United States. Gender does not have any significant effect. However, the effects are minimal, on the order of a few percentage points different from the average. These results are very important for the power of visual tests as they demonstrate the robustness of the test against different human factors.
 
-%in time taken to evaluate a lineup. Some variations among the factors are observed in terms of probability of correct evaluation. Age group 36-40, Countries other than India and United states, People who have a graduate degree are significantly different. But their practical impact on probability to correctly evaluate a lineup is very negligible and in some cases it diminishes  as the lineup difficulties increase or decrease. Gender does not have any significant effect on performance. Thus there may be differences in time taken to evaluate a lineup for different human demographics but the practical impact of demographics on the performance is very negligible. This result is very important for the power of visual test as it demonstrates the robustness of the test for different human factors.
-
 Individual learning trend is observed in time taken but not so much in observer performance. Some individuals improved on their performances while others showed a decrease on successive attempts. This could be interpreted as good, in the sense that it means that observers could realistically be recruited from sources like MTurk, and that substantial training is not necessary in order to obtain useful evaluations of lineups in practice. However, we had hoped that lineups may be a useful teaching tool, to improve students ability to read data plots, and the lack of a learning trend diminishes this idea, at least for short term learning. 
-
-%But the overall performance of the observers does not increase through successive attempts while evaluating multiple lineups. This result suggests that the power estimated for visual inference using human subject experiment~is robust and may not change if those participants are allowed to give feedback again. The skill in evaluating the lineup in shorter time gets improved over successive evaluations. The earlier evaluations take significantly longer time than the later evaluations.  It suggests that the skilled person may only do it faster.
 
 The simulation experiment reveals that there is no significant effect of location on the actual data plot in the lineup. This is important as the visual statistical inference procedure prescribes that the data plot be placed at random in the lineup. This paper suggests that any random place in a lineup is as good as other places in the lineup. Even though there are variations on the performance depending on different null sets, their impact on probability to correctly evaluate a lineup is very negligible. 
 
-%The subjects participating this study may not necessarily know about statistical graphics. The numerous pilot studies done with more trained participants suggest that power of visual statical inference may be higher for observers who have advanced knowledge about statistical graphics. The fact that a person with graduate degree performs better may be associated with this. But a graduate degree does not necessarily mean to have training on statistical graphics. More experiments may be needed to learn about the differences in power with trained and a non-trained observer in terms of knowledge about statistical graphics. 
-
-%This investigation allowed each observer to evaluate 10 lineups assuming that it would not cause fatigue or disinterest toward the task of evaluating lineups. This assumption is made based on the pilot studies. The future research may involve doing more experiments to check if fewer or more than 10 lineups have any significant impact on performance of the observer. The learning trend in terms of time taken shows downward trends. At some point it should level of. It will be useful to know for how many lineups time taken levels off to decide how many lineups is appropriate to show.
-
-%A lineup with fewer or larger than 20 plots may yield different results. If the size of the lineup is much higher than 20, it is intuitive that there may be location effect of the data plot in the lineup. It is because, the observer may get tired of scanning and may make decision based on the partial scanning of the lineup. On the other hand fewer than 20 plots will allow observer to compare the actual plot with fewer null plots giving more chance of picking actual plot as an error not as an actual plot. These are the some of the issues that require further investigation.
-
 There are many more ways that the lineup protocol might be tested to learn what we might expect about its performance for tackling real data mining problems. Possible changes in the lineup protocol in the pipeline are allowing observers to select more than one plot, and to vary the size of the lineup from 20 to a smaller number, and have observers all see different lineups with different null sets.  This paper assessed the effect of human factors on the experiments conducted to date. As changes to the lineup protocol are suggested by other experiments the human factor effects may need to be examined again.
 
+
+\if1\blindDoc
+{
 %------------------------------------------------------------------------------------
 \paragraph{Acknowledgments}
 %------------------------------------------------------------------------------------
 This work was funded in part by National Science Foundation grant DMS 1007697. All studies were conducted with approval from the Institutional Review Board IRB 10-347.
+} \fi
 
 
 \bibliographystyle{asa}

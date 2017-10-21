@@ -1,4 +1,9 @@
-# The complete R code for Sociology Paper
+# The complete R code for Sociology Paper submitted to JASA
+# Last updated by Mahbubul Majumder Oct 20, 2017
+
+# ==================================================================
+# Loading necessary libraries 
+# ------------------------------------------------------------------
 
 library(ggplot2)
 library(plyr)
@@ -13,9 +18,9 @@ library(maps)
 # ==================================================================
 # Loading the data 
 # ------------------------------------------------------------------
-
-expDat <- readRDS("../data/experiment-data-all.rds")
-dat9 <- readRDS("../data/exp9-extra.RDS")
+load("../data/experiment-data-all.RData")
+expDat <- allDat
+dat9 <- exp9Dat
 
 
 # ==================================================================
@@ -33,12 +38,11 @@ countryCount <- expDat %>%
 length(unique(expDat$lineup_id))
 
 
-
 # ==================================================================
 # figure 3 map of turk participants and country-wise bar chart
 # ----------------------------------------------------------------
 # getting unique participants information
-# Since each participant has multiple responses in demographics data
+# Since each participant has multiple responses in the actual data
 turker <- expDat[!duplicated(expDat$id),]
 turker$country <- factor(turker$country, 
                          levels=names(table(turker$country))[order(table(turker$country))])
@@ -116,7 +120,7 @@ fp <- glmer(response~age_level+country+degree+gender_level+(1|lineup_id),
 
 summary(fp)
 resid <- residuals(fp)
-# residual error
+# residual error estimate (sigma)
 sqrt(sum(resid^2)/(length(resid)-length(fixef(fp))))
 
 # function to get estimates with confidence interval
@@ -163,6 +167,7 @@ rownames(est.factor) <- c("$\\mu$",substr(rownames(est.factor)[2:7],10,nchar(row
 dgt <- c(rep(0,15), rep(2,45), rep(0,15))
 dgts <- matrix(rep(dgt,2), ncol=10)
 print(xtable(est.factor, digits=dgts),  sanitize.text.function = function(x){x})
+
 
 # ==================================================================
 # table 3 ANOVA Model results of demographic factor main effects
@@ -256,7 +261,7 @@ ggsave("../images/demographic_effect.pdf", width=6.5, height=6)
 px <- function(xb){exp(xb)/(1+exp(xb))}
 
 # Following estimates are taken from table 4
-s1 <- 2.27  #estimated sigma1
+s1 <- 2.27  #estimated sigma for lineup (lineup difficulty)
 est.mu <- -0.63 # estimated mu
 est.uc <- 0.00 # estimate undergraduate course
 est.ugrad <- 0.16 # estimate und. graduate degree
@@ -270,7 +275,7 @@ ugd_xb <- hs_xb + est.ugrad
 
 ddat <- data.frame(difficulty=difficulty, prop_hs = px(hs_xb),prop_ugd=px(ugd_xb))
 
-# Maximum difference in prop correct is 0.04
+# Maximum difference in prop correct is 0.04 where difficulty is near zero
 qplot(difficulty, prop_ugd-prop_hs, data=ddat, geom="line")
 with(ddat, max(prop_ugd-prop_hs))
 
@@ -310,20 +315,20 @@ ggsave("../images/practical_impact_degree.pdf", width=6.5, height=4.5)
 # ==================================================================
 # Some calculations added in section 4.2, demographic factors
 # ------------------------------------------------------------------
-# grad course vs undergrad degree
+# proportion for grad course vs undergrad degree when lineup difficulty = 0
 exp(-0.63-0.13)/(1+exp(-0.63-0.13)) - exp(-0.63+0.16)/(1+exp(-0.63+0.16))
-# proportion grad course
-px(est.mu - 0.13)
-# proportion undergrad degree
-px(est.mu + 0.16)
-# difference reduced for one sd (s1)
-px(est.mu - 0.13 +s1) - px(est.mu + 0.16+s1)
-px(est.mu - 0.13 + 2*s1) - px(est.mu + 0.16 + 2*s1)
+# proportion for grad course
+px(est.mu + est.gc)
+# proportion for undergrad degree
+px(est.mu + est.ugrad)
+# difference reduced for one sd (s1) and more for 2 sd (2*s1)
+px(est.mu + est.gc + s1) - px(est.mu + est.ugrad + s1)
+px(est.mu + est.gc + 2*s1) - px(est.mu + est.ugrad + 2*s1)
 
 
 
 # ==================================================================
-# learning trend analysis
+# learning trend analysis: section 4.3
 # ------------------------------------------------------------------
 
 dtrend <- expDat %>%

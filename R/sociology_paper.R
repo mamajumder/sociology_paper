@@ -96,7 +96,7 @@ dat9$nulls <- paste("null_",sapply(nulls, function(x) return(x[2])), sep="")
 # responses on the plot used for defense talk
 subset(dat9, pic_name=="plot_turk9_interaction_1_3.svg")
 
-# responses on the plot used for defense nsf grant
+# responses on the plot used for nsf grant
 subset(dat9, pic_name=="plot_turk9_geno_1_2.svg")
 subset(dat9, pic_name=="plot_turk9_interaction_2_1.svg")
 
@@ -153,18 +153,20 @@ levels(demographics$age_level)[1:7] <- c(levels(demographics$age_level)[1:6], "a
 # saving data for submission
 # ------------------------------------------------------------------
 # write.csv(demographics, "../submitted-v1/data/sociology-data.csv", row.names = FALSE)
-sociology_data <- demographics %>%
+allDat <- demographics %>%
   select(id, response, start_time, time_taken, lineup_id, gender_level, age_level, 
          degree, country_code, country_name, country, longitude, latitude, experiment)
-saveRDS(sociology_data, file = "../submitted-v1/data/experiment-data-all.RDS")
+# saveRDS(allDat, file = "../submitted-v1/data/experiment-data-all.RDS")
 
-exp9 <- dat9 %>% 
+exp9Dat <- dat9 %>% 
   mutate(lineup_name = pic_name,
          id = paste0("exp9_",id),
          lineup_type = plot_type) %>%
   select(id, lineup_type, lineup_name, plot_location, nulls, response)
+# saveRDS(exp9Dat, file = "../submitted-v1/data/exp9-extra.RDS")
 
-saveRDS(exp9, file = "../submitted-v1/data/exp9-extra.RDS")
+save(allDat, exp9Dat, file= "../submitted-v1/data/experiment-data-all.RData")
+
 
 # getting unique participants information
 # Since each participant has multiple responses in demographics data

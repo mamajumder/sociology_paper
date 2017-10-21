@@ -1,4 +1,3 @@
-%\documentclass{article}
 \documentclass[10pt]{article}
 \usepackage{times}
 %\usepackage{natbib}
@@ -183,7 +182,7 @@ We have conducted a series of experiments (see Table~\ref{tbl:visual_stat} for a
 %There have been ten experiments conducted 
 using Amazon's Mechanical Turk~\citep{turk} (MTurk) for a variety to purposes: validating the protocol against existing tests, comparing plot designs, and evaluating structure in data analysis problems. In all of the experiments we collected demographic details, such as gender, age bracket, and educational background.  Mining this data will provide a basis for evaluating
 %are being used to evaluate 
-the effects of different covariates on an individual's ability to evaluate lineups. The design of some of the experimets allow a further investigation into aspects beyond participants' demographics: experiments~5, 6 and 7 can be used to investigate short term learning trends, while experiment~9 allows insight on whether the  positioning of the  data plot in the lineup has an effect on detection rate. 
+the effects of different covariates on an individual's ability to evaluate lineups. The design of some of the experiments allow a further investigation into aspects beyond participants' demographics: experiments~5, 6 and 7 can be used to investigate short term learning trends, while experiment~9 allows insight on whether the  positioning of the  data plot in the lineup has an effect on detection rate. 
  %Each of these experiments collected demographic details of the subjects. 
 Section~\ref{sec:factor_performance} discusses human factors that we expect to be influential on the performance of the observer. Section~\ref{sec:exp_design} describes the methods used to assess the effects, and Section~\ref{sec:result_socio} summarizes the results of what we have learned about human factors affecting lineup evaluation.
 
@@ -592,7 +591,7 @@ Being turkers implicitly assures that the participants in these experiments have
 The distribution of male and female participants are similar among all age groups except for age group 18-25 in India where the proportion of female participants is lower. The distribution of education levels also differs slightly across countries for this age group. %Most of the participants from India are below age 40 while in United States the distribution of participants are similar beyond age 40. There were not many participants beyond age 50 and hence these age groups are merged to form one age group called above 50. The exploratory analysis and the models fitted in the following sections use this new age group instead of actual age groups beyond age 50. 
 
 
-A total of 1912 lineups were evaluated in the ten experiments. Each person evaluated at least 10 lineups except for experiment~9 where each participant evaulated three lineups.
+A total of 1912 lineups were evaluated in the ten experiments. Each person evaluated at least 10 lineups except for experiment~9 where each participant evaluated three lineups.
 As a measure to ensure a high quality in the evaluations,
  a test plot was shown to each observer, and the performance on this test plot was used for screening purposes. %A test plot was shown to each observer and the feedback received from that plot is used to ensure data quality. 
 Test plots were chosen in a way that any serious attempt at answering the lineup would result in a correct answer.
@@ -1246,7 +1245,7 @@ Model~\eqref{manova} fitted with two locations effects, inner and outer, did not
 
 \section{Conclusion}
 
-Human demographics have the potential to influence performance when the lineup protocol is used for statistical inference. In our study of the demographic effects on performance across a set of different experiments we found some statistically significant effects. Age group 36-40, countries other than India and United states, people who have a graduate degree have a significantly higher detection rate.  Gender does not have any significant effect. However, the effects are minimal, on the order of a few percentage points different from the average. These results are very important for the power of visual tests as they demonstrate the robustness of the test against different human factors.
+Human demographics have the potential to influence performance when the lineup protocol is used for statistical inference. In our study of the demographic effects on performance across a set of different experiments we found some statistically significant effects. Age group 36-40, people who have a graduate degree have a significantly higher detection rate. India shows significantly lower detection rate compared to United States. Gender does not have any significant effect. However, the effects are minimal, on the order of a few percentage points different from the average. These results are very important for the power of visual tests as they demonstrate the robustness of the test against different human factors.
 
 %in time taken to evaluate a lineup. Some variations among the factors are observed in terms of probability of correct evaluation. Age group 36-40, Countries other than India and United states, People who have a graduate degree are significantly different. But their practical impact on probability to correctly evaluate a lineup is very negligible and in some cases it diminishes  as the lineup difficulties increase or decrease. Gender does not have any significant effect on performance. Thus there may be differences in time taken to evaluate a lineup for different human demographics but the practical impact of demographics on the performance is very negligible. This result is very important for the power of visual test as it demonstrates the robustness of the test for different human factors.
 
@@ -1275,199 +1274,5 @@ This work was funded in part by National Science Foundation grant DMS 1007697. A
 
 
 \end{document}
-
-
-
-\dc{*** Suggest all of this is supplementary}
-
-
-
-
-\section{Some Figures and Tables (May go to Appendix)}
-
-\subsection{How People Pick the Data Plot} In each of the experiments observers were asked to choose the reason for their selection of a particular data plot. \cite{majumder:2013} showed that these choice reasons may provide the clue on how people picks the data plot in the lineup. To investigate this further we added free text input option in experiment~9 for their choice reason instead of some fixed reasons to select from. This allowed observers to write whatever they think their reasons for choice are. Figure~\ref{fig:wordle} shows the words used to explain their reasons for choice. The most common words used to explain their choice are points and green which indicates the use of two important features of the grammar of graphics \citep{wilkinson:1999, hadley:2009}. One is the indicator of geometric shape and the other is the aesthetics. Spread, steepest, line and apart are some other important words used frequently. Spread and apart are indicative of variability in the data. Steepest and line indicates some sort of systematic pattern in the data.
-
-
-\begin{figure}[htbp] 
-   \centering
-   \includegraphics[width=3.5in]{reasoning_words.pdf} 
-   \caption{Words used to explain the reasons for selection of data plot in a lineup show what features of a lineup may help a non-statistician to evaluate it. Larger font indicate more people choosing that word. Different color is used just to separate the words.}
-   \label{fig:wordle}
-\end{figure}
-
-Figure~\ref {fig:wordle} also shows some insight about peoples way of reading a plot. We notice that variability in the data, geometric shapes and aesthetics used to generate plots and existence of any systematic pattern in the plot are some of the important features revealed from the figure. These features are commonly used by human brain to examine and compare plots. Notice that these features may be specific to this particular experiment. There can be different other features people may use to evaluate a lineup depending on the situation. But with these words we get a general idea on how people may think while evaluating a lineup.
-
-Turk workers are not necessarily trained on statistics or aware of specific terms used in statistics or statistical plots let alone having knowledge about grammar of graphics. It is interesting that people explain things that have specific definitions and meaning in the literature. For example, some keywords like spread, apart should be analogous to larger variability while together,  close may be for indicating smaller variability. Thus the perception from a statistical graphics is intuitive and human intelligence learn this even without having specific training. This is why visual inference can be used as a tool for teaching inference in the basic statistics classes.
-
-
-%\begin{table}[hbtp]
-%\caption{Amazon mechanical turk experiments and their properties. Duration in hours per 100 tasks show the popularity of some tasks compared to others.}
-%\centering
-%\begin{tabular}{rlrrrrrrr}
-%  \hline
-%& Experiment& \multicolumn{2}{c}{ Total Task}& Average & \multicolumn{2}{c}{Duration (hour)} & Payment & Pay rate\\
-%\cline{3-4} \cline{6-7}
-%Serial & description & submitted & rejected & time(min) & Actual & 100 task& \$/task & \$/hour\\ 
-%  \hline
-%1 & Boxplot & 406 & 106 & 10.68 & 146.48 & 36.08 & 0.50 & 2.81 \\ 
-%  2 & Scatterplot & 359 &   9 & 10.80 & 42.68 & 11.89 & 1.00 & 5.58 \\ 
-%  3 & Contaminated plot & 219 &  19 & 13.53 & 126.17 & 57.61 & 1.00 & 2.22 \\ 
-%  4 & Polar vs Cartesian & 110 &  10 & 20.65 & 11.65 & 10.59 & 1.00 & 2.91 \\ 
-%  5 & Hist vs density & 234 &  37 & 17.85 & 41.57 & 17.76 & 1.00 & 3.36 \\ 
-%  6 & Violin vs boxplot & 417 &  17 & 17.95 & 105.87 & 25.39 & 1.00 & 3.34 \\ 
-%  7 & Group separation & 106 &   6 & 16.13 & 5.15 & 4.86 & 1.00 & 3.72 \\ 
-%  8 & Sine Illusion & 101 &   1 & 16.52 & 78.38 & 77.60 & 1.00 & 3.63 \\ 
-%  9 & Gene expression & 103 &   3 & 12.47 & 11.27 & 10.94 & 0.50 & 2.41 \\ 
-%  10 & Test normality & 406 &   6 & 22.70 & 74.35 & 18.31 & 1.00 & 2.64 \\ 
-%   \hline
-%\end{tabular}
-%\label{tbl:mturk}
-%\end{table}
-%
-%
-%\begin{figure}[htbp] 
-%   \centering
-%   \includegraphics[width=3in]{rejected_task.pdf}
-%      \includegraphics[width=3in]{task_duration.pdf} 
-%   \caption{Percentage of rejected tasks and duration of each experiment in hour per 100 tasks for each of the 10 experiments. Most of the tasks got rejected for box plot experiment.  Even though the sine illusion experiment took longest to finish the rejection rate is lowest for this experiment.}
-%   \label{fig:task_duration}
-%\end{figure}
-
-
-
-
-%\clearpage
-\section{Some Plots of Exploratory Data Analysis}
-
-This section includes some plots showing results from exploratory data analysis. The results are discussed in Section~\ref{sec:result_socio}.
-
-\begin{figure}[htbp] 
-   \centering
-   \includegraphics[width=5.8in]{turker_location_experiment.pdf} 
-   \caption{World maps showing where the participants are coming from for all the 10 experiments.}
-   \label{fig:turker_location_experiment}
-\end{figure}
-
-\begin{figure}[htbp] 
-   \centering
-   \includegraphics[width=6.5in]{participation_time.pdf} 
-   \caption{Number of participants by time of the day feedbacks received (central time). Experiment~1 shows MTurk workers participated the experiments around the clock. Other experiments did not take a whole day to finish. For experiment~3 most of the participants are from India because of timing. No matter when the experiment is started, subjects from India shows participations. For United States, subjects participated if the experiment is not in the mid night, except for experiment~6.}
-   \label{fig:participation_time}
-\end{figure}
-
-
-
-\begin{figure}[htbp] 
-   \centering
-   \includegraphics[width=6in]{demographic_info.pdf} 
-   \caption{Countrywise distribution of age and academic levels of the MTurk workers participating the experiments shows the diversity of the subjects in all the demographic aspect. Almost equal number of male and female subjects participated the online experiments.}
-   \label{fig:demographic_info}
-\end{figure}
-
-
-\begin{figure}[htbp] 
-   \centering
-   \includegraphics[width=6.5in]{age_gender_within_country_bar.pdf} 
-   \caption{Countrywise distribution of age and academic levels of the MTurk workers participating the experiments shows the diversity of the subjects in all the demographic aspect. Male and female participants differ in India specially for agelevel 18-25. For United States number of participants are similar beyond age 40 while few number of participants coming from India beyond that age.}
-   \label{fig:gender_country_bar}
-\end{figure}
-
-
-\begin{figure}[htbp] 
-   \centering
-   \includegraphics[width=6.5in]{age_gender_within_country_time.pdf} 
-   \caption{Countrywise average time taken for different age and academic levels of the MTurk workers participating the experiments shows that the demographic factors may not have effect on time taken. }
-   \label{fig:gender_country_time}
-\end{figure}
-
-
-\begin{figure}[htbp] 
-   \centering
-   \includegraphics[width=6.5in]{age_gender_within_country_correct.pdf} 
-   \caption{Countrywise percentage of correct responses for different age and academic levels of the MTurk workers participating the experiments shows that the demographic factors may not have effect on the percentage of correct responses. }
-   \label{fig:gender_country_response}
-\end{figure}
-
-
-
-
-
-%\begin{figure}[htbp] 
-%   \centering
-%   \includegraphics[width=0.8\linewidth]{electoral-2-17.pdf} 
-%   \caption{Lineup \#2 - electoral building. Which building looks the most different from the other buildings? }
-%   \label{fig:elect.2}
-%\end{figure}
-%\begin{figure}[htbp] 
-%   \centering
-%   \includegraphics[width=0.8\linewidth]{electoral-3-18.pdf} 
-%   \caption{Lineup \#3 - electoral building. Which building looks the most different from the other buildings? }
-%   \label{fig:elect.3}
-%\end{figure}
-%\begin{figure}[htbp] 
-%   \centering
-%   \includegraphics[width=0.8\linewidth]{electoral-4-17.pdf} 
-%   \caption{Lineup \#4 - electoral building. Which building looks the most different from the other buildings? }
-%   \label{fig:elect.4}
-%\end{figure}
-%\begin{figure}[htbp] 
-%   \centering
-%   \includegraphics[width=0.8\linewidth]{electoral-1-1.pdf} 
-%   \caption{Lineup \#5 - electoral building. Which building looks the most different from the other buildings? }
-%   \label{fig:elect.5}
-%\end{figure}
-
-
-\clearpage
-\section{Electoral Building Lineups and Results}
-%Figures~\ref{fig:elect-1} and~\ref{fig:elect.2} through~\ref{fig:elect.5}
-
-Five lineups were shown to (different) Amazon Turk workers in an experiment. They all were created as described in the introduction of the paper. In order to not bias observers, no context information was given about how these plots were created or what data they were displaying. This also made it necessary to slightly more stylize the display. 
-
-% latex table generated in R 3.0.1 by xtable 1.7-1 package
-% Wed Jun  5 17:39:09 2013
-\begin{table}[hbtp]
-\centering
-\begin{tabular}{rrrrrr}
-  \hline
- lineup & \#1 & \#2 & \#3 & \#4 & \#5 \\ 
-  \hline
-  \# correct/ \#evaluation &  12/72 & 11/66 & 5/74 & 14/72 & 19/57 \\ 
-$p$-value & 0.00023 & 0.00041 & 0.31 & 1.2e-05 &  1.9e-11 \\ 
-data panel & $3\cdot4+1$ & $2^4+1$ & $4^2+2 $ & $12+\sqrt{25}$ & $2^3-7$ \\ 
-   \hline
-\end{tabular}
-\end{table}
-
-% latex table generated in R 3.0.1 by xtable 1.7-1 package
-% Wed Jun  5 18:00:55 2013
-\begin{table}[hbtp]
-\centering
-\caption{\label{tbl:response}Overview of all choices by observers for each of the lineups. The correct choice is bolded. In most lineups there are null plots that were picked more often by observers, but the actual result is among the plots being picked most often, indicating that there is some indication that the election result is not completely consistent with the polls.}
-\scalebox{.9}{
-\begin{tabular}{rrrrrrrrrrrrrrrrrrrrr}
-  \hline
-& \multicolumn{10}{l}{panel chosen}\\
-Lineup & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 & 20 \\ 
-  \hline
-\#  1 & 2 & 2 & 0 & 10 & 2 & 2 & 6 &  23 & 1 & 1 & 0 & 1 & \bf 12 & 3 & 3 & 1 & 0 & 1 & 1 & 1 \\ 
-\#  2 & 0 & 16 & 1 & 1 & 5 & 1 & 0 & 8 & 0 & 2 & 0 & 0 & 0 & 4 & 2 & 1 & \bf 11 & 1 & 0 & 13 \\ 
-\#  3 & 7 & 26 & 0 & 2 & 0 & 5 & 3 & 0 & 2 & 1 & 0 & 4 & 0 & 0 & 2 & 0 & 9 & \bf 5 & 0 & 6 \\ 
-\#  4 & 0 & 0 & 0 & 2 & 0 & 0 & 0 & 3 & 1 & 10 & 2 & 18 & 1 & 0 & 4 & 2 &\bf 14 & 0 & 13 & 0 \\ 
-\# 5 &\bf 19 & 1 & 4 & 1 & 0 & 1 & 0 & 12 & 0 & 0 & 0 & 4 & 1 & 0 & 0 & 12 & 1 & 1 & 0 & 0 \\ 
-   \hline
-\end{tabular}
-}
-\end{table}
-
-
-
-
-
-\bibliographystyle{asa}
-\bibliography{references}
-
-\end{document}
-
 
 

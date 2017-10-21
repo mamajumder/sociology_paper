@@ -22,6 +22,9 @@ load("../data/experiment-data-all.RData")
 expDat <- allDat
 dat9 <- exp9Dat
 
+# getting the data table information
+# data.frame(sapply(expDat, class))
+# data.frame(sapply(dat9, class))
 
 # ==================================================================
 # generating statistics for section 4.1 "Overview of the Data"

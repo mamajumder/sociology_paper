@@ -216,14 +216,13 @@ of the factors that are expected to have some impact on the performance of visua
 
 \item{\bf Learning Trend:} One might expect that as an observer evaluates more lineups they  become more skillful in their evaluations. Each participant in  experiments~5, 6 and~7 was asked to evaluate a block of  ten lineups of the same type of data plot. The ten lineups were randomly chosen from the lineups  produced for each study. Before evaluating the first lineup, the observer needs to read instructions and become accustomed to the type of plot used in the lineup. In subsequent lineups  the type of plot is the same. It is possible that the observer becomes more skillful at recognizing the most different plot, either by more often detecting the actual data plot or more quickly reporting their choice. These two ways of measuring learning trend are evaluated on data collected from experiments~5, 6 and~7.
 
-%\subsection{Location of Actual Data Plot in the Lineup}
-\item{\bf Location of Actual Data Plot in the Lineup} For all of the lineups used in the experiments a $5\times 4$ grid of 20 panels is used. A random number generator is used to determine the position where the actual data plot is placed in each lineup. Eye tracking experiments \citep{zhao:2012} suggest that some observers traverse lineups in horizontal direction, while others have a vertical up-and-down approach to their search. Almost universally, observers start at the top left of a lineup. This leads to some concern that observers might be able to more easily identify the actual data plot, if it is placed at the top left of a lineup than when it the actual data is placed at the bottom right.
-%With the help of eye-tracking equipment \citet{zhao:2012} tracked the observers' eyes to see their approach in searching the plots in a lineup. The results suggest that many people read lineups from left to right, some read from upward to downward. 
-%There is some concern that if the actual data plot is located in the top left of the lineup, observers may be able to identify it more easily than when the actual data plot is at the bottom right. 
-Ideally, this does not happen. Experiment~9  is designed to allow us to investigate the effects of location on detection. Five different locations in the lineup were used to assess how fast and accurately observers identified the actual data plot.
+
+%\item{\bf Location of Actual Data Plot in the Lineup} For all of the lineups used in the experiments a $5\times 4$ grid of 20 panels is used. A random number generator is used to determine the position where the actual data plot is placed in each lineup. Eye tracking experiments \citep{zhao:2012} suggest that some observers traverse lineups in horizontal direction, while others have a vertical up-and-down approach to their search. Almost universally, observers start at the top left of a lineup. This leads to some concern that observers might be able to more easily identify the actual data plot, if it is placed at the top left of a lineup than when it the actual data is placed at the bottom right.
+
+%Ideally, this does not happen. Experiment~9  is designed to allow us to investigate the effects of location on detection. Five different locations in the lineup were used to assess how fast and accurately observers identified the actual data plot.
 
 
-\item{\bf Sample of Null Plots:} In classical inference, the test statistic is compared to the full null distribution, to decide if it is extreme or not. In visual inference the actual plot is compared to plots of a finite number of samples from the null distribution. In the lineups used in the Turk experiments, the actual data plot is compared on 19 null plots. These null samples are random draws, and there is a chance that one or more null plots in the lineup may be similar or even more extreme than the actual data plot. The sample of null plots can affect the observer's decision. This is tested with the data from experiment~9, where the experiment was set up with lineups made from different null plots.
+%\item{\bf Sample of Null Plots:} In classical inference, the test statistic is compared to the full null distribution, to decide if it is extreme or not. In visual inference the actual plot is compared to plots of a finite number of samples from the null distribution. In the lineups used in the Turk experiments, the actual data plot is compared on 19 null plots. These null samples are random draws, and there is a chance that one or more null plots in the lineup may be similar or even more extreme than the actual data plot. The sample of null plots can affect the observer's decision. This is tested with the data from experiment~9, where the experiment was set up with lineups made from different null plots.
 
 %\subsection{Individual Skill or Ability} 
 \item{\bf Individual Skill or Ability:} Each person may have different  aptitude for reading statistical plots, and their visual skill sets might be differently developed.  We can examine the effect of individuals' skills and abilities because multiple subjects evaluated the same lineups, which allows us to estimate, if some subjects consistently detect the actual data plot more often than others.  
@@ -320,125 +319,43 @@ Ideally, this does not happen. Experiment~9  is designed to allow us to investig
 \section{Results}\label{sec:result_socio}
 %------------------------------------------------------------------------------------
 
-\subsection{Overview of the Data} A total of 2340 participants provided feedback data on the lineups in ten different experimental studies. Figure~\ref{fig:turker_location} displays the locations of participants around the world.  Most of the participants were from the United States and India. There were 70 other different countries represented. This provides a diverse pool of participants. The diversity in not only  geographic but also in gender, age group and education level as can be seen in Table~\ref{tbl:demographics}. The large number of female participants from all countries was a pleasant surprise to us.
+ \subsection{Overview of the Data} In ten experimental studies, a total of 2,340 participants from 70 countries, primarily the United States and India, provided feedback data on lineups, ensuring a diverse pool of respondents in terms of geography, gender, age, and education. The demographic details, as summarized in Table~\ref{tbl:turker_location}, revealed a high number of female participants across most countries, which was an unexpected but positive outcome. Notably, countries like Canada, Romania, the United Kingdom, and Macedonia also had notable participant representation.
 
-% \begin{figure}[htbp] 
-%    \centering
-%    \includegraphics[width=4.5in]{turker_country.pdf} 
-%    \includegraphics[width=4.5in]{turker_location.pdf}    
-%    \caption{Location of Amazon Mechanical Turk workers participating in the experiments. Most subjects came from India and the United States, but subjects from countries around the world took part.}
-%    \label{fig:turker_location}
-% \end{figure}
+The majority of participants were aged 18 to 35, with the United States showing a more balanced age distribution compared to India, where younger individuals were more prevalent. Educational backgrounds were diverse, with 38.42\% of participants reporting a graduate degree. However, there was a cultural misunderstanding as Indian participants classified any university degree as a graduate degree, while the North American definition refers to a Master’s degree or higher. Compared to the 2010 US Census \cite{census}, the participants skewed younger and more highly educated.
 
-Besides the United States and India, countries such as Canada, Romania, the United Kingdom and Macedonia have more than 10 participants each. The remaining 64 countries have fewer than 10 participants each. The distribution of participants is similar in all ten experiments. 
+In total, 1,912 lineups were evaluated across the studies, with each participant reviewing at least 10 lineups, except for experiment~9, where they reviewed three. To ensure quality, participants were given test plots to evaluate first, and incorrect responses led to their data being excluded from the analysis. Some demographic and geographical data were missing due to participants opting out or issues retrieving IP-based location data.
 
-% \begin{table}[hbtp]
-% \caption{Demographic information of the subjects participating in the MTurk experiments. Average time taken for evaluating a lineup is shown in seconds.}
-% \centering
-% \scalebox{.85}{
-% \begin{tabular}{rlrrcr}
-%   \hline
-%   && \multicolumn{2}{c}{Participants}&Average& Number of\\
-%   \cline{3-4}
-%  Factor & Levels & Total &\% & Time & Responses \\ 
-%   \hline
-% Gender & Female & 989 & 42.26 & 43.69 & 10538 \\ 
-%    & Male & 1351 & 57.74 & 48.75 & 13542 \\  
-% \hline
-%   Education & High school or less & 194 & 8.29 & 37.13 & 2253 \\ 
-%    & Under grad courses & 418 & 17.86 & 42.85 & 4068 \\ 
-%    & Under grad degree & 585 & 25.00 & 44.53 & 5792 \\ 
-%    & Graduate courses & 247 & 10.56 & 44.63 & 2471 \\ 
-%    & Graduate degree & 899 & 38.42 & 52.07 & 9496 \\ 
-% \hline
-%   Age & 18-25 & 743 & 31.75 & 43.50 & 7340 \\ 
-%    & 26-30 & 549 & 23.46 & 46.19 & 5610 \\ 
-%    & 31-35 & 375 & 16.03 & 44.19 & 3912 \\ 
-%    & 36-40 & 257 & 10.98 & 54.97 & 2714 \\ 
-%    & 41-45 & 140 & 5.98 & 43.89 & 1510 \\ 
-%    & 46-50 &  94 & 4.02 & 49.54 & 994 \\ 
-%    & above 50 & 184 & 7.86 & 52.32 & 2000 \\ 
-% \hline   
-%   Country & United States & 1086 & 46.41 & 39.65 & 10763 \\ 
-%    & India & 980 & 41.88 & 52.63 & 10238 \\ 
-%    & Rest of the world & 279 & 11.92 & 50.38 & 3079 \\ 
-%   
-%    \hline
-% \end{tabular}
-% }
-% \label{tbl:demographics}
-% \end{table}
+%A total of 2340 participants provided feedback data on the lineups in ten different experimental studies. Figure~\ref{fig:turker_location} displays the locations of participants around the world.  Most of the participants were from the United States and India. There were 70 other different countries represented. This provides a diverse pool of participants. The diversity in not only  geographic but also in gender, age group and education level as can be seen in Table~\ref{tbl:demographics}. The large number of female participants from all countries was a pleasant surprise to us.
 % 
-
-
-
-
-The largest number of participants falls within the age group of 18 to 25, with the majority being between 18 to 35. Many older participants also took part in the experiments. %Interestingly, there are many participants in the older age groups as well. 
-The United States shows a more uniform participation beyond age 30,  participants from India are primarily younger. 
-
-In terms of academic background, the majority of participants had a graduate degree (a total of 899 participants, about 38.42\%). Examining the participants' location in conjunction with the academic background reveals that there is an above average  number of participants from India reporting to have a graduate degree. In retrospect this turned out to be a culturally based misunderstanding, as any university degree in India is considered to be a graduate degree, while the North American definition of a graduate degree refers to a Masters level education or above. Most of the  participants from the U.S. report to have an undergraduate degree or at least have some undergraduate courses. 
-
-Compared to data from the 2010 US Census \cite{census}, participants were both relatively younger, and more highly educated than the general US population. 
-Being turkers implicitly assures that the participants in these experiments have a relatively high level of technological fluency. In fact, the demographics of participants align somewhat better with demographics of internet users published by
-\citet{pew}.
-
-The distribution of male and female participants are similar among all age groups except for age group 18-25 in India where the proportion of female participants is lower. The distribution of education levels also differs slightly across countries for this age group. 
-
-
-A total of 1912 lineups were evaluated in the ten experiments. Each person evaluated at least 10 lineups except for experiment~9 where each participant evaluated three lineups.
-As a measure to ensure a high quality in the evaluations,
- a test plot was shown to each observer, and the performance on this test plot was used for screening purposes. %A test plot was shown to each observer and the feedback received from that plot is used to ensure data quality. 
-Test plots were chosen in a way that any serious attempt at answering the lineup would result in a correct answer.
-Data from participants who gave the wrong answer on the test plot % were considered as gaming the system, and their data were removed.
-led to the removal of all of their answers from the analysis. 
-Results from test plots were also not considered in any of the analyses.
- In some cases  participants chose to not provide their demographic information. Also, for some ip address, the actual geographical locations could not be retrieved. This resulted in some missing geographic information.
+% 
+% Besides the United States and India, countries such as Canada, Romania, the United Kingdom and Macedonia have more than 10 participants each. The remaining 64 countries have fewer than 10 participants each. The distribution of participants is similar in all ten experiments. 
+% 
+% 
+% 
+% The largest number of participants falls within the age group of 18 to 25, with the majority being between 18 to 35. Many older participants also took part in the experiments. 
+% The United States shows a more uniform participation beyond age 30,  participants from India are primarily younger. 
+% 
+% In terms of academic background, the majority of participants had a graduate degree (a total of 899 participants, about 38.42\%). Examining the participants' location in conjunction with the academic background reveals that there is an above average  number of participants from India reporting to have a graduate degree. In retrospect this turned out to be a culturally based misunderstanding, as any university degree in India is considered to be a graduate degree, while the North American definition of a graduate degree refers to a Masters level education or above. Most of the  participants from the U.S. report to have an undergraduate degree or at least have some undergraduate courses. 
+% 
+% Compared to data from the 2010 US Census \cite{census}, participants were both relatively younger, and more highly educated than the general US population. 
+% Being turkers implicitly assures that the participants in these experiments have a relatively high level of technological fluency. In fact, the demographics of participants align somewhat better with demographics of internet users published by
+% \citet{pew}.
+% 
+% The distribution of male and female participants are similar among all age groups except for age group 18-25 in India where the proportion of female participants is lower. The distribution of education levels also differs slightly across countries for this age group. 
+% 
+% 
+% A total of 1912 lineups were evaluated in the ten experiments. Each person evaluated at least 10 lineups except for experiment~9 where each participant evaluated three lineups.
+% As a measure to ensure a high quality in the evaluations,
+%  a test plot was shown to each observer, and the performance on this test plot was used for screening purposes. 
+% Test plots were chosen in a way that any serious attempt at answering the lineup would result in a correct answer.
+% Data from participants who gave the wrong answer on the test plot 
+% led to the removal of all of their answers from the analysis. 
+% Results from test plots were also not considered in any of the analyses.
+%  In some cases  participants chose to not provide their demographic information. Also, for some ip address, the actual geographical locations could not be retrieved. This resulted in some missing geographic information.
 
 \subsection{Demographic Factors} 
 
 To explore the significance of the demographic factors model~\eqref{eqn:demographic_response} is fit to the data, with age, country, education and gender as fixed effects. To estimate the significance of each of the factors, reduced models are fit with that factor removed from the model. Table~\ref{tbl:anova_factor} summarizes the results. Except for gender, all of the demographic factors show significant differences in  detection rates.  With respect to time taken, all of the demographic factors are significant. 
-
-% 
-% % latex table generated in R 3.4.1 by xtable 1.8-2 package
-% % Wed Oct 18 17:43:02 2017
-% \begin{table}[ht]
-% \caption{\label{tbl:anova_factor}Analysis of variance (ANOVA) table comparing full model, all the demographic factors, with the reduced models, obtained by removing respective factor variable. Gender does not have a significant effect on detection rate, but does on time to respond. All factors significantly affect time to respond.}
-% \centering
-% \scalebox{0.9}{
-% \begin{tabular}{lrrrrlrrrr}
-% & \multicolumn{4}{c} {Log Time (model~\ref{eqn:demographic_time})} & &\multicolumn{4}{c} {Detection rate (model~\ref{eqn:demographic_response})}  \\
-% \cline{2-5} \cline{7-10} 
-%  & Deviance & $\chi^2$ & df & $p$-value && Deviance & $\chi^2$ & df & $p$-value \\ \cline{2-5} \cline{7-10}
-% Full  & 52609.1 & \multicolumn{1}{c}{---} & \multicolumn{1}{c}{---} & \multicolumn{1}{c}{---} &  & 24140.5 & \multicolumn{1}{c}{---} & \multicolumn{1}{c}{---} & \multicolumn{1}{c}{---} \\ 
-%  - Age & 52081.3 & 527.8 & 6 & $<$0.001 & \hspace{0.5cm} & 24113.2 & 27.3 & 6 & $<$0.001 \\ 
-%  - Country & 52245.5 & 363.6 & 2 & $<$0.001 &  & 24114.8 & 25.7 & 2 & $<$0.001 \\ 
-%  - Degree & 52498.7 & 110.4 & 4 & $<$0.001 &  & 24116.0 & 24.5 & 4 & $<$0.001 \\ 
-%  - Gender & 52540.3 & 68.8 & 1 & $<$0.001 &  & 24138.9 & 1.6 & 1 & 0.200 \\ 
-% \cline{2-5} \cline{7-10}
-% \end{tabular}}
-% \end{table}
-
-
-% % latex table generated in R 3.4.1 by xtable 1.8-2 package
-% % Wed Oct 18 17:43:02 2017
-% \begin{table}[ht]
-% \centering
-% \begin{tabular}{rrrrrlrrrr}
-%   \hline
-%  & deviance & Chisq & Chi.Df & Pr..Chisq. & g1 & deviance & Chisq & Chi.Df & Pr..Chisq. \\ 
-%   \hline
-% Full & 52609.06 & 0.00 & 6.00 & 0.00 &  & 24140.49 & 0.00 & 6.00 & 0.00 \\ 
-%   Age & 52081.29 & 527.77 & 6.00 & 0.00 &  & 24113.24 & 27.25 & 6.00 & 0.00 \\ 
-%   Country & 52245.46 & 363.60 & 2.00 & 0.00 &  & 24114.79 & 25.70 & 2.00 & 0.00 \\ 
-%   Degree & 52498.65 & 110.41 & 4.00 & 0.00 &  & 24116.02 & 24.47 & 4.00 & 0.00 \\ 
-%   Gender & 52540.30 & 68.76 & 1.00 & 0.00 &  & 24138.85 & 1.64 & 1.00 & 0.20 \\ 
-%    \hline
-% \end{tabular}
-% \end{table}
-
-
-
-Parameter estimates from the model fits are shown in Table~\ref{tbl:model_result_demographics}. The first level of each factor serves as the baseline for the model. The age group 36-40  has a significantly higher detection rate than the 18-25 age group, and to a lesser extent this is also true for other age groups except for 26-30. Participants from the rest of the world have a similar detection rate to those from the USA, but participants from India show a significantly lower detection rate. Subjects reporting to have  an undergraduate degree had a significantly higher detection rate. For time to respond, all age groups were significantly faster than  18-25 year olds.  Participants from India as well as the rest of the world were faster than US Americans. A higher degree corresponded to longer time, and males were on average faster than females.
 
 
 % latex table generated in R 3.4.1 by xtable 1.8-2 package
@@ -481,39 +398,8 @@ Parameter estimates from the model fits are shown in Table~\ref{tbl:model_result
 \end{table}
 
 
-% % latex table generated in R 3.4.1 by xtable 1.8-2 package
-% % Wed Oct 18 17:22:24 2017
-% \begin{table}[ht]
-% \centering
-% \begin{tabular}{rrrrllrrrl}
-%   \hline
-%  & Est & LB & UB & pvalue & g1 & Est & LB & UB & pvalue \\ 
-%   \hline
-% $\mu$ & 3.16 & 3.12 & 3.20 & *** &   & -0.63 & -0.81 & -0.45 & *** \\ 
-%   26-30 & 0.05 & 0.03 & 0.07 & *** &   & 0.03 & -0.06 & 0.13 &  \\ 
-%   31-35 & 0.06 & 0.03 & 0.09 & *** &   & 0.12 & 0.02 & 0.23 & * \\ 
-%   36-40 & 0.22 & 0.19 & 0.25 & *** &   & 0.29 & 0.17 & 0.41 & *** \\ 
-%   41-45 & 0.17 & 0.13 & 0.21 & *** &   & 0.19 & 0.03 & 0.34 & * \\ 
-%   46-50 & 0.28 & 0.23 & 0.32 & *** &   & 0.20 & 0.01 & 0.39 & * \\ 
-%   above 50 & 0.34 & 0.31 & 0.38 & *** &   & 0.16 & 0.02 & 0.29 & * \\ 
-%   India & 0.23 & 0.20 & 0.25 & *** &   & -0.19 & -0.28 & -0.10 & *** \\ 
-%   Rest of the world & 0.14 & 0.11 & 0.17 & *** &   & 0.06 & -0.05 & 0.18 &  \\ 
-%   Under grad courses & 0.13 & 0.09 & 0.16 & *** &   & 0.00 & -0.14 & 0.14 &  \\ 
-%   Under grad degree & 0.14 & 0.10 & 0.17 & *** &   & 0.16 & 0.03 & 0.29 & * \\ 
-%   Graduate courses & 0.02 & -0.02 & 0.06 &  &   & -0.13 & -0.29 & 0.03 &  \\ 
-%   Graduate degree & 0.13 & 0.10 & 0.16 & *** &   & -0.04 & -0.17 & 0.09 &  \\ 
-%   Male & 0.08 & 0.06 & 0.10 & *** &   & 0.05 & -0.02 & 0.12 &  \\ 
-%   lineup & 0.29 &  &  &  &   & 2.27 &  &  &  \\ 
-%    \hline
-% \end{tabular}
-% \end{table}
 
-
-
-
-
-Figure~\ref{fig:demographic_effect} supports the model results. The average time taken to respond (natural log) and detection rate are computed by lineup for the different demographic factor levels, and displayed using boxplots. Mean values are shown as dots inside the boxplot, as this statistic rather than the median is used in the models. The means and medians for response time (top row) are essentially equal. There are some differences between the two in the detection rate plots (bottom row). The differences in these values for different factors, that was tested by the models, can be seen in the plots. However, particularly for detection rate, the variation is huge. A large component of the variation is difficulty of the lineup. In some lineups the actual data plot was distinctively different from the null plots, and we would expect that the detection rate would be close to 100\%. In other lineups there was no difference, making it very difficult to evaluate, with low detection rate and longer time to respond. In Table~\ref{tbl:model_result_demographics} notice that lineup specific error is estimated as 2.27 which is much higher than any of the other parameter estimates in the model. This indicates that the major and most important factor affecting the detection rate is  lineup difficulty.  So although the demographic factors emerge from the model to be statistically significant, the practical significance is minimal. We illustrate this with the following example of graduate degree.
-
+Parameter estimates from the model fits are shown in Table~\ref{tbl:model_result_demographics}. The first level of each factor serves as the baseline for the model. The age group 36-40  has a significantly higher detection rate than the 18-25 age group, and to a lesser extent this is also true for other age groups except for 26-30. Participants from the rest of the world have a similar detection rate to those from the USA, but participants from India show a significantly lower detection rate. Subjects reporting to have  an undergraduate degree had a significantly higher detection rate. For time to respond, all age groups were significantly faster than  18-25 year olds.  Participants from India as well as the rest of the world were faster than US Americans. A higher degree corresponded to longer time, and males were on average faster than females.
 
 
 \begin{figure}[htbp] 
@@ -522,6 +408,12 @@ Figure~\ref{fig:demographic_effect} supports the model results. The average time
    \caption{Boxplots of average log time taken and proportion correct responses (detection rate) of all the lineups plotted for each demographic factor levels. The dots inside the boxes represent means. Some differences in means of various demographic factors are observed. Variability in detection rate indicates large variability in lineup difficulties. }
    \label{fig:demographic_effect}
 \end{figure}
+
+
+Figure~\ref{fig:demographic_effect} supports the model results. The average time taken to respond (natural log) and detection rate are computed by lineup for the different demographic factor levels, and displayed using boxplots. Mean values are shown as dots inside the boxplot, as this statistic rather than the median is used in the models. The means and medians for response time (top row) are essentially equal. There are some differences between the two in the detection rate plots (bottom row). The differences in these values for different factors, that was tested by the models, can be seen in the plots. However, particularly for detection rate, the variation is huge. A large component of the variation is difficulty of the lineup. In some lineups the actual data plot was distinctively different from the null plots, and we would expect that the detection rate would be close to 100\%. In other lineups there was no difference, making it very difficult to evaluate, with low detection rate and longer time to respond. In Table~\ref{tbl:model_result_demographics} notice that lineup specific error is estimated as 2.27 which is much higher than any of the other parameter estimates in the model. This indicates that the major and most important factor affecting the detection rate is  lineup difficulty.  So although the demographic factors emerge from the model to be statistically significant, the practical significance is minimal. We illustrate this with the following example of graduate degree.
+
+
+
 
 
 While some of the demographic factors are strongly statistically significant, the main source of variation in detection rate is the lineup difficulty. For example, let's examine the effect of an undergraduate degree. To see just how large the effect is, we examine the change in detection rate for a (hypothetical) 18-25 year old female in the United States, with some graduate course work as compared to an undergraduate degree, for an average difficulty lineup (random effect of zero). Plugging in the relevant quantities to the fitted model gives a difference equal to:
@@ -545,38 +437,38 @@ The person with some graduate course work picks the data plot  on average in 31.
 Table~\ref{tbl:model_result_response} displays the parameter estimates and $p$-values of fixed effect estimates of model~\eqref{eqn:trend_response} examining detection rate. Only for experiment~6 there is some evidence of a learning curve. There are marginally small $p$-values for most of the attempt levels, and positive parameter estimates, suggesting that more attempts increases detection rate. 
 
 
-% latex table generated in R 3.4.1 by xtable 1.8-2 package
-% Wed Oct 18 23:54:25 2017
-\begin{table}[hbtp]
-\centering
-\caption{\label{tbl:model_result_response}Parameter estimates of models \eqref{eqn:trend_response} fitted to data from three different experiments using detection rate as the response to assess learning trend. Attempt number is fitted as a factor to enable modeling any sort of non-linear learning trend. Only experiment~6 shows some evidence of a learning trend, with detection rate essentially increasing as attempts increase.}
-\scalebox{.9}{
-\begin{tabular}{rr>{(}r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}cr>{(}r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}cr>{(}r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}}
-\cline{2-5} \cline{7-10} \cline{12-15} 
-& \multicolumn{4}{c} {Experiment~5} & &\multicolumn{4}{c} {Experiment~6} && \multicolumn{4}{c} {Experiment~7}\\
-\cline{2-5} \cline{7-10} \cline{12-15} 
-Effect & Est & 2.5\% & 97.5\% &  & \hspace{1cm} & Est & 2.5\% & 97.5\% &  & \hspace{1cm} & Est & 2.5\% & 97.5\% &  \\ 
-\cline{2-5} \cline{7-10} \cline{12-15} 
-Fixed \\
-$\mu$ & -1.32 & -1.73 & -0.92 & *** &   & -0.16 & -0.46 & 0.13 &  &   & -1.73 & -2.81 & -0.66 & ** \\ [3pt]
-  $\alpha2$ & 0.30 & -0.17 & 0.78 &  &   & 0.26 & -0.07 & 0.58 &  &   & -0.40 & -1.23 & 0.44 &  \\ 
-  $\alpha3$ & -0.20 & -0.68 & 0.29 &  &   & 0.31 & -0.02 & 0.63 & . &   & -0.15 & -0.99 & 0.68 &  \\ 
-  $\alpha4$ & 0.13 & -0.35 & 0.61 &  &   & 0.34 & 0.01 & 0.66 & * &   & -0.41 & -1.24 & 0.42 &  \\ 
-  $\alpha5$ & 0.35 & -0.14 & 0.83 &  &   & 0.34 & 0.02 & 0.67 & * &   & -0.10 & -0.92 & 0.73 &  \\ 
-  $\alpha6$ & 0.10 & -0.40 & 0.60 &  &   & 0.20 & -0.12 & 0.53 &  &   & 0.03 & -0.84 & 0.89 &  \\ 
-  $\alpha7$ & 0.33 & -0.17 & 0.82 &  &   & 0.11 & -0.22 & 0.43 &  &   & -0.00 & -0.84 & 0.84 &  \\ 
-  $\alpha8$ & -0.01 & -0.51 & 0.50 &  &   & 0.31 & -0.01 & 0.64 & . &   & -0.06 & -0.88 & 0.76 &  \\ 
-  $\alpha9$ & -0.20 & -0.70 & 0.30 &  &   & 0.34 & 0.01 & 0.67 & * &   & 0.21 & -0.67 & 1.08 &  \\ 
-  $\alpha10$ & 0.51 & 0.02 & 1.01 & * &   & 0.19 & -0.14 & 0.53 &  &   & -0.20 & -1.07 & 0.67 &  \\ 
-  Random \\
-  $\sigma^2_u$ & \multicolumn{5}{l}{\phantom{-}0.91}  & \multicolumn{5}{l}{\phantom{-}0.89} & 0.82   \\ 
-  $\sigma^2_a$ & \multicolumn{5}{l}{\phantom{-}0.04}  & \multicolumn{5}{l}{\phantom{-}0.04} & 0.05   \\ 
-  $\sigma^2_l$ & \multicolumn{5}{l}{\phantom{-}1.47}  & \multicolumn{5}{l}{\phantom{-}1.43} & 3.38   \\ \cline{2-5} \cline{7-10} \cline{12-15} 
-\\
-\hline
-\multicolumn{10}{l}{Signif. codes:  *** $<$ 0.001 $\le$ ** $<$ 0.01 $\le$ * $<$ 0.05 $\le$ . $<$ 0.1 $\le$ ` ' $<$ 1}
-\end{tabular}}
-\end{table}
+% % latex table generated in R 3.4.1 by xtable 1.8-2 package
+% % Wed Oct 18 23:54:25 2017
+% \begin{table}[hbtp]
+% \centering
+% \caption{\label{tbl:model_result_response}Parameter estimates of models \eqref{eqn:trend_response} fitted to data from three different experiments using detection rate as the response to assess learning trend. Attempt number is fitted as a factor to enable modeling any sort of non-linear learning trend. Only experiment~6 shows some evidence of a learning trend, with detection rate essentially increasing as attempts increase.}
+% \scalebox{.9}{
+% \begin{tabular}{rr>{(}r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}cr>{(}r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}cr>{(}r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}}
+% \cline{2-5} \cline{7-10} \cline{12-15} 
+% & \multicolumn{4}{c} {Experiment~5} & &\multicolumn{4}{c} {Experiment~6} && \multicolumn{4}{c} {Experiment~7}\\
+% \cline{2-5} \cline{7-10} \cline{12-15} 
+% Effect & Est & 2.5\% & 97.5\% &  & \hspace{1cm} & Est & 2.5\% & 97.5\% &  & \hspace{1cm} & Est & 2.5\% & 97.5\% &  \\ 
+% \cline{2-5} \cline{7-10} \cline{12-15} 
+% Fixed \\
+% $\mu$ & -1.32 & -1.73 & -0.92 & *** &   & -0.16 & -0.46 & 0.13 &  &   & -1.73 & -2.81 & -0.66 & ** \\ [3pt]
+%   $\alpha2$ & 0.30 & -0.17 & 0.78 &  &   & 0.26 & -0.07 & 0.58 &  &   & -0.40 & -1.23 & 0.44 &  \\ 
+%   $\alpha3$ & -0.20 & -0.68 & 0.29 &  &   & 0.31 & -0.02 & 0.63 & . &   & -0.15 & -0.99 & 0.68 &  \\ 
+%   $\alpha4$ & 0.13 & -0.35 & 0.61 &  &   & 0.34 & 0.01 & 0.66 & * &   & -0.41 & -1.24 & 0.42 &  \\ 
+%   $\alpha5$ & 0.35 & -0.14 & 0.83 &  &   & 0.34 & 0.02 & 0.67 & * &   & -0.10 & -0.92 & 0.73 &  \\ 
+%   $\alpha6$ & 0.10 & -0.40 & 0.60 &  &   & 0.20 & -0.12 & 0.53 &  &   & 0.03 & -0.84 & 0.89 &  \\ 
+%   $\alpha7$ & 0.33 & -0.17 & 0.82 &  &   & 0.11 & -0.22 & 0.43 &  &   & -0.00 & -0.84 & 0.84 &  \\ 
+%   $\alpha8$ & -0.01 & -0.51 & 0.50 &  &   & 0.31 & -0.01 & 0.64 & . &   & -0.06 & -0.88 & 0.76 &  \\ 
+%   $\alpha9$ & -0.20 & -0.70 & 0.30 &  &   & 0.34 & 0.01 & 0.67 & * &   & 0.21 & -0.67 & 1.08 &  \\ 
+%   $\alpha10$ & 0.51 & 0.02 & 1.01 & * &   & 0.19 & -0.14 & 0.53 &  &   & -0.20 & -1.07 & 0.67 &  \\ 
+%   Random \\
+%   $\sigma^2_u$ & \multicolumn{5}{l}{\phantom{-}0.91}  & \multicolumn{5}{l}{\phantom{-}0.89} & 0.82   \\ 
+%   $\sigma^2_a$ & \multicolumn{5}{l}{\phantom{-}0.04}  & \multicolumn{5}{l}{\phantom{-}0.04} & 0.05   \\ 
+%   $\sigma^2_l$ & \multicolumn{5}{l}{\phantom{-}1.47}  & \multicolumn{5}{l}{\phantom{-}1.43} & 3.38   \\ \cline{2-5} \cline{7-10} \cline{12-15} 
+% \\
+% \hline
+% \multicolumn{10}{l}{Signif. codes:  *** $<$ 0.001 $\le$ ** $<$ 0.01 $\le$ * $<$ 0.05 $\le$ . $<$ 0.1 $\le$ ` ' $<$ 1}
+% \end{tabular}}
+% \end{table}
 
 % 
 % 
@@ -621,32 +513,32 @@ To visualize how  detection rates change over successive attempts, we fitted mod
 Table~\ref{tbl:model_result_time} presents the results of model~\eqref{eqn:trend_time} where response time is examined with respect to attempt. Attempt is modeled as a linear covariate here, with a shift factor used to adjust for additional time on the first lineup evaluated. Interestingly, time to respond significantly decreases as number of attempts increases, for all three experiments. 
 The parameter $\alpha$ for fixed effect covariate attempt is highly significant in all the experiments. The negative estimates suggest that on average later attempts took less time. Even though observers did not improve in their performance in successive attempts, they became more efficient in their response. The parameter $\alpha_1$ for first attempt is also highly significant. The positive estimates of $\alpha_1$ indicates that first attempt made by an observer required much more time than any of the other attempts. One explanation might be that participants take the chance to  carefully read through instructions and familiarize themselves  with the types of plots used in the experiment before evaluating their first lineup, which would inflate the time taken on the first lineup. Each of the experiments asks observers to give a reason for their choice (out of a list of pre-defined answers. For each lineup evaluation, participants are also asked to state how confident in their choice they are (on a scale of 1 to 5).  Later pages of the web site were identical  except for the lineup. 
 
-% latex table generated in R 3.4.1 by xtable 1.8-2 package
-% Wed Oct 18 23:37:55 2017
-\begin{table}[bhtp]
-\caption{\label{tbl:model_result_time}Parameter estimates of model~\eqref{eqn:trend_time} fitted for log time taken to evaluate a lineup. Both fixed effects parameters of Attempt ($\alpha_1$ and $\alpha$) are highly significant for all three experiments~5,~6 and~7.}
-\centering
-\scalebox{0.9}{
-\begin{tabular}{lr>{(}r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}cr>{( }r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}cr>{(}r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}}
-\cline{2-5} \cline{7-10} \cline{12-15} 
-& \multicolumn{4}{c} {Experiment~5} & &\multicolumn{4}{c} {Experiment~6} && \multicolumn{4}{c} {Experiment~7}\\
-
-\cline{2-5} \cline{7-10} \cline{12-15} 
-\multicolumn{2}{c}{Effect \hfill Est} & 2.5\% & 97.5\% &  &  & Est & 2.5\% & 97.5\% & &  & Est & 2.5\% & 97.5\% & \\ 
-  \cline{2-5} \cline{7-10} \cline{12-15}
-\multicolumn{2}{l}{Fixed}\\
-$\mu$ & 3.80 & 3.72 & 3.88 & *** &   & 3.89 & 3.83 & 3.96 & *** &   & 3.75 & 3.64 & 3.85 & *** \\ 
-  $\alpha_1$ & 0.32 & 0.25 & 0.39 & *** &   & 0.34 & 0.28 & 0.40 & *** &   & 0.28 & 0.18 & 0.38 & *** \\ 
-  $\alpha$ & -0.04 & -0.05 & -0.03 & *** &   & -0.04 & -0.05 & -0.03 & *** &   & -0.03 & -0.04 & -0.02 & *** \\ 
-\multicolumn{2}{l}{Random}\\
-  $\sigma^2_u$ & \multicolumn{5}{l}{\phantom{-}0.52}   & \multicolumn{5}{l}{\phantom{-}0.49}  & 0.37   \\ 
-  $\sigma^2_a$ & \multicolumn{5}{l}{\phantom{-}0.03}  & \multicolumn{5}{l}{\phantom{-}0.05}   & 0.05   \\ 
-  $\sigma^2_l$ & \multicolumn{5}{l}{\phantom{-}0.09}   & \multicolumn{5}{l}{\phantom{-}0.20}   & 0.24   \\
-  $\sigma^2$ & \multicolumn{5}{l}{\phantom{-}0.46}   & \multicolumn{5}{l}{\phantom{-}0.50}  & 0.45  \\ 
-   \cline{2-5} \cline{7-10} \cline{12-15}
-\end{tabular}}
-\end{table}
-
+% % latex table generated in R 3.4.1 by xtable 1.8-2 package
+% % Wed Oct 18 23:37:55 2017
+% \begin{table}[bhtp]
+% \caption{\label{tbl:model_result_time}Parameter estimates of model~\eqref{eqn:trend_time} fitted for log time taken to evaluate a lineup. Both fixed effects parameters of Attempt ($\alpha_1$ and $\alpha$) are highly significant for all three experiments~5,~6 and~7.}
+% \centering
+% \scalebox{0.9}{
+% \begin{tabular}{lr>{(}r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}cr>{( }r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}cr>{(}r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}}
+% \cline{2-5} \cline{7-10} \cline{12-15} 
+% & \multicolumn{4}{c} {Experiment~5} & &\multicolumn{4}{c} {Experiment~6} && \multicolumn{4}{c} {Experiment~7}\\
+% 
+% \cline{2-5} \cline{7-10} \cline{12-15} 
+% \multicolumn{2}{c}{Effect \hfill Est} & 2.5\% & 97.5\% &  &  & Est & 2.5\% & 97.5\% & &  & Est & 2.5\% & 97.5\% & \\ 
+%   \cline{2-5} \cline{7-10} \cline{12-15}
+% \multicolumn{2}{l}{Fixed}\\
+% $\mu$ & 3.80 & 3.72 & 3.88 & *** &   & 3.89 & 3.83 & 3.96 & *** &   & 3.75 & 3.64 & 3.85 & *** \\ 
+%   $\alpha_1$ & 0.32 & 0.25 & 0.39 & *** &   & 0.34 & 0.28 & 0.40 & *** &   & 0.28 & 0.18 & 0.38 & *** \\ 
+%   $\alpha$ & -0.04 & -0.05 & -0.03 & *** &   & -0.04 & -0.05 & -0.03 & *** &   & -0.03 & -0.04 & -0.02 & *** \\ 
+% \multicolumn{2}{l}{Random}\\
+%   $\sigma^2_u$ & \multicolumn{5}{l}{\phantom{-}0.52}   & \multicolumn{5}{l}{\phantom{-}0.49}  & 0.37   \\ 
+%   $\sigma^2_a$ & \multicolumn{5}{l}{\phantom{-}0.03}  & \multicolumn{5}{l}{\phantom{-}0.05}   & 0.05   \\ 
+%   $\sigma^2_l$ & \multicolumn{5}{l}{\phantom{-}0.09}   & \multicolumn{5}{l}{\phantom{-}0.20}   & 0.24   \\
+%   $\sigma^2$ & \multicolumn{5}{l}{\phantom{-}0.46}   & \multicolumn{5}{l}{\phantom{-}0.50}  & 0.45  \\ 
+%    \cline{2-5} \cline{7-10} \cline{12-15}
+% \end{tabular}}
+% \end{table}
+% 
 
 
 % 
@@ -907,6 +799,69 @@ Full  & 52609.1 & \multicolumn{1}{c}{---} & \multicolumn{1}{c}{---} & \multicolu
 \cline{2-5} \cline{7-10}
 \end{tabular}}
 \end{table}
+
+
+% latex table generated in R 3.4.1 by xtable 1.8-2 package
+% Wed Oct 18 23:54:25 2017
+\begin{table}[hbtp]
+\centering
+\caption{\label{tbl:model_result_response}Parameter estimates of models \eqref{eqn:trend_response} fitted to data from three different experiments using detection rate as the response to assess learning trend. Attempt number is fitted as a factor to enable modeling any sort of non-linear learning trend. Only experiment~6 shows some evidence of a learning trend, with detection rate essentially increasing as attempts increase.}
+\scalebox{.9}{
+\begin{tabular}{rr>{(}r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}cr>{(}r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}cr>{(}r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}}
+\cline{2-5} \cline{7-10} \cline{12-15} 
+& \multicolumn{4}{c} {Experiment~5} & &\multicolumn{4}{c} {Experiment~6} && \multicolumn{4}{c} {Experiment~7}\\
+\cline{2-5} \cline{7-10} \cline{12-15} 
+Effect & Est & 2.5\% & 97.5\% &  & \hspace{1cm} & Est & 2.5\% & 97.5\% &  & \hspace{1cm} & Est & 2.5\% & 97.5\% &  \\ 
+\cline{2-5} \cline{7-10} \cline{12-15} 
+Fixed \\
+$\mu$ & -1.32 & -1.73 & -0.92 & *** &   & -0.16 & -0.46 & 0.13 &  &   & -1.73 & -2.81 & -0.66 & ** \\ [3pt]
+  $\alpha2$ & 0.30 & -0.17 & 0.78 &  &   & 0.26 & -0.07 & 0.58 &  &   & -0.40 & -1.23 & 0.44 &  \\ 
+  $\alpha3$ & -0.20 & -0.68 & 0.29 &  &   & 0.31 & -0.02 & 0.63 & . &   & -0.15 & -0.99 & 0.68 &  \\ 
+  $\alpha4$ & 0.13 & -0.35 & 0.61 &  &   & 0.34 & 0.01 & 0.66 & * &   & -0.41 & -1.24 & 0.42 &  \\ 
+  $\alpha5$ & 0.35 & -0.14 & 0.83 &  &   & 0.34 & 0.02 & 0.67 & * &   & -0.10 & -0.92 & 0.73 &  \\ 
+  $\alpha6$ & 0.10 & -0.40 & 0.60 &  &   & 0.20 & -0.12 & 0.53 &  &   & 0.03 & -0.84 & 0.89 &  \\ 
+  $\alpha7$ & 0.33 & -0.17 & 0.82 &  &   & 0.11 & -0.22 & 0.43 &  &   & -0.00 & -0.84 & 0.84 &  \\ 
+  $\alpha8$ & -0.01 & -0.51 & 0.50 &  &   & 0.31 & -0.01 & 0.64 & . &   & -0.06 & -0.88 & 0.76 &  \\ 
+  $\alpha9$ & -0.20 & -0.70 & 0.30 &  &   & 0.34 & 0.01 & 0.67 & * &   & 0.21 & -0.67 & 1.08 &  \\ 
+  $\alpha10$ & 0.51 & 0.02 & 1.01 & * &   & 0.19 & -0.14 & 0.53 &  &   & -0.20 & -1.07 & 0.67 &  \\ 
+  Random \\
+  $\sigma^2_u$ & \multicolumn{5}{l}{\phantom{-}0.91}  & \multicolumn{5}{l}{\phantom{-}0.89} & 0.82   \\ 
+  $\sigma^2_a$ & \multicolumn{5}{l}{\phantom{-}0.04}  & \multicolumn{5}{l}{\phantom{-}0.04} & 0.05   \\ 
+  $\sigma^2_l$ & \multicolumn{5}{l}{\phantom{-}1.47}  & \multicolumn{5}{l}{\phantom{-}1.43} & 3.38   \\ \cline{2-5} \cline{7-10} \cline{12-15} 
+\\
+\hline
+\multicolumn{10}{l}{Signif. codes:  *** $<$ 0.001 $\le$ ** $<$ 0.01 $\le$ * $<$ 0.05 $\le$ . $<$ 0.1 $\le$ ` ' $<$ 1}
+\end{tabular}}
+\end{table}
+
+
+% latex table generated in R 3.4.1 by xtable 1.8-2 package
+% Wed Oct 18 23:37:55 2017
+\begin{table}[bhtp]
+\caption{\label{tbl:model_result_time}Parameter estimates of model~\eqref{eqn:trend_time} fitted for log time taken to evaluate a lineup. Both fixed effects parameters of Attempt ($\alpha_1$ and $\alpha$) are highly significant for all three experiments~5,~6 and~7.}
+\centering
+\scalebox{0.9}{
+\begin{tabular}{lr>{(}r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}cr>{( }r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}cr>{(}r<{,}>{\hspace{-.1in}}l<{)}>{\hspace{-.15in}}l<{}}
+\cline{2-5} \cline{7-10} \cline{12-15} 
+& \multicolumn{4}{c} {Experiment~5} & &\multicolumn{4}{c} {Experiment~6} && \multicolumn{4}{c} {Experiment~7}\\
+
+\cline{2-5} \cline{7-10} \cline{12-15} 
+\multicolumn{2}{c}{Effect \hfill Est} & 2.5\% & 97.5\% &  &  & Est & 2.5\% & 97.5\% & &  & Est & 2.5\% & 97.5\% & \\ 
+  \cline{2-5} \cline{7-10} \cline{12-15}
+\multicolumn{2}{l}{Fixed}\\
+$\mu$ & 3.80 & 3.72 & 3.88 & *** &   & 3.89 & 3.83 & 3.96 & *** &   & 3.75 & 3.64 & 3.85 & *** \\ 
+  $\alpha_1$ & 0.32 & 0.25 & 0.39 & *** &   & 0.34 & 0.28 & 0.40 & *** &   & 0.28 & 0.18 & 0.38 & *** \\ 
+  $\alpha$ & -0.04 & -0.05 & -0.03 & *** &   & -0.04 & -0.05 & -0.03 & *** &   & -0.03 & -0.04 & -0.02 & *** \\ 
+\multicolumn{2}{l}{Random}\\
+  $\sigma^2_u$ & \multicolumn{5}{l}{\phantom{-}0.52}   & \multicolumn{5}{l}{\phantom{-}0.49}  & 0.37   \\ 
+  $\sigma^2_a$ & \multicolumn{5}{l}{\phantom{-}0.03}  & \multicolumn{5}{l}{\phantom{-}0.05}   & 0.05   \\ 
+  $\sigma^2_l$ & \multicolumn{5}{l}{\phantom{-}0.09}   & \multicolumn{5}{l}{\phantom{-}0.20}   & 0.24   \\
+  $\sigma^2$ & \multicolumn{5}{l}{\phantom{-}0.46}   & \multicolumn{5}{l}{\phantom{-}0.50}  & 0.45  \\ 
+   \cline{2-5} \cline{7-10} \cline{12-15}
+\end{tabular}}
+\end{table}
+
+
 
 
 \begin{table*}[hbtp] 

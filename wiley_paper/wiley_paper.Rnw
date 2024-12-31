@@ -54,7 +54,7 @@
   \bigskip
   \bigskip
   \begin{center}
-    {\bf \LARGE Human Factors Influencing Visual Statistical Inference}
+    {\bf \LARGE Effect of Sociological Factors on Visual Statistical Inference}
 \end{center}
   \medskip
 } \fi
@@ -64,7 +64,7 @@
 \begin {abstract} 
 %------------------------------------------------------------------------------------
 
-Visual statistical inference determines the significance of patterns found in data exploration through graphics. It involves human observers inspecting a lineup of plots, with one real data plot randomly placed among decoys. Each observer's cognitive skills and judiciousness can influence results. The effectiveness of this method, measured by power, depends on combining evaluations from multiple observers. Factors influencing power include observer demographics, visual skills, experience, the sample of null plots, plot position, and signal strength. This paper examines these factors through studies using Amazon's Mechanical Turk, finding individual skills vary but demographics have little impact. Learning increases speed but not accuracy, and plot position doesn’t affect results.
+Visual statistical inference determines the significance of patterns found in data exploration through graphics. It involves human observers inspecting a lineup of plots, with one real data plot randomly placed among decoys. Each observer's cognitive skills and judiciousness can influence results. The effectiveness of this method, measured by power, depends on combining evaluations from multiple observers. Factors influencing power include observer demographics, visual skills, experience, the sample of null plots, and signal strength. This paper examines these factors through studies using Amazon's Mechanical Turk, finding individual skills vary but demographics have little impact. Learning increases speed but not accuracy.
 
 {\bf Keywords: \sf statistical graphics, non-parametric test, cognitive psychology, data visualization, exploratory data analysis, data mining, visual analytics.} 
 \end {abstract}
@@ -237,14 +237,16 @@ Individual learning trend is observed in time taken but not so much in observer 
 
 There are many more ways that the lineup protocol might be tested to learn what we might expect about its performance for tackling real data mining problems. Possible changes in the lineup protocol in the pipeline are allowing observers to select more than one plot, and to vary the size of the lineup from 20 to a smaller number, and have observers all see different lineups with different null sets.  This paper assessed the effect of human factors on the experiments conducted to date. As changes to the lineup protocol are suggested by other experiments the human factor effects may need to be examined again.
 
-
-\if1\blindDoc
-{
-%------------------------------------------------------------------------------------
-\paragraph{Acknowledgments}
-%------------------------------------------------------------------------------------
+\section{Funding Information}
 This work was funded in part by National Science Foundation grant DMS 1007697. All studies were conducted with approval from the Institutional Review Board IRB 10-347.
-} \fi
+
+% \if1\blindDoc
+% {
+% %------------------------------------------------------------------------------------
+% \paragraph{Acknowledgments}
+% %------------------------------------------------------------------------------------
+% This work was funded in part by National Science Foundation grant DMS 1007697. All studies were conducted with approval from the Institutional Review Board IRB 10-347.
+% } \fi
 
 
 \bibliographystyle{asa}

@@ -123,7 +123,7 @@ Author response: *The manuscript has been revised to include a list of countries
 
 Author response: *The detection rate in Figure 1 refers to the proportion of times the observed plot is correctly identified in a lineup by each demographic factor group. It is a continuous variable ranging from 0 to 1. This measure is not derived from the 10 experiments shown in Table 6; rather, detection rates are calculated for each combination of demographic factors and lineups. For example, participants identified as male evaluate multiple lineups, resulting in multiple detection rate values corresponding to the lineups they assess.*
 
-*Figure 1 caption has been revised to clarify how the detection rate is calculated. The revised caption includes “proportion of correct responses (Detection rate) across all lineups, aggregated for each level of the demographic factors."*
+*Figure 1 caption has been revised to clarify how the detection rate is calculated. The revised caption includes “proportion of data identifications (detection rate) across all lineups, aggregated for each level of the demographic factors."*
 
 7) Figure1: “Variability in detection rate indicates large variability in lineup difficulties. ” This is a very important finding. It took me a while to understand your argument: Maybe you argue because the variability is huge, it must be due to a factor other than the ones shown (demographics), and that factor must be lineup difficulty. I am not confident that this
 conclusion necessarily follows. Would it not be easier to extend the Figure by 3 columns with the 3 levels of difficulty? If you are right -- and I believe you are – then I would expect three much narrower box plots and the difference to the demographic variables would be more obvious.

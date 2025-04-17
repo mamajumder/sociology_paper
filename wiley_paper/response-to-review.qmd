@@ -77,7 +77,7 @@ Author response: *This is simply to illustrate examples of countries from which 
 
 6. I think it is instructive to layout a specific example (the 18-25 year old female undergraduate vs someone with some graduate course work), although I'm not sure the basic equation for the difference is necessary to include in the paper.
 
-Author response: *We have removed the detailed of the calculation on page 6 and report only the final number.*
+Author response: *We have removed the detailed calculation on page 6 and report only the final number.*
 
 7. The authors state that participants who performed poorly on an initial test were excluded from the analysis - it would be interesting to see a table of the demographics of this excluded population compared to the included population, particularly as it is possible that researchers using "visual inference" may not always include this step (and perhaps it is crucial for the assumption that the demographic impact is small?)
 

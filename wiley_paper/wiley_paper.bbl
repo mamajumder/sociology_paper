@@ -1,79 +1,41 @@
-\begin{thebibliography}{14}
+\begin{thebibliography}{12}
 \newcommand{\enquote}[1]{``#1''}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Amazon(2010)}]{turk}
-Amazon (2010), \enquote{Mechanical {T}urk,}
-  \url{https://www.mturk.com/mturk/welcome}.
+Amazon (2010), \enquote{Mechanical {T}urk,} \url{https://www.mturk.com/mturk/welcome}.
 
-\bibitem[{Atwood et~al.(2013)Atwood, O'Rourke, Peiffer, Yin, Majumder, Zhang,
-  Cianzio, Hill, Cook, Whitham, Shoemaker, and Graham}]{atwood:2013}
-Atwood, S.~E., O'Rourke, J.~A., Peiffer, G.~A., Yin, T., Majumder, M., Zhang,
-  C., Cianzio, S., Hill, J.~H., Cook, D., Whitham, S.~A., Shoemaker, R.~C., and
-  Graham, M.~A. (2013), \enquote{Replication protein A subunit 3 and the iron
-  efficiency response in soybean.} \textit{Plant Cell and Environment}, 37,
-  213--234.
+\bibitem[{Atwood et~al.(2013)Atwood, O'Rourke, Peiffer, Yin, Majumder, Zhang, Cianzio, Hill, Cook, Whitham, Shoemaker, and Graham}]{atwood:2013}
+Atwood, S.~E., O'Rourke, J.~A., Peiffer, G.~A., Yin, T., Majumder, M., Zhang, C., Cianzio, S., Hill, J.~H., Cook, D., Whitham, S.~A., Shoemaker, R.~C., and Graham, M.~A. (2013), \enquote{Replication protein A subunit 3 and the iron efficiency response in soybean.} \textit{Plant Cell and Environment}, 37, 213--234.
 
-\bibitem[{Bates et~al.(2015{\natexlab{a}})Bates, Maechler, Bolker, and
-  Walker}]{lme4:2015}
-Bates, D., Maechler, M., Bolker, B., and Walker, S. (2015{\natexlab{a}}),
-  \textit{{lme4}: Linear mixed-effects models using {Eigen} and {S4}}, r
-  package version 1.1-9.
+\bibitem[{Bates et~al.(2015{\natexlab{a}})Bates, Maechler, Bolker, and Walker}]{lme4:2015}
+Bates, D., Maechler, M., Bolker, B., and Walker, S. (2015{\natexlab{a}}), \textit{{lme4}: Linear mixed-effects models using {Eigen} and {S4}}, r package version 1.1-9.
 
-\bibitem[{Bates et~al.(2015{\natexlab{b}})Bates, Maechler, Bolker, and
-  Walker}]{lme4:paper}
-Bates, D., Maechler, M., Bolker, B.~M., and Walker, S. (2015{\natexlab{b}}),
-  \enquote{Fitting Linear Mixed-Effects Models using lme4,} \textit{Journal of
-  Statistical Software}, in press.
+\bibitem[{Bates et~al.(2015{\natexlab{b}})Bates, Maechler, Bolker, and Walker}]{lme4:paper}
+Bates, D., Maechler, M., Bolker, B.~M., and Walker, S. (2015{\natexlab{b}}), \enquote{Fitting Linear Mixed-Effects Models using lme4,} \textit{Journal of Statistical Software}, in press.
 
-\bibitem[{Buja et~al.(2009)Buja, Cook, Hofmann, Lawrence, Lee, Swayne, and
-  Wickham}]{buja:2009}
-Buja, A., Cook, D., Hofmann, H., Lawrence, M., Lee, E.-K., Swayne, D.~F., and
-  Wickham, H. (2009), \enquote{Statistical Inference for Exploratory Data
-  Analysis and Model Diagnostics,} \textit{Royal Society Philosophical
-  Transactions A}, 367, 4361--4383.
+\bibitem[{Buja et~al.(2009)Buja, Cook, Hofmann, Lawrence, Lee, Swayne, and Wickham}]{buja:2009}
+Buja, A., Cook, D., Hofmann, H., Lawrence, M., Lee, E.-K., Swayne, D.~F., and Wickham, H. (2009), \enquote{Statistical Inference for Exploratory Data Analysis and Model Diagnostics,} \textit{Royal Society Philosophical Transactions A}, 367, 4361--4383.
 
 \bibitem[{Bureau(2010)}]{census}
 Bureau, U.~C. (2010), \enquote{United States Census 2010,} .
 
-\bibitem[{Center(2014)}]{pew}
-Center, P.~R. (2014), \enquote{Internet User Demographics,} .
-
-\bibitem[{Hofmann et~al.(2012)Hofmann, Follett, Majumder, and
-  Cook}]{heike:2012}
-Hofmann, H., Follett, L., Majumder, M., and Cook, D. (2012), \enquote{Graphical
-  Tests for Power Comparison of Competing Designs,} \textit{IEEE Transactions
-  on Visualization and Computer Graphics}, 18, 2441--2448.
+\bibitem[{Hofmann et~al.(2012)Hofmann, Follett, Majumder, and Cook}]{heike:2012}
+Hofmann, H., Follett, L., Majumder, M., and Cook, D. (2012), \enquote{Graphical Tests for Power Comparison of Competing Designs,} \textit{IEEE Transactions on Visualization and Computer Graphics}, 18, 2441--2448.
 
 \bibitem[{Hofmann and R\"ottger(2015)}]{vinference}
-Hofmann, H. and R\"ottger, C. (2015), \textit{vinference: Inference under the
-  lineup protocol}, {R} package version 0.1.1.
+Hofmann, H. and R\"ottger, C. (2015), \textit{vinference: Inference under the lineup protocol}, {R} package version 0.1.1.
 
 \bibitem[{Majumder et~al.(2013)Majumder, Hofmann, and Cook}]{majumder:2013}
-Majumder, M., Hofmann, H., and Cook, D. (2013), \enquote{Validation of Visual
-  Statistical Inference, Applied to Linear Models,} \textit{Journal of the
-  American Statistical Association}, 108, 942--956.
+Majumder, M., Hofmann, H., and Cook, D. (2013), \enquote{Validation of Visual Statistical Inference, Applied to Linear Models,} \textit{Journal of the American Statistical Association}, 108, 942--956.
 
 \bibitem[{Meilgaard et~al.(2006)Meilgaard, Carr, and Civille}]{meilgaard}
-Meilgaard, M.~C., Carr, B.~T., and Civille, G.~V. (2006), \textit{{Sensory
-  Evaluation Techniques}}, CRC Press, 4th ed.
+Meilgaard, M.~C., Carr, B.~T., and Civille, G.~V. (2006), \textit{{Sensory Evaluation Techniques}}, CRC Press, 4th ed.
 
 \bibitem[{Mosteller(1948)}]{mosteller:48}
-Mosteller, F. (1948), \enquote{{A $k$-Sample Slippage Test for an Extreme
-  Population},} \textit{The Annals of Mathematical Statistics}, 19, 58--65.
+Mosteller, F. (1948), \enquote{{A $k$-Sample Slippage Test for an Extreme Population},} \textit{The Annals of Mathematical Statistics}, 19, 58--65.
 
-\bibitem[{Yin et~al.(2013)Yin, Majumder, {Roy Chowdhury}, Cook, Shoemaker, and
-  Graham}]{tengfei:2013}
-Yin, T., Majumder, M., {Roy Chowdhury}, N., Cook, D., Shoemaker, R., and
-  Graham, M. (2013), \enquote{Visual Mining Methods for RNA-Seq Data: Data
-  Structure, Dispersion Estimation and Significance Testing,} \textit{Journal
-  of Data Mining in Genomics \& Proteomics}, 4.
-
-\bibitem[{Zhao et~al.(2013)Zhao, Cook, Hofmann, Majumder, and {Roy
-  Chowdhury}}]{zhao:2012}
-Zhao, Y., Cook, D., Hofmann, H., Majumder, M., and {Roy Chowdhury}, N. (2013),
-  \enquote{Mind Reading: Using an Eye-Tracker to See How People are Looking at
-  Lineups,} \textit{International Journal of Intelligent Technologies \&
-  Applied Statistics}, 6, 393--413.
+\bibitem[{Yin et~al.(2013)Yin, Majumder, {Roy Chowdhury}, Cook, Shoemaker, and Graham}]{tengfei:2013}
+Yin, T., Majumder, M., {Roy Chowdhury}, N., Cook, D., Shoemaker, R., and Graham, M. (2013), \enquote{Visual Mining Methods for RNA-Seq Data: Data Structure, Dispersion Estimation and Significance Testing,} \textit{Journal of Data Mining in Genomics \& Proteomics}, 4.
 
 \end{thebibliography}

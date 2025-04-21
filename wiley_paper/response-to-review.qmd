@@ -1,10 +1,10 @@
 ---
 title: "Response to Review"
-author: "Majumder, Cook, Hofmann"
+author: "Majumder, Hofmann, Cook"
 format: pdf
 ---
 
-Thank you for the careful and positive reviews. *Our response to comments is written in italics*.
+Thank you for the careful and positive reviews. *Our response to comments is written in italics*. To help track the changes in the revised manuscript, all modifications have been highlighted in red.
 
 ## From the editor
 

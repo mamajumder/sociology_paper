@@ -135,7 +135,7 @@ The fitted model accounts for lineup-level variation through random effects, eff
 8) Conclusion: page 10 line 7-10 You give significant effects. For India you mention the comparison group (USA), for age and
 for people with graduate degrees you do not mention it. It would also be helpful to give the percentage differences in parenthesis, e.g. “India shows significantly lower detection rate compared to United States (xx% vs xx%)”.
 
-Author response: *The Table 1 shows the baseline levels for each category and the other levels are compared with the baseline. Significance of detection rates are discussed in details in section 3.2 based on the estimated model parameters in Table 1. The conclusion has been revised as suggested and clarifies the reported results. Should we report detection rate compared to United States (xx% vs xx%)? Ok, just report some of these in terms of log odds.*
+Author response: *The Table 1 shows the baseline levels for each category and the other levels are compared with the baseline. Significance of detection rates are discussed in details in section 3.2 based on the estimated model parameters in Table 1. The conclusion has been revised as suggested and now clarifies the reported results by including detection rates for comparison.
 
 9) Discussion: I am in particularly intrigued by the finding that experience improves speed but not accuracy. I wonder whether other researchers have found something similar in a different context. This may or may not be easy to answer in a couple of sentences – so please use your judgment.
 

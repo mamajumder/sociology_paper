@@ -139,9 +139,7 @@ Author response: *The Table 1 shows the baseline levels for each category and th
 
 9) Discussion: I am in particularly intrigued by the finding that experience improves speed but not accuracy. I wonder whether other researchers have found something similar in a different context. This may or may not be easy to answer in a couple of sentences – so please use your judgment.
 
-Author response: *The ten experiments included in this research cover a variety of scenarios and contexts, as shown in Table 6. These diverse visual inferential tasks provide strong evidence that individuals’ experience with lineup evaluations leads to improved speed, but not necessarily improved accuracy in identifying the data plot. This suggests that familiarity with the task may help streamline the evaluation process without enhancing the ability to detect the true signal. While this finding is specific to visual inference tasks, it aligns with broader cognitive research where practice often improves task efficiency more than accuracy.* 
-
-*This suggests that familiarity with the task may help streamline the evaluation process without enhancing the ability to detect the true signal. Similar patterns have been observed in cognitive psychology, where repeated task exposure often improves response time without significantly affecting accuracy (Logan, 1988; Schneider & Shiffrin, 1977). We acknowledge that further exploration and comparison with findings from other domains would be valuable and encourage future work in this direction. Should we include this discussion in the revised manuscript?* XXX To make additional discussion.
+Author response: *The finding that experience improves speed but not accuracy in lineup evaluations is consistent with prior research in different contexts. For example, Hong and Williamson (2008) showed that participants trained on a simple psychomotor task exhibited significant improvements in all speed-related measures, while their error rates remained largely unchanged. This discussion has now been added to the conclusion section.
 
 
 

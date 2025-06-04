@@ -1,0 +1,69 @@
+---
+title: "Response to Review"
+author: "Majumder, Hofmann, Cook"
+format: pdf
+---
+
+Thank you for the careful and positive reviews. *Our response to comments is written in italics*. No changes were made to the main text in this revision. However, we have revised Figures 2, 3, and 4 by enlarging the axis labels for improved readability, as suggested by the reviewer.
+
+## From the editor
+
+FYI, your revision is acceptable, but Wiley rules do not allow for
+any changes after full acceptance. So look at the 2 comments, and
+make appropriate changes, submit, and I will handle the final details.
+
+Cheers, David Scott, co-editor
+
+Response: *Thank you for the clarification.*
+
+I am writing in regards to Manuscript ID EOCS-756.R1 entitled "Effect of Human Factors on Visual Statistical Inference," which you submitted to WIREs Computational Statistics. The reviewer(s) have recommended publication, but also suggest some minor revisions. Their comments are included at the bottom of this letter; I invite you to respond to them and revise your manuscript.
+
+Please submit your revision within 3 weeks. If you need extra time, please let us know so that we can keep our systems updated for editorial planning purposes.
+
+A revised version of your manuscript that takes into account the comments of the reviewer(s) will be reconsidered for publication.
+
+If you are updating your Main Document in Word, make sure that "Track Changes" is enabled so that the editors can easily find your amendments. If you are using LaTeX, make sure that revisions are made in red font.
+
+You can upload your revised manuscript using this direct link: *** PLEASE NOTE: This is a two-step process. After clicking on the link, you will be directed to a webpage to confirm. ***
+
+https://urldefense.com/v3/__https://mc.manuscriptcentral.com/compstats?URL_MASK=3014fa56294b4d20905fcb2c8e0b8338__;!!PvXuogZ4sRB2p-tU!Htx4nGnItiXf30FBpb2ENpauRGwVrxiScnsEX1RPxAuEH-6s4AYg-nHnv9J_VYI3zmALTmoZm_xxcrm8BE4Te2ZCzDcZQEc$ .
+
+When you submit your revision, you must provide a point-by-point summary of how each of the issues raised by the reviewer(s) were addressed. Please note that the space provided is for plain text only, as the system will not accept any formatting. For each criticism raised, please provide:
+1. The criticism from the reviewer.
+2. The response and explanation of how the manuscript has been modified in response to the criticism.
+
+IMPORTANT: We have your original files; therefore, please delete the file(s) that you wish to replace and then upload the revised file(s). You will be able to upload both marked and clean versions of your Main Document. Please note that figures must be in PRODUCTION-READY format.
+
+Please do not hesitate to get in touch with us if you have any queries or concerns.
+
+Once again, thank you for submitting your article to WIREs Computational Statistics. I look forward to receiving your revision.
+
+Sincerely,
+
+Hashini Selvam
+On behalf of
+Dr. David Scott
+Co-Editor-in-Chief and Review Editor, WIREs Computational Statistics
+scottdw@rice.edu
+
+
+## Reviewer: 1
+
+### Comments to the Author(s)
+Good revision. 2 minor comments below
+
+Author response:  *We sincerely thank the reviewer for the positive feedback and for acknowledging the revision. We appreciate the two minor comments provided and have addressed them carefully in the revised manuscript.*
+
+### Specific comments:
+
+1) Figure 2, Figure 3 : It would help if you could make the axes labels bigger
+
+Author response: *Thank you for the helpful suggestion. We have revised Figures 2, 3, and 4 to enlarge the axis labels and improve overall readability.* 
+
+2) Title: Thank you for changing the title. Although better, I still find "Human factors" slightly confusing. An alternative would be "Socio-demographic correlates of visual inference". You can leave your title as is ; reviewers should not dictate the exact title and maybe your reading of the literature is different than mine.
+
+Author response: *We appreciate your suggestion and understand your perspective. We have updated the title in the last revised manuscript to "Effect of Human Factors on Visual Statistical Inference." We chose the term "Human Factors" to encompass a broader range of individual-level influences, including but not limited to socio-demographic variables. We acknowledge that interpretations may vary, and we appreciate your flexibility in allowing us to retain our chosen framing.* 
+
+
+
+
